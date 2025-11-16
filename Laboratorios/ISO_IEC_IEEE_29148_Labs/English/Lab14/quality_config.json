@@ -1,0 +1,161 @@
+{
+    "application": {
+        "name": "Requirements Quality Dashboard",
+        "version": "1.4.0",
+        "description": "Dashboard for monitoring and analyzing requirements quality metrics based on ISO/IEC/IEEE 29148:2011"
+    },
+    "settings": {
+        "defaultTheme": "light",
+        "refreshInterval": 3600,
+        "maxHistoryMonths": 12,
+        "notifications": {
+            "enabled": true,
+            "duration": 5000
+        },
+        "exportFormats": ["pdf", "csv", "json"]
+    },
+    "metrics": {
+        "completeness": {
+            "name": "Completeness",
+            "description": "Measures whether requirements fully express the stakeholder's needs",
+            "threshold": 0.80,
+            "weight": 1.0,
+            "color": "#4a6de5"
+        },
+        "clarity": {
+            "name": "Clarity",
+            "description": "Measures how unambiguous and understandable the requirements are",
+            "threshold": 0.70,
+            "weight": 1.0,
+            "color": "#17a2b8"
+        },
+        "consistency": {
+            "name": "Consistency",
+            "description": "Measures the absence of conflicts between requirements",
+            "threshold": 0.80,
+            "weight": 1.0,
+            "color": "#28a745"
+        },
+        "verifiability": {
+            "name": "Verifiability",
+            "description": "Measures whether requirements can be verified through testing or other means",
+            "threshold": 0.70,
+            "weight": 1.0,
+            "color": "#ffc107"
+        },
+        "traceability": {
+            "name": "Traceability",
+            "description": "Measures whether requirements can be traced to their source and to other related artifacts",
+            "threshold": 0.60,
+            "weight": 1.0,
+            "color": "#dc3545"
+        },
+        "feasibility": {
+            "name": "Feasibility",
+            "description": "Measures whether requirements can be implemented within project constraints",
+            "threshold": 0.70,
+            "weight": 1.0,
+            "color": "#6c757d"
+        }
+    },
+    "gates": {
+        "syntax": {
+            "name": "Syntax Compliance",
+            "description": "Ensures requirements follow the specified syntax and formatting guidelines",
+            "threshold": 0.90,
+            "autoApprove": true
+        },
+        "document": {
+            "name": "Document Completeness",
+            "description": "Ensures all required sections of the requirements document are present and filled",
+            "threshold": 0.85,
+            "autoApprove": true
+        },
+        "quality": {
+            "name": "Quality Score",
+            "description": "Ensures the overall quality score meets the minimum acceptable threshold",
+            "threshold": 0.75,
+            "autoApprove": true
+        },
+        "manager": {
+            "name": "Manager Approval",
+            "description": "Requires explicit approval from a project or requirements manager",
+            "threshold": null,
+            "autoApprove": false
+        }
+    },
+    "phases": [
+        {
+            "id": "elicitation",
+            "name": "Requirements Elicitation",
+            "description": "Initial gathering and discovery of stakeholder needs",
+            "gates": ["syntax", "document"]
+        },
+        {
+            "id": "analysis",
+            "name": "Requirements Analysis",
+            "description": "Detailed analysis and refinement of gathered requirements",
+            "gates": ["syntax", "document", "quality"]
+        },
+        {
+            "id": "specification",
+            "name": "Requirements Specification",
+            "description": "Formal documentation of requirements in structured format",
+            "gates": ["syntax", "document", "quality", "manager"]
+        },
+        {
+            "id": "validation",
+            "name": "Requirements Validation",
+            "description": "Validation of requirements with stakeholders",
+            "gates": ["syntax", "document", "quality", "manager"]
+        }
+    ],
+    "reports": {
+        "summary": {
+            "name": "Quality Summary Report",
+            "description": "Overview of all quality metrics and their current values",
+            "enabled": true,
+            "schedule": "daily"
+        },
+        "trend": {
+            "name": "Quality Trend Report",
+            "description": "Analysis of quality metrics over time",
+            "enabled": true,
+            "schedule": "weekly"
+        },
+        "detail": {
+            "name": "Detailed Quality Report",
+            "description": "In-depth analysis of each requirement and its quality metrics",
+            "enabled": true,
+            "schedule": "weekly"
+        },
+        "compliance": {
+            "name": "Standards Compliance Report",
+            "description": "Analysis of compliance with ISO/IEC/IEEE 29148:2011 standards",
+            "enabled": true,
+            "schedule": "monthly"
+        }
+    },
+    "reviewers": [
+        {
+            "id": "project-manager",
+            "name": "Project Manager",
+            "role": "Approves requirements from project management perspective"
+        },
+        {
+            "id": "requirements-manager",
+            "name": "Requirements Manager",
+            "role": "Approves requirements from requirements engineering perspective"
+        },
+        {
+            "id": "tech-lead",
+            "name": "Technical Lead",
+            "role": "Reviews requirements for technical feasibility"
+        },
+        {
+            "id": "stakeholder",
+            "name": "Key Stakeholder",
+            "role": "Reviews requirements for business alignment"
+        }
+    ]
+}

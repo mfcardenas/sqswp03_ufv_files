@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorios ISO/IEC/IEEE 29148 - Ingeniería de Requisitos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        
+        h2, h3, h4 {
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        details {
+            background: #f8f9ff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        details:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+        
+        details[open] {
+            border-color: #764ba2;
+        }
+        
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: #764ba2;
+            font-size: 1.1em;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        summary:hover {
+            background-color: #f0f0ff;
+        }
+        
+        details > div {
+            padding: 15px;
+            margin-top: 10px;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            background: #fff;
+            margin-bottom: 8px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            background: #f8f9ff;
+            transform: translateX(5px);
+        }
+        
+        a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        strong {
+            color: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ISO/IEC/IEEE 29148 - Ingeniería de Requisitos</h1>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="../../index.html" style="background: #667eea; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 0 10px; display: inline-block;">🏠 Volver al Índice</a>
+            <a href="iso_29148_labs_en.html" style="background: #764ba2; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 0 10px; display: inline-block;">🇬🇧 English Version</a>
+        </div>
+        
+        <p>Esta serie de laboratorios explora los conceptos, procesos y artefactos de la Ingeniería de Requisitos según el estándar ISO/IEC/IEEE 29148.</p>
+
+        <details>
+            <summary>Lab 1: Introduction to Requirements Engineering</summary>
+            <div>
+                <h3>Problem Statement</h3>
+                <p>Develop a comprehensive introduction to Requirements Engineering according to ISO/IEC/IEEE 29148 standard. Create an interactive system that demonstrates the fundamental concepts, processes, and artifacts of requirements engineering.</p>
+                
+                <h3>Requirements:</h3>
+                <ul>
+                    <li>Define requirements engineering concepts and terminology.</li>
+                    <li>Explain the requirements engineering process according to ISO/IEC/IEEE 29148.</li>
+                    <li>Create interactive examples of requirements artifacts.</li>
+                    <li>Develop a requirements classification system.</li>
+                    <li>Build a stakeholder analysis tool.</li>
+                </ul>
+
+                <h3>Tasks:</h3>
+                <ul>
+                    <li>Define requirements engineering fundamentals.</li>
+                    <li>Explain ISO/IEC/IEEE 29148 process framework.</li>
+                    <li>Create requirements artifact templates.</li>
+                    <li>Develop stakeholder identification and analysis tools.</li>
+                    <li>Build requirements quality assessment tools.</li>
+                </ul>
+
+                <h3>Expected Output:</h3>
+                <ul>
+                    <li>Interactive requirements engineering introduction.</li>
+                    <li>Requirements artifact templates and examples.</li>
+                    <li>Stakeholder analysis tools.</li>
+                    <li>Requirements quality assessment framework.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 2: Requirements Elicitation Techniques</summary>
+            <div>
+                <h3>Learning Objectives</h3>
+                <p>By the end of this laboratory, students will be able to understand and apply various requirements elicitation techniques like structured interviews, questionnaires, observation, and prototyping.</p>
+
+                <h3>Tasks:</h3>
+                <ul>
+                    <li><strong>Task 1: Interactive Elicitation Techniques Dashboard:</strong> Create a web app demonstrating techniques like an Interview Management System, Questionnaire Builder, Observation Tools, and a Prototyping Interface.</li>
+                    <li><strong>Task 2: Python Elicitation Analysis Tool:</strong> Develop a Python system for analyzing data from interviews and questionnaires, processing observation data, and integrating findings from multiple techniques.</li>
+                    <li><strong>Task 3: Elicitation Process Application:</strong> Apply the learned techniques to a real-world scenario, including stakeholder analysis, elicitation execution, and requirements synthesis.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 3: Requirements Analysis & Modeling</summary>
+            <div>
+                <h3>Scenario: Smart Home Automation System</h3>
+                <p>Analyze requirements for a smart home automation system integrating lighting, security, climate control, and entertainment. Fix issues in provided requirements and create proper models.</p>
+
+                <h3>Tasks:</h3>
+                <ul>
+                    <li><strong>Task 1: Fix Python Analysis Tool:</strong> Resolve bugs in requirement loading, ambiguity detection, completeness checking, consistency checking, categorization, dependency identification, prioritization, and model generation.</li>
+                    <li><strong>Task 2: Fix Modeling Dashboard:</strong> Add navigation functionality, implement analysis display, create modeling canvases, add validation tools, and improve UI.</li>
+                    <li><strong>Task 3: Create Sample Data & Testing:</strong> Create sample requirements, add comprehensive tests, generate sample models, and add error handling.</li>
+                    <li><strong>Task 4: Documentation & Reporting:</strong> Add comprehensive comments, create usage examples, generate analysis reports, and add model visualization.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 4: Requirements Specification</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Master requirements specification by creating comprehensive, unambiguous requirement documents using industry-standard formats and templates that meet ISO/IEC/IEEE 29148 standards.</p>
+
+                <h3>Problem</h3>
+                <p>Current specifications have poor structure, lack traceability, inconsistent formatting, missing validation criteria, and no version control. You must create a comprehensive requirements specification system.</p>
+
+                <h3>Key Features to Implement:</h3>
+                <ul>
+                    <li>Structured SRS documents with proper sections and formatting</li>
+                    <li>Multiple specification formats (textual, tabular, graphical)</li>
+                    <li>Traceability matrices linking requirements to design and test</li>
+                    <li>Specifications validation against quality standards</li>
+                    <li>Requirement baselines with version control</li>
+                    <li>Interactive specification viewer for stakeholders</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 5: Requirements Validation</summary>
+            <div>
+                <h3>Introduction</h3>
+                <p>Work on requirements validation following ISO/IEC/IEEE 29148. Fix code containing intentional bugs to create a complete requirements validation system.</p>
+
+                <h3>Tasks:</h3>
+                <ul>
+                    <li><strong>Task 1: Fix Validation Engine:</strong> Initialize validation rules, implement comprehensive validation methods (completeness, consistency, feasibility, testability), generate test cases automatically, implement acceptance testing framework, and add ISO/IEC/IEEE 29148 compliance checking.</li>
+                    <li><strong>Task 2: Complete Validation Dashboard:</strong> Create comprehensive validation metrics display, implement test case management interface, add acceptance testing controls, create compliance reporting, and add interactive validation charts.</li>
+                    <li><strong>Task 3: Create Supporting Files:</strong> Complete CSS styling, functional JavaScript, sample requirements data, and test suite.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 6: Requirements Management</summary>
+            <div>
+                <h3>Problem Statement</h3>
+                <p>Implement a comprehensive requirements management system following ISO/IEC/IEEE 29148 standards. Handle the complete lifecycle from creation to retirement, including version control, change management, traceability, and stakeholder collaboration.</p>
+
+                <h3>Core Functionality:</h3>
+                <ul>
+                    <li><strong>Requirements Repository:</strong> Centralized storage with version control</li>
+                    <li><strong>Change Management:</strong> Formal process for requirement modifications</li>
+                    <li><strong>Traceability Matrix:</strong> Bidirectional traceability between requirements</li>
+                    <li><strong>Stakeholder Management:</strong> User roles and permissions</li>
+                    <li><strong>Audit Trail:</strong> Complete history of all changes</li>
+                    <li><strong>Reporting:</strong> Comprehensive reports and dashboards</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 7: Requirements Validation and Verification</summary>
+            <div>
+                <h3>Problem Statement</h3>
+                <p>Implement a comprehensive requirements validation and verification system addressing manual validation processes, lack of automated checking, inadequate quality metrics, and inconsistent review processes.</p>
+
+                <h3>Learning Objectives:</h3>
+                <ul>
+                    <li>Building automated validation with rule-based engines</li>
+                    <li>Implementing quality metrics for systematic measurement</li>
+                    <li>Establishing verification methods with formal techniques</li>
+                    <li>Creating standardized review processes</li>
+                    <li>Generating comprehensive validation reports</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 8: Requirements Metrics and Analytics</summary>
+            <div>
+                <h3>Focus</h3>
+                <p>Implementing comprehensive requirements metrics, analytics, and reporting systems following ISO/IEC/IEEE 29148:2011. Provides advanced analytics, KPI tracking, trend analysis, and automated report generation.</p>
+
+                <h3>Key Features:</h3>
+                <ul>
+                    <li><strong>Metrics Collection Engine:</strong> Automated metrics gathering and real-time calculation</li>
+                    <li><strong>Analytics Dashboard:</strong> Interactive metrics visualization with real-time updates</li>
+                    <li><strong>KPI Monitoring System:</strong> KPI tracking, threshold monitoring, and trend analysis</li>
+                    <li><strong>Automated Report Generation:</strong> Scheduled reports in multiple formats</li>
+                    <li><strong>Trend Analysis Engine:</strong> Historical trends, predictive analytics, and anomaly detection</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 9: Requirements Tools and Automation</summary>
+            <div>
+                <h3>Focus</h3>
+                <p>Implementing automated requirements management tools and integration frameworks following ISO/IEC/IEEE 29148:2011. Provides tool integration, automation workflows, and API-based requirements processing.</p>
+
+                <h3>Key Features:</h3>
+                <ul>
+                    <li><strong>Tool Integration Framework:</strong> Generic integration for requirements tools, plugin architecture, and data transformation</li>
+                    <li><strong>Automation Engine:</strong> Workflow automation, rule-based triggers, and automated notifications</li>
+                    <li><strong>API Gateway:</strong> RESTful API, authentication and authorization, rate limiting</li>
+                    <li><strong>Data Synchronization:</strong> Bidirectional sync, conflict resolution, and synchronization scheduling</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 10: Requirements Compliance and Audit</summary>
+            <div>
+                <h3>Focus</h3>
+                <p>Implementing compliance monitoring and audit trails for requirements management following ISO/IEC/IEEE 29148:2011. Provides comprehensive compliance checking, audit logging, and regulatory reporting.</p>
+
+                <h3>Key Features:</h3>
+                <ul>
+                    <li><strong>Compliance Monitoring System:</strong> Real-time compliance checking, rule-based validation, and status tracking</li>
+                    <li><strong>Audit Trail System:</strong> Comprehensive audit logging, change tracking and versioning, and audit report generation</li>
+                    <li><strong>Regulatory Reporting:</strong> Automated compliance reports, regulatory format support, and report scheduling</li>
+                    <li><strong>Compliance Dashboard:</strong> Real-time compliance metrics, interactive audit views, and trend analysis</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 11: Requirements Risk Management</summary>
+            <div>
+                <h3>Focus</h3>
+                <p>Implementing risk assessment and management for requirements following ISO/IEC/IEEE 29148:2011. Provides risk identification, assessment, mitigation planning, and monitoring capabilities.</p>
+
+                <h3>Key Features:</h3>
+                <ul>
+                    <li><strong>Risk Assessment Engine:</strong> Automated risk identification, probability and impact assessment, and risk prioritization</li>
+                    <li><strong>Mitigation Planning:</strong> Risk mitigation strategy development, action item tracking, and mitigation effectiveness monitoring</li>
+                    <li><strong>Risk Monitoring System:</strong> Real-time risk status tracking, threshold monitoring, and automated risk alerts</li>
+                    <li><strong>Risk Analytics Dashboard:</strong> Risk trend analysis, heat maps, and mitigation progress tracking</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 12: Requirements Portfolio Management</summary>
+            <div>
+                <h3>Focus</h3>
+                <p>Implementing portfolio management for requirements across multiple projects following ISO/IEC/IEEE 29148:2011. Provides portfolio analysis, resource allocation, and strategic alignment.</p>
+
+                <h3>Key Features:</h3>
+                <ul>
+                    <li><strong>Portfolio Analysis Engine:</strong> Cross-project requirements analysis, portfolio risk assessment, and resource utilization analysis</li>
+                    <li><strong>Resource Allocation System:</strong> Automated resource allocation, capacity planning, and resource conflict resolution</li>
+                    <li><strong>Strategic Alignment Framework:</strong> Business objective alignment, strategic initiative tracking, and value realization monitoring</li>
+                    <li><strong>Portfolio Dashboard:</strong> Portfolio performance metrics, resource utilization views, and strategic alignment tracking</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 13: Requirements Change Management</summary>
+            <div>
+                <h3>Focus</h3>
+                <p>Implementing change management processes for requirements following ISO/IEC/IEEE 29148:2011. Provides change request handling, impact analysis, and change approval workflows.</p>
+
+                <h3>Key Features:</h3>
+                <ul>
+                    <li><strong>Change Request System:</strong> Change request creation and tracking, categorization and prioritization, and status management</li>
+                    <li><strong>Impact Analysis Engine:</strong> Automated impact assessment, dependency analysis, and risk impact evaluation</li>
+                    <li><strong>Approval Workflow System:</strong> Multi-level approval processes, approval routing and notifications, and approval history tracking</li>
+                    <li><strong>Change Management Dashboard:</strong> Change request tracking, approval status monitoring, and impact analysis views</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 14: Requirements Quality Assurance</summary>
+            <div>
+                <h3>Focus</h3>
+                <p>Implementing quality assurance processes for requirements following ISO/IEC/IEEE 29148:2011. Provides quality metrics, automated quality checks, and continuous improvement capabilities.</p>
+
+                <h3>Key Features:</h3>
+                <ul>
+                    <li><strong>Quality Metrics Engine:</strong> Automated quality measurement, quality scoring and grading, and quality trend analysis</li>
+                    <li><strong>Quality Gates System:</strong> Automated quality checkpoints, gate approval workflows, and quality threshold management</li>
+                    <li><strong>Quality Assurance Dashboard:</strong> Real-time quality metrics, quality trend visualization, and quality improvement tracking</li>
+                    <li><strong>Quality Reporting System:</strong> Automated quality reports, quality benchmarking, and continuous improvement recommendations</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Lab 15: Advanced Requirements Analytics</summary>
+            <div>
+                <h3>Focus</h3>
+                <p>Implementing advanced analytics and machine learning for requirements following ISO/IEC/IEEE 29148:2011. Provides predictive analytics, natural language processing, and intelligent insights.</p>
+
+                <h3>Key Features:</h3>
+                <ul>
+                    <li><strong>Predictive Analytics Engine:</strong> Requirements success prediction, risk prediction models, and effort estimation models</li>
+                    <li><strong>NLP Processing System:</strong> Requirements text analysis, sentiment analysis, and requirements classification</li>
+                    <li><strong>Machine Learning Models:</strong> Automated requirements categorization, quality prediction, and requirements similarity analysis</li>
+                    <li><strong>Analytics Dashboard:</strong> Predictive insights visualization, ML model performance monitoring, and advanced analytics views</li>
+                </ul>
+            </div>
+        </details>
+
+        <a href="../../index.html">Back to main index</a>
+    </div>
+</body>
+</html>

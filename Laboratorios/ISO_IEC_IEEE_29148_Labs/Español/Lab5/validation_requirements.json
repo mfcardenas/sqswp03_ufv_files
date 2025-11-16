@@ -1,0 +1,183 @@
+{
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "text": "El sistema debe procesar pedidos de compra en menos de 2 segundos bajo carga normal",
+      "type": "functional",
+      "priority": "high",
+      "acceptance_criteria": [
+        "Tiempo de respuesta < 2 segundos para 95% de pedidos",
+        "Procesamiento exitoso del 99.9% de pedidos válidos",
+        "Sistema mantiene estabilidad bajo carga de 1000 pedidos/minuto"
+      ]
+    },
+    {
+      "id": "REQ-002",
+      "text": "El sistema debe autenticar usuarios mediante OAuth 2.0",
+      "type": "security",
+      "priority": "high",
+      "acceptance_criteria": [
+        "Implementación completa de OAuth 2.0",
+        "Generación correcta de tokens de acceso",
+        "Validación apropiada de tokens expirados",
+        "Manejo seguro de credenciales de usuario"
+      ]
+    },
+    {
+      "id": "REQ-003",
+      "text": "La interfaz debe ser responsive en dispositivos móviles",
+      "type": "usability",
+      "priority": "medium",
+      "acceptance_criteria": [
+        "Interfaz funcional en pantallas de 320px de ancho",
+        "Navegación táctil optimizada",
+        "Tamaño de texto legible sin zoom",
+        "Compatibilidad con iOS Safari y Chrome Android"
+      ]
+    },
+    {
+      "id": "REQ-004",
+      "text": "El sistema debe generar reportes PDF automáticamente",
+      "type": "functional",
+      "priority": "medium",
+      "acceptance_criteria": [
+        "Generación correcta de archivos PDF",
+        "Contenido completo en reportes generados",
+        "Formato consistente de reportes",
+        "Descarga automática sin intervención del usuario"
+      ]
+    },
+    {
+      "id": "REQ-005",
+      "text": "Los datos deben ser encriptados en tránsito y en reposo",
+      "type": "security",
+      "priority": "high",
+      "acceptance_criteria": [
+        "Encriptación TLS 1.3 para datos en tránsito",
+        "Encriptación AES-256 para datos en reposo",
+        "Certificados SSL válidos instalados",
+        "Auditoría de acceso a datos sensibles"
+      ]
+    },
+    {
+      "id": "REQ-006",
+      "text": "El sistema debe manejar errores gracefully",
+      "type": "reliability",
+      "priority": "high",
+      "acceptance_criteria": [
+        "Mensajes de error informativos para usuarios",
+        "Logging completo de errores del sistema",
+        "Recuperación automática de fallos menores",
+        "Estado consistente del sistema tras errores"
+      ]
+    },
+    {
+      "id": "REQ-007",
+      "text": "La base de datos debe soportar 10000 conexiones concurrentes",
+      "type": "performance",
+      "priority": "high",
+      "acceptance_criteria": [
+        "Manejo de 10000 conexiones simultáneas",
+        "Tiempo de respuesta < 100ms para consultas simples",
+        "Sin pérdida de conexiones bajo carga máxima",
+        "Recursos de memoria y CPU dentro de límites"
+      ]
+    },
+    {
+      "id": "REQ-008",
+      "text": "El sistema debe ser compatible con navegadores legacy",
+      "type": "compatibility",
+      "priority": "low",
+      "acceptance_criteria": [
+        "Funcionalidad completa en IE11+",
+        "Funcionalidad básica en navegadores antiguos",
+        "Degradación graceful de características modernas",
+        "Mensajes claros sobre compatibilidad"
+      ]
+    },
+    {
+      "id": "REQ-009",
+      "text": "Los usuarios deben poder recuperar contraseñas",
+      "type": "functional",
+      "priority": "medium",
+      "acceptance_criteria": [
+        "Proceso de recuperación por email implementado",
+        "Enlaces de recuperación válidos por 24 horas",
+        "Validación de identidad del usuario",
+        "Nueva contraseña cumple políticas de seguridad"
+      ]
+    },
+    {
+      "id": "REQ-010",
+      "text": "El sistema debe mantener logs de auditoría por 7 años",
+      "type": "compliance",
+      "priority": "high",
+      "acceptance_criteria": [
+        "Almacenamiento de logs por mínimo 7 años",
+        "Búsqueda eficiente en logs históricos",
+        "Integridad de logs garantizada",
+        "Cumplimiento con regulaciones de retención"
+      ]
+    },
+    {
+      "id": "REQ-011",
+      "text": "La API debe seguir especificación RESTful",
+      "type": "technical",
+      "priority": "medium",
+      "acceptance_criteria": [
+        "Uso correcto de métodos HTTP",
+        "Estructura de URLs RESTful",
+        "Códigos de estado HTTP apropiados",
+        "Versionado de API implementado"
+      ]
+    },
+    {
+      "id": "REQ-012",
+      "text": "El sistema debe enviar notificaciones push",
+      "type": "functional",
+      "priority": "low",
+      "acceptance_criteria": [
+        "Notificaciones push en iOS y Android",
+        "Configuración de preferencias de usuario",
+        "Tasa de entrega > 95%",
+        "Contenido personalizado por usuario"
+      ]
+    },
+    {
+      "id": "REQ-013",
+      "text": "Los backups deben realizarse automáticamente diariamente",
+      "type": "reliability",
+      "priority": "high",
+      "acceptance_criteria": [
+        "Backup automático todos los días a las 2 AM",
+        "Verificación de integridad de backups",
+        "Retención de backups por 30 días",
+        "Restauración exitosa desde backup"
+      ]
+    },
+    {
+      "id": "REQ-014",
+      "text": "El sistema debe soportar internacionalización",
+      "type": "usability",
+      "priority": "medium",
+      "acceptance_criteria": [
+        "Soporte para 10 idiomas principales",
+        "Formato de fecha y moneda localizado",
+        "Traducción completa de interfaz",
+        "RTL support para idiomas árabe/hebreo"
+      ]
+    },
+    {
+      "id": "REQ-015",
+      "text": "El sistema debe tener monitoreo en tiempo real",
+      "type": "monitoring",
+      "priority": "medium",
+      "acceptance_criteria": [
+        "Dashboard de métricas en tiempo real",
+        "Alertas automáticas por email/SMS",
+        "Métricas de rendimiento y errores",
+        "Historial de 30 días disponible"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6: User-Centered Design Process | ISO 9241 Labs</title>
+    <style>
+        :root {
+            --primary-color: #008080;
+            --secondary-color: #20B2AA;
+            --accent-color: #FF6B35;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --background: #FFFFFF;
+            --section-bg: #F0FDFA;
+            --border-color: #E1E8ED;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background);
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .lab-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lab-dropdown {
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lab-dropdown:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .lang-toggle {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .section-alt {
+            background: var(--section-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* HCD Process Grid */
+        .hcd-phases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .phase-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .phase-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .phase-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ISO Standards Grid */
+        .iso-standards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .standard-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .standard-card:hover {
+            border-color: var(--primary-color);
+        }
+
+        .standard-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Process Flow */
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            border: 2px solid var(--border-color);
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .process-step h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Deliverables Grid */
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .deliverable-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .deliverable-card:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .deliverable-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .deliverable-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Methods Timeline */
+        .timeline {
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 45%;
+            margin: 0 2.5%;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #BDC3C7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495E;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: center;
+            color: #BDC3C7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+                margin-left: 3rem;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin: 0;
+            }
+
+            .timeline-icon {
+                left: 20px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">ISO 9241 Labs</a>
+            <div class="nav-links">
+                <div class="lab-selector">
+                    <select class="lab-dropdown" onchange="navigateToLab(this.value)">
+                        <option value="lab1_en.html">Lab 1: Context Analysis</option>
+                        <option value="lab2_en.html">Lab 2: Dialogue Principles</option>
+                        <option value="lab3_en.html">Lab 3: Heuristic Evaluation</option>
+                        <option value="lab5_en.html">Lab 5: Usability Testing</option>
+                        <option value="lab6_en.html">Lab 6: User-Centered Design</option>
+                    </select>
+                </div>
+                <button class="lang-toggle" onclick="toggleLanguage()">ES</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in-up">
+            <h1>Complete User-Centered Design Process</h1>
+            <p>Master the complete iterative HCD process following ISO 9241-210 standards, from business case development to implementation and evaluation</p>
+            <div class="hero-badges">
+                <span class="badge">ISO 9241-210</span>
+                <span class="badge">12-14 Hours</span>
+                <span class="badge">Complete HCD Cycle</span>
+                <span class="badge">Business Integration</span>
+            </div>
+            <a href="#overview" class="cta-button">Explore Lab 6</a>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Master the Complete HCD Process</h2>
+                <p>Learn to apply the full human-centered design methodology as defined in ISO 9241-210, integrating all previous laboratory learning into a comprehensive design approach.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎯</div>
+                    <h3>Strategic Integration</h3>
+                    <p>Integrate user-centered design into business strategy and product development processes for maximum organizational impact.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🔄</div>
+                    <h3>Iterative Methodology</h3>
+                    <p>Apply systematic iterative design and evaluation cycles that ensure continuous improvement based on user feedback and testing.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📊</div>
+                    <h3>Business Case Development</h3>
+                    <p>Create compelling business cases for UX investment that demonstrate ROI and align design goals with organizational objectives.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🏆</div>
+                    <h3>Professional Excellence</h3>
+                    <p>Develop comprehensive portfolio-quality work that demonstrates mastery of international UX design standards and methodologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HCD Process Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Four Phases of Human-Centered Design</h2>
+                <p>Follow the systematic HCD process defined in ISO 9241-210, the international standard for human-centered design of interactive systems.</p>
+            </div>
+            <div class="hcd-phases">
+                <div class="phase-card fade-in-up">
+                    <div class="phase-number">1</div>
+                    <h3>Understand & Specify Context</h3>
+                    <p>Identify users, tasks, equipment, and physical/social environments. Apply persona development and context analysis methods from Lab 1.</p>
+                </div>
+                <div class="phase-card fade-in-up">
+                    <div class="phase-number">2</div>
+                    <h3>Specify User Requirements</h3>
+                    <p>Define explicit user and organizational requirements based on context analysis. Prioritize requirements using systematic methods.</p>
+                </div>
+                <div class="phase-card fade-in-up">
+                    <div class="phase-number">3</div>
+                    <h3>Produce Design Solutions</h3>
+                    <p>Create design solutions that meet requirements. Apply dialogue principles from Lab 2 and iterate based on evaluation feedback.</p>
+                </div>
+                <div class="phase-card fade-in-up">
+                    <div class="phase-number">4</div>
+                    <h3>Evaluate Against Requirements</h3>
+                    <p>Systematically evaluate designs using heuristic evaluation (Lab 3) and usability testing (Lab 5) methods.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ISO Standards Integration Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>ISO Standards Integration</h2>
+                <p>Learn to apply multiple ISO standards coherently to create comprehensive user-centered design solutions that meet international quality benchmarks.</p>
+            </div>
+            <div class="iso-standards">
+                <div class="standard-card fade-in-up">
+                    <div class="standard-number">ISO 9241-210</div>
+                    <h3>Human-Centered Design Process</h3>
+                    <p>Master framework for integrating HCD principles into product development</p>
+                </div>
+                <div class="standard-card fade-in-up">
+                    <div class="standard-number">ISO 9241-110</div>
+                    <h3>Dialogue Principles</h3>
+                    <p>Apply interface design principles systematically throughout design iterations</p>
+                </div>
+                <div class="standard-card fade-in-up">
+                    <div class="standard-number">ISO 9241-11</div>
+                    <h3>Usability Definition</h3>
+                    <p>Measure effectiveness, efficiency, and satisfaction using standardized metrics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TravelEase Final Project Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>TravelEase Complete Redesign</h2>
+                <p>Apply the complete HCD process to create a comprehensive redesign of TravelEase, integrating all methods learned in previous laboratories.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-content">
+                        <h3>Business Case & Strategy</h3>
+                        <p>Develop ROI projections and strategic alignment for TravelEase UX improvements</p>
+                    </div>
+                    <div class="timeline-icon">💼</div>
+                </div>
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-content">
+                        <h3>Enhanced Context Analysis</h3>
+                        <p>Expand persona development and context understanding with new research methods</p>
+                    </div>
+                    <div class="timeline-icon">🔍</div>
+                </div>
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-content">
+                        <h3>Requirements Definition</h3>
+                        <p>Specify detailed user and business requirements with priority rankings</p>
+                    </div>
+                    <div class="timeline-icon">📋</div>
+                </div>
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-content">
+                        <h3>Iterative Design</h3>
+                        <p>Create multiple design iterations applying dialogue principles systematically</p>
+                    </div>
+                    <div class="timeline-icon">🎨</div>
+                </div>
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-content">
+                        <h3>Comprehensive Evaluation</h3>
+                        <p>Apply heuristic evaluation and usability testing in integrated evaluation approach</p>
+                    </div>
+                    <div class="timeline-icon">⚖️</div>
+                </div>
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-content">
+                        <h3>Implementation Planning</h3>
+                        <p>Create detailed implementation roadmap with success metrics and monitoring plan</p>
+                    </div>
+                    <div class="timeline-icon">🚀</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deliverables Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Deliverables Portfolio</h2>
+                <p>Create comprehensive portfolio-quality deliverables that demonstrate professional UX competency across the complete design process.</p>
+            </div>
+            <div class="deliverables-grid">
+                <div class="deliverable-card fade-in-up">
+                    <div class="deliverable-icon">📊</div>
+                    <h4>Business Case Document</h4>
+                    <p>ROI analysis and strategic justification for UX investment</p>
+                </div>
+                <div class="deliverable-card fade-in-up">
+                    <div class="deliverable-icon">🎭</div>
+                    <h4>Enhanced Personas</h4>
+                    <p>Detailed user personas with behavioral insights and context scenarios</p>
+                </div>
+                <div class="deliverable-card fade-in-up">
+                    <div class="deliverable-icon">📝</div>
+                    <h4>Requirements Document</h4>
+                    <p>Prioritized user and business requirements with traceability matrix</p>
+                </div>
+                <div class="deliverable-card fade-in-up">
+                    <div class="deliverable-icon">🎨</div>
+                    <h4>Design System</h4>
+                    <p>Comprehensive design system with components and interaction patterns</p>
+                </div>
+                <div class="deliverable-card fade-in-up">
+                    <div class="deliverable-icon">📱</div>
+                    <h4>Interactive Prototypes</h4>
+                    <p>High-fidelity prototypes with complete user journeys and micro-interactions</p>
+                </div>
+                <div class="deliverable-card fade-in-up">
+                    <div class="deliverable-icon">📋</div>
+                    <h4>Evaluation Reports</h4>
+                    <p>Comprehensive usability evaluation with recommendations and metrics</p>
+                </div>
+                <div class="deliverable-card fade-in-up">
+                    <div class="deliverable-icon">📈</div>
+                    <h4>Success Metrics Framework</h4>
+                    <p>KPI definition and measurement plan for design success tracking</p>
+                </div>
+                <div class="deliverable-card fade-in-up">
+                    <div class="deliverable-icon">🗺️</div>
+                    <h4>Implementation Roadmap</h4>
+                    <p>Detailed project plan with phases, milestones, and resource requirements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Integration Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Integrated Design Process</h2>
+                <p>Learn to coordinate multiple UX methods effectively, creating synergies between different approaches and maximizing insight quality.</p>
+            </div>
+            <div class="process-flow">
+                <div class="process-step fade-in-up">
+                    <h3>Research Integration</h3>
+                    <p>Combine quantitative and qualitative research methods for comprehensive user understanding.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>Design Synthesis</h3>
+                    <p>Synthesize insights from multiple sources into coherent design requirements and constraints.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>Iterative Refinement</h3>
+                    <p>Apply systematic iteration cycles that incorporate evaluation feedback into design improvements.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>Stakeholder Alignment</h3>
+                    <p>Maintain alignment between user needs, business goals, and technical constraints throughout the process.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>Quality Assurance</h3>
+                    <p>Ensure design quality through systematic application of standards and evaluation methods.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>Implementation Support</h3>
+                    <p>Create detailed specifications and guidelines that support successful design implementation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>HCD Process Impact</h2>
+                <p>Organizations that follow systematic HCD processes achieve measurably better user experience and business outcomes.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="stat-number">400%</span>
+                    <span class="stat-label">ROI Potential</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">75%</span>
+                    <span class="stat-label">Cost Reduction</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50%</span>
+                    <span class="stat-label">Development Acceleration</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">85%</span>
+                    <span class="stat-label">User Satisfaction Increase</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Materials Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Complete HCD Learning Package</h2>
+                <p>Access the most comprehensive educational resources covering the complete user-centered design process following ISO 9241-210 standards.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">📘</div>
+                    <h3>Master Student Guide</h3>
+                    <p><strong>material_estudiante.md</strong> - Comprehensive 4500+ word guide covering complete HCD process, business case development, and implementation strategies.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎯</div>
+                    <h3>Capstone Project</h3>
+                    <p><strong>problem.md</strong> - Complete TravelEase redesign challenge integrating all laboratory learning into a professional portfolio project.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">👩‍🏫</div>
+                    <h3>Advanced Teaching Guide</h3>
+                    <p><strong>guia_docente.md</strong> - Expert-level instructor resources for teaching integrated HCD process with industry standards and best practices.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📊</div>
+                    <h3>Portfolio Assessment</h3>
+                    <p><strong>rubrica_evaluacion.md</strong> - Professional portfolio evaluation criteria measuring competency across the complete UX design process.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🚀</div>
+                    <h3>Project Setup</h3>
+                    <p><strong>prompt.md</strong> - Comprehensive project initiation guide with prerequisites, tools setup, and learning pathway recommendations.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🏅</div>
+                    <h3>Master Solution</h3>
+                    <p><strong>solution.md</strong> - Complete professional-grade solution with business case, design system, and implementation roadmap examples.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Outcomes Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Competency Outcomes</h2>
+                <p>Develop comprehensive UX leadership skills that enable you to drive user-centered design initiatives in any organizational context.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎯</div>
+                    <h3>Strategic UX Leadership</h3>
+                    <p>Lead strategic UX initiatives that align user needs with business objectives and demonstrate clear value to organizations.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">⚡</div>
+                    <h3>Process Excellence</h3>
+                    <p>Implement and optimize HCD processes that consistently deliver high-quality user experiences across product portfolios.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📊</div>
+                    <h3>Evidence-Based Design</h3>
+                    <p>Make design decisions based on rigorous research and evaluation, creating measurable improvements in user experience.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🏆</div>
+                    <h3>Portfolio Excellence</h3>
+                    <p>Create comprehensive portfolio work that demonstrates mastery of international UX standards and professional methodologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ISO 9241 Labs</h3>
+                <p>Professional UX education based on international standards. Master user-centered design through hands-on practice with real-world case studies.</p>
+            </div>
+            <div class="footer-section">
+                <h3>All Laboratories</h3>
+                <ul class="footer-links">
+                    <li><a href="lab1_en.html">Lab 1: User Context Analysis</a></li>
+                    <li><a href="lab2_en.html">Lab 2: Dialogue Principles</a></li>
+                    <li><a href="lab3_en.html">Lab 3: Heuristic Evaluation</a></li>
+                    <li><a href="lab5_en.html">Lab 5: Usability Testing</a></li>
+                    <li><a href="lab6_en.html">Lab 6: User-Centered Design</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Languages</h3>
+                <ul class="footer-links">
+                    <li><a href="lab6_en.html">English</a></li>
+                    <li><a href="lab6_es.html">Español</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Questions about the ISO 9241 Labs program?</p>
+                <p>Email: <a href="mailto:info@iso9241labs.edu">info@iso9241labs.edu</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ISO 9241 Labs. Educational content for academic use.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle functionality
+        function toggleLanguage() {
+            window.location.href = 'lab6_es.html';
+        }
+
+        // Lab navigation functionality
+        function navigateToLab(labPage) {
+            if (labPage) {
+                window.location.href = labPage;
+            }
+        }
+
+        // Set current lab as selected
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.lab-dropdown');
+            dropdown.value = 'lab6_en.html';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .phase-card, .standard-card, .process-step, .deliverable-card, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

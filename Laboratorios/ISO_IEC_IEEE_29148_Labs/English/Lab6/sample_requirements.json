@@ -1,0 +1,349 @@
+{
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "title": "User Authentication System",
+      "description": "The system shall provide secure user authentication with support for multiple authentication methods including username/password, OAuth 2.0, and SAML.",
+      "type": "security",
+      "priority": "high",
+      "status": "approved",
+      "version": 2,
+      "created_by": "security_team",
+      "created_date": "2024-01-10T08:00:00Z",
+      "updated_by": "admin",
+      "updated_date": "2024-01-15T14:30:00Z",
+      "tags": ["security", "authentication", "oauth"],
+      "metadata": {
+        "estimated_effort": "2 weeks",
+        "business_value": "critical",
+        "risk_level": "medium"
+      }
+    },
+    {
+      "id": "REQ-002",
+      "title": "Database Schema Design",
+      "description": "Design and implement a normalized database schema supporting requirements management, change tracking, and audit logging.",
+      "type": "technical",
+      "priority": "high",
+      "status": "approved",
+      "version": 1,
+      "created_by": "database_admin",
+      "created_date": "2024-01-08T09:15:00Z",
+      "tags": ["database", "schema", "normalization"],
+      "metadata": {
+        "database_type": "SQLite",
+        "tables_count": 8,
+        "estimated_size": "100MB"
+      }
+    },
+    {
+      "id": "REQ-003",
+      "title": "API Documentation",
+      "description": "Create comprehensive API documentation with examples, error codes, and integration guides for all REST endpoints.",
+      "type": "documentation",
+      "priority": "medium",
+      "status": "draft",
+      "version": 1,
+      "created_by": "technical_writer",
+      "created_date": "2024-01-12T11:00:00Z",
+      "tags": ["api", "documentation", "rest"],
+      "metadata": {
+        "format": "OpenAPI 3.0",
+        "endpoints_count": 15,
+        "languages": ["en", "es"]
+      }
+    },
+    {
+      "id": "REQ-004",
+      "title": "User Interface Design",
+      "description": "Design an intuitive and responsive web interface for requirements management with modern UX principles.",
+      "type": "usability",
+      "priority": "medium",
+      "status": "review",
+      "version": 1,
+      "created_by": "ux_designer",
+      "created_date": "2024-01-11T10:30:00Z",
+      "tags": ["ui", "ux", "responsive"],
+      "metadata": {
+        "framework": "HTML/CSS/JS",
+        "target_devices": ["desktop", "tablet", "mobile"],
+        "accessibility": "WCAG 2.1 AA"
+      }
+    },
+    {
+      "id": "REQ-005",
+      "title": "Change Management Workflow",
+      "description": "Implement a formal change management process with approval workflows, impact analysis, and status tracking.",
+      "type": "process",
+      "priority": "high",
+      "status": "approved",
+      "version": 1,
+      "created_by": "process_manager",
+      "created_date": "2024-01-09T13:45:00Z",
+      "tags": ["workflow", "approval", "change_management"],
+      "metadata": {
+        "approval_levels": 2,
+        "sla_response": "24 hours",
+        "automated_notifications": true
+      }
+    },
+    {
+      "id": "REQ-006",
+      "title": "Audit Trail System",
+      "description": "Implement comprehensive audit logging for all system activities to ensure compliance and traceability.",
+      "type": "compliance",
+      "priority": "high",
+      "status": "implemented",
+      "version": 2,
+      "created_by": "compliance_officer",
+      "created_date": "2024-01-07T15:20:00Z",
+      "updated_by": "admin",
+      "updated_date": "2024-01-16T09:00:00Z",
+      "tags": ["audit", "compliance", "logging"],
+      "metadata": {
+        "retention_period": "7 years",
+        "log_levels": ["info", "warning", "error"],
+        "export_formats": ["JSON", "CSV", "PDF"]
+      }
+    },
+    {
+      "id": "REQ-007",
+      "title": "Traceability Matrix",
+      "description": "Create bidirectional traceability between requirements, design elements, test cases, and defects.",
+      "type": "technical",
+      "priority": "medium",
+      "status": "review",
+      "version": 1,
+      "created_by": "systems_engineer",
+      "created_date": "2024-01-13T12:00:00Z",
+      "tags": ["traceability", "matrix", "relationships"],
+      "metadata": {
+        "relationship_types": ["derives", "implements", "verifies", "tests"],
+        "impact_analysis": true,
+        "reporting": true
+      }
+    },
+    {
+      "id": "REQ-008",
+      "title": "Testing Framework",
+      "description": "Develop a comprehensive testing framework for requirements validation and acceptance testing.",
+      "type": "testing",
+      "priority": "medium",
+      "status": "draft",
+      "version": 1,
+      "created_by": "qa_lead",
+      "created_date": "2024-01-14T14:15:00Z",
+      "tags": ["testing", "automation", "validation"],
+      "metadata": {
+        "test_types": ["unit", "integration", "acceptance"],
+        "automation_coverage": "80%",
+        "reporting": true
+      }
+    }
+  ],
+  "changes": [
+    {
+      "id": "CHG-001",
+      "requirement_id": "REQ-001",
+      "change_type": "enhancement",
+      "title": "Add Multi-Factor Authentication",
+      "description": "Enhance the authentication system to support multi-factor authentication methods",
+      "impact_analysis": "Low impact on existing users, requires additional configuration",
+      "requested_by": "security_team",
+      "approved_by": null,
+      "status": "pending",
+      "priority": "high",
+      "created_date": "2024-01-15T10:00:00Z",
+      "metadata": {
+        "estimated_effort": "1 week",
+        "business_impact": "Improved security",
+        "technical_complexity": "medium"
+      }
+    },
+    {
+      "id": "CHG-002",
+      "requirement_id": "REQ-004",
+      "change_type": "modification",
+      "title": "Update Color Scheme",
+      "description": "Update the UI color scheme to match corporate branding guidelines",
+      "impact_analysis": "Visual changes only, no functional impact",
+      "requested_by": "marketing_team",
+      "approved_by": "ux_designer",
+      "status": "approved",
+      "priority": "low",
+      "created_date": "2024-01-14T11:30:00Z",
+      "approved_date": "2024-01-14T16:00:00Z",
+      "metadata": {
+        "estimated_effort": "2 days",
+        "business_impact": "Brand consistency",
+        "technical_complexity": "low"
+      }
+    },
+    {
+      "id": "CHG-003",
+      "requirement_id": "REQ-006",
+      "change_type": "enhancement",
+      "title": "Add Real-time Audit Alerts",
+      "description": "Implement real-time notifications for critical audit events",
+      "impact_analysis": "Additional server load, improved monitoring capabilities",
+      "requested_by": "compliance_officer",
+      "approved_by": null,
+      "status": "pending",
+      "priority": "medium",
+      "created_date": "2024-01-16T08:45:00Z",
+      "metadata": {
+        "estimated_effort": "3 days",
+        "business_impact": "Enhanced compliance monitoring",
+        "technical_complexity": "medium"
+      }
+    }
+  ],
+  "traceability": [
+    {
+      "id": 1,
+      "source_id": "REQ-001",
+      "target_id": "REQ-005",
+      "relationship_type": "implements",
+      "description": "Authentication system implements change management workflow",
+      "created_by": "systems_engineer",
+      "created_date": "2024-01-10T16:00:00Z",
+      "strength": "strong"
+    },
+    {
+      "id": 2,
+      "source_id": "REQ-002",
+      "target_id": "REQ-007",
+      "relationship_type": "supports",
+      "description": "Database schema supports traceability matrix functionality",
+      "created_by": "database_admin",
+      "created_date": "2024-01-11T09:30:00Z",
+      "strength": "medium"
+    },
+    {
+      "id": 3,
+      "source_id": "REQ-003",
+      "target_id": "REQ-004",
+      "relationship_type": "complements",
+      "description": "API documentation complements UI design",
+      "created_by": "technical_writer",
+      "created_date": "2024-01-12T14:20:00Z",
+      "strength": "weak"
+    },
+    {
+      "id": 4,
+      "source_id": "REQ-005",
+      "target_id": "REQ-006",
+      "relationship_type": "requires",
+      "description": "Change management requires audit trail functionality",
+      "created_by": "process_manager",
+      "created_date": "2024-01-13T11:15:00Z",
+      "strength": "strong"
+    },
+    {
+      "id": 5,
+      "source_id": "REQ-007",
+      "target_id": "REQ-008",
+      "relationship_type": "verifies",
+      "description": "Testing framework verifies traceability matrix",
+      "created_by": "qa_lead",
+      "created_date": "2024-01-14T13:45:00Z",
+      "strength": "medium"
+    }
+  ],
+  "stakeholders": [
+    {
+      "id": "admin",
+      "name": "System Administrator",
+      "email": "admin@company.com",
+      "role": "administrator",
+      "department": "IT",
+      "created_date": "2024-01-01T00:00:00Z",
+      "last_login": "2024-01-16T09:00:00Z",
+      "is_active": true
+    },
+    {
+      "id": "security_team",
+      "name": "Security Team Lead",
+      "email": "security@company.com",
+      "role": "analyst",
+      "department": "Security",
+      "created_date": "2024-01-05T00:00:00Z",
+      "last_login": "2024-01-15T17:30:00Z",
+      "is_active": true
+    },
+    {
+      "id": "database_admin",
+      "name": "Database Administrator",
+      "email": "dba@company.com",
+      "role": "specialist",
+      "department": "IT",
+      "created_date": "2024-01-03T00:00:00Z",
+      "last_login": "2024-01-16T08:15:00Z",
+      "is_active": true
+    },
+    {
+      "id": "technical_writer",
+      "name": "Technical Writer",
+      "email": "writer@company.com",
+      "role": "contributor",
+      "department": "Documentation",
+      "created_date": "2024-01-04T00:00:00Z",
+      "last_login": "2024-01-15T12:00:00Z",
+      "is_active": true
+    },
+    {
+      "id": "ux_designer",
+      "name": "UX Designer",
+      "email": "ux@company.com",
+      "role": "designer",
+      "department": "Design",
+      "created_date": "2024-01-06T00:00:00Z",
+      "last_login": "2024-01-16T10:30:00Z",
+      "is_active": true
+    }
+  ],
+  "audit_log": [
+    {
+      "id": 1,
+      "table_name": "requirements",
+      "record_id": "REQ-001",
+      "action": "CREATE",
+      "user_id": "admin",
+      "timestamp": "2024-01-10T08:00:00Z",
+      "ip_address": "192.168.1.100",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    },
+    {
+      "id": 2,
+      "table_name": "requirements",
+      "record_id": "REQ-001",
+      "action": "UPDATE",
+      "old_values": "{\"version\": 1}",
+      "new_values": "{\"version\": 2, \"status\": \"approved\"}",
+      "user_id": "admin",
+      "timestamp": "2024-01-15T14:30:00Z",
+      "ip_address": "192.168.1.100",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    },
+    {
+      "id": 3,
+      "table_name": "changes",
+      "record_id": "CHG-001",
+      "action": "CREATE",
+      "user_id": "security_team",
+      "timestamp": "2024-01-15T10:00:00Z",
+      "ip_address": "192.168.1.101",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+    },
+    {
+      "id": 4,
+      "table_name": "traceability",
+      "record_id": "1",
+      "action": "CREATE",
+      "user_id": "systems_engineer",
+      "timestamp": "2024-01-10T16:00:00Z",
+      "ip_address": "192.168.1.102",
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
+    }
+  ]
+}

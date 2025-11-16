@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1: Análisis del Contexto de Uso | Laboratorios ISO 9241</title>
+    <style>
+        :root {
+            --primary-color: #008080;
+            --secondary-color: #20B2AA;
+            --accent-color: #FF6B35;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --background: #FFFFFF;
+            --section-bg: #F0FDFA;
+            --border-color: #E1E8ED;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background);
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .lab-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lab-dropdown {
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lab-dropdown:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .lang-toggle {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .section-alt {
+            background: var(--section-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Personas Grid */
+        .personas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .persona-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .persona-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .persona-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .persona-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+        }
+
+        .persona-role {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Methods Grid */
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .method-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .method-card:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .method-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #BDC3C7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495E;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: center;
+            color: #BDC3C7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">Laboratorios ISO 9241</a>
+            <div class="nav-links">
+                <div class="lab-selector">
+                    <select class="lab-dropdown" onchange="navigateToLab(this.value)">
+                        <option value="lab1_es.html">Lab 1: Análisis del Contexto</option>
+                        <option value="lab2_es.html">Lab 2: Principios de Diálogo</option>
+                        <option value="lab3_es.html">Lab 3: Evaluación Heurística</option>
+                        <option value="lab5_es.html">Lab 5: Pruebas de Usabilidad</option>
+                        <option value="lab6_es.html">Lab 6: Diseño Centrado en el Usuario</option>
+                    </select>
+                </div>
+                <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in-up">
+            <h1>Análisis del Contexto de Uso</h1>
+            <p>Domina la investigación contextual profunda aplicando ISO 9241-11 para crear personas y escenarios que impulsen decisiones de diseño efectivas</p>
+            <div class="hero-badges">
+                <span class="badge">ISO 9241-11</span>
+                <span class="badge">6-8 Horas</span>
+                <span class="badge">Investigación Contextual</span>
+                <span class="badge">Desarrollo de Personas</span>
+            </div>
+            <a href="#overview" class="cta-button">Explorar Lab 1</a>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Fundamentos del Diseño Centrado en el Usuario</h2>
+                <p>Aprende a crear una base sólida para el diseño de UX mediante la comprensión sistemática del contexto de uso y el desarrollo de personas basadas en datos.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎯</div>
+                    <h3>Análisis Contextual</h3>
+                    <p>Domina métodos sistemáticos para analizar usuarios, tareas, equipos y entornos físicos y sociales siguiendo estándares internacionales.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎭</div>
+                    <h3>Personas Basadas en Datos</h3>
+                    <p>Crea personas detalladas y realistas que representen usuarios reales, con motivaciones, comportamientos y contextos específicos.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📊</div>
+                    <h3>Investigación Mixta</h3>
+                    <p>Combina métodos cualitativos y cuantitativos para obtener insights comprensivos sobre comportamientos y necesidades de usuarios.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📝</div>
+                    <h3>Documentación Profesional</h3>
+                    <p>Aprende a documentar hallazgos de investigación de manera que sea útil para equipos de diseño, desarrollo y producto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Estudio de Caso: TravelEase</h2>
+                <p>Aplica métodos de análisis contextual a TravelEase, una plataforma de reservas de viajes que debe servir a usuarios diversos con necesidades complejas.</p>
+            </div>
+            <div class="personas-grid">
+                <div class="persona-card fade-in-up">
+                    <div class="persona-header">
+                        <div class="persona-avatar">💼</div>
+                        <div class="persona-info">
+                            <h3>Maya Rodríguez</h3>
+                            <div class="persona-role">Ejecutiva de Ventas • 28 años</div>
+                        </div>
+                    </div>
+                    <p>Viajera de negocios frecuente que necesita eficiencia en reservas y flexibilidad para cambios de último minuto. Prioriza ubicaciones convenientes y servicios business.</p>
+                </div>
+                <div class="persona-card fade-in-up">
+                    <div class="persona-header">
+                        <div class="persona-avatar">👨‍👩‍👧‍👦</div>
+                        <div class="persona-info">
+                            <h3>Carlos Jiménez</h3>
+                            <div class="persona-role">Padre de Familia • 42 años</div>
+                        </div>
+                    </div>
+                    <p>Planifica vacaciones familiares ocasionales enfocándose en actividades para niños, alojamientos familiares y excelente relación calidad-precio.</p>
+                </div>
+                <div class="persona-card fade-in-up">
+                    <div class="persona-header">
+                        <div class="persona-avatar">🎒</div>
+                        <div class="persona-info">
+                            <h3>Elena García</h3>
+                            <div class="persona-role">Estudiante • 22 años</div>
+                        </div>
+                    </div>
+                    <p>Viajera mochilera con presupuesto limitado que busca experiencias auténticas, alojamientos económicos y opciones de transporte flexible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Methods Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Métodos de Investigación Contextual</h2>
+                <p>Aprende a aplicar múltiples métodos de investigación para obtener una comprensión completa del contexto de uso y las necesidades de los usuarios.</p>
+            </div>
+            <div class="methods-grid">
+                <div class="method-card fade-in-up">
+                    <div class="method-icon">🗣️</div>
+                    <h3>Entrevistas en Profundidad</h3>
+                    <p>Técnicas profesionales para entrevistas cualitativas que revelen motivaciones y comportamientos auténticos</p>
+                </div>
+                <div class="method-card fade-in-up">
+                    <div class="method-icon">👥</div>
+                    <h3>Grupos Focales</h3>
+                    <p>Facilitación de discusiones grupales para explorar percepciones y dinámicas sociales</p>
+                </div>
+                <div class="method-card fade-in-up">
+                    <div class="method-icon">📊</div>
+                    <h3>Encuestas Estructuradas</h3>
+                    <p>Diseño de instrumentos cuantitativos para validar hallazgos y medir comportamientos</p>
+                </div>
+                <div class="method-card fade-in-up">
+                    <div class="method-icon">🔍</div>
+                    <h3>Observación Etnográfica</h3>
+                    <p>Técnicas de observación natural para entender comportamientos en contexto real</p>
+                </div>
+                <div class="method-card fade-in-up">
+                    <div class="method-icon">📱</div>
+                    <h3>Análisis Digital</h3>
+                    <p>Análisis de datos de comportamiento digital y patrones de uso de aplicaciones</p>
+                </div>
+                <div class="method-card fade-in-up">
+                    <div class="method-icon">🎯</div>
+                    <h3>Journey Mapping</h3>
+                    <p>Mapeo de experiencias de usuario completas identificando puntos de dolor y oportunidades</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Context Framework Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Marco de Análisis Contextual ISO 9241</h2>
+                <p>Aplica sistemáticamente el marco de contexto de uso definido en ISO 9241-11 para asegurar análisis comprehensivos y estándares profesionales.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">👥</div>
+                    <h3>Usuarios</h3>
+                    <p>Identifica y caracteriza los diferentes tipos de usuarios, incluyendo usuarios primarios, secundarios y indirectos con sus características demográficas y psicográficas.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">⚡</div>
+                    <h3>Tareas</h3>
+                    <p>Analiza tareas específicas que los usuarios necesitan realizar, incluyendo frecuencia, duración, complejidad y criticidad de cada tarea.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">💻</div>
+                    <h3>Equipamiento</h3>
+                    <p>Evalúa hardware, software y plataformas tecnológicas que los usuarios utilizan, incluyendo limitaciones y capacidades del equipo.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🌍</div>
+                    <h3>Entorno</h3>
+                    <p>Documenta entornos físicos, sociales y organizacionales que influyen en el uso del sistema, incluyendo restricciones y facilitadores ambientales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Materials Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Materiales Educativos Completos</h2>
+                <p>Accede a recursos de aprendizaje comprensivos diseñados para estudiantes e instructores, siguiendo estándares pedagógicos internacionales.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">📚</div>
+                    <h3>Material del Estudiante</h3>
+                    <p><strong>material_estudiante.md</strong> - Guía completa de 4000+ palabras cubriendo métodos de análisis contextual, desarrollo de personas, y técnicas de investigación con ejemplos prácticos.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎯</div>
+                    <h3>Enunciado del Problema</h3>
+                    <p><strong>problem.md</strong> - Estudio de caso detallado de TravelEase con escenarios de usuario, requisitos de negocio, y desafíos de investigación a resolver.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">👨‍🏫</div>
+                    <h3>Guía del Instructor</h3>
+                    <p><strong>guia_docente.md</strong> - Guía completa de enseñanza con objetivos de aprendizaje, consejos de facilitación, y estrategias de evaluación para educadores.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📊</div>
+                    <h3>Rúbrica de Evaluación</h3>
+                    <p><strong>rubrica_evaluacion.md</strong> - Matriz de evaluación profesional con criterios claros para evaluar el trabajo estudiantil y los entregables del proyecto.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🚀</div>
+                    <h3>Inicio Rápido</h3>
+                    <p><strong>prompt.md</strong> - Instrucciones de inicio rápido y guía de configuración para comenzar la experiencia de laboratorio de manera efectiva.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">✅</div>
+                    <h3>Guía de Solución</h3>
+                    <p><strong>solution.md</strong> - Solución completa con personas de ejemplo, hallazgos de investigación, y mejores prácticas para referencia del instructor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Development Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Competencias Profesionales</h2>
+                <p>Desarrolla habilidades de investigación UX que son inmediatamente aplicables en roles profesionales de diseño, investigación y estrategia de producto.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">🔬</div>
+                    <h3>Diseño de Investigación</h3>
+                    <p>Planifica y ejecuta estudios de investigación UX rigurosos que proporcionen insights accionables para equipos de producto.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎭</div>
+                    <h3>Desarrollo de Personas</h3>
+                    <p>Crea personas basadas en datos que sirvan como herramientas efectivas de comunicación y toma de decisiones de diseño.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📊</div>
+                    <h3>Síntesis de Datos</h3>
+                    <p>Transforma datos cualitativos y cuantitativos en insights claros y recomendaciones estratégicas para organizaciones.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🗣️</div>
+                    <h3>Comunicación de Investigación</h3>
+                    <p>Presenta hallazgos de investigación de manera convincente a stakeholders diversos, desde desarrolladores hasta ejecutivos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Impacto de la Investigación Contextual</h2>
+                <p>La comprensión profunda del contexto de uso mejora significativamente los resultados de diseño y la satisfacción del usuario.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="stat-number">73%</span>
+                    <span class="stat-label">Mejora en Usabilidad</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">15-20</span>
+                    <span class="stat-label">Usuarios Entrevistados</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">3-5</span>
+                    <span class="stat-label">Personas Principales</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">90%</span>
+                    <span class="stat-label">Reducción de Riesgos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Outcomes Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Resultados de Aprendizaje</h2>
+                <p>Al completar este laboratorio, habrás desarrollado competencias fundamentales para el diseño centrado en el usuario que son valoradas en la industria tecnológica.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">📋</div>
+                    <h3>Estándares Internacionales</h3>
+                    <p>Aplica estándares ISO 9241 que son reconocidos globalmente en empresas tecnológicas y organizaciones gubernamentales.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎯</div>
+                    <h3>Enfoque Centrado en Datos</h3>
+                    <p>Toma decisiones de diseño basadas en evidencia empírica en lugar de suposiciones o preferencias personales.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">⚡</div>
+                    <h3>Eficiencia en Investigación</h3>
+                    <p>Obtén insights máximos con recursos limitados aplicando métodos de investigación eficientes y enfocados.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🔄</div>
+                    <h3>Proceso Iterativo</h3>
+                    <p>Establece fundaciones sólidas para procesos de diseño iterativos que mejoren continuamente la experiencia de usuario.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Laboratorios ISO 9241</h3>
+                <p>Educación UX profesional basada en estándares internacionales. Domina el diseño centrado en el usuario a través de práctica hands-on con estudios de casos del mundo real.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Todos los Laboratorios</h3>
+                <ul class="footer-links">
+                    <li><a href="lab1_es.html">Lab 1: Análisis del Contexto de Uso</a></li>
+                    <li><a href="lab2_es.html">Lab 2: Principios de Diálogo</a></li>
+                    <li><a href="lab3_es.html">Lab 3: Evaluación Heurística</a></li>
+                    <li><a href="lab5_es.html">Lab 5: Pruebas de Usabilidad</a></li>
+                    <li><a href="lab6_es.html">Lab 6: Diseño Centrado en el Usuario</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Idiomas</h3>
+                <ul class="footer-links">
+                    <li><a href="lab1_en.html">English</a></li>
+                    <li><a href="lab1_es.html">Español</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>¿Preguntas sobre el programa Laboratorios ISO 9241?</p>
+                <p>Email: <a href="mailto:info@iso9241labs.edu">info@iso9241labs.edu</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Laboratorios ISO 9241. Contenido educativo para uso académico.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle functionality
+        function toggleLanguage() {
+            window.location.href = 'lab1_en.html';
+        }
+
+        // Lab navigation functionality
+        function navigateToLab(labPage) {
+            if (labPage) {
+                window.location.href = labPage;
+            }
+        }
+
+        // Set current lab as selected
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.lab-dropdown');
+            dropdown.value = 'lab1_es.html';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .persona-card, .method-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

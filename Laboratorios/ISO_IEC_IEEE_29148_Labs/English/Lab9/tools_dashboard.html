@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirements Tools & Automation Dashboard</title>
+    <link rel="stylesheet" href="tools_styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>🛠️ Requirements Tools & Automation</h1>
+            <p class="subtitle">ISO/IEC/IEEE 29148:2011 Tool Integration Platform</p>
+        </header>
+
+        <nav class="dashboard-nav">
+            <button class="nav-btn active" onclick="showSection('overview')">Overview</button>
+            <button class="nav-btn" onclick="showSection('connectors')">Tool Connectors</button>
+            <button class="nav-btn" onclick="showSection('automation')">Automation</button>
+            <button class="nav-btn" onclick="showSection('api')">API Gateway</button>
+            <button class="nav-btn" onclick="showSection('sync')">Data Sync</button>
+        </nav>
+
+        <main class="dashboard-main">
+            <!-- Overview Section -->
+            <section id="overview" class="section active">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Connected Tools</h3>
+                        <div class="metric-value" id="connected-tools">0</div>
+                        <div class="metric-trend">↑ 12%</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Active Workflows</h3>
+                        <div class="metric-value" id="active-workflows">0</div>
+                        <div class="metric-trend">↑ 8%</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>API Requests</h3>
+                        <div class="metric-value" id="api-requests">0</div>
+                        <div class="metric-trend">↑ 15%</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Sync Success Rate</h3>
+                        <div class="metric-value" id="sync-rate">0%</div>
+                        <div class="metric-trend">↑ 5%</div>
+                    </div>
+                </div>
+
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Tool Integration Status</h3>
+                        <canvas id="integrationChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Automation Performance</h3>
+                        <canvas id="automationChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tool Connectors Section -->
+            <section id="connectors" class="section">
+                <div class="section-header">
+                    <h2>Tool Connectors</h2>
+                    <button class="btn-primary" onclick="openConnectorModal()">Add Connector</button>
+                </div>
+
+                <div class="connectors-grid" id="connectors-grid">
+                    <!-- Connectors will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Automation Section -->
+            <section id="automation" class="section">
+                <div class="section-header">
+                    <h2>Automation Workflows</h2>
+                    <button class="btn-primary" onclick="openWorkflowModal()">Create Workflow</button>
+                </div>
+
+                <div class="workflows-container" id="workflows-container">
+                    <!-- Workflows will be loaded here -->
+                </div>
+            </section>
+
+            <!-- API Gateway Section -->
+            <section id="api" class="section">
+                <div class="section-header">
+                    <h2>API Gateway</h2>
+                    <button class="btn-secondary" onclick="refreshApiLogs()">Refresh Logs</button>
+                </div>
+
+                <div class="api-container">
+                    <div class="api-endpoints">
+                        <h3>Available Endpoints</h3>
+                        <div id="api-endpoints-list">
+                            <!-- API endpoints will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="api-logs">
+                        <h3>Recent Requests</h3>
+                        <div id="api-logs-list">
+                            <!-- API logs will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Sync Section -->
+            <section id="sync" class="section">
+                <div class="section-header">
+                    <h2>Data Synchronization</h2>
+                    <button class="btn-primary" onclick="triggerSync()">Trigger Sync</button>
+                </div>
+
+                <div class="sync-status">
+                    <div class="sync-card">
+                        <h3>Last Sync</h3>
+                        <div id="last-sync-time">Never</div>
+                        <div id="sync-status">Not Running</div>
+                    </div>
+                    <div class="sync-card">
+                        <h3>Sync Progress</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="sync-progress"></div>
+                        </div>
+                        <div id="sync-progress-text">0%</div>
+                    </div>
+                </div>
+
+                <div class="sync-logs" id="sync-logs">
+                    <!-- Sync logs will be loaded here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Modals -->
+        <div id="connector-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add Tool Connector</h3>
+                    <span class="modal-close" onclick="closeModal('connector-modal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="connector-form">
+                        <div class="form-group">
+                            <label for="tool-name">Tool Name</label>
+                            <input type="text" id="tool-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tool-type">Tool Type</label>
+                            <select id="tool-type" required>
+                                <option value="">Select Type</option>
+                                <option value="requirements">Requirements Management</option>
+                                <option value="testing">Testing Tool</option>
+                                <option value="version-control">Version Control</option>
+                                <option value="documentation">Documentation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="api-url">API URL</label>
+                            <input type="url" id="api-url" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="api-key">API Key</label>
+                            <input type="password" id="api-key">
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="closeModal('connector-modal')">Cancel</button>
+                            <button type="submit" class="btn-primary">Add Connector</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="workflow-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Create Automation Workflow</h3>
+                    <span class="modal-close" onclick="closeModal('workflow-modal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="workflow-form">
+                        <div class="form-group">
+                            <label for="workflow-name">Workflow Name</label>
+                            <input type="text" id="workflow-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="trigger-type">Trigger Type</label>
+                            <select id="trigger-type" required>
+                                <option value="">Select Trigger</option>
+                                <option value="requirement-created">Requirement Created</option>
+                                <option value="requirement-updated">Requirement Updated</option>
+                                <option value="review-completed">Review Completed</option>
+                                <option value="deadline-approaching">Deadline Approaching</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="actions">Actions</label>
+                            <textarea id="actions" placeholder="Describe the automation actions..." required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="closeModal('workflow-modal')">Cancel</button>
+                            <button type="submit" class="btn-primary">Create Workflow</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="tools_scripts.js"></script>
+</body>
+</html>

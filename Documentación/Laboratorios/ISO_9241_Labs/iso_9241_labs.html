@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorios ISO 9241 - Ergonomía de la Interacción Humano-Sistema</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        
+        h2, h3, h4 {
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        details {
+            background: #f8f9ff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        details:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+        
+        details[open] {
+            border-color: #764ba2;
+        }
+        
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: #764ba2;
+            font-size: 1.1em;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        summary:hover {
+            background-color: #f0f0ff;
+        }
+        
+        details > div {
+            padding: 15px;
+            margin-top: 10px;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            background: #fff;
+            margin-bottom: 8px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            background: #f8f9ff;
+            transform: translateX(5px);
+        }
+        
+        a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        strong {
+            color: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ISO 9241 - Ergonomía de la Interacción Humano-Sistema</h1>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="../../index.html" style="background: #667eea; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 0 10px; display: inline-block;">🏠 Volver al Índice</a>
+            <a href="iso_9241_labs_en.html" style="background: #764ba2; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 0 10px; display: inline-block;">🇬🇧 English Version</a>
+        </div>
+        
+        <p>Este directorio contiene 10 laboratorios diseñados para enseñar y explorar el estándar ISO 9241. Cada laboratorio incluye:</p>
+        <ul>
+            <li><strong>Enunciado del Problema:</strong> Una descripción detallada de la tarea o desafío.</li>
+            <li><strong>Solución:</strong> Una guía paso a paso para resolver el problema.</li>
+            <li><strong>Prompt de Regeneración:</strong> Un prompt para regenerar la solución dinámicamente.</li>
+        </ul>
+
+        <h2>Lista de Laboratorios</h2>
+        <ul>
+            <li>
+                <details>
+                    <summary>Laboratorio 1: Introducción a ISO 9241</summary>
+                    <div>
+                        <p>Crear una aplicación web simple que demuestre los principios básicos de ISO 9241. Diseñar un formulario de inicio de sesión que se adhiera a las pautas de usabilidad de ISO 9241-11 (Guía sobre usabilidad).</p>
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Diseñar un formulario de inicio de sesión con campos de usuario y contraseña</li>
+                            <li>Seguir los principios de usabilidad: efectividad, eficiencia y satisfacción</li>
+                            <li>Incluir manejo de errores para entradas inválidas</li>
+                            <li>Proporcionar retroalimentación después del envío</li>
+                            <li>Escribir un script de Python para evaluar la usabilidad del formulario</li>
+                        </ul>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>Laboratorio 2: Principios de Usabilidad</summary>
+                    <div>
+                        <p>Analizar y mejorar un formulario web mal diseñado que viola varios principios de usabilidad de ISO 9241.</p>
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Identificar violaciones de usabilidad en el código proporcionado</li>
+                            <li>Rediseñar el formulario para cumplir con los principios de ISO 9241-11</li>
+                            <li>Implementar mejoras en HTML, CSS y JavaScript</li>
+                            <li>Crear un script de Python para comparar las versiones original y mejorada</li>
+                            <li>Documentar los cambios y su impacto en las métricas de usabilidad</li>
+                        </ul>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>Laboratorio 3: Requisitos Ergonómicos</summary>
+                    <div>
+                        <p>Diseñar un editor de texto basado en web que incorpore principios ergonómicos de la serie ISO 9241-400 (Dispositivos de entrada físicos).</p>
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Implementar atajos de teclado para acciones comunes</li>
+                            <li>Diseñar una interfaz que reduzca el uso del ratón</li>
+                            <li>Incluir tamaños de fuente y configuraciones de contraste ajustables</li>
+                            <li>Agregar características para prevenir lesiones por esfuerzo repetitivo</li>
+                            <li>Crear un script de Python para analizar patrones de interacción del usuario</li>
+                            <li>Asegurar el cumplimiento de las pautas ergonómicas para unidades de visualización</li>
+                        </ul>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>Laboratorio 4: Diseño Centrado en el Usuario</summary>
+                    <div>
+                        <p>Aplicar el proceso de diseño centrado en el usuario (DCU) de ISO 9241-210 para rediseñar un formulario de pago de comercio electrónico.</p>
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Analizar el formulario de pago actual en busca de problemas de usabilidad</li>
+                            <li>Crear personas de usuario y escenarios</li>
+                            <li>Diseñar wireframes y prototipos</li>
+                            <li>Realizar pruebas de usabilidad</li>
+                            <li>Implementar mejoras basadas en la retroalimentación del usuario</li>
+                            <li>Crear un script de Python para simular pruebas de usuario y analizar resultados</li>
+                        </ul>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>Laboratorio 5: Estándares de Accesibilidad</summary>
+                    <div>
+                        <p>Diseñar e implementar una aplicación web accesible que cumpla con las pautas WCAG 2.1 y los requisitos de accesibilidad de ISO 9241.</p>
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Implementar cumplimiento de WCAG 2.1 Nivel AA</li>
+                            <li>Agregar soporte para lectores de pantalla y tecnologías de asistencia</li>
+                            <li>Asegurar navegación solo con teclado</li>
+                            <li>Proporcionar texto alternativo para todas las imágenes y medios</li>
+                            <li>Implementar modo de alto contraste y tamaños de texto ajustables</li>
+                            <li>Crear un script de Python para probar el cumplimiento de accesibilidad</li>
+                        </ul>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>Laboratorio 6: Diseño de Interacción</summary>
+                    <div>
+                        <p>Diseñar una aplicación web interactiva que demuestre principios avanzados de diseño de interacción de ISO 9241-110 (Principios de diálogo).</p>
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Implementar reconocimiento de gestos para interacciones táctiles y de ratón</li>
+                            <li>Crear interfaces de arrastrar y soltar con retroalimentación visual</li>
+                            <li>Agregar ayuda contextual y tooltips</li>
+                            <li>Asegurar patrones de interacción consistentes en toda la aplicación</li>
+                            <li>Implementar funcionalidad de deshacer/rehacer para interacciones complejas</li>
+                            <li>Crear un script de Python para analizar patrones de interacción del usuario</li>
+                        </ul>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>Laboratorio 7: Métodos de Evaluación</summary>
+                    <div>
+                        <p>Desarrollar un marco integral de evaluación de usabilidad basado en las pautas de ISO 9241-11.</p>
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Implementar un marco de pruebas de usabilidad con múltiples métodos de evaluación</li>
+                            <li>Crear herramientas automatizadas para evaluación heurística y verificación de accesibilidad</li>
+                            <li>Desarrollar una calculadora de métricas de usabilidad basada en Python</li>
+                            <li>Construir una interfaz de prueba basada en web para estudios de usuarios</li>
+                            <li>Generar informes de evaluación completos con insights accionables</li>
+                        </ul>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>Laboratorio 8: Requisitos de Pantallas Visuales</summary>
+                    <div>
+                        <p>Diseñar e implementar herramientas para evaluar los requisitos de pantallas visuales según ISO 9241-303 e ISO 9241-307.</p>
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Implementar herramientas de evaluación de calidad de pantalla</li>
+                            <li>Crear sistemas de evaluación de legibilidad y claridad</li>
+                            <li>Desarrollar aplicaciones de prueba de pantallas ergonómicas</li>
+                            <li>Construir verificación automatizada de cumplimiento para estándares visuales</li>
+                            <li>Generar informes de rendimiento visual y recomendaciones</li>
+                        </ul>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>Laboratorio 9: Estándares de Dispositivos de Entrada</summary>
+                    <div>
+                        <p>Diseñar e implementar herramientas para evaluar estándares de dispositivos de entrada según ISO 9241-410 e ISO 9241-411.</p>
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Implementar herramientas de evaluación ergonómica de dispositivos de entrada</li>
+                            <li>Crear sistemas de evaluación de usabilidad para varios dispositivos de entrada</li>
+                            <li>Desarrollar verificación de cumplimiento para estándares de dispositivos de entrada</li>
+                            <li>Construir marcos de prueba y evaluación automatizados</li>
+                            <li>Generar informes de rendimiento de dispositivos de entrada y recomendaciones</li>
+                        </ul>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>Laboratorio 10: Estudio de Caso sobre Implementación de ISO 9241</summary>
+                    <div>
+                        <p>Desarrollar un estudio de caso integral que integre todos los estándares ISO 9241 cubiertos en los laboratorios anteriores.</p>
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Diseñar un escenario de estudio de caso integral</li>
+                            <li>Integrar múltiples estándares y principios de ISO 9241</li>
+                            <li>Desarrollar marcos de evaluación que combinen todos los laboratorios anteriores</li>
+                            <li>Crear herramientas de evaluación para sistemas complejos</li>
+                            <li>Generar informes integrados y recomendaciones</li>
+                        </ul>
+                    </div>
+                </details>
+            </li>
+        </ul>
+        <p>Cada laboratorio está estructurado para proporcionar una comprensión integral del estándar ISO 9241.</p>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="../../index.html" style="background: #667eea; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 0 10px; display: inline-block;">🏠 Volver al Índice</a>
+            <a href="iso_9241_labs_en.html" style="background: #764ba2; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 0 10px; display: inline-block;">🇬🇧 English Version</a>
+        </div>
+    </div>
+</body>
+</html>

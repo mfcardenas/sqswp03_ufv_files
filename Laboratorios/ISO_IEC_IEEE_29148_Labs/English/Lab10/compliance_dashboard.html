@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirements Compliance & Audit Dashboard</title>
+    <link rel="stylesheet" href="compliance_styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>🔍 Requirements Compliance & Audit</h1>
+            <p class="subtitle">ISO/IEC/IEEE 29148:2011 Compliance Monitoring Platform</p>
+        </header>
+
+        <nav class="dashboard-nav">
+            <button class="nav-btn active" onclick="showSection('overview')">Overview</button>
+            <button class="nav-btn" onclick="showSection('compliance')">Compliance</button>
+            <button class="nav-btn" onclick="showSection('audit')">Audit Trail</button>
+            <button class="nav-btn" onclick="showSection('reports')">Regulatory Reports</button>
+            <button class="nav-btn" onclick="showSection('settings')">Settings</button>
+        </nav>
+
+        <main class="dashboard-main">
+            <!-- Overview Section -->
+            <section id="overview" class="section active">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Compliance Score</h3>
+                        <div class="metric-value" id="compliance-score">0%</div>
+                        <div class="metric-trend">↑ 5%</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Audit Log Entries</h3>
+                        <div class="metric-value" id="audit-entries">0</div>
+                        <div class="metric-trend">↑ 12%</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Compliance Violations</h3>
+                        <div class="metric-value" id="violations">0</div>
+                        <div class="metric-trend">↓ 8%</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Regulatory Reports</h3>
+                        <div class="metric-value" id="reports">0</div>
+                        <div class="metric-trend">↑ 3%</div>
+                    </div>
+                </div>
+
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Compliance Trend</h3>
+                        <canvas id="complianceChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Audit Activity</h3>
+                        <canvas id="auditChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="alerts-container">
+                    <h3>Recent Compliance Alerts</h3>
+                    <div class="alerts-list" id="alerts-list">
+                        <!-- Alerts will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Compliance Section -->
+            <section id="compliance" class="section">
+                <div class="section-header">
+                    <h2>Compliance Monitoring</h2>
+                    <div class="section-actions">
+                        <button class="btn-secondary" onclick="runCompliance()">Run Compliance Check</button>
+                        <button class="btn-primary" onclick="openRuleModal()">Add Rule</button>
+                    </div>
+                </div>
+
+                <div class="compliance-filters">
+                    <div class="filter-group">
+                        <label for="standard-filter">Standard</label>
+                        <select id="standard-filter" onchange="filterCompliance()">
+                            <option value="all">All Standards</option>
+                            <option value="iso29148">ISO/IEC/IEEE 29148</option>
+                            <option value="gdpr">GDPR</option>
+                            <option value="sox">SOX</option>
+                            <option value="iso27001">ISO 27001</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="status-filter">Status</label>
+                        <select id="status-filter" onchange="filterCompliance()">
+                            <option value="all">All Statuses</option>
+                            <option value="compliant">Compliant</option>
+                            <option value="non-compliant">Non-Compliant</option>
+                            <option value="pending">Pending Review</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="severity-filter">Severity</label>
+                        <select id="severity-filter" onchange="filterCompliance()">
+                            <option value="all">All Severities</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="compliance-table-container">
+                    <table class="compliance-table" id="compliance-table">
+                        <thead>
+                            <tr>
+                                <th>Rule ID</th>
+                                <th>Standard</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Severity</th>
+                                <th>Last Check</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="compliance-rules">
+                            <!-- Compliance rules will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Audit Trail Section -->
+            <section id="audit" class="section">
+                <div class="section-header">
+                    <h2>Audit Trail</h2>
+                    <div class="section-actions">
+                        <button class="btn-secondary" onclick="exportAudit()">Export Log</button>
+                        <button class="btn-secondary" onclick="refreshAudit()">Refresh</button>
+                    </div>
+                </div>
+
+                <div class="audit-filters">
+                    <div class="filter-group">
+                        <label for="date-filter">Date Range</label>
+                        <div class="date-range">
+                            <input type="date" id="date-from" onchange="filterAudit()">
+                            <span>to</span>
+                            <input type="date" id="date-to" onchange="filterAudit()">
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label for="action-filter">Action Type</label>
+                        <select id="action-filter" onchange="filterAudit()">
+                            <option value="all">All Actions</option>
+                            <option value="create">Create</option>
+                            <option value="update">Update</option>
+                            <option value="delete">Delete</option>
+                            <option value="view">View</option>
+                            <option value="export">Export</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="user-filter">User</label>
+                        <select id="user-filter" onchange="filterAudit()">
+                            <option value="all">All Users</option>
+                            <option value="admin">Admin</option>
+                            <option value="analyst">Analyst</option>
+                            <option value="reviewer">Reviewer</option>
+                            <option value="manager">Manager</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="audit-log-container">
+                    <div class="audit-log" id="audit-log">
+                        <!-- Audit logs will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Regulatory Reports Section -->
+            <section id="reports" class="section">
+                <div class="section-header">
+                    <h2>Regulatory Reports</h2>
+                    <button class="btn-primary" onclick="openReportModal()">Generate Report</button>
+                </div>
+
+                <div class="reports-table-container">
+                    <table class="reports-table">
+                        <thead>
+                            <tr>
+                                <th>Report ID</th>
+                                <th>Standard</th>
+                                <th>Report Type</th>
+                                <th>Generated Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reports-list">
+                            <!-- Reports will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="report-templates">
+                    <h3>Report Templates</h3>
+                    <div class="templates-grid" id="templates-grid">
+                        <!-- Report templates will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section">
+                <div class="section-header">
+                    <h2>Compliance Settings</h2>
+                    <button class="btn-primary" onclick="saveSettings()">Save Settings</button>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>Audit Trail Settings</h3>
+                        <div class="setting-group">
+                            <label for="audit-retention">Audit Log Retention (days)</label>
+                            <input type="number" id="audit-retention" min="30" value="365">
+                        </div>
+                        <div class="setting-group">
+                            <label for="audit-encryption">Audit Log Encryption</label>
+                            <select id="audit-encryption">
+                                <option value="aes256">AES-256</option>
+                                <option value="aes128">AES-128</option>
+                                <option value="none">None</option>
+                            </select>
+                        </div>
+                        <div class="setting-group checkbox-group">
+                            <input type="checkbox" id="audit-tamper-proof" checked>
+                            <label for="audit-tamper-proof">Enable Tamper-Proof Logs</label>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Compliance Check Settings</h3>
+                        <div class="setting-group">
+                            <label for="check-frequency">Automated Check Frequency</label>
+                            <select id="check-frequency">
+                                <option value="hourly">Hourly</option>
+                                <option value="daily" selected>Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                            </select>
+                        </div>
+                        <div class="setting-group checkbox-group">
+                            <input type="checkbox" id="alert-non-compliance" checked>
+                            <label for="alert-non-compliance">Alert on Non-Compliance</label>
+                        </div>
+                        <div class="setting-group checkbox-group">
+                            <input type="checkbox" id="auto-remediation">
+                            <label for="auto-remediation">Enable Auto-Remediation</label>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Reporting Settings</h3>
+                        <div class="setting-group">
+                            <label for="report-format">Default Report Format</label>
+                            <select id="report-format">
+                                <option value="pdf">PDF</option>
+                                <option value="excel">Excel</option>
+                                <option value="html">HTML</option>
+                                <option value="json">JSON</option>
+                            </select>
+                        </div>
+                        <div class="setting-group checkbox-group">
+                            <input type="checkbox" id="scheduled-reports" checked>
+                            <label for="scheduled-reports">Enable Scheduled Reports</label>
+                        </div>
+                        <div class="setting-group">
+                            <label for="report-recipients">Default Recipients</label>
+                            <input type="text" id="report-recipients" placeholder="Email addresses (comma separated)">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modals -->
+        <div id="rule-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add Compliance Rule</h3>
+                    <span class="modal-close" onclick="closeModal('rule-modal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="rule-form">
+                        <div class="form-group">
+                            <label for="rule-standard">Standard</label>
+                            <select id="rule-standard" required>
+                                <option value="">Select Standard</option>
+                                <option value="iso29148">ISO/IEC/IEEE 29148</option>
+                                <option value="gdpr">GDPR</option>
+                                <option value="sox">SOX</option>
+                                <option value="iso27001">ISO 27001</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="rule-description">Description</label>
+                            <input type="text" id="rule-description" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rule-severity">Severity</label>
+                            <select id="rule-severity" required>
+                                <option value="">Select Severity</option>
+                                <option value="critical">Critical</option>
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="rule-validation">Validation Rule</label>
+                            <textarea id="rule-validation" placeholder="Enter the validation rule or condition..." required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="closeModal('rule-modal')">Cancel</button>
+                            <button type="submit" class="btn-primary">Add Rule</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="report-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Generate Regulatory Report</h3>
+                    <span class="modal-close" onclick="closeModal('report-modal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="report-form">
+                        <div class="form-group">
+                            <label for="report-standard">Compliance Standard</label>
+                            <select id="report-standard" required>
+                                <option value="">Select Standard</option>
+                                <option value="iso29148">ISO/IEC/IEEE 29148</option>
+                                <option value="gdpr">GDPR</option>
+                                <option value="sox">SOX</option>
+                                <option value="iso27001">ISO 27001</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="report-type">Report Type</label>
+                            <select id="report-type" required>
+                                <option value="">Select Type</option>
+                                <option value="compliance-summary">Compliance Summary</option>
+                                <option value="detailed-compliance">Detailed Compliance</option>
+                                <option value="non-compliance">Non-Compliance Report</option>
+                                <option value="audit-trail">Audit Trail</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Date Range</label>
+                            <div class="date-range">
+                                <input type="date" id="report-date-from" required>
+                                <span>to</span>
+                                <input type="date" id="report-date-to" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="report-format">Format</label>
+                            <select id="report-format-select" required>
+                                <option value="pdf">PDF</option>
+                                <option value="excel">Excel</option>
+                                <option value="html">HTML</option>
+                                <option value="json">JSON</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="closeModal('report-modal')">Cancel</button>
+                            <button type="submit" class="btn-primary">Generate Report</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="compliance_scripts.js"></script>
+</body>
+</html>

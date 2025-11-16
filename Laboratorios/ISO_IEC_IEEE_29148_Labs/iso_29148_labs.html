@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorios ISO/IEC/IEEE 29148 - Ingeniería de Requisitos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        
+        h2, h3, h4 {
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        details {
+            background: #f8f9ff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        details:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+        
+        details[open] {
+            border-color: #764ba2;
+        }
+        
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: #764ba2;
+            font-size: 1.1em;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        summary:hover {
+            background-color: #f0f0ff;
+        }
+        
+        details > div {
+            padding: 15px;
+            margin-top: 10px;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            background: #fff;
+            margin-bottom: 8px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            background: #f8f9ff;
+            transform: translateX(5px);
+        }
+        
+        a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        strong {
+            color: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ISO/IEC/IEEE 29148 - Ingeniería de Requisitos</h1>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="../../index.html" style="background: #667eea; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 0 10px; display: inline-block;">🏠 Volver al Índice</a>
+            <a href="iso_29148_labs_en.html" style="background: #764ba2; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 0 10px; display: inline-block;">🇬🇧 English Version</a>
+        </div>
+        
+        <p>Esta serie de laboratorios explora los conceptos, procesos y artefactos de la Ingeniería de Requisitos según el estándar ISO/IEC/IEEE 29148.</p>
+
+        <details>
+            <summary>Laboratorio 1: Introducción a la Ingeniería de Requisitos</summary>
+            <div>
+                <h3>Planteamiento del Problema</h3>
+                <p>Desarrollar una introducción integral a la Ingeniería de Requisitos según el estándar ISO/IEC/IEEE 29148. Crear un sistema interactivo que demuestre los conceptos fundamentales, procesos y artefactos de la ingeniería de requisitos.</p>
+                
+                <h3>Requisitos:</h3>
+                <ul>
+                    <li>Definir conceptos y terminología de ingeniería de requisitos.</li>
+                    <li>Explicar el proceso de ingeniería de requisitos según ISO/IEC/IEEE 29148.</li>
+                    <li>Crear ejemplos interactivos de artefactos de requisitos.</li>
+                    <li>Desarrollar un sistema de clasificación de requisitos.</li>
+                    <li>Construir una herramienta de análisis de stakeholders.</li>
+                </ul>
+
+                <h3>Tareas:</h3>
+                <ul>
+                    <li>Definir los fundamentos de la ingeniería de requisitos.</li>
+                    <li>Explicar el marco de procesos ISO/IEC/IEEE 29148.</li>
+                    <li>Crear plantillas de artefactos de requisitos.</li>
+                    <li>Desarrollar herramientas de identificación y análisis de stakeholders.</li>
+                    <li>Construir herramientas de evaluación de calidad de requisitos.</li>
+                </ul>
+
+                <h3>Resultado Esperado:</h3>
+                <ul>
+                    <li>Introducción interactiva a la ingeniería de requisitos.</li>
+                    <li>Plantillas y ejemplos de artefactos de requisitos.</li>
+                    <li>Herramientas de análisis de stakeholders.</li>
+                    <li>Marco de evaluación de calidad de requisitos.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 2: Técnicas de Elicitación de Requisitos</summary>
+            <div>
+                <h3>Objetivos de Aprendizaje</h3>
+                <p>Al finalizar este laboratorio, los estudiantes podrán comprender y aplicar varias técnicas de elicitación de requisitos como entrevistas estructuradas, cuestionarios, observación y prototipado.</p>
+
+                <h3>Tareas:</h3>
+                <ul>
+                    <li><strong>Tarea 1: Panel de Técnicas de Elicitación Interactivas:</strong> Crear una aplicación web que demuestre técnicas como Sistema de Gestión de Entrevistas, Constructor de Cuestionarios, Herramientas de Observación e Interfaz de Prototipado.</li>
+                    <li><strong>Tarea 2: Herramienta de Análisis de Elicitación en Python:</strong> Desarrollar un sistema en Python para analizar datos de entrevistas y cuestionarios, procesar datos de observación e integrar hallazgos de múltiples técnicas.</li>
+                    <li><strong>Tarea 3: Aplicación del Proceso de Elicitación:</strong> Aplicar las técnicas aprendidas a un escenario del mundo real, incluyendo análisis de stakeholders, ejecución de elicitación y síntesis de requisitos.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 3: Análisis y Modelado de Requisitos</summary>
+            <div>
+                <h3>Escenario: Sistema de Automatización de Hogar Inteligente</h3>
+                <p>Analizar requisitos para un sistema de automatización de hogar inteligente que integra iluminación, seguridad, control climático y entretenimiento. Corregir problemas en los requisitos proporcionados y crear modelos apropiados.</p>
+
+                <h3>Tareas:</h3>
+                <ul>
+                    <li><strong>Tarea 1: Corregir Herramienta de Análisis en Python:</strong> Resolver bugs en carga de requisitos, detección de ambigüedad, verificación de completitud, verificación de consistencia, categorización, identificación de dependencias, priorización y generación de modelos.</li>
+                    <li><strong>Tarea 2: Corregir Panel de Modelado:</strong> Agregar funcionalidad de navegación, implementar visualización de análisis, crear lienzos de modelado, agregar herramientas de validación y mejorar la interfaz de usuario.</li>
+                    <li><strong>Tarea 3: Crear Datos de Muestra y Pruebas:</strong> Crear requisitos de muestra, agregar pruebas integrales, generar modelos de muestra y agregar manejo de errores.</li>
+                    <li><strong>Tarea 4: Documentación e Informes:</strong> Agregar comentarios exhaustivos, crear ejemplos de uso, generar informes de análisis y agregar visualización de modelos.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 4: Especificación de Requisitos</summary>
+            <div>
+                <h3>Objetivo</h3>
+                <p>Dominar la especificación de requisitos creando documentos de requisitos comprensivos e inequívocos usando formatos y plantillas estándar de la industria que cumplan con los estándares ISO/IEC/IEEE 29148.</p>
+
+                <h3>Problema</h3>
+                <p>Las especificaciones actuales tienen estructura pobre, falta de trazabilidad, formato inconsistente, criterios de validación faltantes y sin control de versiones. Debe crear un sistema integral de especificación de requisitos.</p>
+
+                <h3>Características Clave a Implementar:</h3>
+                <ul>
+                    <li>Documentos SRS estructurados con secciones y formato apropiados</li>
+                    <li>Múltiples formatos de especificación (textual, tabular, gráfico)</li>
+                    <li>Matrices de trazabilidad vinculando requisitos con diseño y pruebas</li>
+                    <li>Validación de especificaciones contra estándares de calidad</li>
+                    <li>Líneas base de requisitos con control de versiones</li>
+                    <li>Interactive specification viewer for stakeholders</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 5: Validación de Requisitos</summary>
+            <div>
+                <h3>Introducción</h3>
+                <p>Trabajar en la validación de requisitos siguiendo ISO/IEC/IEEE 29148. Corregir código que contiene bugs intencionales para crear un sistema completo de validación de requisitos.</p>
+
+                <h3>Tareas:</h3>
+                <ul>
+                    <li><strong>Tarea 1: Corregir Motor de Validación:</strong> Inicializar reglas de validación, implementar métodos de validación integral (completitud, consistencia, factibilidad, testeabilidad), generar casos de prueba automáticamente, implementar marco de pruebas de aceptación y agregar verificación de cumplimiento ISO/IEC/IEEE 29148.</li>
+                    <li><strong>Tarea 2: Completar Panel de Validación:</strong> Crear visualización integral de métricas de validación, implementar interfaz de gestión de casos de prueba, agregar controles de pruebas de aceptación, crear informes de cumplimiento y agregar gráficos interactivos de validación.</li>
+                    <li><strong>Tarea 3: Crear Archivos de Soporte:</strong> Completar estilos CSS, JavaScript funcional, datos de requisitos de muestra y suite de pruebas.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 6: Gestión de Requisitos</summary>
+            <div>
+                <h3>Planteamiento del Problema</h3>
+                <p>Implementar un sistema integral de gestión de requisitos siguiendo los estándares ISO/IEC/IEEE 29148. Manejar el ciclo de vida completo desde la creación hasta el retiro, incluyendo control de versiones, gestión de cambios, trazabilidad y colaboración de stakeholders.</p>
+
+                <h3>Funcionalidad Principal:</h3>
+                <ul>
+                    <li><strong>Repositorio de Requisitos:</strong> Almacenamiento centralizado con control de versiones</li>
+                    <li><strong>Gestión de Cambios:</strong> Proceso formal para modificaciones de requisitos</li>
+                    <li><strong>Matriz de Trazabilidad:</strong> Trazabilidad bidireccional entre requisitos</li>
+                    <li><strong>Gestión de Stakeholders:</strong> Roles de usuario y permisos</li>
+                    <li><strong>Pista de Auditoría:</strong> Historial completo de todos los cambios</li>
+                    <li><strong>Informes:</strong> Informes y paneles integrales</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 7: Validación y Verificación de Requisitos</summary>
+            <div>
+                <h3>Planteamiento del Problema</h3>
+                <p>Implementar un sistema integral de validación y verificación de requisitos que aborde procesos de validación manual, falta de verificación automatizada, métricas de calidad inadecuadas y procesos de revisión inconsistentes.</p>
+
+                <h3>Objetivos de Aprendizaje:</h3>
+                <ul>
+                    <li>Construcción de validación automatizada con motores basados en reglas</li>
+                    <li>Implementación de métricas de calidad para medición sistemática</li>
+                    <li>Establecimiento de métodos de verificación con técnicas formales</li>
+                    <li>Creación de procesos de revisión estandarizados</li>
+                    <li>Generación de informes de validación completos</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 8: Métricas y Analítica de Requisitos</summary>
+            <div>
+                <h3>Enfoque</h3>
+                <p>Implementación de métricas integrales de requisitos, sistemas de analítica e informes siguiendo ISO/IEC/IEEE 29148:2011. Proporciona analítica avanzada, seguimiento de KPIs, análisis de tendencias y generación automatizada de informes.</p>
+
+                <h3>Características Clave:</h3>
+                <ul>
+                    <li><strong>Motor de Recolección de Métricas:</strong> Recolección automatizada de métricas y cálculo en tiempo real</li>
+                    <li><strong>Panel de Analítica:</strong> Visualización interactiva de métricas con actualizaciones en tiempo real</li>
+                    <li><strong>Sistema de Monitoreo de KPIs:</strong> Seguimiento de KPIs, monitoreo de umbrales y análisis de tendencias</li>
+                    <li><strong>Generación Automatizada de Informes:</strong> Informes programados en múltiples formatos</li>
+                    <li><strong>Motor de Análisis de Tendencias:</strong> Tendencias históricas, analítica predictiva y detección de anomalías</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 9: Herramientas y Automatización de Requisitos</summary>
+            <div>
+                <h3>Enfoque</h3>
+                <p>Implementación de herramientas automatizadas de gestión de requisitos y marcos de integración siguiendo ISO/IEC/IEEE 29148:2011. Proporciona integración de herramientas, flujos de trabajo de automatización y procesamiento de requisitos basado en APIs.</p>
+
+                <h3>Características Clave:</h3>
+                <ul>
+                    <li><strong>Marco de Integración de Herramientas:</strong> Integración genérica para herramientas de requisitos, arquitectura de plugins y transformación de datos</li>
+                    <li><strong>Motor de Automatización:</strong> Automatización de flujos de trabajo, triggers basados en reglas y notificaciones automatizadas</li>
+                    <li><strong>API Gateway:</strong> API RESTful, autenticación y autorización, limitación de tasa</li>
+                    <li><strong>Sincronización de Datos:</strong> Sincronización bidireccional, resolución de conflictos y programación de sincronización</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 10: Cumplimiento y Auditoría de Requisitos</summary>
+            <div>
+                <h3>Enfoque</h3>
+                <p>Implementación de monitoreo de cumplimiento y pistas de auditoría para gestión de requisitos siguiendo ISO/IEC/IEEE 29148:2011. Proporciona verificación integral de cumplimiento, registro de auditoría y generación de informes regulatorios.</p>
+
+                <h3>Características Clave:</h3>
+                <ul>
+                    <li><strong>Sistema de Monitoreo de Cumplimiento:</strong> Verificación de cumplimiento en tiempo real, validación basada en reglas y seguimiento de estado</li>
+                    <li><strong>Sistema de Pista de Auditoría:</strong> Registro integral de auditoría, seguimiento de cambios y versionado, y generación de informes de auditoría</li>
+                    <li><strong>Informes Regulatorios:</strong> Informes de cumplimiento automatizados, soporte de formatos regulatorios y programación de informes</li>
+                    <li><strong>Panel de Cumplimiento:</strong> Métricas de cumplimiento en tiempo real, vistas interactivas de auditoría y análisis de tendencias</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 11: Gestión de Riesgos de Requisitos</summary>
+            <div>
+                <h3>Enfoque</h3>
+                <p>Implementación de evaluación y gestión de riesgos para requisitos siguiendo ISO/IEC/IEEE 29148:2011. Proporciona capacidades de identificación de riesgos, evaluación, planificación de mitigación y monitoreo.</p>
+
+                <h3>Características Clave:</h3>
+                <ul>
+                    <li><strong>Motor de Evaluación de Riesgos:</strong> Identificación automatizada de riesgos, evaluación de probabilidad e impacto, y priorización de riesgos</li>
+                    <li><strong>Planificación de Mitigación:</strong> Desarrollo de estrategias de mitigación de riesgos, seguimiento de elementos de acción y monitoreo de efectividad de mitigación</li>
+                    <li><strong>Sistema de Monitoreo de Riesgos:</strong> Seguimiento del estado de riesgos en tiempo real, monitoreo de umbrales y alertas automatizadas de riesgos</li>
+                    <li><strong>Panel de Analítica de Riesgos:</strong> Análisis de tendencias de riesgos, mapas de calor y seguimiento de progreso de mitigación</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 12: Gestión de Portafolio de Requisitos</summary>
+            <div>
+                <h3>Enfoque</h3>
+                <p>Implementación de gestión de portafolio para requisitos a través de múltiples proyectos siguiendo ISO/IEC/IEEE 29148:2011. Proporciona análisis de portafolio, asignación de recursos y alineación estratégica.</p>
+
+                <h3>Características Clave:</h3>
+                <ul>
+                    <li><strong>Motor de Análisis de Portafolio:</strong> Análisis de requisitos entre proyectos, evaluación de riesgos de portafolio y análisis de utilización de recursos</li>
+                    <li><strong>Sistema de Asignación de Recursos:</strong> Asignación automatizada de recursos, planificación de capacidad y resolución de conflictos de recursos</li>
+                    <li><strong>Marco de Alineación Estratégica:</strong> Alineación con objetivos de negocio, seguimiento de iniciativas estratégicas y monitoreo de realización de valor</li>
+                    <li><strong>Panel de Portafolio:</strong> Métricas de rendimiento de portafolio, vistas de utilización de recursos y seguimiento de alineación estratégica</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 13: Gestión de Cambios de Requisitos</summary>
+            <div>
+                <h3>Enfoque</h3>
+                <p>Implementación de procesos de gestión de cambios para requisitos siguiendo ISO/IEC/IEEE 29148:2011. Proporciona manejo de solicitudes de cambio, análisis de impacto y flujos de trabajo de aprobación de cambios.</p>
+
+                <h3>Características Clave:</h3>
+                <ul>
+                    <li><strong>Sistema de Solicitudes de Cambio:</strong> Creación y seguimiento de solicitudes de cambio, categorización y priorización, y gestión de estados</li>
+                    <li><strong>Motor de Análisis de Impacto:</strong> Evaluación automatizada de impacto, análisis de dependencias y evaluación de impacto de riesgos</li>
+                    <li><strong>Sistema de Flujo de Trabajo de Aprobación:</strong> Procesos de aprobación multinivel, enrutamiento y notificaciones de aprobación, y seguimiento de historial de aprobaciones</li>
+                    <li><strong>Panel de Gestión de Cambios:</strong> Seguimiento de solicitudes de cambio, monitoreo de estado de aprobaciones y vistas de análisis de impacto</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 14: Aseguramiento de Calidad de Requisitos</summary>
+            <div>
+                <h3>Enfoque</h3>
+                <p>Implementación de procesos de aseguramiento de calidad para requisitos siguiendo ISO/IEC/IEEE 29148:2011. Proporciona métricas de calidad, verificaciones automatizadas de calidad y capacidades de mejora continua.</p>
+
+                <h3>Características Clave:</h3>
+                <ul>
+                    <li><strong>Motor de Métricas de Calidad:</strong> Medición automatizada de calidad, puntuación y clasificación de calidad, y análisis de tendencias de calidad</li>
+                    <li><strong>Sistema de Puertas de Calidad:</strong> Puntos de control de calidad automatizados, flujos de trabajo de aprobación de puertas y gestión de umbrales de calidad</li>
+                    <li><strong>Panel de Aseguramiento de Calidad:</strong> Métricas de calidad en tiempo real, visualización de tendencias de calidad y seguimiento de mejora de calidad</li>
+                    <li><strong>Sistema de Informes de Calidad:</strong> Informes automatizados de calidad, benchmarking de calidad y recomendaciones de mejora continua</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 15: Analítica Avanzada de Requisitos</summary>
+            <div>
+                <h3>Enfoque</h3>
+                <p>Implementación de analítica avanzada y aprendizaje automático para requisitos siguiendo ISO/IEC/IEEE 29148:2011. Proporciona analítica predictiva, procesamiento de lenguaje natural e insights inteligentes.</p>
+
+                <h3>Características Clave:</h3>
+                <ul>
+                    <li><strong>Motor de Analítica Predictiva:</strong> Predicción de éxito de requisitos, modelos de predicción de riesgos y modelos de estimación de esfuerzo</li>
+                    <li><strong>Sistema de Procesamiento de PLN:</strong> Análisis de texto de requisitos, análisis de sentimientos y clasificación de requisitos</li>
+                    <li><strong>Modelos de Aprendizaje Automático:</strong> Categorización automatizada de requisitos, predicción de calidad y análisis de similitud de requisitos</li>
+                    <li><strong>Panel de Analítica:</strong> Visualización de insights predictivos, monitoreo de rendimiento de modelos ML y vistas de analítica avanzada</li>
+                </ul>
+            </div>
+        </details>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="../../index.html" style="background: #667eea; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 0 10px; display: inline-block;">🏠 Volver al Índice</a>
+            <a href="iso_29148_labs_en.html" style="background: #764ba2; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 0 10px; display: inline-block;">🇬🇧 English Version</a>
+        </div>
+    </div>
+</body>
+</html>

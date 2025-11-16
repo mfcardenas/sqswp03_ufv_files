@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirements Validation & Verification Dashboard</title>
+    <link rel="stylesheet" href="validation_styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <h1><i class="fas fa-check-circle"></i> Requirements Validation & Verification</h1>
+            <div class="header-controls">
+                <button id="refresh-btn" class="btn-primary">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+                <button id="export-btn" class="btn-secondary">
+                    <i class="fas fa-download"></i> Export
+                </button>
+            </div>
+        </header>
+
+        <!-- Quality Metrics Overview -->
+        <section class="metrics-overview">
+            <div class="metric-card">
+                <h3>Overall Quality Score</h3>
+                <div class="metric-value" id="overall-score">0%</div>
+                <div class="metric-trend" id="overall-trend">
+                    <i class="fas fa-arrow-up"></i> +2.1%
+                </div>
+            </div>
+            <div class="metric-card">
+                <h3>Requirements Validated</h3>
+                <div class="metric-value" id="total-requirements">0</div>
+                <div class="metric-trend" id="validation-trend">
+                    <i class="fas fa-clock"></i> Real-time
+                </div>
+            </div>
+            <div class="metric-card">
+                <h3>Active Reviews</h3>
+                <div class="metric-value" id="active-reviews">0</div>
+                <div class="metric-trend" id="review-trend">
+                    <i class="fas fa-users"></i> In Progress
+                </div>
+            </div>
+            <div class="metric-card">
+                <h3>Validation Accuracy</h3>
+                <div class="metric-value" id="validation-accuracy">95%</div>
+                <div class="metric-trend" id="accuracy-trend">
+                    <i class="fas fa-check"></i> Target Met
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Grid -->
+        <div class="dashboard-grid">
+            <!-- Quality Dimensions Chart -->
+            <section class="chart-section">
+                <h2><i class="fas fa-chart-bar"></i> Quality Dimensions</h2>
+                <canvas id="qualityChart" width="400" height="200"></canvas>
+            </section>
+
+            <!-- Validation Results -->
+            <section class="results-section">
+                <h2><i class="fas fa-list-check"></i> Validation Results</h2>
+                <div class="results-tabs">
+                    <button class="tab-btn active" data-tab="summary">Summary</button>
+                    <button class="tab-btn" data-tab="details">Details</button>
+                    <button class="tab-btn" data-tab="issues">Issues</button>
+                </div>
+                <div id="results-content" class="results-content">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Verification Methods -->
+            <section class="verification-section">
+                <h2><i class="fas fa-search"></i> Verification Methods</h2>
+                <div class="verification-methods">
+                    <div class="method-card" data-method="analysis">
+                        <h4>Analysis</h4>
+                        <div class="method-status" id="analysis-status">Ready</div>
+                        <div class="method-confidence" id="analysis-confidence">0%</div>
+                    </div>
+                    <div class="method-card" data-method="demonstration">
+                        <h4>Demonstration</h4>
+                        <div class="method-status" id="demonstration-status">Ready</div>
+                        <div class="method-confidence" id="demonstration-confidence">0%</div>
+                    </div>
+                    <div class="method-card" data-method="testing">
+                        <h4>Testing</h4>
+                        <div class="method-status" id="testing-status">Ready</div>
+                        <div class="method-confidence" id="testing-confidence">0%</div>
+                    </div>
+                    <div class="method-card" data-method="inspection">
+                        <h4>Inspection</h4>
+                        <div class="method-status" id="inspection-status">Ready</div>
+                        <div class="method-confidence" id="inspection-confidence">0%</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Review Management -->
+            <section class="review-section">
+                <h2><i class="fas fa-users"></i> Review Management</h2>
+                <div class="review-controls">
+                    <button id="create-review-btn" class="btn-primary">
+                        <i class="fas fa-plus"></i> Create Review
+                    </button>
+                    <button id="view-reviews-btn" class="btn-secondary">
+                        <i class="fas fa-eye"></i> View Reviews
+                    </button>
+                </div>
+                <div id="review-content" class="review-content">
+                    <!-- Review content will be populated here -->
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="activity-section">
+                <h2><i class="fas fa-history"></i> Recent Activity</h2>
+                <div id="activity-feed" class="activity-feed">
+                    <!-- Activity items will be populated here -->
+                </div>
+            </section>
+
+            <!-- Quality Trends -->
+            <section class="trends-section">
+                <h2><i class="fas fa-chart-line"></i> Quality Trends</h2>
+                <canvas id="trendsChart" width="400" height="200"></canvas>
+            </section>
+        </div>
+
+        <!-- Modals -->
+        <!-- Create Review Modal -->
+        <div id="create-review-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Create New Review</h3>
+                    <span class="modal-close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="create-review-form">
+                        <div class="form-group">
+                            <label for="review-requirement-id">Requirement ID</label>
+                            <input type="text" id="review-requirement-id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="review-type">Review Type</label>
+                            <select id="review-type" required>
+                                <option value="functional">Functional</option>
+                                <option value="non-functional">Non-Functional</option>
+                                <option value="technical">Technical</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="review-reviewers">Reviewers (comma-separated)</label>
+                            <input type="text" id="review-reviewers" placeholder="reviewer1@example.com, reviewer2@example.com" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="closeModal('create-review-modal')">Cancel</button>
+                            <button type="submit" class="btn-primary">Create Review</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Details Modal -->
+        <div id="review-details-modal" class="modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h3>Review Details</h3>
+                    <span class="modal-close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div id="review-details-content">
+                        <!-- Review details will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Validation Details Modal -->
+        <div id="validation-details-modal" class="modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h3>Validation Details</h3>
+                    <span class="modal-close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div id="validation-details-content">
+                        <!-- Validation details will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Validating requirements...</p>
+        </div>
+    </div>
+
+    <script src="validation_scripts.js"></script>
+</body>
+</html>

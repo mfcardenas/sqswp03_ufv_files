@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3: Heuristic Evaluation | ISO 9241 Labs</title>
+    <style>
+        :root {
+            --primary-color: #008080;
+            --secondary-color: #20B2AA;
+            --accent-color: #FF6B35;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --background: #FFFFFF;
+            --section-bg: #F0FDFA;
+            --border-color: #E1E8ED;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background);
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .lab-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lab-dropdown {
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lab-dropdown:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .lang-toggle {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .section-alt {
+            background: var(--section-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Heuristics Grid */
+        .heuristics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .heuristic-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .heuristic-number {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .heuristic-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .heuristic-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Severity Levels */
+        .severity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .severity-card {
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .severity-0 {
+            background: #D1FAE5;
+            color: #065F46;
+            border: 2px solid #A7F3D0;
+        }
+
+        .severity-1 {
+            background: #FEF3C7;
+            color: #92400E;
+            border: 2px solid #FDE68A;
+        }
+
+        .severity-2 {
+            background: #FED7AA;
+            color: #9A3412;
+            border: 2px solid #FDBA74;
+        }
+
+        .severity-3 {
+            background: #FECACA;
+            color: #991B1B;
+            border: 2px solid #FCA5A5;
+        }
+
+        .severity-4 {
+            background: #E5E7EB;
+            color: #1F2937;
+            border: 2px solid #D1D5DB;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Process Flow */
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            border: 2px solid var(--border-color);
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .process-step h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #BDC3C7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495E;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: center;
+            color: #BDC3C7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .heuristics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">ISO 9241 Labs</a>
+            <div class="nav-links">
+                <div class="lab-selector">
+                    <select class="lab-dropdown" onchange="navigateToLab(this.value)">
+                        <option value="lab1_en.html">Lab 1: Context Analysis</option>
+                        <option value="lab2_en.html">Lab 2: Dialogue Principles</option>
+                        <option value="lab3_en.html">Lab 3: Heuristic Evaluation</option>
+                        <option value="lab5_en.html">Lab 5: Usability Testing</option>
+                        <option value="lab6_en.html">Lab 6: User-Centered Design</option>
+                    </select>
+                </div>
+                <button class="lang-toggle" onclick="toggleLanguage()">ES</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in-up">
+            <h1>Expert Heuristic Evaluation</h1>
+            <p>Master Nielsen's usability heuristics to conduct professional interface evaluations and identify critical usability problems before user testing</p>
+            <div class="hero-badges">
+                <span class="badge">Nielsen Heuristics</span>
+                <span class="badge">6-8 Hours</span>
+                <span class="badge">Expert Evaluation</span>
+                <span class="badge">Professional Reporting</span>
+            </div>
+            <a href="#overview" class="cta-button">Explore Lab 3</a>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Usability Evaluation</h2>
+                <p>Learn to conduct systematic heuristic evaluations using industry-standard methods that identify usability problems efficiently and cost-effectively.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">📋</div>
+                    <h3>Systematic Method</h3>
+                    <p>Learn the complete heuristic evaluation process from planning through reporting, following established professional protocols used by UX consultancies.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎯</div>
+                    <h3>10 Key Heuristics</h3>
+                    <p>Master Nielsen's foundational heuristics that form the basis for most professional usability evaluations in the industry.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">⚖️</div>
+                    <h3>Severity Assessment</h3>
+                    <p>Learn to rate usability problems systematically, helping teams prioritize fixes based on impact and frequency.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📊</div>
+                    <h3>Professional Reporting</h3>
+                    <p>Create comprehensive evaluation reports with clear findings, severity ratings, and actionable recommendations for development teams.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Heuristics Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nielsen's 10 Usability Heuristics</h2>
+                <p>The foundational principles for evaluating interface usability, developed by Jakob Nielsen and validated across decades of usability research.</p>
+            </div>
+            <div class="heuristics-grid">
+                <div class="heuristic-card fade-in-up">
+                    <div class="heuristic-number">1</div>
+                    <h3>Visibility of System Status</h3>
+                    <p>The system should always keep users informed about what is going on through appropriate feedback within reasonable time.</p>
+                </div>
+                <div class="heuristic-card fade-in-up">
+                    <div class="heuristic-number">2</div>
+                    <h3>Match Between System and Real World</h3>
+                    <p>The system should speak the users' language, with words, phrases and concepts familiar to the user.</p>
+                </div>
+                <div class="heuristic-card fade-in-up">
+                    <div class="heuristic-number">3</div>
+                    <h3>User Control and Freedom</h3>
+                    <p>Users often choose system functions by mistake and need clearly marked emergency exits to leave unwanted states.</p>
+                </div>
+                <div class="heuristic-card fade-in-up">
+                    <div class="heuristic-number">4</div>
+                    <h3>Consistency and Standards</h3>
+                    <p>Users should not have to wonder whether different words, situations, or actions mean the same thing.</p>
+                </div>
+                <div class="heuristic-card fade-in-up">
+                    <div class="heuristic-number">5</div>
+                    <h3>Error Prevention</h3>
+                    <p>Better than good error messages is a careful design which prevents a problem from occurring in the first place.</p>
+                </div>
+                <div class="heuristic-card fade-in-up">
+                    <div class="heuristic-number">6</div>
+                    <h3>Recognition Rather than Recall</h3>
+                    <p>Minimize the user's memory load by making objects, actions, and options visible.</p>
+                </div>
+                <div class="heuristic-card fade-in-up">
+                    <div class="heuristic-number">7</div>
+                    <h3>Flexibility and Efficiency of Use</h3>
+                    <p>Accelerators may speed up the interaction for expert users such that the system can cater to both inexperienced and experienced users.</p>
+                </div>
+                <div class="heuristic-card fade-in-up">
+                    <div class="heuristic-number">8</div>
+                    <h3>Aesthetic and Minimalist Design</h3>
+                    <p>Dialogues should not contain information which is irrelevant or rarely needed.</p>
+                </div>
+                <div class="heuristic-card fade-in-up">
+                    <div class="heuristic-number">9</div>
+                    <h3>Help Users Recognize, Diagnose, and Recover from Errors</h3>
+                    <p>Error messages should be expressed in plain language, precisely indicate the problem, and constructively suggest a solution.</p>
+                </div>
+                <div class="heuristic-card fade-in-up">
+                    <div class="heuristic-number">10</div>
+                    <h3>Help and Documentation</h3>
+                    <p>Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Severity Assessment Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Usability Problem Severity Rating</h2>
+                <p>Learn to assess the impact and priority of usability problems using the industry-standard 5-point severity scale.</p>
+            </div>
+            <div class="severity-grid">
+                <div class="severity-card severity-0">
+                    <h3>0 - Not a Problem</h3>
+                    <p>No usability problem exists</p>
+                </div>
+                <div class="severity-card severity-1">
+                    <h3>1 - Cosmetic</h3>
+                    <p>Minor annoyance, fix if time permits</p>
+                </div>
+                <div class="severity-card severity-2">
+                    <h3>2 - Minor Problem</h3>
+                    <p>Low priority, could be fixed in next release</p>
+                </div>
+                <div class="severity-card severity-3">
+                    <h3>3 - Major Problem</h3>
+                    <p>High priority, important to fix before release</p>
+                </div>
+                <div class="severity-card severity-4">
+                    <h3>4 - Catastrophic</h3>
+                    <p>Must fix before product can be released</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TravelEase Evaluation Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>TravelEase Heuristic Evaluation</h2>
+                <p>Apply your knowledge by conducting a comprehensive evaluation of TravelEase prototypes, identifying critical usability issues before user testing.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">🖥️</div>
+                    <h3>Interface Analysis</h3>
+                    <p>Systematically evaluate search, filtering, and booking interfaces across desktop and mobile platforms using all 10 heuristics.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📝</div>
+                    <h3>Problem Documentation</h3>
+                    <p>Record detailed findings with screenshots, heuristic violations, severity ratings, and specific improvement recommendations.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎯</div>
+                    <h3>Priority Assessment</h3>
+                    <p>Rank problems by severity and frequency to help development teams focus on the most critical usability improvements.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📋</div>
+                    <h3>Executive Summary</h3>
+                    <p>Create professional evaluation reports suitable for stakeholders, with clear findings and actionable next steps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Evaluation Process</h2>
+                <p>Follow the structured methodology used by professional UX consultancies to ensure thorough and reliable evaluation results.</p>
+            </div>
+            <div class="process-flow">
+                <div class="process-step fade-in-up">
+                    <h3>1. Preparation</h3>
+                    <p>Define evaluation scope, create task scenarios, and establish evaluation criteria for systematic review.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>2. Individual Evaluation</h3>
+                    <p>Each evaluator examines the interface independently, applying all heuristics to identify potential problems.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>3. Problem Identification</h3>
+                    <p>Document each usability problem with specific details about location, heuristic violated, and user impact.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>4. Severity Rating</h3>
+                    <p>Assess each problem's severity based on frequency, impact, and persistence using the standard 0-4 scale.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>5. Results Compilation</h3>
+                    <p>Aggregate findings from multiple evaluators, removing duplicates and consolidating similar problems.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>6. Report Creation</h3>
+                    <p>Create comprehensive evaluation report with executive summary, detailed findings, and prioritized recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Evaluation Effectiveness</h2>
+                <p>Heuristic evaluation is one of the most cost-effective methods for identifying usability problems early in the design process.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="stat-number">3-5</span>
+                    <span class="stat-label">Evaluators Optimal</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">75%</span>
+                    <span class="stat-label">Problems Found</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">1-2</span>
+                    <span class="stat-label">Days Duration</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">10:1</span>
+                    <span class="stat-label">ROI Typical</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Materials Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Evaluation Materials</h2>
+                <p>Complete resources for learning and teaching systematic heuristic evaluation following industry best practices.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">📕</div>
+                    <h3>Student Guide</h3>
+                    <p><strong>material_estudiante.md</strong> - Comprehensive manual covering Nielsen's heuristics, severity rating, and professional evaluation reporting methods.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎯</div>
+                    <h3>Evaluation Project</h3>
+                    <p><strong>problem.md</strong> - TravelEase heuristic evaluation challenge with systematic methodology and professional reporting requirements.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">👨‍🏫</div>
+                    <h3>Teaching Guide</h3>
+                    <p><strong>guia_docente.md</strong> - Instructor materials with evaluation facilitation techniques and industry-standard assessment methods.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📈</div>
+                    <h3>Evaluation Matrix</h3>
+                    <p><strong>rubrica_evaluacion.md</strong> - Professional rubric for assessing evaluation quality, severity rating accuracy, and report comprehensiveness.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🚀</div>
+                    <h3>Setup Guide</h3>
+                    <p><strong>prompt.md</strong> - Laboratory preparation with evaluation tools setup and heuristic evaluation protocol introduction.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🏆</div>
+                    <h3>Professional Solution</h3>
+                    <p><strong>solution.md</strong> - Complete evaluation example with problem identification, severity assessment, and improvement recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Skills Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Competencies</h2>
+                <p>Develop evaluation skills that are immediately applicable in UX research, design consulting, and product development roles.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">🔍</div>
+                    <h3>Expert Evaluation</h3>
+                    <p>Master systematic interface inspection techniques that professional UX evaluators use to identify usability problems efficiently.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📊</div>
+                    <h3>Problem Prioritization</h3>
+                    <p>Learn to assess and rank usability problems by severity, helping teams make informed decisions about design improvements.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📝</div>
+                    <h3>Professional Reporting</h3>
+                    <p>Create evaluation reports that effectively communicate findings to stakeholders and provide actionable improvement recommendations.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">⚡</div>
+                    <h3>Rapid Assessment</h3>
+                    <p>Develop ability to quickly identify major usability problems without requiring extensive user testing or research.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ISO 9241 Labs</h3>
+                <p>Professional UX education based on international standards. Master user-centered design through hands-on practice with real-world case studies.</p>
+            </div>
+            <div class="footer-section">
+                <h3>All Laboratories</h3>
+                <ul class="footer-links">
+                    <li><a href="lab1_en.html">Lab 1: User Context Analysis</a></li>
+                    <li><a href="lab2_en.html">Lab 2: Dialogue Principles</a></li>
+                    <li><a href="lab3_en.html">Lab 3: Heuristic Evaluation</a></li>
+                    <li><a href="lab5_en.html">Lab 5: Usability Testing</a></li>
+                    <li><a href="lab6_en.html">Lab 6: User-Centered Design</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Languages</h3>
+                <ul class="footer-links">
+                    <li><a href="lab3_en.html">English</a></li>
+                    <li><a href="lab3_es.html">Español</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Questions about the ISO 9241 Labs program?</p>
+                <p>Email: <a href="mailto:info@iso9241labs.edu">info@iso9241labs.edu</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ISO 9241 Labs. Educational content for academic use.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle functionality
+        function toggleLanguage() {
+            window.location.href = 'lab3_es.html';
+        }
+
+        // Lab navigation functionality
+        function navigateToLab(labPage) {
+            if (labPage) {
+                window.location.href = labPage;
+            }
+        }
+
+        // Set current lab as selected
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.lab-dropdown');
+            dropdown.value = 'lab3_en.html';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .heuristic-card, .process-step').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

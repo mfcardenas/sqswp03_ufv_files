@@ -1,0 +1,417 @@
+{
+    "application": {
+        "name": "Requirements Change Management",
+        "version": "1.0.0",
+        "description": "Dashboard for managing requirement changes according to ISO/IEC/IEEE 29148:2011"
+    },
+    "workflow": {
+        "statuses": [
+            {
+                "id": "submitted",
+                "name": "Submitted",
+                "description": "Change request has been submitted but not yet reviewed",
+                "color": "#17a2b8"
+            },
+            {
+                "id": "in-review",
+                "name": "In Review",
+                "description": "Change request is being reviewed by stakeholders",
+                "color": "#ffc107"
+            },
+            {
+                "id": "approved",
+                "name": "Approved",
+                "description": "Change request has been approved for implementation",
+                "color": "#28a745"
+            },
+            {
+                "id": "rejected",
+                "name": "Rejected",
+                "description": "Change request has been rejected and will not be implemented",
+                "color": "#dc3545"
+            },
+            {
+                "id": "implemented",
+                "name": "Implemented",
+                "description": "Change request has been implemented in the requirements",
+                "color": "#6610f2"
+            }
+        ],
+        "priorities": [
+            {
+                "id": "high",
+                "name": "High",
+                "description": "High priority changes that must be addressed immediately",
+                "color": "#dc3545"
+            },
+            {
+                "id": "medium",
+                "name": "Medium",
+                "description": "Medium priority changes to be addressed in the current cycle",
+                "color": "#fd7e14"
+            },
+            {
+                "id": "low",
+                "name": "Low",
+                "description": "Low priority changes that can be deferred if necessary",
+                "color": "#20c997"
+            }
+        ],
+        "changeTypes": [
+            {
+                "id": "addition",
+                "name": "Addition",
+                "description": "Adding a new requirement"
+            },
+            {
+                "id": "modification",
+                "name": "Modification",
+                "description": "Modifying an existing requirement"
+            },
+            {
+                "id": "removal",
+                "name": "Removal",
+                "description": "Removing an existing requirement"
+            }
+        ],
+        "approvalProcess": {
+            "standard": {
+                "name": "Standard Approval",
+                "description": "Standard approval process for most changes",
+                "steps": [
+                    {
+                        "name": "Initial Review",
+                        "role": "Change Control Board",
+                        "timeLimit": 3
+                    },
+                    {
+                        "name": "Technical Evaluation",
+                        "role": "Technical Team",
+                        "timeLimit": 5
+                    },
+                    {
+                        "name": "Impact Assessment",
+                        "role": "Requirements Engineer",
+                        "timeLimit": 5
+                    },
+                    {
+                        "name": "Final Approval",
+                        "role": "Project Manager",
+                        "timeLimit": 2
+                    }
+                ]
+            },
+            "expedited": {
+                "name": "Expedited Approval",
+                "description": "Faster approval process for urgent changes",
+                "steps": [
+                    {
+                        "name": "Quick Assessment",
+                        "role": "Requirements Engineer",
+                        "timeLimit": 1
+                    },
+                    {
+                        "name": "Urgent Approval",
+                        "role": "Project Manager",
+                        "timeLimit": 1
+                    }
+                ]
+            },
+            "complex": {
+                "name": "Complex Change Approval",
+                "description": "Extended approval process for changes with significant impact",
+                "steps": [
+                    {
+                        "name": "Initial Review",
+                        "role": "Change Control Board",
+                        "timeLimit": 3
+                    },
+                    {
+                        "name": "Technical Evaluation",
+                        "role": "Technical Team",
+                        "timeLimit": 5
+                    },
+                    {
+                        "name": "Business Impact",
+                        "role": "Business Analyst",
+                        "timeLimit": 5
+                    },
+                    {
+                        "name": "Security Assessment",
+                        "role": "Security Team",
+                        "timeLimit": 3
+                    },
+                    {
+                        "name": "User Experience Review",
+                        "role": "UX Team",
+                        "timeLimit": 3
+                    },
+                    {
+                        "name": "Quality Assurance",
+                        "role": "QA Team",
+                        "timeLimit": 3
+                    },
+                    {
+                        "name": "Stakeholder Approval",
+                        "role": "Key Stakeholders",
+                        "timeLimit": 5
+                    },
+                    {
+                        "name": "Final Approval",
+                        "role": "Project Manager",
+                        "timeLimit": 2
+                    }
+                ]
+            }
+        }
+    },
+    "impactAnalysis": {
+        "levels": [
+            {
+                "id": "high",
+                "name": "High",
+                "description": "High impact on requirements and system",
+                "threshold": 8
+            },
+            {
+                "id": "medium",
+                "name": "Medium",
+                "description": "Medium impact on requirements and system",
+                "threshold": 5
+            },
+            {
+                "id": "low",
+                "name": "Low",
+                "description": "Low impact on requirements and system",
+                "threshold": 1
+            }
+        ],
+        "analysisModels": [
+            {
+                "id": "simple",
+                "name": "Simple",
+                "description": "Basic impact analysis for small changes",
+                "maxDepth": 1
+            },
+            {
+                "id": "standard",
+                "name": "Standard",
+                "description": "Standard impact analysis for most changes",
+                "maxDepth": 2
+            },
+            {
+                "id": "advanced",
+                "name": "Advanced",
+                "description": "Advanced impact analysis for complex changes",
+                "maxDepth": -1
+            }
+        ],
+        "riskFactors": [
+            {
+                "id": "complexity",
+                "name": "Complexity",
+                "description": "Complexity of the change",
+                "weight": 3
+            },
+            {
+                "id": "scope",
+                "name": "Scope",
+                "description": "Scope of the change",
+                "weight": 2
+            },
+            {
+                "id": "dependencies",
+                "name": "Dependencies",
+                "description": "Number of dependencies affected",
+                "weight": 3
+            },
+            {
+                "id": "testing",
+                "name": "Testing Impact",
+                "description": "Impact on testing efforts",
+                "weight": 2
+            },
+            {
+                "id": "schedule",
+                "name": "Schedule Impact",
+                "description": "Impact on project schedule",
+                "weight": 2
+            }
+        ]
+    },
+    "notifications": {
+        "events": [
+            {
+                "id": "change_submitted",
+                "name": "Change Request Submitted",
+                "description": "Notification when a new change request is submitted",
+                "recipients": ["change_board", "project_manager"]
+            },
+            {
+                "id": "change_approved",
+                "name": "Change Request Approved",
+                "description": "Notification when a change request is approved",
+                "recipients": ["requester", "technical_team", "project_manager"]
+            },
+            {
+                "id": "change_rejected",
+                "name": "Change Request Rejected",
+                "description": "Notification when a change request is rejected",
+                "recipients": ["requester", "project_manager"]
+            },
+            {
+                "id": "approval_needed",
+                "name": "Approval Needed",
+                "description": "Notification when an approval is needed from a user",
+                "recipients": ["approver"]
+            },
+            {
+                "id": "approval_reminder",
+                "name": "Approval Reminder",
+                "description": "Reminder notification for pending approvals",
+                "recipients": ["approver"]
+            }
+        ],
+        "channels": [
+            {
+                "id": "email",
+                "name": "Email",
+                "description": "Email notifications",
+                "enabled": true
+            },
+            {
+                "id": "dashboard",
+                "name": "Dashboard",
+                "description": "In-app dashboard notifications",
+                "enabled": true
+            }
+        ]
+    },
+    "users": {
+        "roles": [
+            {
+                "id": "admin",
+                "name": "Administrator",
+                "description": "System administrator with full access",
+                "permissions": ["manage_users", "manage_settings", "view_all", "approve_all"]
+            },
+            {
+                "id": "project_manager",
+                "name": "Project Manager",
+                "description": "Project manager with approval authority",
+                "permissions": ["view_all", "approve_changes", "manage_workflows"]
+            },
+            {
+                "id": "requirements_engineer",
+                "name": "Requirements Engineer",
+                "description": "Requirements specialist responsible for requirements management",
+                "permissions": ["view_all", "create_changes", "analyze_impact"]
+            },
+            {
+                "id": "technical_team",
+                "name": "Technical Team Member",
+                "description": "Technical team member involved in implementation",
+                "permissions": ["view_assigned", "create_changes", "technical_review"]
+            },
+            {
+                "id": "stakeholder",
+                "name": "Stakeholder",
+                "description": "Business stakeholder with limited access",
+                "permissions": ["view_assigned", "create_changes"]
+            },
+            {
+                "id": "viewer",
+                "name": "Viewer",
+                "description": "Read-only access to requirements",
+                "permissions": ["view_assigned"]
+            }
+        ]
+    },
+    "reports": {
+        "available": [
+            {
+                "id": "change_summary",
+                "name": "Change Summary Report",
+                "description": "Summary of all change requests with status distribution",
+                "format": ["pdf", "excel"]
+            },
+            {
+                "id": "impact_analysis",
+                "name": "Impact Analysis Report",
+                "description": "Detailed analysis of change impacts across requirements",
+                "format": ["pdf", "excel"]
+            },
+            {
+                "id": "approval_time",
+                "name": "Approval Time Report",
+                "description": "Analysis of approval cycle times and bottlenecks",
+                "format": ["pdf", "excel"]
+            },
+            {
+                "id": "approver_activity",
+                "name": "Approver Activity Report",
+                "description": "Summary of approver activity and response times",
+                "format": ["pdf", "excel"]
+            }
+        ]
+    },
+    "sampleData": {
+        "changeRequests": [
+            {
+                "id": "CR-12345",
+                "title": "Update Authentication Requirements",
+                "description": "Update authentication requirements to include multi-factor authentication",
+                "requester": "John Smith",
+                "type": "modification",
+                "priority": "high",
+                "status": "in-review",
+                "created": "2023-09-01",
+                "affectedRequirements": ["REQ-001", "REQ-002", "REQ-015"]
+            },
+            {
+                "id": "CR-12346",
+                "title": "Add Payment Gateway Integration",
+                "description": "Add requirements for integrating with a new payment gateway service",
+                "requester": "Sarah Johnson",
+                "type": "addition",
+                "priority": "medium",
+                "status": "approved",
+                "created": "2023-08-28",
+                "affectedRequirements": ["REQ-050"]
+            },
+            {
+                "id": "CR-12347",
+                "title": "Remove Legacy User Management",
+                "description": "Remove requirements related to the legacy user management system",
+                "requester": "Michael Chen",
+                "type": "removal",
+                "priority": "high",
+                "status": "submitted",
+                "created": "2023-08-25",
+                "affectedRequirements": ["REQ-010", "REQ-011", "REQ-012"]
+            },
+            {
+                "id": "CR-12348",
+                "title": "Update Performance Requirements",
+                "description": "Update performance requirements to reflect new load testing results",
+                "requester": "Emma Rodriguez",
+                "type": "modification",
+                "priority": "low",
+                "status": "rejected",
+                "created": "2023-08-22",
+                "affectedRequirements": ["REQ-030", "REQ-031"]
+            },
+            {
+                "id": "CR-12349",
+                "title": "Add Data Export Feature",
+                "description": "Add requirements for a new data export feature",
+                "requester": "David Wilson",
+                "type": "addition",
+                "priority": "medium",
+                "status": "implemented",
+                "created": "2023-08-18",
+                "affectedRequirements": ["REQ-045"]
+            }
+        ]
+    }
+}

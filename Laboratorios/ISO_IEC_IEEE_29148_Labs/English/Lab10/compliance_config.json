@@ -1,0 +1,255 @@
+{
+  "compliance": {
+    "standards": {
+      "iso29148": {
+        "name": "ISO/IEC/IEEE 29148:2011",
+        "description": "Systems and software engineering — Life cycle processes — Requirements engineering",
+        "rules": [
+          {
+            "id": "CR-001",
+            "description": "Requirements must have unique identifiers",
+            "severity": "high",
+            "validation": "Each requirement shall have a unique identifier that is used consistently across all project documentation"
+          },
+          {
+            "id": "CR-002",
+            "description": "Requirements must be atomic",
+            "severity": "critical",
+            "validation": "Each requirement shall describe a single capability or constraint"
+          },
+          {
+            "id": "CR-003",
+            "description": "Requirements must be verifiable",
+            "severity": "high",
+            "validation": "Each requirement shall be verifiable through inspection, demonstration, test, or analysis"
+          },
+          {
+            "id": "CR-004",
+            "description": "Requirements must be traceable",
+            "severity": "medium",
+            "validation": "Each requirement shall be traceable to higher-level requirements or other source documentation"
+          },
+          {
+            "id": "CR-005",
+            "description": "Requirements must be unambiguous",
+            "severity": "high",
+            "validation": "Each requirement shall have only one possible interpretation"
+          },
+          {
+            "id": "CR-006",
+            "description": "Requirements must use 'shall' for mandatory requirements",
+            "severity": "medium",
+            "validation": "Mandatory requirements shall use the word 'shall'"
+          },
+          {
+            "id": "CR-007",
+            "description": "Requirements must be implementation-independent",
+            "severity": "medium",
+            "validation": "Requirements shall not specify design solutions unless necessary as a constraint"
+          }
+        ]
+      },
+      "gdpr": {
+        "name": "GDPR",
+        "description": "General Data Protection Regulation",
+        "rules": [
+          {
+            "id": "CR-008",
+            "description": "Data privacy requirements must be defined",
+            "severity": "critical",
+            "validation": "Requirements shall specify how personal data is collected, processed, stored, and protected"
+          },
+          {
+            "id": "CR-009",
+            "description": "Data retention periods must be specified",
+            "severity": "medium",
+            "validation": "Requirements shall specify how long personal data will be retained and when it will be deleted"
+          },
+          {
+            "id": "CR-010",
+            "description": "Data subject rights must be addressed",
+            "severity": "high",
+            "validation": "Requirements shall address data subject rights including access, rectification, erasure, and portability"
+          }
+        ]
+      },
+      "sox": {
+        "name": "SOX",
+        "description": "Sarbanes-Oxley Act",
+        "rules": [
+          {
+            "id": "CR-011",
+            "description": "Audit trail must be maintained",
+            "severity": "critical",
+            "validation": "Requirements shall specify the creation and maintenance of an audit trail for all financial data"
+          },
+          {
+            "id": "CR-012",
+            "description": "Security controls must be documented",
+            "severity": "high",
+            "validation": "Requirements shall document security controls for financial reporting systems"
+          }
+        ]
+      },
+      "iso27001": {
+        "name": "ISO 27001",
+        "description": "Information Security Management",
+        "rules": [
+          {
+            "id": "CR-013",
+            "description": "Security requirements must be specified",
+            "severity": "high",
+            "validation": "Requirements shall specify security controls for protecting information assets"
+          },
+          {
+            "id": "CR-014",
+            "description": "Access control requirements must be defined",
+            "severity": "high",
+            "validation": "Requirements shall specify access control measures for information systems"
+          },
+          {
+            "id": "CR-015",
+            "description": "Incident response procedures must be defined",
+            "severity": "medium",
+            "validation": "Requirements shall define procedures for responding to security incidents"
+          }
+        ]
+      }
+    },
+    "severity_levels": {
+      "critical": {
+        "description": "Critical compliance issue that must be addressed immediately",
+        "weight": 10,
+        "notification": ["email", "dashboard", "alert"]
+      },
+      "high": {
+        "description": "High severity compliance issue that should be addressed soon",
+        "weight": 7,
+        "notification": ["dashboard", "alert"]
+      },
+      "medium": {
+        "description": "Medium severity compliance issue that should be addressed",
+        "weight": 4,
+        "notification": ["dashboard"]
+      },
+      "low": {
+        "description": "Low severity compliance issue that should be noted",
+        "weight": 1,
+        "notification": ["dashboard"]
+      }
+    },
+    "check_frequency": {
+      "default": "daily",
+      "options": ["hourly", "daily", "weekly", "monthly"]
+    },
+    "automated_remediation": {
+      "enabled": false,
+      "rules": []
+    }
+  },
+  "audit": {
+    "retention_period_days": 365,
+    "encryption": {
+      "enabled": true,
+      "algorithm": "aes256"
+    },
+    "tamper_proof": {
+      "enabled": true,
+      "method": "hash_chain"
+    },
+    "event_types": [
+      "create",
+      "read",
+      "update",
+      "delete",
+      "export",
+      "import",
+      "login",
+      "logout",
+      "approve",
+      "reject"
+    ],
+    "object_types": [
+      "requirement",
+      "compliance_rule",
+      "audit_log",
+      "regulatory_report",
+      "user",
+      "system"
+    ]
+  },
+  "reporting": {
+    "report_types": {
+      "compliance_summary": {
+        "description": "Overview of compliance status for all requirements",
+        "sections": ["overview", "compliance_metrics", "non_compliance_summary", "recommendations"]
+      },
+      "detailed_compliance": {
+        "description": "Detailed analysis of compliance with specific standards",
+        "sections": ["overview", "standard_details", "requirement_compliance", "remediation_plan"]
+      },
+      "non_compliance": {
+        "description": "List of all non-compliant items with remediation suggestions",
+        "sections": ["non_compliant_items", "severity_analysis", "remediation_plan", "timeline"]
+      },
+      "audit_trail": {
+        "description": "Comprehensive audit log for a specified time period",
+        "sections": ["summary", "event_timeline", "user_activity", "object_changes"]
+      }
+    },
+    "formats": ["pdf", "excel", "html", "json"],
+    "default_recipients": [],
+    "scheduled_reports": {
+      "enabled": true,
+      "schedules": [
+        {
+          "report_type": "compliance_summary",
+          "frequency": "weekly",
+          "day": "monday",
+          "time": "08:00",
+          "recipients": []
+        },
+        {
+          "report_type": "audit_trail",
+          "frequency": "monthly",
+          "day": 1,
+          "time": "08:00",
+          "recipients": []
+        }
+      ]
+    }
+  },
+  "notification": {
+    "channels": {
+      "email": {
+        "enabled": true,
+        "throttling": {
+          "max_per_hour": 10,
+          "max_per_day": 50
+        }
+      },
+      "dashboard": {
+        "enabled": true,
+        "max_alerts": 20
+      },
+      "alert": {
+        "enabled": true,
+        "expiry_hours": 24
+      }
+    },
+    "templates": {
+      "compliance_violation": {
+        "subject": "Compliance Violation: {rule_id}",
+        "body": "A compliance violation has been detected for rule {rule_id}: {description}. Severity: {severity}."
+      },
+      "audit_export": {
+        "subject": "Audit Log Export Completed",
+        "body": "The audit log export requested by {user} has been completed. Time period: {start_date} to {end_date}."
+      },
+      "report_generation": {
+        "subject": "Regulatory Report {report_id} Generated",
+        "body": "The {report_type} report for {standard} has been generated. Report ID: {report_id}."
+      }
+    }
+  }
+}

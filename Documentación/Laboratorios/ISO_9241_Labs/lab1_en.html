@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1: User Context Analysis | ISO 9241 Labs</title>
+    <style>
+        :root {
+            --primary-color: #0066CC;
+            --secondary-color: #4A90E2;
+            --accent-color: #FF6B35;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --background: #FFFFFF;
+            --section-bg: #F8FAFC;
+            --border-color: #E1E8ED;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background);
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .lab-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lab-dropdown {
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lab-dropdown:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .lang-toggle {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .section-alt {
+            background: var(--section-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 45%;
+            position: relative;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #BDC3C7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495E;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: center;
+            color: #BDC3C7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+                padding-left: 60px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-marker {
+                left: 30px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">ISO 9241 Labs</a>
+            <div class="nav-links">
+                <div class="lab-selector">
+                    <select class="lab-dropdown" onchange="navigateToLab(this.value)">
+                        <option value="lab1_en.html">Lab 1: Context Analysis</option>
+                        <option value="lab2_en.html">Lab 2: Dialogue Principles</option>
+                        <option value="lab3_en.html">Lab 3: Heuristic Evaluation</option>
+                        <option value="lab5_en.html">Lab 5: Usability Testing</option>
+                        <option value="lab6_en.html">Lab 6: User-Centered Design</option>
+                    </select>
+                </div>
+                <button class="lang-toggle" onclick="toggleLanguage()">ES</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in-up">
+            <h1>Master User Context Analysis</h1>
+            <p>Learn to understand your users deeply through systematic context analysis using ISO 9241-11 standards and AI-powered persona creation</p>
+            <div class="hero-badges">
+                <span class="badge">ISO 9241-11</span>
+                <span class="badge">8-9 Hours</span>
+                <span class="badge">Team Work</span>
+                <span class="badge">AI-Powered</span>
+            </div>
+            <a href="#overview" class="cta-button">Explore Lab 1</a>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What You'll Learn</h2>
+                <p>Lab 1 provides the foundation for user-centered design by teaching you how to systematically analyze and document user context according to international standards.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">👥</div>
+                    <h3>User Context Analysis</h3>
+                    <p>Master the four components of use context: users, tasks, equipment, and environments according to ISO 9241-11 framework.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🤖</div>
+                    <h3>AI-Powered Personas</h3>
+                    <p>Create detailed, realistic personas using generative AI tools and learn advanced prompt engineering techniques for UX research.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📊</div>
+                    <h3>Usability Metrics</h3>
+                    <p>Define specific, measurable metrics for effectiveness, efficiency, and satisfaction that align with your user personas.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">✍️</div>
+                    <h3>Professional Documentation</h3>
+                    <p>Produce industry-standard technical reports that communicate user insights effectively to stakeholders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Laboratory Process</h2>
+                <p>A structured 3-phase approach combining theoretical foundations with hands-on practice and real-world application.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Phase 1: Preparation (3 hours)</h3>
+                        <p><strong>Required Reading:</strong> ISO 9241-11:2018 sections on usability definitions and context of use</p>
+                        <p><strong>Comparative Analysis:</strong> Evaluate major travel platforms (Booking.com, Airbnb, Skyscanner)</p>
+                        <p><strong>Comprehension Quiz:</strong> Validate understanding with 70% minimum score</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Phase 2: In-Lab Session (2 hours)</h3>
+                        <p><strong>TravelEase Case Study:</strong> Analyze a comprehensive tourism platform connecting travelers with local experiences</p>
+                        <p><strong>Team Collaboration:</strong> Work in rotating roles to ensure comprehensive skill development</p>
+                        <p><strong>AI Integration:</strong> Use ChatGPT, Claude, or Gemini to create detailed user personas</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Phase 3: Technical Report (3-4 hours)</h3>
+                        <p><strong>Professional Documentation:</strong> 8-12 page technical report following industry standards</p>
+                        <p><strong>Evidence-Based Analysis:</strong> Support conclusions with concrete evidence from user research</p>
+                        <p><strong>Actionable Insights:</strong> Translate user context into design implications and measurable criteria</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>TravelEase Case Study</h2>
+                <p>Work with a realistic tourism platform that connects travelers with curated local experiences, competing with major industry players.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">🌍</div>
+                    <h3>Complex User Base</h3>
+                    <p>Analyze diverse user types: budget backpackers, business travelers, families, and luxury tourists with different needs and contexts.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📱</div>
+                    <h3>Multi-Device Context</h3>
+                    <p>Consider usage across smartphones, tablets, and desktops in various environments from airports to hotel rooms.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">⚡</div>
+                    <h3>Real-World Constraints</h3>
+                    <p>Navigate technical limitations, business requirements, and user expectations in a competitive marketplace.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lab Impact</h2>
+                <p>Measurable outcomes that prepare you for professional UX practice</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Detailed User Personas</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Context Components</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Usability Metrics</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Page Technical Report</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Materials Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Complete Educational Materials</h2>
+                <p>Access comprehensive learning resources designed for both students and instructors, following international pedagogical standards.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">📚</div>
+                    <h3>Student Material</h3>
+                    <p><strong>material_estudiante.md</strong> - Comprehensive 4000+ word guide covering context analysis methods, persona development, and research techniques with practical examples.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎯</div>
+                    <h3>Problem Statement</h3>
+                    <p><strong>problem.md</strong> - Detailed TravelEase case study with user scenarios, business requirements, and research challenges to solve.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">👨‍🏫</div>
+                    <h3>Instructor Guide</h3>
+                    <p><strong>guia_docente.md</strong> - Complete teaching guide with learning objectives, facilitation tips, and assessment strategies for educators.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📊</div>
+                    <h3>Evaluation Rubric</h3>
+                    <p><strong>rubrica_evaluacion.md</strong> - Professional assessment matrix with clear criteria for evaluating student work and project deliverables.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🚀</div>
+                    <h3>Getting Started</h3>
+                    <p><strong>prompt.md</strong> - Quick start instructions and setup guide to begin the laboratory experience effectively.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">✅</div>
+                    <h3>Solution Guide</h3>
+                    <p><strong>solution.md</strong> - Comprehensive solution with example personas, research findings, and best practices for instructor reference.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Skills Developed</h2>
+                <p>Industry-relevant competencies that enhance your UX career prospects</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎯</div>
+                    <h3>User Research</h3>
+                    <p>Master systematic user analysis techniques used by leading tech companies like Google, Apple, and Microsoft.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📋</div>
+                    <h3>Standards Compliance</h3>
+                    <p>Apply international ISO standards that are recognized globally in enterprise and government contexts.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🤝</div>
+                    <h3>Stakeholder Communication</h3>
+                    <p>Learn to translate user insights into business language that resonates with product managers and executives.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">💼</div>
+                    <h3>Portfolio Development</h3>
+                    <p>Create a comprehensive case study that demonstrates professional-level user research capabilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ready to Start?</h2>
+                <p>Join hundreds of students who have mastered user context analysis through this comprehensive laboratory experience.</p>
+            </div>
+            <div style="text-align: center;">
+                <a href="#contact" class="cta-button">Get Started with Lab 1</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ISO 9241 Labs</h3>
+                <p>Professional UX education based on international standards. Master user-centered design through hands-on practice with real-world case studies.</p>
+            </div>
+            <div class="footer-section">
+                <h3>All Laboratories</h3>
+                <ul class="footer-links">
+                    <li><a href="lab1_en.html">Lab 1: User Context Analysis</a></li>
+                    <li><a href="lab2_en.html">Lab 2: Dialogue Principles</a></li>
+                    <li><a href="lab3_en.html">Lab 3: Heuristic Evaluation</a></li>
+                    <li><a href="lab5_en.html">Lab 5: Usability Testing</a></li>
+                    <li><a href="lab6_en.html">Lab 6: User-Centered Design</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Languages</h3>
+                <ul class="footer-links">
+                    <li><a href="lab1_en.html">English</a></li>
+                    <li><a href="lab1_es.html">Español</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Questions about the ISO 9241 Labs program?</p>
+                <p>Email: <a href="mailto:info@iso9241labs.edu">info@iso9241labs.edu</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ISO 9241 Labs. Educational content for academic use.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle functionality
+        function toggleLanguage() {
+            window.location.href = 'lab1_es.html';
+        }
+
+        // Lab navigation functionality
+        function navigateToLab(labPage) {
+            if (labPage) {
+                window.location.href = labPage;
+            }
+        }
+
+        // Set current lab as selected
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.lab-dropdown');
+            dropdown.value = 'lab1_en.html';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

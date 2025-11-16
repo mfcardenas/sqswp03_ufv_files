@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5: Advanced Usability Testing | ISO 9241 Labs</title>
+    <style>
+        :root {
+            --primary-color: #008080;
+            --secondary-color: #20B2AA;
+            --accent-color: #FF6B35;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --background: #FFFFFF;
+            --section-bg: #F0FDFA;
+            --border-color: #E1E8ED;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background);
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .lab-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lab-dropdown {
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lab-dropdown:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .lang-toggle {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .section-alt {
+            background: var(--section-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Methods Grid */
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .method-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .method-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .method-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Process Flow */
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            border: 2px solid var(--border-color);
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .process-step h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .tool-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .metric-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .metric-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .metric-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .metric-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .metric-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #BDC3C7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495E;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: center;
+            color: #BDC3C7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">ISO 9241 Labs</a>
+            <div class="nav-links">
+                <div class="lab-selector">
+                    <select class="lab-dropdown" onchange="navigateToLab(this.value)">
+                        <option value="lab1_en.html">Lab 1: Context Analysis</option>
+                        <option value="lab2_en.html">Lab 2: Dialogue Principles</option>
+                        <option value="lab3_en.html">Lab 3: Heuristic Evaluation</option>
+                        <option value="lab5_en.html">Lab 5: Usability Testing</option>
+                        <option value="lab6_en.html">Lab 6: User-Centered Design</option>
+                    </select>
+                </div>
+                <button class="lang-toggle" onclick="toggleLanguage()">ES</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in-up">
+            <h1>Advanced Usability Testing</h1>
+            <p>Master mixed methods research combining quantitative metrics with qualitative insights to create comprehensive usability assessments for real-world applications</p>
+            <div class="hero-badges">
+                <span class="badge">Mixed Methods</span>
+                <span class="badge">10-12 Hours</span>
+                <span class="badge">Professional Testing</span>
+                <span class="badge">Statistical Analysis</span>
+            </div>
+            <a href="#overview" class="cta-button">Explore Lab 5</a>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Usability Testing</h2>
+                <p>Learn to design and execute comprehensive usability studies that provide actionable insights for product development teams using industry-standard methods.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">🔬</div>
+                    <h3>Mixed Methods Research</h3>
+                    <p>Combine quantitative performance metrics with qualitative behavioral observations to create comprehensive usability assessments.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📊</div>
+                    <h3>Statistical Rigor</h3>
+                    <p>Apply proper statistical methods to analyze usability data, ensuring your findings are reliable and actionable for product decisions.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎯</div>
+                    <h3>Scenario-Based Testing</h3>
+                    <p>Design realistic task scenarios that reflect actual user goals and context, providing valid insights into user behavior.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📋</div>
+                    <h3>Professional Reporting</h3>
+                    <p>Create comprehensive research reports with clear findings, statistical evidence, and prioritized recommendations for product improvement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methods Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Research Methods Integration</h2>
+                <p>Learn to effectively combine multiple research methods to gather comprehensive insights about user experience and interface usability.</p>
+            </div>
+            <div class="methods-grid">
+                <div class="method-card fade-in-up">
+                    <div class="method-icon">⏱️</div>
+                    <h3>Performance Testing</h3>
+                    <p>Measure task completion times, error rates, and success metrics to quantify usability performance objectively.</p>
+                </div>
+                <div class="method-card fade-in-up">
+                    <div class="method-icon">🗣️</div>
+                    <h3>Think-Aloud Protocol</h3>
+                    <p>Capture user thought processes and decision-making through concurrent verbal protocols that reveal usability problems.</p>
+                </div>
+                <div class="method-card fade-in-up">
+                    <div class="method-icon">🎥</div>
+                    <h3>Behavioral Observation</h3>
+                    <p>Record and analyze user behavior patterns to identify friction points and optimization opportunities.</p>
+                </div>
+                <div class="method-card fade-in-up">
+                    <div class="method-icon">💭</div>
+                    <h3>Post-Task Interviews</h3>
+                    <p>Conduct structured interviews to understand user perceptions, preferences, and improvement suggestions.</p>
+                </div>
+                <div class="method-card fade-in-up">
+                    <div class="method-icon">📈</div>
+                    <h3>SUS Scale Assessment</h3>
+                    <p>Apply System Usability Scale to gather standardized usability ratings that can be compared across studies.</p>
+                </div>
+                <div class="method-card fade-in-up">
+                    <div class="method-icon">📝</div>
+                    <h3>Heuristic Integration</h3>
+                    <p>Connect empirical findings with heuristic evaluation results to create comprehensive usability assessments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TravelEase Testing Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>TravelEase Usability Study</h2>
+                <p>Design and execute a comprehensive usability study for TravelEase, testing critical user journeys across diverse user personas and scenarios.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎭</div>
+                    <h3>Persona-Based Scenarios</h3>
+                    <p>Create testing scenarios that reflect the goals and contexts of Maya, Carlos, and other TravelEase personas for realistic evaluation.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🏃‍♂️</div>
+                    <h3>Critical Path Testing</h3>
+                    <p>Focus on key user journeys like search, filtering, comparison, and booking to identify critical usability barriers.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📱</div>
+                    <h3>Cross-Platform Evaluation</h3>
+                    <p>Test usability across desktop, tablet, and mobile interfaces to identify device-specific usability issues.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🔄</div>
+                    <h3>Iterative Testing</h3>
+                    <p>Plan testing cycles that inform design improvements and validate the effectiveness of interface modifications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive Metrics Framework</h2>
+                <p>Learn to gather and analyze multiple types of usability data to create a complete picture of user experience quality.</p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-category fade-in-up">
+                    <h3>⚡ Performance Metrics</h3>
+                    <ul class="metric-list">
+                        <li>Task completion time</li>
+                        <li>Time to first click</li>
+                        <li>Navigation efficiency</li>
+                        <li>Error recovery time</li>
+                        <li>Page load perception</li>
+                    </ul>
+                </div>
+                <div class="metric-category fade-in-up">
+                    <h3>🎯 Effectiveness Metrics</h3>
+                    <ul class="metric-list">
+                        <li>Task success rate</li>
+                        <li>Completion accuracy</li>
+                        <li>Error frequency</li>
+                        <li>Help-seeking behavior</li>
+                        <li>Goal achievement</li>
+                    </ul>
+                </div>
+                <div class="metric-category fade-in-up">
+                    <h3>😊 Satisfaction Metrics</h3>
+                    <ul class="metric-list">
+                        <li>SUS Score (0-100)</li>
+                        <li>Task difficulty rating</li>
+                        <li>Confidence levels</li>
+                        <li>Preference rankings</li>
+                        <li>Recommendation likelihood</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testing Process Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Testing Process</h2>
+                <p>Follow the systematic methodology used by UX research professionals to ensure reliable, valid, and actionable usability study results.</p>
+            </div>
+            <div class="process-flow">
+                <div class="process-step fade-in-up">
+                    <h3>1. Study Design</h3>
+                    <p>Define research questions, select appropriate methods, and create detailed testing protocols with ethical considerations.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>2. Participant Recruitment</h3>
+                    <p>Recruit representative users that match target demographics and experience levels for valid results.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>3. Testing Environment</h3>
+                    <p>Set up controlled testing environment with proper recording equipment and standardized procedures.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>4. Data Collection</h3>
+                    <p>Execute testing sessions following protocols while gathering quantitative metrics and qualitative observations.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>5. Analysis & Synthesis</h3>
+                    <p>Analyze quantitative data statistically and synthesize qualitative findings to identify patterns and insights.</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <h3>6. Reporting & Recommendations</h3>
+                    <p>Create comprehensive reports with clear findings, statistical evidence, and prioritized improvement recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools & Technology Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Tools & Technology</h2>
+                <p>Learn to use industry-standard tools for conducting, recording, and analyzing usability testing sessions effectively.</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card fade-in-up">
+                    <div class="tool-icon">🖥️</div>
+                    <h3>Screen Recording</h3>
+                    <p>OBS Studio, Zoom, or dedicated usability testing platforms for session capture.</p>
+                </div>
+                <div class="tool-card fade-in-up">
+                    <div class="tool-icon">📊</div>
+                    <h3>Data Analysis</h3>
+                    <p>Excel, SPSS, R, or Python for statistical analysis of quantitative usability metrics.</p>
+                </div>
+                <div class="tool-card fade-in-up">
+                    <div class="tool-icon">💬</div>
+                    <h3>Survey Tools</h3>
+                    <p>Qualtrics, SurveyMonkey, or Google Forms for pre/post-test questionnaires and SUS scales.</p>
+                </div>
+                <div class="tool-card fade-in-up">
+                    <div class="tool-icon">🎥</div>
+                    <h3>Video Analysis</h3>
+                    <p>NVIVO, Morae, or manual coding techniques for analyzing user behavior patterns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Testing Impact & ROI</h2>
+                <p>Usability testing provides measurable returns on investment through improved user satisfaction and reduced support costs.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="stat-number">85%</span>
+                    <span class="stat-label">Problems Identified</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">5-8</span>
+                    <span class="stat-label">Participants Typical</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100:1</span>
+                    <span class="stat-label">ROI Potential</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">2-3</span>
+                    <span class="stat-label">Weeks Duration</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Materials Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive Learning Resources</h2>
+                <p>Access complete educational materials for advanced usability testing, designed for both independent learning and classroom instruction.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">📖</div>
+                    <h3>Student Guide</h3>
+                    <p><strong>material_estudiante.md</strong> - Extensive 5000+ word manual covering mixed methods research, statistical analysis, and professional usability testing protocols.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🔬</div>
+                    <h3>Research Challenge</h3>
+                    <p><strong>problem.md</strong> - Complex TravelEase usability study with multiple user personas, testing scenarios, and evaluation criteria to master.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎓</div>
+                    <h3>Teaching Resources</h3>
+                    <p><strong>guia_docente.md</strong> - Advanced instructor materials with research methodologies, assessment frameworks, and pedagogical strategies.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📈</div>
+                    <h3>Assessment Matrix</h3>
+                    <p><strong>rubrica_evaluacion.md</strong> - Professional evaluation rubric for research quality, statistical analysis, and report writing competencies.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">⚡</div>
+                    <h3>Quick Start</h3>
+                    <p><strong>prompt.md</strong> - Laboratory setup instructions and prerequisite knowledge checklist for optimal learning experience.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🏆</div>
+                    <h3>Expert Solutions</h3>
+                    <p><strong>solution.md</strong> - Complete study implementation with statistical analysis, findings interpretation, and professional reporting examples.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Skills Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Research Competencies</h2>
+                <p>Develop advanced research skills that are essential for UX research, product management, and data-driven design roles.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-icon">🔬</div>
+                    <h3>Research Design</h3>
+                    <p>Master systematic approach to designing valid usability studies that provide actionable insights for product development.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📈</div>
+                    <h3>Statistical Analysis</h3>
+                    <p>Learn to analyze usability data using appropriate statistical methods and draw valid conclusions from empirical evidence.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">🎤</div>
+                    <h3>Moderation Skills</h3>
+                    <p>Develop professional skills for facilitating usability sessions while maintaining objectivity and gathering quality data.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-icon">📋</div>
+                    <h3>Research Communication</h3>
+                    <p>Create compelling research reports that effectively communicate findings to stakeholders and drive product improvements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ISO 9241 Labs</h3>
+                <p>Professional UX education based on international standards. Master user-centered design through hands-on practice with real-world case studies.</p>
+            </div>
+            <div class="footer-section">
+                <h3>All Laboratories</h3>
+                <ul class="footer-links">
+                    <li><a href="lab1_en.html">Lab 1: User Context Analysis</a></li>
+                    <li><a href="lab2_en.html">Lab 2: Dialogue Principles</a></li>
+                    <li><a href="lab3_en.html">Lab 3: Heuristic Evaluation</a></li>
+                    <li><a href="lab5_en.html">Lab 5: Usability Testing</a></li>
+                    <li><a href="lab6_en.html">Lab 6: User-Centered Design</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Languages</h3>
+                <ul class="footer-links">
+                    <li><a href="lab5_en.html">English</a></li>
+                    <li><a href="lab5_es.html">Español</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Questions about the ISO 9241 Labs program?</p>
+                <p>Email: <a href="mailto:info@iso9241labs.edu">info@iso9241labs.edu</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ISO 9241 Labs. Educational content for academic use.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle functionality
+        function toggleLanguage() {
+            window.location.href = 'lab5_es.html';
+        }
+
+        // Lab navigation functionality
+        function navigateToLab(labPage) {
+            if (labPage) {
+                window.location.href = labPage;
+            }
+        }
+
+        // Set current lab as selected
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.lab-dropdown');
+            dropdown.value = 'lab5_en.html';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .method-card, .process-step, .tool-card, .metric-category').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

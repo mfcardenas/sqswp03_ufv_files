@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirements Quality Assurance Dashboard</title>
+    <link rel="stylesheet" href="quality_styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>Quality Assurance</h1>
+                <p>ISO/IEC/IEEE 29148:2011</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" data-panel="dashboard">
+                        <i class="fas fa-chart-pie"></i> Dashboard
+                    </li>
+                    <li data-panel="metrics">
+                        <i class="fas fa-chart-bar"></i> Quality Metrics
+                    </li>
+                    <li data-panel="gates">
+                        <i class="fas fa-tasks"></i> Quality Gates
+                    </li>
+                    <li data-panel="trends">
+                        <i class="fas fa-chart-line"></i> Trends & Analysis
+                    </li>
+                    <li data-panel="reports">
+                        <i class="fas fa-file-alt"></i> Reports
+                    </li>
+                    <li data-panel="settings">
+                        <i class="fas fa-cog"></i> Settings
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <span>ISO/IEC/IEEE 29148:2011</span>
+                <button id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Bar with search and user info -->
+            <header class="top-bar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search requirements, metrics...">
+                </div>
+                <div class="top-actions">
+                    <button class="action-button">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </button>
+                    <button class="btn btn-primary" id="btn-run-assessment">
+                        <i class="fas fa-play"></i> Run Assessment
+                    </button>
+                    <div class="user-info">
+                        <span>John Smith</span>
+                        <img src="https://via.placeholder.com/40" alt="User Profile">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Panels -->
+            <div class="content-panels">
+                <!-- Dashboard Panel -->
+                <section class="panel active" id="dashboard-panel">
+                    <div class="panel-header">
+                        <h2>Quality Assurance Dashboard</h2>
+                        <div class="panel-actions">
+                            <select id="time-range">
+                                <option value="day">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month" selected>This Month</option>
+                                <option value="quarter">This Quarter</option>
+                                <option value="year">This Year</option>
+                            </select>
+                            <button class="btn-export">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- KPI Cards -->
+                    <div class="kpi-container">
+                        <div class="kpi-card">
+                            <div class="kpi-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <h3>Overall Quality Score</h3>
+                                <div class="kpi-value">82%</div>
+                                <div class="kpi-trend positive">
+                                    <i class="fas fa-arrow-up"></i> 3.5%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon gate-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <h3>Quality Gates Passed</h3>
+                                <div class="kpi-value">7/9</div>
+                                <div class="kpi-trend positive">
+                                    <i class="fas fa-arrow-up"></i> 1 gate
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon req-icon">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <h3>Requirements Passing</h3>
+                                <div class="kpi-value">85%</div>
+                                <div class="kpi-trend positive">
+                                    <i class="fas fa-arrow-up"></i> 2.8%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon issue-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <h3>Critical Issues</h3>
+                                <div class="kpi-value">4</div>
+                                <div class="kpi-trend negative">
+                                    <i class="fas fa-arrow-down"></i> 2
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Row -->
+                    <div class="charts-container">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Quality Metrics</h3>
+                                <button class="btn-more">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="metrics-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Requirements by Status</h3>
+                                <button class="btn-more">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="requirements-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quality Trends Chart -->
+                    <div class="chart-card full-width">
+                        <div class="chart-header">
+                            <h3>Quality Trends Over Time</h3>
+                            <div class="chart-actions">
+                                <button class="btn-chart-type active" data-type="overall">Overall</button>
+                                <button class="btn-chart-type" data-type="metrics">Metrics</button>
+                                <button class="btn-chart-type" data-type="gates">Gates</button>
+                                <button class="btn-more">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="trends-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Top Quality Issues -->
+                    <div class="table-card full-width">
+                        <div class="table-header">
+                            <h3>Top Quality Issues</h3>
+                            <button class="btn-view-all">View All</button>
+                        </div>
+                        <div class="table-body">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Requirement ID</th>
+                                        <th>Title</th>
+                                        <th>Metric</th>
+                                        <th>Score</th>
+                                        <th>Threshold</th>
+                                        <th>Gap</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>REQ-1023</td>
+                                        <td>User Authentication Process</td>
+                                        <td>Clarity</td>
+                                        <td>0.45</td>
+                                        <td>0.70</td>
+                                        <td><span class="badge critical">-0.25</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Improve">
+                                                    <i class="fas fa-magic"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>REQ-1045</td>
+                                        <td>System Performance Standards</td>
+                                        <td>Verifiability</td>
+                                        <td>0.52</td>
+                                        <td>0.70</td>
+                                        <td><span class="badge high">-0.18</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Improve">
+                                                    <i class="fas fa-magic"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>REQ-1067</td>
+                                        <td>Data Encryption Requirements</td>
+                                        <td>Completeness</td>
+                                        <td>0.58</td>
+                                        <td>0.75</td>
+                                        <td><span class="badge high">-0.17</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Improve">
+                                                    <i class="fas fa-magic"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>REQ-1089</td>
+                                        <td>User Interface Accessibility</td>
+                                        <td>Feasibility</td>
+                                        <td>0.61</td>
+                                        <td>0.70</td>
+                                        <td><span class="badge medium">-0.09</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Improve">
+                                                    <i class="fas fa-magic"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>REQ-1091</td>
+                                        <td>Error Handling Process</td>
+                                        <td>Consistency</td>
+                                        <td>0.63</td>
+                                        <td>0.70</td>
+                                        <td><span class="badge medium">-0.07</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn-icon" title="Improve">
+                                                    <i class="fas fa-magic"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quality Metrics Panel -->
+                <section class="panel" id="metrics-panel">
+                    <div class="panel-header">
+                        <h2>Quality Metrics</h2>
+                        <div class="panel-actions">
+                            <button class="btn btn-primary" id="btn-refresh-metrics">
+                                <i class="fas fa-sync"></i> Refresh Metrics
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Metrics Summary -->
+                    <div class="metrics-summary">
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <h3>Completeness</h3>
+                                <span class="metric-score good">0.84</span>
+                            </div>
+                            <div class="metric-progress">
+                                <div class="progress-bar" style="width: 84%;"></div>
+                            </div>
+                            <div class="metric-details">
+                                <p>Measures if requirements contain all necessary information</p>
+                                <div class="metric-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Threshold</span>
+                                        <span class="stat-value">0.80</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Passing</span>
+                                        <span class="stat-value">91%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <h3>Clarity</h3>
+                                <span class="metric-score warning">0.72</span>
+                            </div>
+                            <div class="metric-progress">
+                                <div class="progress-bar" style="width: 72%;"></div>
+                            </div>
+                            <div class="metric-details">
+                                <p>Measures the clarity and readability of requirements</p>
+                                <div class="metric-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Threshold</span>
+                                        <span class="stat-value">0.70</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Passing</span>
+                                        <span class="stat-value">76%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <h3>Consistency</h3>
+                                <span class="metric-score good">0.85</span>
+                            </div>
+                            <div class="metric-progress">
+                                <div class="progress-bar" style="width: 85%;"></div>
+                            </div>
+                            <div class="metric-details">
+                                <p>Measures the consistency of terminology and structure</p>
+                                <div class="metric-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Threshold</span>
+                                        <span class="stat-value">0.80</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Passing</span>
+                                        <span class="stat-value">88%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <h3>Verifiability</h3>
+                                <span class="metric-score warning">0.73</span>
+                            </div>
+                            <div class="metric-progress">
+                                <div class="progress-bar" style="width: 73%;"></div>
+                            </div>
+                            <div class="metric-details">
+                                <p>Measures if requirements are testable and verifiable</p>
+                                <div class="metric-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Threshold</span>
+                                        <span class="stat-value">0.70</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Passing</span>
+                                        <span class="stat-value">78%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <h3>Traceability</h3>
+                                <span class="metric-score warning">0.68</span>
+                            </div>
+                            <div class="metric-progress">
+                                <div class="progress-bar" style="width: 68%;"></div>
+                            </div>
+                            <div class="metric-details">
+                                <p>Measures if requirements have proper traceability links</p>
+                                <div class="metric-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Threshold</span>
+                                        <span class="stat-value">0.60</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Passing</span>
+                                        <span class="stat-value">82%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <h3>Feasibility</h3>
+                                <span class="metric-score good">0.81</span>
+                            </div>
+                            <div class="metric-progress">
+                                <div class="progress-bar" style="width: 81%;"></div>
+                            </div>
+                            <div class="metric-details">
+                                <p>Measures if requirements are technically feasible</p>
+                                <div class="metric-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Threshold</span>
+                                        <span class="stat-value">0.70</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Passing</span>
+                                        <span class="stat-value">89%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Requirements Table -->
+                    <div class="table-card full-width">
+                        <div class="table-header">
+                            <h3>Requirements Quality Scores</h3>
+                            <div class="table-actions">
+                                <select id="metric-filter">
+                                    <option value="all">All Metrics</option>
+                                    <option value="completeness">Completeness</option>
+                                    <option value="clarity">Clarity</option>
+                                    <option value="consistency">Consistency</option>
+                                    <option value="verifiability">Verifiability</option>
+                                    <option value="traceability">Traceability</option>
+                                    <option value="feasibility">Feasibility</option>
+                                </select>
+                                <input type="text" placeholder="Search requirements" id="requirement-search">
+                            </div>
+                        </div>
+                        <div class="table-body">
+                            <!-- This would be populated by JavaScript -->
+                            <div class="placeholder-content">
+                                <i class="fas fa-clipboard-list"></i>
+                                <h3>Requirements Quality Table</h3>
+                                <p>Select a metric or search for requirements to view detailed quality scores.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quality Gates Panel -->
+                <section class="panel" id="gates-panel">
+                    <div class="panel-header">
+                        <h2>Quality Gates</h2>
+                        <div class="panel-actions">
+                            <button class="btn btn-primary" id="btn-run-gates">
+                                <i class="fas fa-play"></i> Run Gates
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Phase Cards -->
+                    <div class="gates-container">
+                        <div class="phase-card">
+                            <div class="phase-header">
+                                <h3>Initial Quality</h3>
+                                <span class="status-badge passed">PASSED</span>
+                            </div>
+                            <div class="phase-gates">
+                                <div class="gate-item passed">
+                                    <span class="gate-name">Initial Quality</span>
+                                    <span class="gate-status">PASSED</span>
+                                    <div class="gate-details">
+                                        <p>Overall score: 0.78 (min: 0.60), Passing ratio: 0.85 (min: 0.70)</p>
+                                    </div>
+                                </div>
+                                <div class="gate-item passed">
+                                    <span class="gate-name">Basic Compliance</span>
+                                    <span class="gate-status">PASSED</span>
+                                    <div class="gate-details">
+                                        <p>All requirements are compliant</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="phase-card">
+                            <div class="phase-header">
+                                <h3>Detailed Quality</h3>
+                                <span class="status-badge passed">PASSED</span>
+                            </div>
+                            <div class="phase-gates">
+                                <div class="gate-item passed">
+                                    <span class="gate-name">Core Metrics</span>
+                                    <span class="gate-status">PASSED</span>
+                                    <div class="gate-details">
+                                        <p>Completeness: 0.84 (min: 0.80), Clarity: 0.72 (min: 0.70), Verifiability: 0.73 (min: 0.70)</p>
+                                    </div>
+                                </div>
+                                <div class="gate-item passed">
+                                    <span class="gate-name">Advanced Metrics</span>
+                                    <span class="gate-status">PASSED</span>
+                                    <div class="gate-details">
+                                        <p>Consistency: 0.85 (min: 0.70), Traceability: 0.68 (min: 0.60), Feasibility: 0.81 (min: 0.70)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="phase-card">
+                            <div class="phase-header">
+                                <h3>Final Approval</h3>
+                                <span class="status-badge failed">FAILED</span>
+                            </div>
+                            <div class="phase-gates">
+                                <div class="gate-item failed">
+                                    <span class="gate-name">Final Quality</span>
+                                    <span class="gate-status">FAILED</span>
+                                    <div class="gate-details">
+                                        <p>Overall score: 0.78 (min: 0.80), Passing ratio: 0.85 (min: 0.90)</p>
+                                    </div>
+                                </div>
+                                <div class="gate-item pending">
+                                    <span class="gate-name">Manager Approval</span>
+                                    <span class="gate-status">PENDING</span>
+                                    <div class="gate-details">
+                                        <p>Approved by: none. Pending: Project Manager, Requirements Manager</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Approval Actions -->
+                    <div class="approval-actions">
+                        <h3>Manager Approval Actions</h3>
+                        <div class="approval-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Reviewer</label>
+                                    <select id="reviewer-select">
+                                        <option value="">Select reviewer</option>
+                                        <option value="project-manager">Project Manager</option>
+                                        <option value="requirements-manager">Requirements Manager</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Decision</label>
+                                    <select id="approval-decision">
+                                        <option value="">Select decision</option>
+                                        <option value="approve">Approve</option>
+                                        <option value="reject">Reject</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Comments</label>
+                                <textarea id="approval-comments" placeholder="Enter comments on quality assessment"></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn btn-primary" id="btn-submit-approval">Submit Approval</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Trends & Analysis Panel -->
+                <section class="panel" id="trends-panel">
+                    <div class="panel-header">
+                        <h2>Quality Trends & Analysis</h2>
+                        <div class="panel-actions">
+                            <select id="trend-time-range">
+                                <option value="month">Last Month</option>
+                                <option value="quarter" selected>Last Quarter</option>
+                                <option value="year">Last Year</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Trend Charts -->
+                    <div class="chart-card full-width">
+                        <div class="chart-header">
+                            <h3>Overall Quality Trend</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="overall-trend-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card full-width">
+                        <div class="chart-header">
+                            <h3>Metrics Trends</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="metrics-trend-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Trend Analysis Summary -->
+                    <div class="analysis-summary">
+                        <h3>Trend Analysis</h3>
+                        
+                        <div class="trend-analysis-card improving">
+                            <div class="trend-icon">
+                                <i class="fas fa-arrow-trend-up"></i>
+                            </div>
+                            <div class="trend-content">
+                                <h4>Overall Quality Trend</h4>
+                                <p>Quality score is improving by 3.5% over the last quarter</p>
+                                <div class="trend-details">
+                                    <div class="trend-stat">
+                                        <span class="stat-label">Current</span>
+                                        <span class="stat-value">0.82</span>
+                                    </div>
+                                    <div class="trend-stat">
+                                        <span class="stat-label">Previous</span>
+                                        <span class="stat-value">0.79</span>
+                                    </div>
+                                    <div class="trend-stat">
+                                        <span class="stat-label">Change</span>
+                                        <span class="stat-value">+3.5%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metrics-trends">
+                            <h4>Metrics Trends</h4>
+                            <div class="trend-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Metric</th>
+                                            <th>Direction</th>
+                                            <th>Change</th>
+                                            <th>Current</th>
+                                            <th>Previous</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Completeness</td>
+                                            <td class="improving">Improving</td>
+                                            <td>+5.0%</td>
+                                            <td>0.84</td>
+                                            <td>0.80</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Clarity</td>
+                                            <td class="improving">Improving</td>
+                                            <td>+2.9%</td>
+                                            <td>0.72</td>
+                                            <td>0.70</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Consistency</td>
+                                            <td class="improving">Improving</td>
+                                            <td>+3.7%</td>
+                                            <td>0.85</td>
+                                            <td>0.82</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Verifiability</td>
+                                            <td class="improving">Improving</td>
+                                            <td>+1.4%</td>
+                                            <td>0.73</td>
+                                            <td>0.72</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Traceability</td>
+                                            <td class="declining">Declining</td>
+                                            <td>-2.9%</td>
+                                            <td>0.68</td>
+                                            <td>0.70</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Feasibility</td>
+                                            <td class="stable">Stable</td>
+                                            <td>+0.0%</td>
+                                            <td>0.81</td>
+                                            <td>0.81</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Reports Panel -->
+                <section class="panel" id="reports-panel">
+                    <div class="panel-header">
+                        <h2>Quality Reports</h2>
+                    </div>
+                    
+                    <!-- Report Types -->
+                    <div class="report-types">
+                        <div class="report-type-card">
+                            <div class="report-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="report-content">
+                                <h3>Quality Summary Report</h3>
+                                <p>Complete overview of all quality metrics and gates.</p>
+                                <button class="btn btn-secondary">Generate</button>
+                            </div>
+                        </div>
+                        <div class="report-type-card">
+                            <div class="report-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="report-content">
+                                <h3>Trend Analysis Report</h3>
+                                <p>Detailed analysis of quality trends over time.</p>
+                                <button class="btn btn-secondary">Generate</button>
+                            </div>
+                        </div>
+                        <div class="report-type-card">
+                            <div class="report-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div class="report-content">
+                                <h3>Compliance Report</h3>
+                                <p>Analysis of compliance with quality standards.</p>
+                                <button class="btn btn-secondary">Generate</button>
+                            </div>
+                        </div>
+                        <div class="report-type-card">
+                            <div class="report-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="report-content">
+                                <h3>Issues Report</h3>
+                                <p>Detailed list of quality issues with recommendations.</p>
+                                <button class="btn btn-secondary">Generate</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Report Schedule -->
+                    <div class="report-schedule">
+                        <h3>Scheduled Reports</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Report Name</th>
+                                    <th>Frequency</th>
+                                    <th>Recipients</th>
+                                    <th>Last Run</th>
+                                    <th>Next Run</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Weekly Quality Summary</td>
+                                    <td>Weekly (Monday)</td>
+                                    <td>Project Team, Management</td>
+                                    <td>2023-09-04</td>
+                                    <td>2023-09-11</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn-icon" title="Run Now">
+                                                <i class="fas fa-play"></i>
+                                            </button>
+                                            <button class="btn-icon" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Monthly Trend Report</td>
+                                    <td>Monthly (1st)</td>
+                                    <td>Management, Stakeholders</td>
+                                    <td>2023-09-01</td>
+                                    <td>2023-10-01</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn-icon" title="Run Now">
+                                                <i class="fas fa-play"></i>
+                                            </button>
+                                            <button class="btn-icon" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Quarterly Compliance Report</td>
+                                    <td>Quarterly</td>
+                                    <td>Management, Compliance Team</td>
+                                    <td>2023-07-01</td>
+                                    <td>2023-10-01</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn-icon" title="Run Now">
+                                                <i class="fas fa-play"></i>
+                                            </button>
+                                            <button class="btn-icon" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Add New Schedule Button -->
+                    <div class="add-schedule">
+                        <button class="btn btn-primary" id="btn-add-schedule">
+                            <i class="fas fa-plus"></i> Add Scheduled Report
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Settings Panel -->
+                <section class="panel" id="settings-panel">
+                    <div class="panel-header">
+                        <h2>Quality Settings</h2>
+                    </div>
+                    
+                    <div class="settings-container">
+                        <!-- Metric Settings -->
+                        <div class="settings-section">
+                            <h3>Metric Settings</h3>
+                            <div class="settings-form">
+                                <div class="form-group">
+                                    <label>Completeness Threshold</label>
+                                    <input type="number" min="0" max="1" step="0.05" value="0.80">
+                                </div>
+                                <div class="form-group">
+                                    <label>Clarity Threshold</label>
+                                    <input type="number" min="0" max="1" step="0.05" value="0.70">
+                                </div>
+                                <div class="form-group">
+                                    <label>Consistency Threshold</label>
+                                    <input type="number" min="0" max="1" step="0.05" value="0.80">
+                                </div>
+                                <div class="form-group">
+                                    <label>Verifiability Threshold</label>
+                                    <input type="number" min="0" max="1" step="0.05" value="0.70">
+                                </div>
+                                <div class="form-group">
+                                    <label>Traceability Threshold</label>
+                                    <input type="number" min="0" max="1" step="0.05" value="0.60">
+                                </div>
+                                <div class="form-group">
+                                    <label>Feasibility Threshold</label>
+                                    <input type="number" min="0" max="1" step="0.05" value="0.70">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gate Settings -->
+                        <div class="settings-section">
+                            <h3>Gate Settings</h3>
+                            <div class="settings-form">
+                                <div class="form-group">
+                                    <label>Initial Quality Threshold</label>
+                                    <input type="number" min="0" max="1" step="0.05" value="0.60">
+                                </div>
+                                <div class="form-group">
+                                    <label>Initial Passing Ratio</label>
+                                    <input type="number" min="0" max="1" step="0.05" value="0.70">
+                                </div>
+                                <div class="form-group">
+                                    <label>Final Quality Threshold</label>
+                                    <input type="number" min="0" max="1" step="0.05" value="0.80">
+                                </div>
+                                <div class="form-group">
+                                    <label>Final Passing Ratio</label>
+                                    <input type="number" min="0" max="1" step="0.05" value="0.90">
+                                </div>
+                                <div class="form-group">
+                                    <label>Auto-run Gates</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="auto-run-gates" checked>
+                                        <label for="auto-run-gates"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notification Settings -->
+                        <div class="settings-section">
+                            <h3>Notification Settings</h3>
+                            <div class="settings-form">
+                                <div class="form-group">
+                                    <label>Email Notifications</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="email-notifications" checked>
+                                        <label for="email-notifications"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Critical Issues Alerts</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="issue-alerts" checked>
+                                        <label for="issue-alerts"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Gate Failure Notifications</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="gate-notifications" checked>
+                                        <label for="gate-notifications"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Notification Recipients</label>
+                                    <input type="text" value="team@example.com, management@example.com">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-actions">
+                            <button class="btn btn-secondary">Reset to Defaults</button>
+                            <button class="btn btn-primary">Save Settings</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Running Assessment -->
+    <div class="modal" id="run-assessment-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Run Quality Assessment</h2>
+                <button class="btn-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Requirements File</label>
+                    <input type="file" id="requirements-file">
+                </div>
+                <div class="form-group">
+                    <label>Assessment Options</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="run-all-metrics" checked>
+                            <label for="run-all-metrics">Run All Metrics</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="run-gates" checked>
+                            <label for="run-gates">Run Quality Gates</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="generate-report">
+                            <label for="generate-report">Generate Report</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="btn-cancel-assessment">Cancel</button>
+                <button class="btn btn-primary" id="btn-start-assessment">Start Assessment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for the dashboard -->
+    <script src="quality_scripts.js"></script>
+</body>
+</html>

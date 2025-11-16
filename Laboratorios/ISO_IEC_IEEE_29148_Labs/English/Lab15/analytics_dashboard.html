@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Requirements Analytics Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="analytics_styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-brain"></i> Advanced Analytics</h2>
+                <button id="theme-toggle" class="btn-icon" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            
+            <ul class="sidebar-nav">
+                <li data-panel="overview" class="active">
+                    <i class="fas fa-tachometer-alt"></i> Overview
+                </li>
+                <li data-panel="predictive">
+                    <i class="fas fa-chart-line"></i> Predictive Analytics
+                </li>
+                <li data-panel="nlp">
+                    <i class="fas fa-language"></i> NLP Analysis
+                </li>
+                <li data-panel="ml">
+                    <i class="fas fa-robot"></i> ML Models
+                </li>
+                <li data-panel="insights">
+                    <i class="fas fa-lightbulb"></i> Intelligent Insights
+                </li>
+                <li data-panel="reports">
+                    <i class="fas fa-file-alt"></i> Advanced Reports
+                </li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <span>ISO/IEC/IEEE 29148:2011</span>
+                <span>v1.5.0</span>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search analytics...">
+                </div>
+                
+                <div class="header-actions">
+                    <button id="btn-refresh-data" class="btn btn-outlined">
+                        <i class="fas fa-sync-alt"></i> Refresh Data
+                    </button>
+                    <button id="btn-export" class="btn btn-primary">
+                        <i class="fas fa-file-export"></i> Export
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Overview Panel -->
+            <div id="overview-panel" class="panel active">
+                <div class="panel-header">
+                    <h2>Analytics Overview</h2>
+                    <p>Key insights from advanced analytics models</p>
+                </div>
+                
+                <div class="metrics-summary">
+                    <div class="metric-card">
+                        <div class="metric-icon success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="metric-data">
+                            <h3>Success Prediction</h3>
+                            <p class="metric-value">84%</p>
+                            <p class="metric-trend positive">
+                                <i class="fas fa-arrow-up"></i> 5%
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="metric-data">
+                            <h3>Risk Assessment</h3>
+                            <p class="metric-value">Medium</p>
+                            <p class="metric-trend negative">
+                                <i class="fas fa-arrow-up"></i> 8%
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon info">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="metric-data">
+                            <h3>Estimated Effort</h3>
+                            <p class="metric-value">245 days</p>
+                            <p class="metric-trend neutral">
+                                <i class="fas fa-equals"></i> 0%
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon primary">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="metric-data">
+                            <h3>Quality Score</h3>
+                            <p class="metric-value">78/100</p>
+                            <p class="metric-trend positive">
+                                <i class="fas fa-arrow-up"></i> 3%
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-grid">
+                    <div class="chart-card wide">
+                        <div class="chart-header">
+                            <h3>Success Prediction Trend</h3>
+                            <div class="chart-actions">
+                                <button class="btn-chart-type active" data-type="line">
+                                    <i class="fas fa-chart-line"></i>
+                                </button>
+                                <button class="btn-chart-type" data-type="bar">
+                                    <i class="fas fa-chart-bar"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="success-prediction-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Risk Distribution</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="risk-distribution-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Effort Breakdown</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="effort-breakdown-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="insight-container">
+                    <div class="insight-header">
+                        <h3><i class="fas fa-lightbulb"></i> Key Insights</h3>
+                    </div>
+                    <div class="insight-body">
+                        <div class="insight-item">
+                            <div class="insight-icon success">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>High Success Probability</h4>
+                                <p>84% of requirements are predicted to be successfully implemented.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-item">
+                            <div class="insight-icon warning">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Risk Factors Identified</h4>
+                                <p>15 requirements have high risk factors related to complexity and traceability.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-item">
+                            <div class="insight-icon info">
+                                <i class="fas fa-info"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Effort Optimization</h4>
+                                <p>Reorganizing requirements implementation order could reduce effort by 12%.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Predictive Analytics Panel -->
+            <div id="predictive-panel" class="panel">
+                <div class="panel-header">
+                    <h2>Predictive Analytics</h2>
+                    <p>Success, risk, and effort predictions for requirements</p>
+                </div>
+                
+                <div class="control-panel">
+                    <div class="control-group">
+                        <label for="prediction-type">Prediction Type:</label>
+                        <select id="prediction-type">
+                            <option value="success">Success Prediction</option>
+                            <option value="risk">Risk Assessment</option>
+                            <option value="effort">Effort Estimation</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="confidence-threshold">Confidence Threshold:</label>
+                        <input type="range" id="confidence-threshold" min="0" max="100" value="70">
+                        <span class="range-value">70%</span>
+                    </div>
+                    
+                    <button id="btn-run-prediction" class="btn btn-primary">
+                        <i class="fas fa-play"></i> Run Prediction
+                    </button>
+                </div>
+                
+                <div class="prediction-results">
+                    <div class="results-header">
+                        <h3>Prediction Results</h3>
+                        <div class="results-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Last run: Today, 10:45 AM</span>
+                            <span><i class="fas fa-tachometer-alt"></i> Accuracy: 87%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="results-visualization">
+                        <canvas id="prediction-results-chart"></canvas>
+                    </div>
+                    
+                    <div class="results-details">
+                        <div class="tab-controls">
+                            <button class="tab-btn active" data-tab="summary">Summary</button>
+                            <button class="tab-btn" data-tab="detail">Detailed Results</button>
+                            <button class="tab-btn" data-tab="factors">Key Factors</button>
+                        </div>
+                        
+                        <div class="tab-content">
+                            <div id="summary-tab" class="tab-pane active">
+                                <div class="summary-stats">
+                                    <div class="stat-item">
+                                        <h4>Overall Success Rate</h4>
+                                        <p class="stat-value">84%</p>
+                                    </div>
+                                    <div class="stat-item">
+                                        <h4>Risk Distribution</h4>
+                                        <div class="risk-bars">
+                                            <div class="risk-bar">
+                                                <span class="risk-label">Low</span>
+                                                <div class="bar-container">
+                                                    <div class="bar" style="width: 60%; background-color: #28a745;"></div>
+                                                </div>
+                                                <span class="risk-value">60%</span>
+                                            </div>
+                                            <div class="risk-bar">
+                                                <span class="risk-label">Medium</span>
+                                                <div class="bar-container">
+                                                    <div class="bar" style="width: 25%; background-color: #ffc107;"></div>
+                                                </div>
+                                                <span class="risk-value">25%</span>
+                                            </div>
+                                            <div class="risk-bar">
+                                                <span class="risk-label">High</span>
+                                                <div class="bar-container">
+                                                    <div class="bar" style="width: 15%; background-color: #dc3545;"></div>
+                                                </div>
+                                                <span class="risk-value">15%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <h4>Total Effort</h4>
+                                        <p class="stat-value">245 days (7.8 months)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="detail-tab" class="tab-pane">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Requirement</th>
+                                            <th>Success Prob.</th>
+                                            <th>Risk Level</th>
+                                            <th>Effort (days)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>REQ-001: User Authentication</td>
+                                            <td class="success">95%</td>
+                                            <td class="success">Low</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>REQ-002: Data Storage</td>
+                                            <td class="success">88%</td>
+                                            <td class="success">Low</td>
+                                            <td>15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>REQ-003: Reporting System</td>
+                                            <td class="warning">72%</td>
+                                            <td class="warning">Medium</td>
+                                            <td>35</td>
+                                        </tr>
+                                        <tr>
+                                            <td>REQ-004: Real-time Updates</td>
+                                            <td class="danger">64%</td>
+                                            <td class="danger">High</td>
+                                            <td>28</td>
+                                        </tr>
+                                        <tr>
+                                            <td>REQ-005: Multi-platform Support</td>
+                                            <td class="warning">75%</td>
+                                            <td class="warning">Medium</td>
+                                            <td>40</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div id="factors-tab" class="tab-pane">
+                                <div class="factors-analysis">
+                                    <h4>Key Factors Influencing Predictions</h4>
+                                    <div class="factor-bars">
+                                        <div class="factor-bar">
+                                            <span class="factor-label">Completeness</span>
+                                            <div class="bar-container">
+                                                <div class="bar" style="width: 85%;"></div>
+                                            </div>
+                                            <span class="factor-value">85%</span>
+                                        </div>
+                                        <div class="factor-bar">
+                                            <span class="factor-label">Clarity</span>
+                                            <div class="bar-container">
+                                                <div class="bar" style="width: 70%;"></div>
+                                            </div>
+                                            <span class="factor-value">70%</span>
+                                        </div>
+                                        <div class="factor-bar">
+                                            <span class="factor-label">Complexity</span>
+                                            <div class="bar-container">
+                                                <div class="bar" style="width: 65%;"></div>
+                                            </div>
+                                            <span class="factor-value">65%</span>
+                                        </div>
+                                        <div class="factor-bar">
+                                            <span class="factor-label">Stakeholders</span>
+                                            <div class="bar-container">
+                                                <div class="bar" style="width: 45%;"></div>
+                                            </div>
+                                            <span class="factor-value">45%</span>
+                                        </div>
+                                        <div class="factor-bar">
+                                            <span class="factor-label">Feasibility</span>
+                                            <div class="bar-container">
+                                                <div class="bar" style="width: 90%;"></div>
+                                            </div>
+                                            <span class="factor-value">90%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- NLP Analysis Panel -->
+            <div id="nlp-panel" class="panel">
+                <div class="panel-header">
+                    <h2>Natural Language Processing</h2>
+                    <p>Text analysis and natural language insights</p>
+                </div>
+                
+                <div class="nlp-container">
+                    <div class="nlp-controls">
+                        <div class="text-analyzer">
+                            <h3>Text Analysis</h3>
+                            <textarea id="text-to-analyze" placeholder="Enter requirements text to analyze...">The system shall provide users with the ability to log in using their username and password. Authentication should be secure and efficient."></textarea>
+                            <button id="btn-analyze-text" class="btn btn-primary">
+                                <i class="fas fa-search"></i> Analyze Text
+                            </button>
+                        </div>
+                        
+                        <div class="analysis-options">
+                            <h3>Analysis Options</h3>
+                            <div class="checkbox-group">
+                                <label>
+                                    <input type="checkbox" checked> Quality Analysis
+                                </label>
+                                <label>
+                                    <input type="checkbox" checked> Sentiment Analysis
+                                </label>
+                                <label>
+                                    <input type="checkbox" checked> Entity Recognition
+                                </label>
+                                <label>
+                                    <input type="checkbox" checked> Keyword Extraction
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nlp-results">
+                        <div class="nlp-results-header">
+                            <h3>Analysis Results</h3>
+                        </div>
+                        
+                        <div class="nlp-result-grid">
+                            <div class="nlp-result-card">
+                                <h4>Quality Issues</h4>
+                                <div class="quality-issues">
+                                    <div class="issue-item warning">
+                                        <span class="issue-type">Ambiguity</span>
+                                        <span class="issue-text">"should be secure and efficient"</span>
+                                    </div>
+                                    <div class="no-issues">
+                                        <i class="fas fa-check-circle"></i> No issues found for:
+                                        <ul>
+                                            <li>Incompleteness</li>
+                                            <li>Inconsistency</li>
+                                            <li>Unverifiability</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="nlp-result-card">
+                                <h4>Sentiment Analysis</h4>
+                                <div class="sentiment-analysis">
+                                    <div class="sentiment-score">
+                                        <div class="sentiment-meter">
+                                            <div class="sentiment-value" style="left: 65%;"></div>
+                                        </div>
+                                        <div class="sentiment-labels">
+                                            <span>Negative</span>
+                                            <span>Neutral</span>
+                                            <span>Positive</span>
+                                        </div>
+                                    </div>
+                                    <div class="sentiment-details">
+                                        <p><strong>Overall:</strong> Slightly Positive (0.3)</p>
+                                        <p><strong>Positive words:</strong> ability, secure</p>
+                                        <p><strong>Negative words:</strong> None detected</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="nlp-result-card">
+                                <h4>Entity Recognition</h4>
+                                <div class="entity-recognition">
+                                    <div class="entity-item">
+                                        <span class="entity-tag system">SYSTEM</span>
+                                        <span class="entity-text">system</span>
+                                    </div>
+                                    <div class="entity-item">
+                                        <span class="entity-tag user">USER</span>
+                                        <span class="entity-text">users</span>
+                                    </div>
+                                    <div class="entity-item">
+                                        <span class="entity-tag action">ACTION</span>
+                                        <span class="entity-text">log in</span>
+                                    </div>
+                                    <div class="entity-item">
+                                        <span class="entity-tag data">DATA</span>
+                                        <span class="entity-text">username and password</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="nlp-result-card">
+                                <h4>Keywords & Complexity</h4>
+                                <div class="keywords-complexity">
+                                    <div class="keywords">
+                                        <p><strong>Top keywords:</strong> system, users, log in, username, password, authentication, secure, efficient</p>
+                                    </div>
+                                    <div class="complexity-metrics">
+                                        <div class="complexity-item">
+                                            <span>Readability:</span>
+                                            <div class="bar-container">
+                                                <div class="bar" style="width: 75%; background-color: #28a745;"></div>
+                                            </div>
+                                            <span>Good</span>
+                                        </div>
+                                        <div class="complexity-item">
+                                            <span>Sentence Complexity:</span>
+                                            <div class="bar-container">
+                                                <div class="bar" style="width: 40%; background-color: #28a745;"></div>
+                                            </div>
+                                            <span>Low</span>
+                                        </div>
+                                        <div class="complexity-item">
+                                            <span>Lexical Diversity:</span>
+                                            <div class="bar-container">
+                                                <div class="bar" style="width: 65%; background-color: #ffc107;"></div>
+                                            </div>
+                                            <span>Medium</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="topic-modeling">
+                    <div class="topic-header">
+                        <h3>Topic Modeling</h3>
+                        <button id="btn-extract-topics" class="btn btn-outlined">
+                            <i class="fas fa-sitemap"></i> Extract Topics
+                        </button>
+                    </div>
+                    
+                    <div class="topics-container">
+                        <div class="topic-card">
+                            <h4>Topic 1: Authentication & Security</h4>
+                            <div class="topic-keywords">
+                                <span>authentication</span>
+                                <span>login</span>
+                                <span>password</span>
+                                <span>secure</span>
+                                <span>credentials</span>
+                                <span>username</span>
+                                <span>access</span>
+                            </div>
+                            <div class="topic-strength">
+                                <span>Strength:</span>
+                                <div class="bar-container">
+                                    <div class="bar" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h4>Topic 2: Data Management</h4>
+                            <div class="topic-keywords">
+                                <span>database</span>
+                                <span>storage</span>
+                                <span>records</span>
+                                <span>data</span>
+                                <span>retrieve</span>
+                                <span>update</span>
+                                <span>information</span>
+                            </div>
+                            <div class="topic-strength">
+                                <span>Strength:</span>
+                                <div class="bar-container">
+                                    <div class="bar" style="width: 72%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h4>Topic 3: User Interface</h4>
+                            <div class="topic-keywords">
+                                <span>interface</span>
+                                <span>user</span>
+                                <span>display</span>
+                                <span>screen</span>
+                                <span>view</span>
+                                <span>interact</span>
+                                <span>navigation</span>
+                            </div>
+                            <div class="topic-strength">
+                                <span>Strength:</span>
+                                <div class="bar-container">
+                                    <div class="bar" style="width: 65%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ML Models Panel -->
+            <div id="ml-panel" class="panel">
+                <div class="panel-header">
+                    <h2>Machine Learning Models</h2>
+                    <p>ML models for requirements engineering</p>
+                </div>
+                
+                <div class="ml-model-cards">
+                    <div class="model-card">
+                        <div class="model-header">
+                            <h3>Categorization Model</h3>
+                            <span class="model-status active">Active</span>
+                        </div>
+                        <div class="model-body">
+                            <div class="model-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Accuracy</span>
+                                    <span class="stat-value">86%</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Training</span>
+                                    <span class="stat-value">1,450 samples</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Last Updated</span>
+                                    <span class="stat-value">2 days ago</span>
+                                </div>
+                            </div>
+                            <div class="model-description">
+                                <p>Automatically categorizes requirements into functional, non-functional, interface, and data categories.</p>
+                            </div>
+                            <div class="model-actions">
+                                <button class="btn btn-sm">View Details</button>
+                                <button class="btn btn-sm btn-primary">Run Model</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="model-card">
+                        <div class="model-header">
+                            <h3>Quality Prediction Model</h3>
+                            <span class="model-status active">Active</span>
+                        </div>
+                        <div class="model-body">
+                            <div class="model-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">RMSE</span>
+                                    <span class="stat-value">0.12</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Training</span>
+                                    <span class="stat-value">950 samples</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Last Updated</span>
+                                    <span class="stat-value">3 days ago</span>
+                                </div>
+                            </div>
+                            <div class="model-description">
+                                <p>Predicts quality scores for requirements based on multiple metrics and identifies improvement areas.</p>
+                            </div>
+                            <div class="model-actions">
+                                <button class="btn btn-sm">View Details</button>
+                                <button class="btn btn-sm btn-primary">Run Model</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="model-card">
+                        <div class="model-header">
+                            <h3>Similarity Analysis Model</h3>
+                            <span class="model-status active">Active</span>
+                        </div>
+                        <div class="model-body">
+                            <div class="model-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Precision</span>
+                                    <span class="stat-value">92%</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Training</span>
+                                    <span class="stat-value">2,300 samples</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Last Updated</span>
+                                    <span class="stat-value">1 day ago</span>
+                                </div>
+                            </div>
+                            <div class="model-description">
+                                <p>Identifies similar or duplicate requirements and clusters requirements into related groups.</p>
+                            </div>
+                            <div class="model-actions">
+                                <button class="btn btn-sm">View Details</button>
+                                <button class="btn btn-sm btn-primary">Run Model</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="model-performance">
+                    <div class="performance-header">
+                        <h3>Model Performance Monitoring</h3>
+                        <div class="time-range">
+                            <button class="time-btn active">Week</button>
+                            <button class="time-btn">Month</button>
+                            <button class="time-btn">Quarter</button>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-chart">
+                        <canvas id="model-performance-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="feature-importance">
+                    <div class="importance-header">
+                        <h3>Feature Importance</h3>
+                        <select id="model-selector">
+                            <option value="categorization">Categorization Model</option>
+                            <option value="quality">Quality Prediction Model</option>
+                            <option value="similarity">Similarity Analysis Model</option>
+                        </select>
+                    </div>
+                    
+                    <div class="importance-chart">
+                        <canvas id="feature-importance-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Intelligent Insights Panel -->
+            <div id="insights-panel" class="panel">
+                <div class="panel-header">
+                    <h2>Intelligent Insights</h2>
+                    <p>AI-generated insights and recommendations</p>
+                </div>
+                
+                <div class="insights-dashboard">
+                    <div class="insight-filters">
+                        <div class="filter-group">
+                            <label>Insight Type:</label>
+                            <div class="button-group">
+                                <button class="filter-btn active">All</button>
+                                <button class="filter-btn">Success</button>
+                                <button class="filter-btn">Risk</button>
+                                <button class="filter-btn">Quality</button>
+                                <button class="filter-btn">Efficiency</button>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Priority:</label>
+                            <div class="button-group">
+                                <button class="filter-btn active">All</button>
+                                <button class="filter-btn">High</button>
+                                <button class="filter-btn">Medium</button>
+                                <button class="filter-btn">Low</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="insight-cards">
+                        <div class="insight-card high-priority">
+                            <div class="insight-header">
+                                <span class="insight-type risk">Risk</span>
+                                <span class="insight-priority">High Priority</span>
+                            </div>
+                            <div class="insight-body">
+                                <h4>High Risk Requirements Identified</h4>
+                                <p>15 requirements (12%) have been identified as high risk, primarily due to high complexity and low verifiability.</p>
+                                <div class="affected-items">
+                                    <span>REQ-004, REQ-018, REQ-023, REQ-037, REQ-042, ...</span>
+                                </div>
+                            </div>
+                            <div class="insight-actions">
+                                <button class="btn btn-sm">View Details</button>
+                                <button class="btn btn-sm btn-primary">Take Action</button>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-card medium-priority">
+                            <div class="insight-header">
+                                <span class="insight-type quality">Quality</span>
+                                <span class="insight-priority">Medium Priority</span>
+                            </div>
+                            <div class="insight-body">
+                                <h4>Quality Improvement Opportunities</h4>
+                                <p>Improving clarity in 23 requirements could increase overall quality score from 78 to 82.</p>
+                                <div class="affected-items">
+                                    <span>REQ-008, REQ-012, REQ-029, REQ-033, REQ-045, ...</span>
+                                </div>
+                            </div>
+                            <div class="insight-actions">
+                                <button class="btn btn-sm">View Details</button>
+                                <button class="btn btn-sm btn-primary">Take Action</button>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-card high-priority">
+                            <div class="insight-header">
+                                <span class="insight-type efficiency">Efficiency</span>
+                                <span class="insight-priority">High Priority</span>
+                            </div>
+                            <div class="insight-body">
+                                <h4>Effort Optimization Opportunity</h4>
+                                <p>Reorganizing the implementation sequence could reduce total effort by 12% (29 days) with minimal impact on delivery.</p>
+                                <div class="optimization-chart">
+                                    <canvas id="optimization-chart" height="80"></canvas>
+                                </div>
+                            </div>
+                            <div class="insight-actions">
+                                <button class="btn btn-sm">View Details</button>
+                                <button class="btn btn-sm btn-primary">Optimize</button>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-card medium-priority">
+                            <div class="insight-header">
+                                <span class="insight-type success">Success</span>
+                                <span class="insight-priority">Medium Priority</span>
+                            </div>
+                            <div class="insight-body">
+                                <h4>Success Probability Enhancement</h4>
+                                <p>Addressing traceability issues in 18 requirements could increase overall success probability from 84% to 89%.</p>
+                                <div class="affected-items">
+                                    <span>REQ-005, REQ-019, REQ-027, REQ-036, REQ-048, ...</span>
+                                </div>
+                            </div>
+                            <div class="insight-actions">
+                                <button class="btn btn-sm">View Details</button>
+                                <button class="btn btn-sm btn-primary">Take Action</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="insight-generation">
+                        <div class="generation-header">
+                            <h3>Generate Custom Insights</h3>
+                        </div>
+                        <div class="generation-form">
+                            <div class="form-group">
+                                <label for="insight-focus">Focus Area:</label>
+                                <select id="insight-focus">
+                                    <option value="requirements">Requirements Quality</option>
+                                    <option value="process">Process Optimization</option>
+                                    <option value="planning">Project Planning</option>
+                                    <option value="resources">Resource Allocation</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="insight-depth">Analysis Depth:</label>
+                                <select id="insight-depth">
+                                    <option value="quick">Quick Analysis</option>
+                                    <option value="standard">Standard Analysis</option>
+                                    <option value="deep">Deep Analysis</option>
+                                </select>
+                            </div>
+                            <button id="btn-generate-insights" class="btn btn-primary">
+                                <i class="fas fa-lightbulb"></i> Generate Insights
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Advanced Reports Panel -->
+            <div id="reports-panel" class="panel">
+                <div class="panel-header">
+                    <h2>Advanced Reports</h2>
+                    <p>Comprehensive analytics reports and exports</p>
+                </div>
+                
+                <div class="reports-container">
+                    <div class="report-templates">
+                        <div class="templates-header">
+                            <h3>Report Templates</h3>
+                            <button class="btn btn-sm btn-outlined">
+                                <i class="fas fa-plus"></i> New Template
+                            </button>
+                        </div>
+                        
+                        <div class="template-cards">
+                            <div class="template-card active">
+                                <div class="template-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="template-info">
+                                    <h4>Executive Summary</h4>
+                                    <p>High-level overview of key metrics and insights</p>
+                                </div>
+                            </div>
+                            
+                            <div class="template-card">
+                                <div class="template-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="template-info">
+                                    <h4>Quality Assessment</h4>
+                                    <p>Detailed quality metrics and analysis</p>
+                                </div>
+                            </div>
+                            
+                            <div class="template-card">
+                                <div class="template-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="template-info">
+                                    <h4>Risk Analysis</h4>
+                                    <p>Comprehensive risk assessment report</p>
+                                </div>
+                            </div>
+                            
+                            <div class="template-card">
+                                <div class="template-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="template-info">
+                                    <h4>Predictive Forecast</h4>
+                                    <p>Future trends and projections</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="report-configuration">
+                        <div class="config-header">
+                            <h3>Report Configuration</h3>
+                        </div>
+                        
+                        <div class="config-form">
+                            <div class="form-group">
+                                <label for="report-title">Report Title:</label>
+                                <input type="text" id="report-title" value="Executive Summary - September 2025">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="report-period">Time Period:</label>
+                                    <select id="report-period">
+                                        <option value="current">Current Month</option>
+                                        <option value="previous">Previous Month</option>
+                                        <option value="quarter">Current Quarter</option>
+                                        <option value="year">Year to Date</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="report-format">Format:</label>
+                                    <select id="report-format">
+                                        <option value="pdf">PDF Document</option>
+                                        <option value="excel">Excel Spreadsheet</option>
+                                        <option value="html">HTML Report</option>
+                                        <option value="json">JSON Data</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="report-sections">
+                                <h4>Sections to Include:</h4>
+                                <div class="checkbox-group">
+                                    <label>
+                                        <input type="checkbox" checked> Overview & Metrics
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" checked> Predictive Analytics
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" checked> Quality Assessment
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" checked> Risk Analysis
+                                    </label>
+                                    <label>
+                                        <input type="checkbox"> NLP Insights
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" checked> ML Model Performance
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" checked> Key Recommendations
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button class="btn btn-outlined">
+                                    <i class="fas fa-save"></i> Save Configuration
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-file-export"></i> Generate Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="report-preview">
+                        <div class="preview-header">
+                            <h3>Report Preview</h3>
+                            <div class="preview-actions">
+                                <button class="btn btn-sm btn-outlined">
+                                    <i class="fas fa-print"></i> Print
+                                </button>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="preview-container">
+                            <div class="preview-document">
+                                <div class="document-header">
+                                    <h2>Executive Summary</h2>
+                                    <p>Requirements Analytics Report - September 2025</p>
+                                </div>
+                                
+                                <div class="document-section">
+                                    <h3>1. Overview</h3>
+                                    <p>This report provides an executive summary of the requirements analytics for the project. The overall quality score is 78/100, with 84% of requirements predicted to be successfully implemented.</p>
+                                    
+                                    <div class="summary-metrics">
+                                        <div class="metric-item">
+                                            <span class="metric-label">Quality Score:</span>
+                                            <span class="metric-value">78/100</span>
+                                        </div>
+                                        <div class="metric-item">
+                                            <span class="metric-label">Success Rate:</span>
+                                            <span class="metric-value">84%</span>
+                                        </div>
+                                        <div class="metric-item">
+                                            <span class="metric-label">Risk Profile:</span>
+                                            <span class="metric-value">Medium</span>
+                                        </div>
+                                        <div class="metric-item">
+                                            <span class="metric-label">Estimated Effort:</span>
+                                            <span class="metric-value">245 days</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="document-section">
+                                    <h3>2. Key Metrics</h3>
+                                    <div class="report-chart">
+                                        <img src="https://via.placeholder.com/600x300" alt="Report chart">
+                                    </div>
+                                </div>
+                                
+                                <div class="document-section">
+                                    <h3>3. Recommendations</h3>
+                                    <ul class="recommendations-list">
+                                        <li>Address high-risk requirements to improve overall success probability</li>
+                                        <li>Enhance clarity in ambiguous requirements to increase quality score</li>
+                                        <li>Consider implementation sequence optimization to reduce effort</li>
+                                        <li>Improve traceability for requirements with low scores</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="analytics_scripts.js"></script>
+</body>
+</html>

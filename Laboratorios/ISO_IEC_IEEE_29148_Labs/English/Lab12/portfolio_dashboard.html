@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirements Portfolio Management Dashboard</title>
+    <link rel="stylesheet" href="portfolio_styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- D3.js for advanced visualizations -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>Requirements Portfolio</h1>
+                <p>ISO/IEC/IEEE 29148:2011</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" data-panel="dashboard">
+                        <i class="fas fa-chart-pie"></i> Dashboard
+                    </li>
+                    <li data-panel="projects">
+                        <i class="fas fa-project-diagram"></i> Projects
+                    </li>
+                    <li data-panel="resources">
+                        <i class="fas fa-users"></i> Resources
+                    </li>
+                    <li data-panel="strategy">
+                        <i class="fas fa-bullseye"></i> Strategy
+                    </li>
+                    <li data-panel="analysis">
+                        <i class="fas fa-analytics"></i> Analysis
+                    </li>
+                    <li data-panel="reports">
+                        <i class="fas fa-file-alt"></i> Reports
+                    </li>
+                    <li data-panel="settings">
+                        <i class="fas fa-cog"></i> Settings
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <span>ISO/IEC/IEEE 29148:2011</span>
+                <button id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Bar with search and user info -->
+            <header class="top-bar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search requirements, projects, resources...">
+                </div>
+                <div class="top-actions">
+                    <button class="action-button">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </button>
+                    <button class="action-button">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                    <div class="user-info">
+                        <span>Admin User</span>
+                        <img src="https://via.placeholder.com/40" alt="User Profile">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Panels -->
+            <div class="content-panels">
+                <!-- Dashboard Panel -->
+                <section class="panel active" id="dashboard-panel">
+                    <div class="panel-header">
+                        <h2>Portfolio Dashboard</h2>
+                        <div class="panel-actions">
+                            <select id="time-range">
+                                <option value="day">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month" selected>This Month</option>
+                                <option value="quarter">This Quarter</option>
+                                <option value="year">This Year</option>
+                            </select>
+                            <button class="btn-export">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- KPI Cards -->
+                    <div class="kpi-container">
+                        <div class="kpi-card">
+                            <div class="kpi-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <h3>Total Requirements</h3>
+                                <div class="kpi-value">2,458</div>
+                                <div class="kpi-trend positive">
+                                    <i class="fas fa-arrow-up"></i> 12.5%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <h3>Active Projects</h3>
+                                <div class="kpi-value">34</div>
+                                <div class="kpi-trend positive">
+                                    <i class="fas fa-arrow-up"></i> 3.2%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <h3>Risk Level</h3>
+                                <div class="kpi-value">Medium</div>
+                                <div class="kpi-trend neutral">
+                                    <i class="fas fa-minus"></i> Stable
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <h3>Resource Utilization</h3>
+                                <div class="kpi-value">78%</div>
+                                <div class="kpi-trend negative">
+                                    <i class="fas fa-arrow-down"></i> 4.1%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Row -->
+                    <div class="charts-container">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Requirements by Status</h3>
+                                <button class="btn-more">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="requirements-status-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Strategic Alignment</h3>
+                                <button class="btn-more">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="strategic-alignment-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Performance -->
+                    <div class="chart-card full-width">
+                        <div class="chart-header">
+                            <h3>Portfolio Performance Trend</h3>
+                            <div class="chart-actions">
+                                <button class="btn-chart-type active" data-type="performance">Performance</button>
+                                <button class="btn-chart-type" data-type="resources">Resources</button>
+                                <button class="btn-chart-type" data-type="risks">Risks</button>
+                                <button class="btn-more">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="portfolio-trend-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Projects and Resources Tables -->
+                    <div class="tables-container">
+                        <div class="table-card">
+                            <div class="table-header">
+                                <h3>Top Projects</h3>
+                                <button class="btn-view-all">View All</button>
+                            </div>
+                            <div class="table-body">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Project Name</th>
+                                            <th>Requirements</th>
+                                            <th>Completion</th>
+                                            <th>Risk</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Customer Portal Redesign</td>
+                                            <td>234</td>
+                                            <td>
+                                                <div class="progress-bar">
+                                                    <div class="progress" style="width: 78%"></div>
+                                                    <span>78%</span>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge low">Low</span></td>
+                                            <td><span class="status on-track">On Track</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mobile App Development</td>
+                                            <td>187</td>
+                                            <td>
+                                                <div class="progress-bar">
+                                                    <div class="progress" style="width: 45%"></div>
+                                                    <span>45%</span>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge medium">Medium</span></td>
+                                            <td><span class="status at-risk">At Risk</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>API Modernization</td>
+                                            <td>156</td>
+                                            <td>
+                                                <div class="progress-bar">
+                                                    <div class="progress" style="width: 92%"></div>
+                                                    <span>92%</span>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge low">Low</span></td>
+                                            <td><span class="status on-track">On Track</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Security Enhancement</td>
+                                            <td>94</td>
+                                            <td>
+                                                <div class="progress-bar">
+                                                    <div class="progress" style="width: 23%"></div>
+                                                    <span>23%</span>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge high">High</span></td>
+                                            <td><span class="status delayed">Delayed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Data Platform Migration</td>
+                                            <td>212</td>
+                                            <td>
+                                                <div class="progress-bar">
+                                                    <div class="progress" style="width: 67%"></div>
+                                                    <span>67%</span>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge medium">Medium</span></td>
+                                            <td><span class="status on-track">On Track</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="table-card">
+                            <div class="table-header">
+                                <h3>Resource Allocation</h3>
+                                <button class="btn-view-all">View All</button>
+                            </div>
+                            <div class="table-body">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Resource Group</th>
+                                            <th>Allocated</th>
+                                            <th>Utilization</th>
+                                            <th>Capacity</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Business Analysts</td>
+                                            <td>15/18</td>
+                                            <td>
+                                                <div class="progress-bar">
+                                                    <div class="progress" style="width: 83%"></div>
+                                                    <span>83%</span>
+                                                </div>
+                                            </td>
+                                            <td>High</td>
+                                            <td><span class="status on-track">Optimal</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Development Team</td>
+                                            <td>42/45</td>
+                                            <td>
+                                                <div class="progress-bar">
+                                                    <div class="progress" style="width: 93%"></div>
+                                                    <span>93%</span>
+                                                </div>
+                                            </td>
+                                            <td>Critical</td>
+                                            <td><span class="status at-risk">Overallocated</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>QA Engineers</td>
+                                            <td>12/20</td>
+                                            <td>
+                                                <div class="progress-bar">
+                                                    <div class="progress" style="width: 60%"></div>
+                                                    <span>60%</span>
+                                                </div>
+                                            </td>
+                                            <td>Medium</td>
+                                            <td><span class="status on-track">Optimal</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>UX Designers</td>
+                                            <td>8/10</td>
+                                            <td>
+                                                <div class="progress-bar">
+                                                    <div class="progress" style="width: 80%"></div>
+                                                    <span>80%</span>
+                                                </div>
+                                            </td>
+                                            <td>High</td>
+                                            <td><span class="status on-track">Optimal</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Product Managers</td>
+                                            <td>7/8</td>
+                                            <td>
+                                                <div class="progress-bar">
+                                                    <div class="progress" style="width: 88%"></div>
+                                                    <span>88%</span>
+                                                </div>
+                                            </td>
+                                            <td>High</td>
+                                            <td><span class="status at-risk">Near Capacity</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Panel (placeholder) -->
+                <section class="panel" id="projects-panel">
+                    <div class="panel-header">
+                        <h2>Projects Portfolio</h2>
+                    </div>
+                    <div class="placeholder-content">
+                        <i class="fas fa-project-diagram"></i>
+                        <h3>Projects Panel</h3>
+                        <p>Projects management content will be displayed here.</p>
+                    </div>
+                </section>
+
+                <!-- Resources Panel (placeholder) -->
+                <section class="panel" id="resources-panel">
+                    <div class="panel-header">
+                        <h2>Resource Management</h2>
+                    </div>
+                    <div class="placeholder-content">
+                        <i class="fas fa-users"></i>
+                        <h3>Resources Panel</h3>
+                        <p>Resource allocation and management content will be displayed here.</p>
+                    </div>
+                </section>
+
+                <!-- Strategy Panel (placeholder) -->
+                <section class="panel" id="strategy-panel">
+                    <div class="panel-header">
+                        <h2>Strategic Alignment</h2>
+                    </div>
+                    <div class="placeholder-content">
+                        <i class="fas fa-bullseye"></i>
+                        <h3>Strategy Panel</h3>
+                        <p>Strategic alignment and objectives content will be displayed here.</p>
+                    </div>
+                </section>
+
+                <!-- Analysis Panel (placeholder) -->
+                <section class="panel" id="analysis-panel">
+                    <div class="panel-header">
+                        <h2>Portfolio Analysis</h2>
+                    </div>
+                    <div class="placeholder-content">
+                        <i class="fas fa-analytics"></i>
+                        <h3>Analysis Panel</h3>
+                        <p>Portfolio analysis and insights content will be displayed here.</p>
+                    </div>
+                </section>
+
+                <!-- Reports Panel (placeholder) -->
+                <section class="panel" id="reports-panel">
+                    <div class="panel-header">
+                        <h2>Portfolio Reports</h2>
+                    </div>
+                    <div class="placeholder-content">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Reports Panel</h3>
+                        <p>Reporting and documentation content will be displayed here.</p>
+                    </div>
+                </section>
+
+                <!-- Settings Panel (placeholder) -->
+                <section class="panel" id="settings-panel">
+                    <div class="panel-header">
+                        <h2>System Settings</h2>
+                    </div>
+                    <div class="placeholder-content">
+                        <i class="fas fa-cog"></i>
+                        <h3>Settings Panel</h3>
+                        <p>System configuration and settings content will be displayed here.</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Template for Notifications -->
+    <div class="notification-panel" id="notification-panel" style="display: none;">
+        <div class="notification-header">
+            <h3>Notifications</h3>
+            <button class="btn-close-notifications">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="notification-list">
+            <div class="notification-item unread">
+                <div class="notification-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="notification-content">
+                    <h4>Resource Conflict Detected</h4>
+                    <p>Development team is overallocated by 15%</p>
+                    <span class="notification-time">10 minutes ago</span>
+                </div>
+            </div>
+            <div class="notification-item unread">
+                <div class="notification-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="notification-content">
+                    <h4>Portfolio Performance Update</h4>
+                    <p>Monthly portfolio health score increased by 5%</p>
+                    <span class="notification-time">2 hours ago</span>
+                </div>
+            </div>
+            <div class="notification-item">
+                <div class="notification-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="notification-content">
+                    <h4>Project Milestone Achieved</h4>
+                    <p>API Modernization project reached 90% completion</p>
+                    <span class="notification-time">Yesterday</span>
+                </div>
+            </div>
+        </div>
+        <div class="notification-footer">
+            <button class="btn-mark-read">Mark all as read</button>
+            <button class="btn-view-all">View all notifications</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for the dashboard -->
+    <script src="portfolio_scripts.js"></script>
+</body>
+</html>

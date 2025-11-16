@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO/IEC/IEEE 29148 Labs - Requirements Engineering</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #667eea;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .nav-links {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .nav-links a {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 0 10px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .intro {
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 8px;
+        }
+        
+        details {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        details:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+        
+        details[open] {
+            border-color: #764ba2;
+            background: #f8f9ff;
+        }
+        
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: #764ba2;
+            font-size: 1.2em;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        summary:hover {
+            background-color: #f0f0ff;
+        }
+        
+        details > div {
+            padding: 15px;
+            margin-top: 10px;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        li {
+            background: #fff;
+            margin-bottom: 8px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            background: #f8f9ff;
+            transform: translateX(5px);
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        strong {
+            color: #764ba2;
+        }
+        
+        .lab-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ISO/IEC/IEEE 29148 - Requirements Engineering</h1>
+        
+        <div class="nav-links">
+            <a href="../../index_en.html">🏠 Back to Index</a>
+            <a href="iso_29148_labs.html">🇪🇸 Versión en Español</a>
+        </div>
+        
+        <div class="intro">
+            <p><strong>ISO/IEC/IEEE 29148:2011</strong> is an international standard that provides comprehensive guidelines for requirements engineering processes and products in software and systems engineering.</p>
+            <p>This laboratory series contains <strong>15 practical laboratories</strong> covering the complete requirements engineering lifecycle, from initial elicitation through maintenance and retirement.</p>
+        </div>
+
+        <h2>Laboratory List</h2>
+
+        <details>
+            <summary><span class="lab-badge">Lab 1</span>Introduction to Requirements Engineering</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Develop a comprehensive introduction to Requirements Engineering according to ISO/IEC/IEEE 29148 standard and create an interactive system that demonstrates fundamental concepts.</p>
+                
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Define requirements engineering concepts and terminology</li>
+                    <li>Explain the requirements engineering process according to ISO/IEC/IEEE 29148</li>
+                    <li>Create interactive examples of requirements artifacts</li>
+                    <li>Develop a requirements classification system</li>
+                    <li>Build a stakeholder analysis tool</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>Interactive requirements engineering introduction, requirements artifact templates and examples, stakeholder analysis tools, and requirements quality assessment framework.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 2</span>Requirements Elicitation Techniques</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Master different requirements elicitation techniques and create a comprehensive elicitation management system.</p>
+                
+                <h3>Key Tasks</h3>
+                <ul>
+                    <li><strong>Interview Management System:</strong> Interview planning, scheduling, question generation, response recording</li>
+                    <li><strong>Questionnaire Builder:</strong> Dynamic questionnaire creation, multiple question types, response analysis</li>
+                    <li><strong>Observation Tools:</strong> Activity logging, workflow recording, time-motion studies</li>
+                    <li><strong>Document Analysis System:</strong> Document parsing, requirements extraction, gap analysis</li>
+                    <li><strong>Prototyping Interface:</strong> Wireframe creation, interactive prototype builder, feedback collection</li>
+                </ul>
+
+                <h3>Technologies</h3>
+                <p>HTML/CSS/JavaScript for interactive dashboard, Python for elicitation data analysis with statistical analysis, pattern recognition, and multi-technique integration.</p>
+
+                <h3>Expected Output</h3>
+                <p>Complete elicitation dashboard with all tools functional, Python analysis system for processing elicitation data, and documentation of a real-world elicitation process application.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 3</span>Requirements Analysis & Modeling</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Analyze requirements using systematic decomposition techniques and create different types of requirement models (functional, data, behavioral).</p>
+                
+                <h3>Scenario</h3>
+                <p>Smart Home Automation System integrating lighting, security, climate control, and entertainment systems.</p>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li><strong>Requirements Analyzer:</strong> Ambiguity detection, completeness checking, consistency validation</li>
+                    <li><strong>Categorization:</strong> Automatic requirement categorization by type</li>
+                    <li><strong>Dependency Identification:</strong> Find relationships between requirements</li>
+                    <li><strong>Prioritization:</strong> Multi-factor requirement prioritization</li>
+                    <li><strong>Model Generation:</strong> Functional hierarchy, data flow, state machine, use case models</li>
+                </ul>
+
+                <h3>Tasks</h3>
+                <p>Fix intentional bugs in provided Python analysis tool and modeling dashboard, implement complete analysis functionality, create sample data and comprehensive tests.</p>
+
+                <h3>Expected Output</h3>
+                <p>Fixed Python analysis tool with all bugs resolved, working modeling dashboard with interactive features, sample requirements data, comprehensive test suite, and documentation.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 4</span>Requirements Specification</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Master the art of requirements specification by creating comprehensive, unambiguous requirement documents using industry-standard formats and templates.</p>
+                
+                <h3>Core Components</h3>
+                <ul>
+                    <li><strong>SRS Generator:</strong> Generate structured Software Requirements Specifications with proper sections</li>
+                    <li><strong>Multiple Formats:</strong> Implement textual, tabular, and graphical specification formats</li>
+                    <li><strong>Traceability Matrix:</strong> Link requirements to design and test cases</li>
+                    <li><strong>Validation:</strong> Validate specifications against quality standards</li>
+                    <li><strong>Baseline Management:</strong> Version control and baseline creation</li>
+                    <li><strong>Interactive Viewer:</strong> Web-based specification viewer for stakeholders</li>
+                </ul>
+
+                <h3>Technologies</h3>
+                <p>Python for specification generation and validation, JSON/YAML for structured storage, PlantUML/Mermaid for graphical specifications, Git for version control.</p>
+
+                <h3>Expected Output</h3>
+                <p>Complete specification generator, interactive viewer with proper styling and functionality, export capabilities in multiple formats, and comprehensive documentation.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 5</span>Requirements Validation</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Implement a comprehensive requirements validation system following ISO/IEC/IEEE 29148 standards.</p>
+                
+                <h3>Validation Components</h3>
+                <ul>
+                    <li><strong>Automated Validation Engine:</strong> Rule-based validation with syntax and semantic checking</li>
+                    <li><strong>Quality Metrics:</strong> Completeness, correctness, consistency, clarity, verifiability, traceability</li>
+                    <li><strong>Test Case Generation:</strong> Automatically generate test cases from requirements</li>
+                    <li><strong>Acceptance Testing:</strong> Framework for acceptance criteria and testing</li>
+                    <li><strong>Standards Compliance:</strong> Validate against ISO/IEC/IEEE 29148 standards</li>
+                </ul>
+
+                <h3>Key Tasks</h3>
+                <p>Fix intentional bugs in validation engine, implement comprehensive validation methods, complete validation dashboard with interactive features, create supporting files (CSS, JavaScript, test data).</p>
+
+                <h3>Expected Output</h3>
+                <p>Complete validation engine with all validation types, interactive web dashboard, automatic test case generation, acceptance testing framework, and comprehensive validation reporting.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 6</span>Requirements Management</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Implement a comprehensive requirements management system that handles the complete lifecycle from creation to retirement.</p>
+                
+                <h3>Core Functionality</h3>
+                <ul>
+                    <li><strong>Requirements Repository:</strong> Centralized storage with version control, metadata management, search and filtering</li>
+                    <li><strong>Change Management:</strong> Formal change request submission, impact analysis, approval workflow, implementation tracking</li>
+                    <li><strong>Traceability Matrix:</strong> Bidirectional traceability between business requirements, system requirements, design, and test cases</li>
+                    <li><strong>Stakeholder Collaboration:</strong> Role-based access control, notifications, comment threads, document sharing</li>
+                    <li><strong>Audit and Compliance:</strong> Complete audit trail, compliance reporting, data export, backup procedures</li>
+                    <li><strong>Reporting and Analytics:</strong> Status reports, change metrics, traceability completeness, engagement analytics</li>
+                </ul>
+
+                <h3>System Architecture</h3>
+                <p>Backend: Python with Flask/Django, Database: SQLite/PostgreSQL, Frontend: HTML/CSS/JavaScript, RESTful API for integrations, Authentication and authorization.</p>
+
+                <h3>Non-Functional Requirements</h3>
+                <p>Performance: &lt;2s for reads, &lt;5s for complex queries. Security: User authentication, encryption, RBAC, audit logging. Usability: Intuitive interface, responsive design, accessibility. Reliability: 99.9% uptime.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 7</span>Requirements Validation and Verification</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Implement a comprehensive requirements validation and verification system to ensure requirements quality, completeness, and consistency.</p>
+                
+                <h3>Core System Requirements</h3>
+                <ul>
+                    <li><strong>Automated Validation Engine:</strong> Syntax and semantic validation, consistency checking across requirement sets, standards compliance checking</li>
+                    <li><strong>Quality Metrics System:</strong> Six quality dimensions (Completeness, Correctness, Consistency, Clarity, Verifiability, Traceability), 0-100 scoring scale, trend analysis</li>
+                    <li><strong>Verification Methods:</strong> Formal analysis, demonstration walkthroughs, requirements-based test case generation, formal technical reviews</li>
+                    <li><strong>Review Management:</strong> Formal review workflow, standardized checklists, findings tracking, resolution status management</li>
+                    <li><strong>Validation Reporting:</strong> Comprehensive reports, quality dashboards, compliance documentation, audit trails</li>
+                </ul>
+
+                <h3>Technical Requirements</h3>
+                <p>Process 1000 requirements in &lt;30 seconds, real-time validation, concurrent validation support, REST API integration, web dashboard, database storage, export capabilities (PDF, Excel, JSON).</p>
+
+                <h3>Expected Deliverables</h3>
+                <p>Automated validation engine, quality metrics calculator, verification framework, review management system, validation dashboard, comprehensive reporting.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 8</span>Requirements Metrics and Analytics</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Implement comprehensive requirements metrics, analytics, and reporting systems for data-driven requirements management.</p>
+                
+                <h3>Functional Requirements</h3>
+                <ul>
+                    <li><strong>Metrics Collection Engine:</strong> Automated metrics gathering, real-time calculation and aggregation, historical data retention</li>
+                    <li><strong>Analytics Dashboard:</strong> Interactive metrics visualization, real-time updates, customizable layouts and widgets</li>
+                    <li><strong>KPI Monitoring System:</strong> Definition and tracking of key performance indicators, threshold monitoring and alerting, trend analysis and forecasting</li>
+                    <li><strong>Automated Report Generation:</strong> Scheduled generation, multiple formats (PDF, Excel, HTML), custom templates</li>
+                    <li><strong>Trend Analysis Engine:</strong> Historical trend analysis, predictive analytics, anomaly detection</li>
+                </ul>
+
+                <h3>Metrics Categories</h3>
+                <p><strong>Quality Metrics:</strong> Requirements quality scores, defect density, review effectiveness. <strong>Process Metrics:</strong> Processing time, review cycle time, approval turnaround. <strong>Productivity Metrics:</strong> Requirements created per period, review completion rates. <strong>Compliance Metrics:</strong> Standards compliance, audit findings, regulatory adherence.</p>
+
+                <h3>Technologies</h3>
+                <p>Python with pandas, matplotlib, seaborn, plotly, dash for analytics. Interactive dashboards with drill-down capabilities, custom layouts, exportable visualizations.</p>
+
+                <h3>Success Criteria</h3>
+                <p>Metrics collection in real-time, interactive dashboards, KPI tracking and alerting, automated reporting in multiple formats, accurate trend predictions, test coverage &gt;90%.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 9</span>Requirements Tools and Automation</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Implement automated requirements management tools and integration frameworks for tool integration and workflow automation.</p>
+                
+                <h3>Functional Requirements</h3>
+                <ul>
+                    <li><strong>Tool Integration Framework:</strong> Generic integration framework, plugin architecture for connectors, data mapping and transformation</li>
+                    <li><strong>Automation Engine:</strong> Workflow automation for requirements processes, rule-based triggers, automated notifications</li>
+                    <li><strong>API Gateway:</strong> RESTful API for requirements operations, authentication and authorization, rate limiting and throttling</li>
+                    <li><strong>Data Synchronization:</strong> Bidirectional synchronization, conflict resolution mechanisms, synchronization scheduling</li>
+                </ul>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Generic connector architecture for popular requirements tools</li>
+                    <li>Data mapping and transformation between tools</li>
+                    <li>Rule-based automation workflows</li>
+                    <li>Event-driven processing and orchestration</li>
+                    <li>RESTful API with OAuth 2.0 authentication</li>
+                    <li>Request/response logging and monitoring</li>
+                </ul>
+
+                <h3>Non-Functional Requirements</h3>
+                <p>API response time &lt;200ms, support 1000+ concurrent users, 99.95% uptime, OAuth 2.0 authentication and authorization.</p>
+
+                <h3>Success Criteria</h3>
+                <p>Tool connectors functional, automation workflows working, API endpoints responding correctly, data synchronization operational, all tests passing.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 10</span>Requirements Compliance and Audit</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Implement compliance monitoring and audit trails for requirements management with comprehensive compliance checking and regulatory reporting.</p>
+                
+                <h3>Functional Requirements</h3>
+                <ul>
+                    <li><strong>Compliance Monitoring System:</strong> Real-time compliance checking, rule-based validation, compliance status tracking</li>
+                    <li><strong>Audit Trail System:</strong> Comprehensive audit logging, change tracking and versioning, audit report generation</li>
+                    <li><strong>Regulatory Reporting:</strong> Automated compliance reports, regulatory format support, report scheduling and distribution</li>
+                    <li><strong>Compliance Dashboard:</strong> Real-time compliance metrics, interactive audit views, compliance trend analysis</li>
+                </ul>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Real-time rule validation and compliance checking</li>
+                    <li>Immutable audit logs with encryption</li>
+                    <li>Change tracking and comprehensive versioning</li>
+                    <li>Automated alerts and notifications for compliance violations</li>
+                    <li>Multiple regulatory format support (SOX, GDPR, ISO 27001)</li>
+                    <li>Interactive compliance dashboards with trend analysis</li>
+                </ul>
+
+                <h3>Non-Functional Requirements</h3>
+                <p>Security: Audit logs tamper-proof and encrypted. Performance: Real-time compliance checking &lt;1 second. Reliability: 99.99% audit log availability. Compliance: SOX, GDPR, ISO 27001 compatible.</p>
+
+                <h3>Success Criteria</h3>
+                <p>Compliance rules functional, audit logs recording correctly, reports generating properly, dashboard showing real-time data, all tests passing.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 11</span>Requirements Change Impact Analysis</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Develop advanced change impact analysis capabilities to understand the ripple effects of requirement modifications across the entire system.</p>
+                
+                <h3>Core Capabilities</h3>
+                <ul>
+                    <li>Automated impact analysis algorithms</li>
+                    <li>Dependency graph visualization</li>
+                    <li>Risk assessment for proposed changes</li>
+                    <li>Cost and effort estimation</li>
+                    <li>Stakeholder impact notification</li>
+                    <li>Change simulation and "what-if" analysis</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>Complete impact analysis engine with visualization tools, risk assessment framework, cost estimation algorithms, and comprehensive impact reports.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 12</span>Requirements Quality Assurance</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Implement comprehensive quality assurance processes for requirements engineering with automated quality checking and improvement recommendations.</p>
+                
+                <h3>Quality Dimensions</h3>
+                <ul>
+                    <li><strong>Completeness:</strong> Verify all necessary information is present</li>
+                    <li><strong>Consistency:</strong> Check for conflicts and contradictions</li>
+                    <li><strong>Correctness:</strong> Validate accuracy and feasibility</li>
+                    <li><strong>Clarity:</strong> Assess understandability and ambiguity</li>
+                    <li><strong>Verifiability:</strong> Ensure testability and measurability</li>
+                    <li><strong>Traceability:</strong> Verify linkage to sources and design</li>
+                </ul>
+
+                <h3>QA Tools</h3>
+                <p>Automated quality checkers, natural language processing for clarity analysis, quality scoring algorithms, improvement recommendation engine, quality trend tracking.</p>
+
+                <h3>Expected Output</h3>
+                <p>Complete QA framework with automated checkers, quality dashboards, improvement recommendations, and quality certification system.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 13</span>Requirements Documentation and Templates</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Create comprehensive requirements documentation systems with standardized templates and automated document generation.</p>
+                
+                <h3>Documentation Types</h3>
+                <ul>
+                    <li><strong>SRS Templates:</strong> Software Requirements Specification templates compliant with IEEE standards</li>
+                    <li><strong>User Stories:</strong> Agile user story templates and management</li>
+                    <li><strong>Use Cases:</strong> Detailed use case documentation with scenarios</li>
+                    <li><strong>Functional Specs:</strong> Functional specification document templates</li>
+                    <li><strong>Non-Functional Specs:</strong> NFR documentation and quality attributes</li>
+                </ul>
+
+                <h3>Features</h3>
+                <p>Template library management, automated document generation, version control integration, export to multiple formats (PDF, Word, HTML), collaborative editing capabilities.</p>
+
+                <h3>Expected Output</h3>
+                <p>Complete documentation system with template library, automated generation engine, version control, and multi-format export capabilities.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 14</span>Requirements Prioritization and Negotiation</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Implement advanced prioritization techniques and stakeholder negotiation support for requirements decision-making.</p>
+                
+                <h3>Prioritization Methods</h3>
+                <ul>
+                    <li><strong>MoSCoW:</strong> Must have, Should have, Could have, Won't have classification</li>
+                    <li><strong>Kano Model:</strong> Basic, performance, excitement factors analysis</li>
+                    <li><strong>Cost-Value:</strong> Cost-benefit and ROI-based prioritization</li>
+                    <li><strong>AHP:</strong> Analytical Hierarchy Process for complex decisions</li>
+                    <li><strong>100-Point Method:</strong> Distributed voting for stakeholder consensus</li>
+                </ul>
+
+                <h3>Negotiation Support</h3>
+                <p>Stakeholder voting systems, conflict resolution tools, trade-off analysis, consensus building algorithms, negotiation history tracking.</p>
+
+                <h3>Expected Output</h3>
+                <p>Complete prioritization framework with multiple methods, negotiation support tools, consensus building system, and decision documentation.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 15</span>Requirements Engineering Best Practices and Lessons Learned</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Synthesize all learned concepts and create a comprehensive requirements engineering best practices framework with lessons learned repository.</p>
+                
+                <h3>Best Practices Repository</h3>
+                <ul>
+                    <li>Elicitation best practices and anti-patterns</li>
+                    <li>Analysis and modeling guidelines</li>
+                    <li>Specification standards and conventions</li>
+                    <li>Validation and verification checklists</li>
+                    <li>Management and maintenance strategies</li>
+                    <li>Tool selection and usage guidelines</li>
+                </ul>
+
+                <h3>Lessons Learned System</h3>
+                <ul>
+                    <li>Knowledge base of common issues and solutions</li>
+                    <li>Case studies from real-world projects</li>
+                    <li>Success patterns and failure modes</li>
+                    <li>Metrics and benchmarks from industry</li>
+                    <li>Continuous improvement framework</li>
+                </ul>
+
+                <h3>Comprehensive Integration</h3>
+                <p>This final lab integrates all previous laboratories into a cohesive requirements engineering framework, demonstrating mastery of the complete ISO/IEC/IEEE 29148 standard.</p>
+
+                <h3>Expected Output</h3>
+                <p>Complete best practices framework, lessons learned repository, integrated requirements engineering toolkit, comprehensive case studies, and certification-ready knowledge demonstration.</p>
+            </div>
+        </details>
+
+        <div class="nav-links" style="margin-top: 40px;">
+            <a href="../../index_en.html">🏠 Back to Index</a>
+            <a href="iso_29148_labs.html">🇪🇸 Versión en Español</a>
+        </div>
+    </div>
+</body>
+</html>

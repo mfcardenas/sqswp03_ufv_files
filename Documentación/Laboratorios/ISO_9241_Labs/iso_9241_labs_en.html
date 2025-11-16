@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 9241 Labs - Ergonomics of Human-System Interaction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #667eea;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .nav-links {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .nav-links a {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 0 10px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .intro {
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 8px;
+        }
+        
+        details {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        details:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+        
+        details[open] {
+            border-color: #764ba2;
+            background: #f8f9ff;
+        }
+        
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: #764ba2;
+            font-size: 1.2em;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        summary:hover {
+            background-color: #f0f0ff;
+        }
+        
+        details > div {
+            padding: 15px;
+            margin-top: 10px;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        li {
+            background: #fff;
+            margin-bottom: 8px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            background: #f8f9ff;
+            transform: translateX(5px);
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        strong {
+            color: #764ba2;
+        }
+        
+        .lab-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ISO 9241 - Ergonomics of Human-System Interaction</h1>
+        
+        <div class="nav-links">
+            <a href="../../index_en.html">🏠 Back to Index</a>
+            <a href="iso_9241_labs.html">🇪🇸 Versión en Español</a>
+        </div>
+        
+        <div class="intro">
+            <p><strong>ISO 9241</strong> is a multi-part standard that covers the ergonomics of human-system interaction. It provides guidelines and requirements for the design of usable, accessible, and ergonomic interactive systems.</p>
+            <p>This laboratory series contains <strong>10 practical laboratories</strong> designed to explore and apply ISO 9241 principles in real-world scenarios.</p>
+        </div>
+
+        <h2>Laboratory List</h2>
+
+        <details>
+            <summary><span class="lab-badge">Lab 1</span>Introduction to ISO 9241</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Create a simple web application that demonstrates the basic principles of ISO 9241, particularly ISO 9241-11 (Guidance on usability).</p>
+                
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Design a login form with fields for username and password</li>
+                    <li>Ensure the form follows usability principles: effectiveness, efficiency, and satisfaction</li>
+                    <li>Include error handling for invalid inputs</li>
+                    <li>Provide feedback to the user after submission</li>
+                    <li>Write a Python script to simulate user interaction and evaluate the form's usability</li>
+                </ul>
+
+                <h3>Key Tasks</h3>
+                <ul>
+                    <li>Create an HTML file for the login form</li>
+                    <li>Add CSS for styling to improve visual ergonomics</li>
+                    <li>Implement JavaScript for client-side validation</li>
+                    <li>Write a Python script using Selenium to automate user testing and measure task completion time</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>A functional web page with a usable login form and a Python script that runs automated tests and reports usability metrics.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 2</span>Usability Principles</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Analyze and improve a poorly designed web form that violates several ISO 9241 usability principles.</p>
+                
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Identify usability violations in the provided code</li>
+                    <li>Redesign the form to comply with ISO 9241-11 principles</li>
+                    <li>Implement improvements in HTML, CSS, and JavaScript</li>
+                    <li>Create a Python script to compare the usability of the original and improved versions</li>
+                    <li>Document the changes and their impact on usability metrics</li>
+                </ul>
+
+                <h3>Key Tasks</h3>
+                <ul>
+                    <li>Analyze the original form code for usability issues</li>
+                    <li>Redesign the form with better layout, feedback, and accessibility</li>
+                    <li>Add client-side validation and error handling</li>
+                    <li>Write a Python script using Selenium to measure task completion times for both versions</li>
+                    <li>Compare the results and explain improvements</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>Improved HTML, CSS, and JavaScript code, a Python testing script, and documentation of usability improvements.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 3</span>Ergonomic Requirements</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Design a web-based text editor that incorporates ergonomic principles from ISO 9241-400 series (Physical input devices).</p>
+                
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Implement keyboard shortcuts for common actions</li>
+                    <li>Design an interface that reduces mouse usage</li>
+                    <li>Include adjustable font sizes and contrast settings</li>
+                    <li>Add features to prevent repetitive strain injuries</li>
+                    <li>Create a Python script to analyze user interaction patterns</li>
+                    <li>Ensure compliance with ergonomic guidelines for visual display units</li>
+                </ul>
+
+                <h3>Key Tasks</h3>
+                <ul>
+                    <li>Create an HTML editor with ergonomic features</li>
+                    <li>Implement keyboard navigation and shortcuts</li>
+                    <li>Add customizable display settings</li>
+                    <li>Write JavaScript for ergonomic interactions</li>
+                    <li>Develop a Python script to log and analyze user behavior</li>
+                    <li>Document ergonomic improvements and their benefits</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>A functional text editor with ergonomic features, Python analysis script, and documentation of ergonomic compliance.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 4</span>User-Centered Design</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Apply the user-centered design (UCD) process from ISO 9241-210 to redesign an existing e-commerce checkout form.</p>
+                
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Analyze the current checkout form for usability issues</li>
+                    <li>Create user personas and scenarios</li>
+                    <li>Design wireframes and prototypes</li>
+                    <li>Conduct usability testing</li>
+                    <li>Implement improvements based on user feedback</li>
+                    <li>Create a Python script to simulate user testing and analyze results</li>
+                </ul>
+
+                <h3>Key Tasks</h3>
+                <ul>
+                    <li>Document current usability problems</li>
+                    <li>Develop user personas and use cases</li>
+                    <li>Create HTML/CSS/JS prototypes of improved design</li>
+                    <li>Implement A/B testing functionality</li>
+                    <li>Write Python scripts for automated user testing</li>
+                    <li>Analyze and document improvements</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>User personas and scenarios, multiple design iterations, functional prototype with testing capabilities, and Python analysis scripts.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 5</span>Accessibility Standards</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Design and implement an accessible web application that complies with WCAG 2.1 guidelines and ISO 9241 accessibility requirements.</p>
+                
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Implement WCAG 2.1 Level AA compliance</li>
+                    <li>Add support for screen readers and assistive technologies</li>
+                    <li>Ensure keyboard-only navigation</li>
+                    <li>Provide alternative text for all images and media</li>
+                    <li>Implement high contrast mode and adjustable text sizes</li>
+                    <li>Create a Python script to test accessibility compliance</li>
+                </ul>
+
+                <h3>Key Tasks</h3>
+                <ul>
+                    <li>Design an accessible web page with proper semantic HTML</li>
+                    <li>Implement ARIA attributes and roles</li>
+                    <li>Add keyboard event handlers and focus management</li>
+                    <li>Create CSS for high contrast and scalable text</li>
+                    <li>Write JavaScript for dynamic accessibility features</li>
+                    <li>Develop Python script using accessibility testing tools</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>WCAG compliant web page, Python accessibility testing script, and documentation of accessibility features.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 6</span>Interaction Design</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Design an interactive web application that demonstrates advanced interaction design principles from ISO 9241-110 (Dialogue principles).</p>
+                
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Implement gesture recognition for touch and mouse interactions</li>
+                    <li>Create drag-and-drop interfaces with visual feedback</li>
+                    <li>Add context-sensitive help and tooltips</li>
+                    <li>Ensure consistent interaction patterns throughout the application</li>
+                    <li>Implement undo/redo functionality for complex interactions</li>
+                    <li>Create a Python script to analyze user interaction patterns</li>
+                </ul>
+
+                <h3>Key Tasks</h3>
+                <ul>
+                    <li>Design gesture-based navigation and controls</li>
+                    <li>Implement drag-and-drop functionality with visual feedback</li>
+                    <li>Add context-aware help systems</li>
+                    <li>Create consistent interaction patterns</li>
+                    <li>Develop Python script for interaction analysis</li>
+                    <li>Document interaction design principles applied</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>Interactive web application with advanced controls, Python analysis script for user interactions, and documentation of interaction design principles.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 7</span>Evaluation Methods</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Develop a comprehensive usability evaluation framework based on ISO 9241-11 guidelines.</p>
+                
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Implement a usability testing framework with multiple evaluation methods</li>
+                    <li>Create automated tools for heuristic evaluation and accessibility checking</li>
+                    <li>Develop a Python-based usability metrics calculator</li>
+                    <li>Build a web-based testing interface for user studies</li>
+                    <li>Generate comprehensive evaluation reports with actionable insights</li>
+                </ul>
+
+                <h3>Key Tasks</h3>
+                <ul>
+                    <li>Design a multi-method evaluation framework</li>
+                    <li>Implement automated heuristic evaluation tools</li>
+                    <li>Create usability metrics calculation system</li>
+                    <li>Develop user testing interface and data collection</li>
+                    <li>Build report generation with recommendations</li>
+                    <li>Document evaluation methodology and best practices</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>Complete usability evaluation toolkit, automated assessment tools, user testing interface with data analysis, and comprehensive evaluation reports.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 8</span>Visual Display Requirements</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Design and implement tools for evaluating visual display requirements according to ISO 9241-303 and ISO 9241-307.</p>
+                
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Implement display quality assessment tools</li>
+                    <li>Create readability and legibility evaluation systems</li>
+                    <li>Develop ergonomic display testing applications</li>
+                    <li>Build automated compliance checking for visual standards</li>
+                    <li>Generate visual performance reports and recommendations</li>
+                </ul>
+
+                <h3>Key Tasks</h3>
+                <ul>
+                    <li>Design display quality assessment interface</li>
+                    <li>Implement readability evaluation algorithms</li>
+                    <li>Create ergonomic testing tools</li>
+                    <li>Develop compliance checking system</li>
+                    <li>Build visual performance analysis</li>
+                    <li>Document visual display standards and testing methods</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>Display quality assessment toolkit, readability evaluation system, ergonomic testing applications, and compliance reports with recommendations.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 9</span>Input Device Standards</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Design and implement tools for evaluating input device standards according to ISO 9241-410 and ISO 9241-411.</p>
+                
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Implement input device ergonomic assessment tools</li>
+                    <li>Create usability evaluation systems for various input devices</li>
+                    <li>Develop compliance checking for input device standards</li>
+                    <li>Build automated testing and evaluation frameworks</li>
+                    <li>Generate input device performance reports and recommendations</li>
+                </ul>
+
+                <h3>Key Tasks</h3>
+                <ul>
+                    <li>Design input device assessment interface</li>
+                    <li>Implement ergonomic evaluation algorithms</li>
+                    <li>Create usability testing tools</li>
+                    <li>Develop compliance verification system</li>
+                    <li>Build performance analysis and reporting</li>
+                    <li>Document input device standards and testing methods</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>Input device assessment toolkit, ergonomic evaluation system, usability testing applications, and compliance reports with recommendations.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 10</span>Case Study on ISO 9241 Implementation</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Develop a comprehensive case study that integrates all ISO 9241 standards covered in the previous laboratories.</p>
+                
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Design a comprehensive case study scenario</li>
+                    <li>Integrate multiple ISO 9241 standards and principles</li>
+                    <li>Develop evaluation frameworks combining all previous labs</li>
+                    <li>Create assessment tools for complex systems</li>
+                    <li>Generate integrated reports and recommendations</li>
+                </ul>
+
+                <h3>Key Tasks</h3>
+                <ul>
+                    <li>Design case study scenario and context</li>
+                    <li>Integrate ergonomic, usability, and performance standards</li>
+                    <li>Develop comprehensive evaluation methodology</li>
+                    <li>Create assessment tools for complex systems</li>
+                    <li>Generate integrated compliance reports</li>
+                    <li>Document case study findings and recommendations</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>Comprehensive case study scenario, integrated evaluation framework, assessment tools for complex systems, and compliance reports with recommendations.</p>
+            </div>
+        </details>
+
+        <div class="nav-links" style="margin-top: 40px;">
+            <a href="../../index_en.html">🏠 Back to Index</a>
+            <a href="iso_9241_labs.html">🇪🇸 Versión en Español</a>
+        </div>
+    </div>
+</body>
+</html>

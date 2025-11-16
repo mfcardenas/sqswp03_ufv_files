@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO/IEC 25010:2023 Labs - Software Product Quality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #667eea;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .nav-links {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .nav-links a {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 0 10px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .intro {
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 8px;
+        }
+        
+        details {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        details:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+        
+        details[open] {
+            border-color: #764ba2;
+            background: #f8f9ff;
+        }
+        
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: #764ba2;
+            font-size: 1.2em;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        summary:hover {
+            background-color: #f0f0ff;
+        }
+        
+        details > div {
+            padding: 15px;
+            margin-top: 10px;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        li {
+            background: #fff;
+            margin-bottom: 8px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            background: #f8f9ff;
+            transform: translateX(5px);
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        strong {
+            color: #764ba2;
+        }
+        
+        .lab-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ISO/IEC 25010:2023 - Software Product Quality</h1>
+        
+        <div class="nav-links">
+            <a href="../../index_en.html">🏠 Back to Index</a>
+            <a href="iso_25010_labs.html">🇪🇸 Versión en Español</a>
+        </div>
+        
+        <div class="intro">
+            <p><strong>ISO/IEC 25010:2023</strong> defines a comprehensive quality model for software products, including eight key quality characteristics that software systems should possess.</p>
+            <p>This laboratory series contains <strong>10 practical laboratories</strong> covering all quality characteristics defined in the standard, with hands-on Python programming exercises.</p>
+        </div>
+
+        <h2>Laboratory List</h2>
+
+        <details>
+            <summary><span class="lab-badge">Lab 1</span>Introduction to Software Quality</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Explore basic concepts of software quality according to the ISO/IEC 25010:2023 standard and implement functions that evaluate key quality aspects.</p>
+                
+                <h3>Problems</h3>
+                <ul>
+                    <li><strong>Problem 1 - Functionality Evaluation:</strong> Create a function that evaluates if an implementation meets requirements and returns a compliance percentage</li>
+                    <li><strong>Problem 2 - Console Usability Improvement:</strong> Design a console interface for a simple system (basic calculator) and improve usability based on ISO/IEC 25010 principles</li>
+                </ul>
+
+                <h3>Additional Challenges</h3>
+                <ul>
+                    <li>Add logging to track requirements compliance</li>
+                    <li>Implement input validations to improve robustness</li>
+                    <li>Document how changes improve quality according to the standard</li>
+                </ul>
+
+                <h3>Technologies</h3>
+                <p>Python 3.x with focus on functionality and usability principles. Level: Basic, for beginner students in software engineering.</p>
+
+                <h3>Expected Output</h3>
+                <p>Implemented solutions in problem1.py and problem2.py with working functionality evaluation and improved console interface demonstrating quality principles.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 2</span>Functional Suitability</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Develop a deeper understanding of functional suitability by implementing systems that demonstrate functional completeness, correctness, and appropriateness.</p>
+                
+                <h3>Focus Areas</h3>
+                <ul>
+                    <li><strong>Functional Completeness:</strong> Ensure all specified functions are implemented</li>
+                    <li><strong>Functional Correctness:</strong> Verify that functions produce correct results with required precision</li>
+                    <li><strong>Functional Appropriateness:</strong> Ensure functions facilitate task completion appropriately</li>
+                </ul>
+
+                <h3>Practical Applications</h3>
+                <ul>
+                    <li>Implement a complete task management system</li>
+                    <li>Create comprehensive test suites to validate correctness</li>
+                    <li>Design user-centric function interfaces</li>
+                    <li>Evaluate compliance with functional requirements</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>A fully functional system demonstrating all three sub-characteristics of functional suitability with comprehensive testing and documentation.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 3</span>Performance Efficiency</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Master performance optimization techniques and implement efficient algorithms that demonstrate time behavior, resource utilization, and capacity optimization.</p>
+                
+                <h3>Key Concepts</h3>
+                <ul>
+                    <li><strong>Time Behavior:</strong> Response times, processing times, throughput rates</li>
+                    <li><strong>Resource Utilization:</strong> CPU, memory, disk, network usage optimization</li>
+                    <li><strong>Capacity:</strong> Maximum limits and scalability characteristics</li>
+                </ul>
+
+                <h3>Practical Exercises</h3>
+                <ul>
+                    <li>Implement and optimize search and sort algorithms</li>
+                    <li>Profile code to identify performance bottlenecks</li>
+                    <li>Optimize memory usage and resource consumption</li>
+                    <li>Conduct load testing and capacity planning</li>
+                    <li>Implement caching strategies and lazy loading</li>
+                </ul>
+
+                <h3>Tools and Techniques</h3>
+                <p>Python profiling tools (cProfile, memory_profiler), Big O notation analysis, benchmarking frameworks, performance monitoring dashboards.</p>
+
+                <h3>Expected Output</h3>
+                <p>Optimized implementations with documented performance improvements, profiling reports, and capacity analysis demonstrating efficiency gains.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 4</span>Compatibility</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Implement systems that demonstrate compatibility through co-existence and interoperability with other systems and components.</p>
+                
+                <h3>Compatibility Aspects</h3>
+                <ul>
+                    <li><strong>Co-existence:</strong> Ability to function efficiently while sharing environment and resources with other products</li>
+                    <li><strong>Interoperability:</strong> Capability to exchange information and use exchanged information with other systems</li>
+                </ul>
+
+                <h3>Implementation Tasks</h3>
+                <ul>
+                    <li>Design and implement RESTful APIs for system integration</li>
+                    <li>Create data exchange formats (JSON, XML) with schema validation</li>
+                    <li>Implement adapters and connectors for third-party systems</li>
+                    <li>Develop version compatibility mechanisms</li>
+                    <li>Test multi-system integration scenarios</li>
+                </ul>
+
+                <h3>Technologies</h3>
+                <p>REST API frameworks, JSON/XML processing, API documentation tools (Swagger/OpenAPI), integration testing frameworks.</p>
+
+                <h3>Expected Output</h3>
+                <p>Working integrations demonstrating co-existence and interoperability, comprehensive API documentation, and integration test suites.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 5</span>Usability</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Create user-friendly interfaces that demonstrate usability principles including appropriateness recognizability, learnability, operability, user error protection, user interface aesthetics, and accessibility.</p>
+                
+                <h3>Usability Sub-characteristics</h3>
+                <ul>
+                    <li><strong>Appropriateness Recognizability:</strong> Users can recognize whether the product is appropriate for their needs</li>
+                    <li><strong>Learnability:</strong> Product can be learned to use easily</li>
+                    <li><strong>Operability:</strong> Product is easy to operate and control</li>
+                    <li><strong>User Error Protection:</strong> System protects users from making errors</li>
+                    <li><strong>User Interface Aesthetics:</strong> Pleasing and satisfying user interface</li>
+                    <li><strong>Accessibility:</strong> Usable by people with widest range of characteristics and capabilities</li>
+                </ul>
+
+                <h3>Practical Exercises</h3>
+                <ul>
+                    <li>Design intuitive user interfaces with clear visual hierarchy</li>
+                    <li>Implement input validation and error prevention mechanisms</li>
+                    <li>Create helpful user documentation and tooltips</li>
+                    <li>Develop accessible interfaces (WCAG compliance)</li>
+                    <li>Conduct usability testing and iterate based on feedback</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>User-friendly interface demonstrating all usability sub-characteristics with accessibility features, user testing results, and improvement documentation.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 6</span>Reliability</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Implement robust systems that demonstrate reliability through maturity, availability, fault tolerance, and recoverability.</p>
+                
+                <h3>Reliability Sub-characteristics</h3>
+                <ul>
+                    <li><strong>Maturity:</strong> System meets reliability needs under normal operation</li>
+                    <li><strong>Availability:</strong> System is operational and accessible when required</li>
+                    <li><strong>Fault Tolerance:</strong> System operates despite hardware or software faults</li>
+                    <li><strong>Recoverability:</strong> System can recover data and re-establish desired state after interruption or failure</li>
+                </ul>
+
+                <h3>Implementation Techniques</h3>
+                <ul>
+                    <li>Implement comprehensive error handling and exception management</li>
+                    <li>Create retry mechanisms and circuit breakers</li>
+                    <li>Develop backup and recovery procedures</li>
+                    <li>Implement health checks and monitoring systems</li>
+                    <li>Design failover mechanisms and redundancy</li>
+                    <li>Create disaster recovery plans and test them</li>
+                </ul>
+
+                <h3>Testing Approaches</h3>
+                <p>Fault injection testing, chaos engineering, availability monitoring, recovery time testing, stress testing under failure conditions.</p>
+
+                <h3>Expected Output</h3>
+                <p>Robust system with demonstrated fault tolerance, comprehensive error handling, backup/recovery mechanisms, and reliability test results.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 7</span>Security</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Implement secure systems demonstrating confidentiality, integrity, non-repudiation, accountability, and authenticity.</p>
+                
+                <h3>Security Sub-characteristics</h3>
+                <ul>
+                    <li><strong>Confidentiality:</strong> Data accessible only to those authorized</li>
+                    <li><strong>Integrity:</strong> System prevents unauthorized access to or modification of data</li>
+                    <li><strong>Non-repudiation:</strong> Actions or events can be proven to have taken place</li>
+                    <li><strong>Accountability:</strong> Actions of an entity can be traced uniquely to that entity</li>
+                    <li><strong>Authenticity:</strong> Identity of subject or resource can be proved to be the one claimed</li>
+                </ul>
+
+                <h3>Security Implementation</h3>
+                <ul>
+                    <li>Implement authentication mechanisms (OAuth, JWT, multi-factor)</li>
+                    <li>Develop authorization and role-based access control (RBAC)</li>
+                    <li>Apply encryption for data at rest and in transit</li>
+                    <li>Implement audit logging and activity tracking</li>
+                    <li>Create secure password policies and management</li>
+                    <li>Implement input sanitization and SQL injection prevention</li>
+                    <li>Conduct security testing and vulnerability scanning</li>
+                </ul>
+
+                <h3>Security Best Practices</h3>
+                <p>OWASP Top 10 mitigation, principle of least privilege, defense in depth, secure by default configuration.</p>
+
+                <h3>Expected Output</h3>
+                <p>Secure system with authentication, authorization, encryption, audit logging, and documented security testing results demonstrating all security sub-characteristics.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 8</span>Maintainability</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Develop maintainable code demonstrating modularity, reusability, analyzability, modifiability, and testability.</p>
+                
+                <h3>Maintainability Sub-characteristics</h3>
+                <ul>
+                    <li><strong>Modularity:</strong> System composed of discrete components such that change to one has minimal impact on others</li>
+                    <li><strong>Reusability:</strong> Asset can be used in more than one system or in building other assets</li>
+                    <li><strong>Analyzability:</strong> Effectiveness and efficiency of assessing impact of intended change, diagnosing deficiencies or causes of failures</li>
+                    <li><strong>Modifiability:</strong> Product can be effectively and efficiently modified without introducing defects or degrading quality</li>
+                    <li><strong>Testability:</strong> Test criteria can be established and tests performed to determine whether criteria have been met</li>
+                </ul>
+
+                <h3>Best Practices</h3>
+                <ul>
+                    <li>Apply SOLID principles for object-oriented design</li>
+                    <li>Implement design patterns for common problems</li>
+                    <li>Create comprehensive unit and integration tests</li>
+                    <li>Write clean, well-documented code with meaningful names</li>
+                    <li>Use version control effectively with meaningful commits</li>
+                    <li>Implement continuous integration and automated testing</li>
+                    <li>Refactor code to improve structure and reduce complexity</li>
+                </ul>
+
+                <h3>Code Quality Tools</h3>
+                <p>Linters (pylint, flake8), code coverage tools, static analysis tools, complexity metrics (cyclomatic complexity), documentation generators.</p>
+
+                <h3>Expected Output</h3>
+                <p>Well-structured, modular codebase with high test coverage, comprehensive documentation, low complexity metrics, and demonstrated ease of modification.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 9</span>Portability</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Create portable systems demonstrating adaptability, installability, and replaceability across different environments and platforms.</p>
+                
+                <h3>Portability Sub-characteristics</h3>
+                <ul>
+                    <li><strong>Adaptability:</strong> Product can be effectively and efficiently adapted for different or evolving hardware, software, or other operational environments</li>
+                    <li><strong>Installability:</strong> Product can be successfully installed and/or uninstalled in a specified environment</li>
+                    <li><strong>Replaceability:</strong> Product can replace another specified software product for the same purpose in the same environment</li>
+                </ul>
+
+                <h3>Implementation Strategies</h3>
+                <ul>
+                    <li>Use cross-platform frameworks and libraries</li>
+                    <li>Implement configuration management for different environments</li>
+                    <li>Create installation scripts and deployment automation</li>
+                    <li>Use containerization (Docker) for environment consistency</li>
+                    <li>Implement database abstraction layers for portability</li>
+                    <li>Create migration and rollback procedures</li>
+                    <li>Test on multiple operating systems and platforms</li>
+                </ul>
+
+                <h3>Deployment Technologies</h3>
+                <p>Docker, virtual environments, configuration management tools, CI/CD pipelines, package managers, infrastructure as code.</p>
+
+                <h3>Expected Output</h3>
+                <p>Portable application running on multiple platforms, automated installation procedures, environment-specific configurations, and migration documentation.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary><span class="lab-badge">Lab 10</span>Integrated Quality Assessment</summary>
+            <div>
+                <h3>Objective</h3>
+                <p>Synthesize all ISO/IEC 25010:2023 quality characteristics into a comprehensive quality assessment framework and apply it to a complete software project.</p>
+                
+                <h3>Comprehensive Quality Assessment</h3>
+                <ul>
+                    <li><strong>Quality Model Implementation:</strong> Create assessment tools for all 8 quality characteristics</li>
+                    <li><strong>Metrics Collection:</strong> Implement automated metrics gathering for each sub-characteristic</li>
+                    <li><strong>Quality Scoring:</strong> Develop weighted scoring system for overall quality evaluation</li>
+                    <li><strong>Dashboard Development:</strong> Create visual dashboards for quality metrics</li>
+                    <li><strong>Report Generation:</strong> Automated quality assessment reports</li>
+                </ul>
+
+                <h3>Quality Characteristics Integration</h3>
+                <ul>
+                    <li>Functional Suitability: Completeness, correctness, appropriateness metrics</li>
+                    <li>Performance Efficiency: Time behavior, resource utilization, capacity measurements</li>
+                    <li>Compatibility: Co-existence and interoperability assessments</li>
+                    <li>Usability: All six sub-characteristic evaluations</li>
+                    <li>Reliability: Maturity, availability, fault tolerance, recoverability tests</li>
+                    <li>Security: Confidentiality, integrity, authentication, authorization checks</li>
+                    <li>Maintainability: Modularity, reusability, testability, modifiability metrics</li>
+                    <li>Portability: Adaptability, installability, replaceability verification</li>
+                </ul>
+
+                <h3>Final Project Requirements</h3>
+                <p>Develop a complete software application that demonstrates all quality characteristics, implement comprehensive quality assessment tools, create quality metrics dashboard, generate quality reports, and document quality improvements throughout the development lifecycle.</p>
+
+                <h3>Assessment Criteria</h3>
+                <ul>
+                    <li>All 8 quality characteristics demonstrated in the application</li>
+                    <li>Automated quality metrics collection and analysis</li>
+                    <li>Interactive quality dashboard with visualizations</li>
+                    <li>Comprehensive quality reports with actionable insights</li>
+                    <li>Documentation of quality improvement process</li>
+                    <li>Test coverage &gt;90% with quality-focused tests</li>
+                </ul>
+
+                <h3>Expected Output</h3>
+                <p>Complete software application demonstrating all ISO/IEC 25010:2023 quality characteristics, comprehensive quality assessment framework, automated metrics collection system, interactive quality dashboard, detailed quality reports, and complete documentation demonstrating mastery of software quality principles.</p>
+            </div>
+        </details>
+
+        <div class="nav-links" style="margin-top: 40px;">
+            <a href="../../index_en.html">🏠 Back to Index</a>
+            <a href="iso_25010_labs.html">🇪🇸 Versión en Español</a>
+        </div>
+    </div>
+</body>
+</html>

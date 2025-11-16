@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorios ISO/IEC 25010:2023</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        
+        h2, h3, h4 {
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        details {
+            background: #f8f9ff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        details:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+        
+        details[open] {
+            border-color: #764ba2;
+        }
+        
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: #764ba2;
+            font-size: 1.1em;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        summary:hover {
+            background-color: #f0f0ff;
+        }
+        
+        details > div {
+            padding: 15px;
+            margin-top: 10px;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            background: #fff;
+            margin-bottom: 8px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            background: #f8f9ff;
+            transform: translateX(5px);
+        }
+        
+        a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        strong {
+            color: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ISO/IEC 25010:2023 - Calidad del Producto de Software</h1>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="../../index.html" style="background: #667eea; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 0 10px; display: inline-block;">🏠 Volver al Índice</a>
+            <a href="iso_25010_labs_en.html" style="background: #764ba2; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 0 10px; display: inline-block;">🇬🇧 English Version</a>
+        </div>
+        
+        <p>Esta serie de laboratorios explora los conceptos básicos de calidad del software según el estándar ISO/IEC 25010:2023, implementando funciones que evalúan aspectos clave de la calidad.</p>
+
+        <details>
+            <summary>Laboratorio 1: Introducción a la Calidad del Software (Python)</summary>
+            <div>
+                <h3>Descripción del Reto</h3>
+                <p>Exploraremos los conceptos básicos de calidad del software según el estándar ISO/IEC 25010:2023. Implementarás funciones que evalúen aspectos clave de la calidad.</p>
+                
+                <h4>Problema 1: Evaluación de Funcionalidad</h4>
+                <p>Crea una función que tome una lista de requisitos y una implementación, y evalúe si la implementación cumple con los requisitos, devolviendo un porcentaje de cumplimiento.</p>
+
+                <h4>Problema 2: Mejora de Usabilidad en Consola</h4>
+                <p>Diseña una interfaz de consola para un sistema simple (ej. una calculadora) y mejora su usabilidad basándote en principios de ISO/IEC 25010.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 2: Mantenibilidad y Eficiencia (Java)</summary>
+            <div>
+                <h3>Descripción del Reto</h3>
+                <p>Este laboratorio se enfoca en mejorar la mantenibilidad y eficiencia del software, aspectos clave de ISO/IEC 25010:2023, utilizando patrones de diseño y optimizaciones.</p>
+
+                <h4>Problema 1: Patrón Singleton para Mantenibilidad</h4>
+                <p>Refactoriza una clase que maneje configuraciones para usar el patrón Singleton, asegurando una única instancia y mejorando la mantenibilidad.</p>
+
+                <h4>Problema 2: Optimización de Algoritmo de Búsqueda</h4>
+                <p>Implementa un algoritmo de búsqueda lineal y optimízalo a binaria, midiendo tiempos de ejecución para demostrar mejoras en eficiencia.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 3: Seguridad y Fiabilidad (Python)</summary>
+            <div>
+                <h3>Descripción del Reto</h3>
+                <p>Enfocado en seguridad y fiabilidad, este laboratorio demuestra cómo implementar controles de seguridad y manejo de errores según ISO/IEC 25010:2023.</p>
+
+                <h4>Problema 1: Validaciones de Entrada para Seguridad</h4>
+                <p>Crea una función que valide entradas de usuario para prevenir inyecciones SQL y otros ataques comunes.</p>
+
+                <h4>Problema 2: Manejo Robusto de Excepciones</h4>
+                <p>Implementa un sistema de logging y manejo de excepciones que mejore la fiabilidad de una aplicación.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 4: Portabilidad y Compatibilidad (Java)</summary>
+            <div>
+                <h3>Descripción del Reto</h3>
+                <p>Este laboratorio aborda la portabilidad y compatibilidad, asegurando que el software funcione en diversos entornos según ISO/IEC 25010:2023.</p>
+
+                <h4>Problema 1: Adaptación a Sistemas Operativos</h4>
+                <p>Modifica una aplicación para detectar el SO y adaptar rutas de archivos.</p>
+
+                <h4>Problema 2: Compatibilidad entre Versiones de Java</h4>
+                <p>Implementa código compatible con Java 8 y 11, usando características comunes.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 5: Eficiencia (Python)</summary>
+            <div>
+                <h3>Descripción del Reto</h3>
+                <p>Este laboratorio se centra en la eficiencia del software, optimizando algoritmos y midiendo rendimiento según ISO/IEC 25010:2023.</p>
+
+                <h4>Problema 1: Optimización de Código Ineficiente</h4>
+                <p>Toma un código con bucles anidados ineficientes y optimízalo usando comprehensions o algoritmos mejores.</p>
+
+                <h4>Problema 2: Medición de Rendimiento</h4>
+                <p>Implementa profiling para medir tiempos de ejecución y identificar cuellos de botella.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 6: Fiabilidad (Java)</summary>
+            <div>
+                <h3>Descripción del Reto</h3>
+                <p>Enfocado en la fiabilidad, este laboratorio implementa mecanismos para manejar fallos y asegurar operación continua según ISO/IEC 25010:2023.</p>
+
+                <h4>Problema 1: Reintentos Automáticos</h4>
+                <p>Implementa un método que reintente operaciones fallidas un número limitado de veces.</p>
+
+                <h4>Problema 2: Recuperación de Errores</h4>
+                <p>Crea un sistema que maneje excepciones y recupere el estado anterior.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 7: Usabilidad (Python)</summary>
+            <div>
+                <h3>Descripción del Reto</h3>
+                <p>Este laboratorio explora la usabilidad, creando interfaces intuitivas y proporcionando feedback según ISO/IEC 25010:2023.</p>
+
+                <h4>Problema 1: Interfaz de Usuario Simple</h4>
+                <p>Crea una interfaz de consola que guíe al usuario paso a paso.</p>
+
+                <h4>Problema 2: Feedback y Validación</h4>
+                <p>Añade validaciones y mensajes de ayuda para mejorar la experiencia.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 8: Compatibilidad (Java)</summary>
+            <div>
+                <h3>Descripción del Reto</h3>
+                <p>Este laboratorio se enfoca en la compatibilidad, asegurando que el software funcione con versiones anteriores y futuras según ISO/IEC 25010:2023.</p>
+
+                <h4>Problema 1: Compatibilidad con APIs Antiguas</h4>
+                <p>Implementa una clase que mantenga compatibilidad con interfaces obsoletas.</p>
+
+                <h4>Problema 2: Pruebas Cross-Version</h4>
+                <p>Crea pruebas que verifiquen funcionamiento en diferentes versiones de Java.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 9: Integración de la Calidad (Python)</summary>
+            <div>
+                <h3>Descripción del Reto</h3>
+                <p>Este laboratorio integra métricas y herramientas para evaluar la calidad durante el desarrollo según ISO/IEC 25010:2023.</p>
+
+                <h4>Problema 1: Pruebas Unitarias</h4>
+                <p>Implementa pruebas unitarias para una función y mide cobertura.</p>
+
+                <h4>Problema 2: Análisis de Métricas</h4>
+                <p>Usa herramientas para analizar complejidad ciclomática y proponer mejoras.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Laboratorio 10: Evaluación Completa de la Calidad (Java)</summary>
+            <div>
+                <h3>Descripción del Reto</h3>
+                <p>Este laboratorio final integra todos los aspectos de calidad del software según ISO/IEC 25010:2023 en una aplicación completa.</p>
+
+                <h4>Problema 1: Aplicación con Múltiples Características</h4>
+                <p>Crea una aplicación que demuestre funcionalidad, seguridad, usabilidad, etc.</p>
+
+                <h4>Problema 2: Evaluación y Mejoras</h4>
+                <p>Evalúa la aplicación usando métricas y propone mejoras integrales.</p>
+            </div>
+        </details>
+
+        <a href="../../index.html">Back to main index</a>
+    </div>
+</body>
+</html>

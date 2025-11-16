@@ -1,0 +1,269 @@
+{
+  "tools": {
+    "jira": {
+      "name": "Jira",
+      "type": "requirements",
+      "api_version": "3",
+      "endpoints": {
+        "issues": "/rest/api/3/search",
+        "issue": "/rest/api/3/issue/{id}",
+        "projects": "/rest/api/3/project"
+      },
+      "authentication": {
+        "type": "basic",
+        "username_field": "username",
+        "password_field": "api_token"
+      },
+      "mapping": {
+        "requirement_id": "key",
+        "title": "fields.summary",
+        "description": "fields.description",
+        "status": "fields.status.name",
+        "priority": "fields.priority.name",
+        "created_date": "fields.created",
+        "updated_date": "fields.updated"
+      }
+    },
+    "confluence": {
+      "name": "Confluence",
+      "type": "documentation",
+      "api_version": "7.0",
+      "endpoints": {
+        "pages": "/rest/api/content",
+        "page": "/rest/api/content/{id}",
+        "spaces": "/rest/api/space"
+      },
+      "authentication": {
+        "type": "basic",
+        "username_field": "username",
+        "password_field": "api_token"
+      },
+      "mapping": {
+        "document_id": "id",
+        "title": "title",
+        "content": "body.storage.value",
+        "space": "space.name",
+        "created_date": "createdDate",
+        "updated_date": "lastModified"
+      }
+    },
+    "github": {
+      "name": "GitHub",
+      "type": "version_control",
+      "api_version": "2022-11-28",
+      "endpoints": {
+        "issues": "/repos/{owner}/{repo}/issues",
+        "issue": "/repos/{owner}/{repo}/issues/{number}",
+        "pulls": "/repos/{owner}/{repo}/pulls"
+      },
+      "authentication": {
+        "type": "token",
+        "header": "Authorization",
+        "prefix": "Bearer"
+      },
+      "mapping": {
+        "issue_id": "number",
+        "title": "title",
+        "description": "body",
+        "status": "state",
+        "labels": "labels",
+        "created_date": "created_at",
+        "updated_date": "updated_at"
+      }
+    },
+    "testrail": {
+      "name": "TestRail",
+      "type": "testing",
+      "api_version": "2.0",
+      "endpoints": {
+        "cases": "/api/v2/get_cases/{project_id}",
+        "case": "/api/v2/get_case/{case_id}",
+        "runs": "/api/v2/get_runs/{project_id}"
+      },
+      "authentication": {
+        "type": "basic",
+        "username_field": "username",
+        "password_field": "api_key"
+      },
+      "mapping": {
+        "case_id": "id",
+        "title": "title",
+        "description": "custom_description",
+        "status": "status_id",
+        "priority": "priority_id",
+        "created_date": "created_on",
+        "updated_date": "updated_on"
+      }
+    }
+  },
+  "workflows": {
+    "auto_review_assignment": {
+      "name": "Auto Review Assignment",
+      "trigger": "requirement_created",
+      "conditions": [
+        {
+          "field": "priority",
+          "operator": "equals",
+          "value": "High"
+        }
+      ],
+      "actions": [
+        {
+          "type": "assign_reviewer",
+          "reviewer_role": "senior_analyst",
+          "notification": true
+        },
+        {
+          "type": "set_due_date",
+          "days_from_now": 7
+        }
+      ]
+    },
+    "deadline_notifications": {
+      "name": "Deadline Notifications",
+      "trigger": "scheduled",
+      "schedule": "0 9 * * 1-5",
+      "conditions": [
+        {
+          "field": "due_date",
+          "operator": "less_than",
+          "value": "3_days"
+        },
+        {
+          "field": "status",
+          "operator": "not_equals",
+          "value": "Completed"
+        }
+      ],
+      "actions": [
+        {
+          "type": "send_notification",
+          "recipients": "assignee",
+          "template": "deadline_reminder",
+          "channels": ["email", "slack"]
+        }
+      ]
+    },
+    "status_change_alerts": {
+      "name": "Status Change Alerts",
+      "trigger": "requirement_updated",
+      "conditions": [
+        {
+          "field": "status",
+          "operator": "changed"
+        }
+      ],
+      "actions": [
+        {
+          "type": "send_notification",
+          "recipients": "stakeholders",
+          "template": "status_change",
+          "channels": ["email"]
+        },
+        {
+          "type": "update_dashboard",
+          "refresh_interval": 30
+        }
+      ]
+    }
+  },
+  "api_gateway": {
+    "port": 8080,
+    "host": "0.0.0.0",
+    "cors": {
+      "enabled": true,
+      "origins": ["*"],
+      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      "headers": ["Content-Type", "Authorization", "X-API-Key"]
+    },
+    "rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 100,
+      "burst_limit": 20
+    },
+    "authentication": {
+      "enabled": true,
+      "type": "oauth2",
+      "token_expiry": 3600,
+      "refresh_token_expiry": 86400
+    },
+    "logging": {
+      "enabled": true,
+      "level": "INFO",
+      "format": "json",
+      "file": "logs/api_gateway.log"
+    }
+  },
+  "data_sync": {
+    "enabled": true,
+    "interval_minutes": 15,
+    "batch_size": 100,
+    "retry_attempts": 3,
+    "retry_delay_seconds": 60,
+    "conflict_resolution": "latest_wins",
+    "mappings": {
+      "jira_to_confluence": {
+        "source": "jira",
+        "target": "confluence",
+        "field_mappings": {
+          "summary": "title",
+          "description": "content",
+          "status": "labels"
+        }
+      },
+      "github_to_jira": {
+        "source": "github",
+        "target": "jira",
+        "field_mappings": {
+          "title": "summary",
+          "body": "description",
+          "state": "status"
+        }
+      }
+    }
+  },
+  "monitoring": {
+    "enabled": true,
+    "metrics": {
+      "api_requests_total": true,
+      "api_request_duration": true,
+      "tool_connection_status": true,
+      "workflow_execution_count": true,
+      "sync_success_rate": true,
+      "error_rate": true
+    },
+    "alerts": {
+      "enabled": true,
+      "channels": ["email", "slack"],
+      "thresholds": {
+        "error_rate_percent": 5,
+        "sync_failure_count": 3,
+        "api_response_time_ms": 2000
+      }
+    },
+    "dashboard": {
+      "enabled": true,
+      "refresh_interval_seconds": 30,
+      "charts": {
+        "api_performance": true,
+        "tool_status": true,
+        "workflow_activity": true,
+        "sync_status": true
+      }
+    }
+  },
+  "validation": {
+    "enabled": true,
+    "rules": {
+      "api_key_required": true,
+      "rate_limit_enforced": true,
+      "data_format_validation": true,
+      "authentication_required": true
+    },
+    "error_handling": {
+      "return_detailed_errors": false,
+      "log_errors": true,
+      "retry_on_failure": true
+    }
+  }
+}

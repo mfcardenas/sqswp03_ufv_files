@@ -1,0 +1,435 @@
+{
+    "portfolioConfig": {
+        "version": "1.0.0",
+        "lastUpdated": "2023-11-15T12:00:00Z",
+        "settings": {
+            "refreshInterval": 3600,
+            "defaultView": "dashboard",
+            "enableNotifications": true,
+            "darkModeDefault": false
+        }
+    },
+    "projects": [
+        {
+            "id": "PRJ-001",
+            "name": "Customer Portal Redesign",
+            "description": "Redesign of the customer-facing web portal",
+            "startDate": "2023-05-15",
+            "endDate": "2023-12-10",
+            "status": "on-track",
+            "completion": 78,
+            "riskLevel": "low",
+            "requirementsCount": 234,
+            "priorityScore": 85,
+            "businessOwner": "Sarah Johnson",
+            "technicalLead": "Michael Chen",
+            "strategicGoals": ["customer-experience", "digital-transformation"],
+            "resources": {
+                "developers": 8,
+                "designers": 3,
+                "analysts": 2,
+                "testers": 4
+            }
+        },
+        {
+            "id": "PRJ-002",
+            "name": "Mobile App Development",
+            "description": "New mobile application for customers",
+            "startDate": "2023-07-01",
+            "endDate": "2024-03-15",
+            "status": "at-risk",
+            "completion": 45,
+            "riskLevel": "medium",
+            "requirementsCount": 187,
+            "priorityScore": 90,
+            "businessOwner": "David Wilson",
+            "technicalLead": "Priya Patel",
+            "strategicGoals": ["mobile-first", "market-expansion"],
+            "resources": {
+                "developers": 6,
+                "designers": 4,
+                "analysts": 2,
+                "testers": 3
+            }
+        },
+        {
+            "id": "PRJ-003",
+            "name": "API Modernization",
+            "description": "Modernization of core APIs to microservices",
+            "startDate": "2023-03-10",
+            "endDate": "2023-11-30",
+            "status": "on-track",
+            "completion": 92,
+            "riskLevel": "low",
+            "requirementsCount": 156,
+            "priorityScore": 75,
+            "businessOwner": "Robert Garcia",
+            "technicalLead": "Jennifer Kim",
+            "strategicGoals": ["technical-debt-reduction", "scalability"],
+            "resources": {
+                "developers": 10,
+                "designers": 0,
+                "analysts": 1,
+                "testers": 4
+            }
+        },
+        {
+            "id": "PRJ-004",
+            "name": "Security Enhancement",
+            "description": "Enhanced security measures across all systems",
+            "startDate": "2023-09-01",
+            "endDate": "2024-02-28",
+            "status": "delayed",
+            "completion": 23,
+            "riskLevel": "high",
+            "requirementsCount": 94,
+            "priorityScore": 95,
+            "businessOwner": "Lisa Brown",
+            "technicalLead": "Thomas Moore",
+            "strategicGoals": ["compliance", "risk-reduction"],
+            "resources": {
+                "developers": 5,
+                "designers": 0,
+                "analysts": 3,
+                "testers": 5
+            }
+        },
+        {
+            "id": "PRJ-005",
+            "name": "Data Platform Migration",
+            "description": "Migration of data platform to cloud infrastructure",
+            "startDate": "2023-06-15",
+            "endDate": "2024-01-15",
+            "status": "on-track",
+            "completion": 67,
+            "riskLevel": "medium",
+            "requirementsCount": 212,
+            "priorityScore": 80,
+            "businessOwner": "James Taylor",
+            "technicalLead": "Emma Rodriguez",
+            "strategicGoals": ["cloud-migration", "cost-optimization"],
+            "resources": {
+                "developers": 7,
+                "designers": 0,
+                "analysts": 2,
+                "testers": 3
+            }
+        }
+    ],
+    "resources": {
+        "teams": [
+            {
+                "id": "TEAM-001",
+                "name": "Business Analysts",
+                "capacity": 18,
+                "allocated": 15,
+                "utilization": 83,
+                "members": 18,
+                "skills": ["requirements-engineering", "business-process", "stakeholder-management"]
+            },
+            {
+                "id": "TEAM-002",
+                "name": "Development Team",
+                "capacity": 45,
+                "allocated": 42,
+                "utilization": 93,
+                "members": 45,
+                "skills": ["java", "python", "javascript", "microservices", "cloud"]
+            },
+            {
+                "id": "TEAM-003",
+                "name": "QA Engineers",
+                "capacity": 20,
+                "allocated": 12,
+                "utilization": 60,
+                "members": 20,
+                "skills": ["automated-testing", "performance-testing", "security-testing"]
+            },
+            {
+                "id": "TEAM-004",
+                "name": "UX Designers",
+                "capacity": 10,
+                "allocated": 8,
+                "utilization": 80,
+                "members": 10,
+                "skills": ["user-research", "ui-design", "prototyping"]
+            },
+            {
+                "id": "TEAM-005",
+                "name": "Product Managers",
+                "capacity": 8,
+                "allocated": 7,
+                "utilization": 88,
+                "members": 8,
+                "skills": ["product-strategy", "roadmapping", "stakeholder-management"]
+            }
+        ],
+        "skills": [
+            "requirements-engineering",
+            "business-process",
+            "stakeholder-management",
+            "java",
+            "python",
+            "javascript",
+            "microservices",
+            "cloud",
+            "automated-testing",
+            "performance-testing",
+            "security-testing",
+            "user-research",
+            "ui-design",
+            "prototyping",
+            "product-strategy",
+            "roadmapping"
+        ]
+    },
+    "strategy": {
+        "businessObjectives": [
+            {
+                "id": "OBJ-001",
+                "name": "Enhance Customer Experience",
+                "description": "Improve overall customer satisfaction and engagement",
+                "kpi": "Customer Satisfaction Score",
+                "target": "90%",
+                "current": "82%",
+                "weight": 25
+            },
+            {
+                "id": "OBJ-002",
+                "name": "Digital Transformation",
+                "description": "Modernize all customer-facing systems",
+                "kpi": "Digital Channel Usage",
+                "target": "75%",
+                "current": "60%",
+                "weight": 20
+            },
+            {
+                "id": "OBJ-003",
+                "name": "Operational Efficiency",
+                "description": "Reduce operational costs and improve efficiency",
+                "kpi": "Cost per Transaction",
+                "target": "$0.75",
+                "current": "$1.20",
+                "weight": 15
+            },
+            {
+                "id": "OBJ-004",
+                "name": "Market Expansion",
+                "description": "Enter new markets and expand customer base",
+                "kpi": "New Market Revenue",
+                "target": "$25M",
+                "current": "$8M",
+                "weight": 20
+            },
+            {
+                "id": "OBJ-005",
+                "name": "Security & Compliance",
+                "description": "Ensure all systems meet security standards",
+                "kpi": "Compliance Score",
+                "target": "100%",
+                "current": "85%",
+                "weight": 20
+            }
+        ],
+        "alignmentDimensions": [
+            "Business Value",
+            "Technical Alignment",
+            "User Experience",
+            "Security Compliance",
+            "Market Fit",
+            "Innovation"
+        ]
+    },
+    "requirements": {
+        "statuses": [
+            {
+                "id": "approved",
+                "name": "Approved",
+                "description": "Requirements that have been approved by stakeholders"
+            },
+            {
+                "id": "in-progress",
+                "name": "In Progress",
+                "description": "Requirements currently being implemented"
+            },
+            {
+                "id": "under-review",
+                "name": "Under Review",
+                "description": "Requirements under review by stakeholders"
+            },
+            {
+                "id": "implemented",
+                "name": "Implemented",
+                "description": "Requirements that have been implemented and tested"
+            },
+            {
+                "id": "rejected",
+                "name": "Rejected",
+                "description": "Requirements that have been rejected"
+            }
+        ],
+        "types": [
+            {
+                "id": "functional",
+                "name": "Functional",
+                "description": "Describes system behavior or functions"
+            },
+            {
+                "id": "non-functional",
+                "name": "Non-Functional",
+                "description": "Quality attributes or constraints on the system"
+            },
+            {
+                "id": "business",
+                "name": "Business",
+                "description": "Business rules and processes"
+            },
+            {
+                "id": "user",
+                "name": "User",
+                "description": "User needs and user experience requirements"
+            },
+            {
+                "id": "technical",
+                "name": "Technical",
+                "description": "Technical implementation details"
+            }
+        ],
+        "priorities": [
+            {
+                "id": "critical",
+                "name": "Critical",
+                "value": 1
+            },
+            {
+                "id": "high",
+                "name": "High",
+                "value": 2
+            },
+            {
+                "id": "medium",
+                "name": "Medium",
+                "value": 3
+            },
+            {
+                "id": "low",
+                "name": "Low",
+                "value": 4
+            },
+            {
+                "id": "nice-to-have",
+                "name": "Nice to Have",
+                "value": 5
+            }
+        ]
+    },
+    "portfolioMetrics": {
+        "performance": {
+            "kpis": [
+                {
+                    "id": "requirements-completion",
+                    "name": "Requirements Completion Rate",
+                    "description": "Percentage of requirements completed on time",
+                    "target": 90,
+                    "current": 82,
+                    "trend": "positive"
+                },
+                {
+                    "id": "resource-utilization",
+                    "name": "Resource Utilization",
+                    "description": "Percentage of allocated resources utilized effectively",
+                    "target": 85,
+                    "current": 78,
+                    "trend": "negative"
+                },
+                {
+                    "id": "strategic-alignment",
+                    "name": "Strategic Alignment Score",
+                    "description": "Measure of portfolio alignment with strategic objectives",
+                    "target": 95,
+                    "current": 88,
+                    "trend": "positive"
+                },
+                {
+                    "id": "risk-exposure",
+                    "name": "Risk Exposure",
+                    "description": "Percentage of portfolio at medium or high risk",
+                    "target": 15,
+                    "current": 25,
+                    "trend": "neutral"
+                }
+            ],
+            "historicalData": {
+                "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                "requirements-completion": [75, 78, 80, 82, 85, 83, 86, 88, 87, 85, 87, 89],
+                "resource-utilization": [70, 72, 76, 80, 82, 85, 83, 78, 75, 78, 80, 83],
+                "strategic-alignment": [80, 82, 84, 85, 87, 88, 90, 92, 93, 90, 91, 92],
+                "risk-exposure": [30, 28, 25, 22, 20, 22, 25, 24, 22, 20, 18, 17]
+            }
+        },
+        "riskProfile": {
+            "levels": [
+                {
+                    "id": "low",
+                    "name": "Low Risk",
+                    "threshold": 30,
+                    "color": "#34a853"
+                },
+                {
+                    "id": "medium",
+                    "name": "Medium Risk",
+                    "threshold": 60,
+                    "color": "#fbbc05"
+                },
+                {
+                    "id": "high",
+                    "name": "High Risk",
+                    "threshold": 100,
+                    "color": "#ea4335"
+                }
+            ],
+            "categories": [
+                "Schedule Risk",
+                "Budget Risk",
+                "Technical Risk",
+                "Resource Risk",
+                "Scope Risk",
+                "External Risk"
+            ],
+            "distribution": {
+                "low": 60,
+                "medium": 30,
+                "high": 10
+            }
+        }
+    },
+    "notifications": [
+        {
+            "id": "NOTIF-001",
+            "type": "alert",
+            "title": "Resource Conflict Detected",
+            "message": "Development team is overallocated by 15%",
+            "timestamp": "2023-11-15T09:30:00Z",
+            "isRead": false,
+            "priority": "high"
+        },
+        {
+            "id": "NOTIF-002",
+            "type": "info",
+            "title": "Portfolio Performance Update",
+            "message": "Monthly portfolio health score increased by 5%",
+            "timestamp": "2023-11-15T08:00:00Z",
+            "isRead": false,
+            "priority": "medium"
+        },
+        {
+            "id": "NOTIF-003",
+            "type": "success",
+            "title": "Project Milestone Achieved",
+            "message": "API Modernization project reached 90% completion",
+            "timestamp": "2023-11-14T16:45:00Z",
+            "isRead": true,
+            "priority": "low"
+        }
+    ]
+}
