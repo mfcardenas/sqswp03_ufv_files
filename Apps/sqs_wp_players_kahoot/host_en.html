@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISOmillonario · Host</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-ui-lang="en">
+    <header>
+        <div class="title-block">
+            <h1>Host control room</h1>
+            <p>Plan the round, launch questions, and monitor the live leaderboard.</p>
+        </div>
+        <nav class="mode-toggle" aria-label="Quick navigation">
+            <a class="mode-btn" href="./index_en.html">🏠 Home</a>
+            <a class="mode-btn" href="./player_en.html">📱 Player zone</a>
+        </nav>
+        <div class="mode-toggle" aria-label="Change language">
+            <a class="mode-btn" href="./host.html">ES</a>
+            <a class="mode-btn active" href="./host_en.html">EN</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="panel show" id="host-lock">
+            <article class="card narrow">
+                <h2>Protected access</h2>
+                <p>Enter the password provided by coordination to manage the sessions.</p>
+                <form id="host-auth-form">
+                    <label>
+                        <span>Host password</span>
+                        <input type="password" name="hostPassword" placeholder="••••••" required>
+                    </label>
+                    <p id="host-password-hint" class="hint"></p>
+                    <button type="submit">Unlock panel</button>
+                    <p id="host-auth-status" class="status"></p>
+                </form>
+            </article>
+        </section>
+
+        <section class="panel" id="host-panel">
+            <div class="panel-grid">
+                <article class="card">
+                    <h2>Configure session</h2>
+                    <div class="helper-callout">
+                        <p>Quick tips:</p>
+                        <ul>
+                            <li>1) Fill in the data and click <strong>Create session</strong> to get the code.</li>
+                            <li>2) Then choose AI or catalog questions and press the matching button.</li>
+                            <li>3) Share the code and use the right panel to run each round.</li>
+                        </ul>
+                    </div>
+                    <form id="host-form">
+                        <label>
+                            <span>Session title</span>
+                            <input type="text" name="title" placeholder="ISO Lab" required>
+                        </label>
+                        <label>
+                            <span>Context or scenario</span>
+                            <textarea name="context" rows="3" placeholder="Describe the software project"></textarea>
+                        </label>
+                        <label>
+                            <span>Focus standards</span>
+                            <div class="checkbox-row">
+                                <label><input type="checkbox" name="isoFocus" value="ISO 9241" checked> ISO 9241</label>
+                                <label><input type="checkbox" name="isoFocus" value="ISO/IEC/IEEE 29148"> ISO/IEC/IEEE 29148</label>
+                                <label><input type="checkbox" name="isoFocus" value="ISO/IEC 25010:2023"> ISO/IEC 25010:2023</label>
+                            </div>
+                        </label>
+                        <label>
+                            <span>Number of questions</span>
+                            <input type="number" name="questionCount" min="3" max="20" value="6">
+                        </label>
+                        <label>
+                            <span>Game language</span>
+                            <select name="language">
+                                <option value="ES">ES · Spanish</option>
+                                <option value="EN">EN · English</option>
+                                <option value="BI">BI · Bilingual</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>Timer (seconds)</span>
+                            <input type="number" name="timerSeconds" min="15" max="90" value="30">
+                        </label>
+                        <fieldset>
+                            <legend>Question source</legend>
+                            <label><input type="radio" name="source" value="llm"> AI / LLM</label>
+                            <label><input type="radio" name="source" value="predefined" checked> Predefined game</label>
+                        </fieldset>
+                        <div class="form-actions primary">
+                            <button type="submit">Create session</button>
+                        </div>
+                        <label>
+                            <span>Select predefined game</span>
+                            <select name="predefinedGame" id="predefined-select"></select>
+                        </label>
+                        <div class="form-actions secondary">
+                            <button type="button" id="btn-generate-llm" class="secondary" disabled>Generate with AI</button>
+                            <button type="button" id="btn-use-predefined" class="secondary" disabled>Use predefined game</button>
+                        </div>
+                    </form>
+                </article>
+                <article class="card status-card">
+                    <h2>Session status</h2>
+                    <div class="session-code" id="session-code">Code: ----</div>
+                    <p id="host-context" class="context"></p>
+                    <div class="pill-group">
+                        <span class="pill" id="game-title-pill">Game not loaded</span>
+                        <span class="pill warning" id="llm-warning-pill" hidden>LLM unavailable · Using fallback</span>
+                    </div>
+                    <h3>Connected players</h3>
+                    <ul id="player-list"></ul>
+                    <div class="host-actions">
+                        <button id="btn-start-session" disabled>Start match</button>
+                        <button id="btn-launch-question" disabled>Launch question</button>
+                        <button id="btn-close-question" disabled>Close question</button>
+                        <button id="btn-end-session" class="danger" disabled>Finish session</button>
+                    </div>
+                </article>
+                <article class="card wide">
+                    <h2>Host dashboard</h2>
+                    <div class="host-question" id="host-question"></div>
+                    <div class="host-timer" id="host-timer">00</div>
+                    <div class="host-results" id="host-results"></div>
+                    <div class="ranking" id="host-ranking"></div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <template id="ranking-template">
+        <h3>Ranking</h3>
+        <ol></ol>
+    </template>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./config.js"></script>
+    <script src="./games.js"></script>
+    <script src="./host.js"></script>
+</body>
+</html>

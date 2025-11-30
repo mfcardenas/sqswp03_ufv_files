@@ -6,198 +6,198 @@ class ISOGameEngine {
             currentProject: null,
             metrics: {
                 // ISO 25010 - Quality Characteristics
-                funcionalidad: 0,      // Functional Suitability
-                eficiencia: 0,         // Performance Efficiency  
-                compatibilidad: 0,     // Compatibility
-                usabilidad: 0,         // Usability
-                confiabilidad: 0,      // Reliability
-                seguridad: 0,          // Security
-                mantenibilidad: 0,     // Maintainability
-                portabilidad: 0        // Portability
+                functionalSuitability: 0,    // Functional Suitability
+                performanceEfficiency: 0,    // Performance Efficiency  
+                compatibility: 0,            // Compatibility
+                usability: 0,                // Usability
+                reliability: 0,              // Reliability
+                security: 0,                 // Security
+                maintainability: 0,          // Maintainability
+                portability: 0               // Portability
             },
-            recursos: {
-                presupuesto: 100000,
-                tiempo: 12,            // months
-                equipoDesarrolladores: 5,
-                equipoTesting: 2,
-                experienciaEquipo: 'intermediate'
+            resources: {
+                budget: 100000,
+                time: 12,                     // months
+                developmentTeam: 5,
+                testingTeam: 2,
+                teamExperience: 'intermediate'
             },
-            decisiones: [],
-            fase: 'planning',     // planning, development, testing, deployment
-            puntuacion: 0,
-            penalizaciones: []
+            decisions: [],
+            phase: 'planning',           // planning, development, testing, deployment
+            score: 0,
+            penalties: []
         };
 
-        this.proyectos = {
+        this.projects = {
             ecommerce: {
-                nombre: "E-commerce Platform",
-                descripcion: "E-commerce system that must handle 10,000 concurrent users",
-                objetivosMinimos: {
-                    funcionalidad: 85,
-                    eficiencia: 80,
-                    usabilidad: 90,
-                    seguridad: 95,
-                    confiabilidad: 85
+                name: "E-commerce Platform",
+                description: "E-commerce system that must handle 10,000 concurrent users",
+                minimumObjectives: {
+                    functionalSuitability: 85,
+                    performanceEfficiency: 80,
+                    usability: 90,
+                    security: 95,
+                    reliability: 85
                 },
-                restricciones: {
-                    presupuestoMaximo: 150000,
-                    tiempoMaximo: 18,
-                    cumplimientoPCI: true,
-                    disponibilidad: 99.9
+                constraints: {
+                    maxBudget: 150000,
+                    maxTime: 18,
+                    pciCompliance: true,
+                    availability: 99.9
                 },
                 riesgos: ['traffic_spikes', 'security_attacks', 'payment_integration', 'user_experience']
             },
             hospital: {
-                nombre: "Hospital Management System",
-                descripcion: "Critical medical software for patient and medical record management",
-                objetivosMinimos: {
-                    funcionalidad: 95,
-                    confiabilidad: 98,
-                    seguridad: 99,
-                    usabilidad: 85,
-                    mantenibilidad: 90
+                name: "Hospital Management System",
+                description: "Critical medical software for patient and medical record management",
+                minimumObjectives: {
+                    functionalSuitability: 95,
+                    reliability: 98,
+                    security: 99,
+                    usability: 85,
+                    maintainability: 90
                 },
-                restricciones: {
-                    presupuestoMaximo: 200000,
-                    tiempoMaximo: 24,
-                    certificacionFDA: true,
-                    disponibilidad: 99.99,
-                    cumplimientoHIPAA: true
+                constraints: {
+                    maxBudget: 200000,
+                    maxTime: 24,
+                    fdaCertification: true,
+                    availability: 99.99,
+                    hipaaCompliance: true
                 },
                 riesgos: ['critical_failures', 'data_loss', 'unauthorized_access', 'interoperability']
             },
             fintech: {
-                nombre: "Financial Platform",
-                descripcion: "Banking system with real-time transactions and regulatory compliance",
-                objetivosMinimos: {
-                    seguridad: 98,
-                    confiabilidad: 95,
-                    eficiencia: 90,
-                    funcionalidad: 90,
-                    compatibilidad: 85
+                name: "Financial Platform",
+                description: "Banking system with real-time transactions and regulatory compliance",
+                minimumObjectives: {
+                    security: 98,
+                    reliability: 95,
+                    performanceEfficiency: 90,
+                    functionalSuitability: 90,
+                    compatibility: 85
                 },
-                restricciones: {
-                    presupuestoMaximo: 300000,
-                    tiempoMaximo: 30,
-                    cumplimientoSOX: true,
-                    disponibilidad: 99.99,
-                    auditoriaContinua: true
+                constraints: {
+                    maxBudget: 300000,
+                    maxTime: 30,
+                    soxCompliance: true,
+                    availability: 99.99,
+                    continuousAuditing: true
                 },
                 riesgos: ['regulatory_changes', 'fraud_attempts', 'system_downtime', 'data_breaches']
             },
             social: {
-                nombre: "Social Network Platform",
-                descripcion: "Social media platform with multimedia content and real-time messaging",
-                objetivosMinimos: {
-                    usabilidad: 95,
-                    eficiencia: 85,
-                    compatibilidad: 90,
-                    funcionalidad: 85,
-                    portabilidad: 80
+                name: "Social Network Platform",
+                description: "Social media platform with multimedia content and real-time messaging",
+                minimumObjectives: {
+                    usability: 95,
+                    performanceEfficiency: 85,
+                    compatibility: 90,
+                    functionalSuitability: 85,
+                    portability: 80
                 },
-                restricciones: {
-                    presupuestoMaximo: 180000,
-                    tiempoMaximo: 20,
-                    escalabilidadGlobal: true,
-                    disponibilidad: 99.9
+                constraints: {
+                    maxBudget: 180000,
+                    maxTime: 20,
+                    globalScalability: true,
+                    availability: 99.9
                 },
-                riesgos: ['viral_growth', 'content_moderation', 'performance_bottlenecks', 'privacy_concerns']
+                risks: ['viral_growth', 'content_moderation', 'performance_bottlenecks', 'privacy_concerns']
             }
         };
 
-        this.decisiones = {
-            arquitectura: {
-                monolitica: {
-                    impacto: { mantenibilidad: -20, eficiencia: +10, funcionalidad: +5 },
-                    costo: 0,
-                    tiempo: 0,
-                    descripcion: "Traditional monolithic architecture - simpler but less scalable"
+        this.decisions = {
+            architecture: {
+                monolithic: {
+                    impact: { maintainability: -20, performanceEfficiency: +10, functionalSuitability: +5 },
+                    cost: 0,
+                    time: 0,
+                    description: "Traditional monolithic architecture - simpler but less scalable"
                 },
-                microservicios: {
-                    impacto: { mantenibilidad: +15, eficiencia: -5, compatibilidad: +20, funcionalidad: +10 },
-                    costo: 15000,
-                    tiempo: 3,
-                    descripcion: "Microservices - higher complexity but better scalability and maintenance"
+                microservices: {
+                    impact: { maintainability: +15, performanceEfficiency: -5, compatibility: +20, functionalSuitability: +10 },
+                    cost: 15000,
+                    time: 3,
+                    description: "Microservices - higher complexity but better scalability and maintenance"
                 },
                 serverless: {
-                    impacto: { eficiencia: +25, portabilidad: +15, mantenibilidad: +10, funcionalidad: +5 },
-                    costo: -5000,
-                    tiempo: 1,
-                    descripcion: "Serverless architecture - high efficiency but vendor lock-in"
+                    impact: { performanceEfficiency: +25, portability: +15, maintainability: +10, functionalSuitability: +5 },
+                    cost: -5000,
+                    time: 1,
+                    description: "Serverless architecture - high efficiency but vendor lock-in"
                 }
             },
-            baseDatos: {
-                sql_tradicional: {
-                    impacto: { confiabilidad: +20, funcionalidad: +10, compatibilidad: +15 },
-                    costo: 5000,
-                    tiempo: 1,
-                    descripcion: "Traditional SQL database - full ACID compliance, well-known"
+            database: {
+                sql_traditional: {
+                    impact: { reliability: +20, functionalSuitability: +10, compatibility: +15 },
+                    cost: 5000,
+                    time: 1,
+                    description: "Traditional SQL database - full ACID compliance, well-known"
                 },
-                nosql_escalable: {
-                    impacto: { eficiencia: +25, portabilidad: +10, funcionalidad: +5 },
-                    costo: 8000,
-                    tiempo: 2,
-                    descripcion: "NoSQL for high scalability - eventual consistency"
+                nosql_scalable: {
+                    impact: { performanceEfficiency: +25, portability: +10, functionalSuitability: +5 },
+                    cost: 8000,
+                    time: 2,
+                    description: "NoSQL for high scalability - eventual consistency"
                 },
-                hibrida: {
-                    impacto: { funcionalidad: +20, eficiencia: +10, mantenibilidad: -10 },
-                    costo: 12000,
-                    tiempo: 3,
-                    descripcion: "Hybrid SQL+NoSQL approach - maximum flexibility, higher complexity"
+                hybrid: {
+                    impact: { functionalSuitability: +20, performanceEfficiency: +10, maintainability: -10 },
+                    cost: 12000,
+                    time: 3,
+                    description: "Hybrid SQL+NoSQL approach - maximum flexibility, higher complexity"
                 }
             },
             testing: {
-                manual_basico: {
-                    impacto: { confiabilidad: +5, funcionalidad: +5 },
-                    costo: 2000,
-                    tiempo: 1,
-                    descripcion: "Basic manual testing - economical but limited"
+                manual_basic: {
+                    impact: { reliability: +5, functionalSuitability: +5 },
+                    cost: 2000,
+                    time: 1,
+                    description: "Basic manual testing - economical but limited"
                 },
-                automatizado_completo: {
-                    impacto: { confiabilidad: +30, funcionalidad: +20, mantenibilidad: +15 },
-                    costo: 25000,
-                    tiempo: 4,
-                    descripcion: "Complete automated testing suite - maximum quality"
+                automated_complete: {
+                    impact: { reliability: +30, functionalSuitability: +20, maintainability: +15 },
+                    cost: 25000,
+                    time: 4,
+                    description: "Complete automated testing suite - maximum quality"
                 },
-                automatizado_critico: {
-                    impacto: { confiabilidad: +20, funcionalidad: +15, seguridad: +10 },
-                    costo: 15000,
-                    tiempo: 2,
-                    descripcion: "Automated testing on critical functions - cost-benefit balance"
+                automated_critical: {
+                    impact: { reliability: +20, functionalSuitability: +15, security: +10 },
+                    cost: 15000,
+                    time: 2,
+                    description: "Automated testing on critical functions - cost-benefit balance"
                 }
             },
-            seguridad: {
-                basica: {
-                    impacto: { seguridad: +10 },
-                    costo: 3000,
-                    tiempo: 1,
-                    descripcion: "Basic security measures - minimum acceptable"
+            security: {
+                basic: {
+                    impact: { security: +10 },
+                    cost: 3000,
+                    time: 1,
+                    description: "Basic security measures - minimum acceptable"
                 },
-                avanzada: {
-                    impacto: { seguridad: +30, confiabilidad: +10, funcionalidad: -5 },
-                    costo: 20000,
-                    tiempo: 3,
-                    descripcion: "Advanced multi-layer security - very robust"
+                advanced: {
+                    impact: { security: +30, reliability: +10, functionalSuitability: -5 },
+                    cost: 20000,
+                    time: 3,
+                    description: "Advanced multi-layer security - very robust"
                 },
-                extrema: {
-                    impacto: { seguridad: +50, confiabilidad: +20, usabilidad: -15, eficiencia: -10 },
-                    costo: 35000,
-                    tiempo: 5,
-                    descripcion: "Military-grade security - maximum protection, UX impact"
+                extreme: {
+                    impact: { security: +50, reliability: +20, usability: -15, performanceEfficiency: -10 },
+                    cost: 35000,
+                    time: 5,
+                    description: "Military-grade security - maximum protection, UX impact"
                 }
             },
             ui_ux: {
-                funcional_basico: {
-                    impacto: { usabilidad: +10, funcionalidad: +5 },
-                    costo: 5000,
-                    tiempo: 2,
-                    descripcion: "Basic functional interface - meets minimum requirements"
+                functional_basic: {
+                    impact: { usability: +10, functionalSuitability: +5 },
+                    cost: 5000,
+                    time: 2,
+                    description: "Basic functional interface - meets minimum requirements"
                 },
-                diseño_profesional: {
-                    impacto: { usabilidad: +25, funcionalidad: +10, eficiencia: +5 },
-                    costo: 15000,
-                    tiempo: 4,
-                    descripcion: "Professional UX design - optimized experience"
+                professional_design: {
+                    impact: { usability: +25, functionalSuitability: +10, performanceEfficiency: +5 },
+                    cost: 15000,
+                    time: 4,
+                    description: "Professional UX design - optimized experience"
                 },
                 innovador_accesible: {
                     impacto: { usabilidad: +40, funcionalidad: +15, compatibilidad: +20 },

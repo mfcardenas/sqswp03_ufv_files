@@ -1,0 +1,22 @@
+{
+  "name": "sqs-wp-players-kahoot",
+  "version": "1.0.0",
+  "description": "ISO standards classroom quiz with teacher and student modes",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "iso",
+    "quiz",
+    "kahoot",
+    "socket.io"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISOmillonario · Players</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-ui-lang="en">
+    <header>
+        <div class="title-block">
+            <h1>Player zone</h1>
+            <p>Enter the session code from your facilitator and answer every ISO challenge live.</p>
+        </div>
+    </header>
+    <div class="mode-toggle" aria-label="Change language">
+        <a class="mode-btn" href="./player.html">ES</a>
+        <a class="mode-btn active" href="./player_en.html">EN</a>
+    </div>
+
+    <main>
+        <section class="panel show" id="player-panel">
+            <article class="card">
+                <h2>Join the match</h2>
+                <form id="player-form">
+                    <label>
+                        <span>Nickname</span>
+                        <input type="text" name="nickname" placeholder="Your name" required>
+                    </label>
+                    <label>
+                        <span>Session code</span>
+                        <input type="text" name="sessionCode" placeholder="ABCDE" required maxlength="5" minlength="4">
+                    </label>
+                    <button type="submit">Join</button>
+                    <p class="hint">If the code is invalid you will see the message in English and Spanish.</p>
+                </form>
+                <div id="player-status" class="status"></div>
+            </article>
+            <article class="card" id="player-question-card" hidden>
+                <div class="player-timer" id="player-timer">00</div>
+                <div id="player-question"></div>
+                <div id="player-options" class="options-grid"></div>
+                <div id="player-feedback" class="feedback"></div>
+                <div id="player-ranking" class="ranking"></div>
+            </article>
+        </section>
+    </main>
+
+    <template id="ranking-template">
+        <h3>Ranking</h3>
+        <ol></ol>
+    </template>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./config.js"></script>
+    <script src="./player.js"></script>
+</body>
+</html>

@@ -5,164 +5,164 @@ class ISOQuizModule {
         this.questionsDatabase = {
             iso25010: [
                 {
-                    pregunta: "According to ISO 25010, which of the following is NOT a main software quality characteristic?",
-                    opciones: [
+                    question: "According to ISO 25010, which of the following is NOT a main software quality characteristic?",
+                    options: [
                         "Functional Suitability",
                         "Performance Efficiency",
                         "Code Complexity",
                         "Maintainability"
                     ],
-                    respuestaCorrecta: 2,
-                    explicacion: "ISO 25010 defines 8 main characteristics: Functional Suitability, Performance Efficiency, Compatibility, Usability, Reliability, Security, Maintainability, and Portability. 'Code Complexity' is not a main characteristic of the model.",
-                    categoria: "concepts",
-                    dificultad: "easy"
+                    correctAnswer: 2,
+                    explanation: "ISO 25010 defines 8 main characteristics: Functional Suitability, Performance Efficiency, Compatibility, Usability, Reliability, Security, Maintainability, and Portability. 'Code Complexity' is not a main characteristic of the model.",
+                    category: "concepts",
+                    difficulty: "easy"
                 },
                 {
-                    pregunta: "In an e-commerce system processing 10,000 transactions per second, which Performance Efficiency sub-characteristic would be MOST critical?",
-                    opciones: [
+                    question: "In an e-commerce system processing 10,000 transactions per second, which Performance Efficiency sub-characteristic would be MOST critical?",
+                    options: [
                         "Time Behaviour",
                         "Resource Utilization",  
                         "Capacity",
                         "All are equally important"
                     ],
-                    respuestaCorrecta: 0,
-                    explicacion: "Time Behaviour is critical in high-volume systems like e-commerce, as response time directly impacts user experience and conversions. Users abandon slow sites.",
-                    categoria: "application",
-                    dificultad: "intermediate"
+                    correctAnswer: 0,
+                    explanation: "Time Behaviour is critical in high-volume systems like e-commerce, as response time directly impacts user experience and conversions. Users abandon slow sites.",
+                    category: "application",
+                    difficulty: "intermediate"
                 },
                 {
-                    pregunta: "For a critical hospital system, what would be the MOST appropriate ISO 25010 priority configuration?",
-                    opciones: [
+                    question: "For a critical hospital system, what would be the MOST appropriate ISO 25010 priority configuration?",
+                    options: [
                         "Usability > Performance > Reliability > Security",
                         "Security > Reliability > Functional Suitability > Maintainability", 
                         "Performance > Security > Usability > Compatibility",
                         "Functional Suitability > Usability > Performance > Reliability"
                     ],
-                    respuestaCorrecta: 1,
-                    explicacion: "In critical health systems: Security is vital to protect sensitive medical data, Reliability ensures continuous availability (lives depend on the system), Functional Suitability guarantees all medical functions work correctly, and Maintainability allows safe updates.",
-                    categoria: "analysis",
-                    dificultad: "advanced"
+                    correctAnswer: 1,
+                    explanation: "In critical health systems: Security is vital to protect sensitive medical data, Reliability ensures continuous availability (lives depend on the system), Functional Suitability guarantees all medical functions work correctly, and Maintainability allows safe updates.",
+                    category: "analysis",
+                    difficulty: "advanced"
                 },
                 {
-                    pregunta: "Which Security sub-characteristic in ISO 25010 directly relates to preventing unauthorized modifications?",
-                    opciones: [
+                    question: "Which Security sub-characteristic in ISO 25010 directly relates to preventing unauthorized modifications?",
+                    options: [
                         "Confidentiality",
                         "Integrity",
                         "Non-repudiation", 
                         "Accountability"
                     ],
-                    respuestaCorrecta: 1,
-                    explicacion: "Integrity refers to the system's ability to prevent unauthorized modifications of data or software. It's fundamental in systems where information alteration can have serious consequences.",
-                    categoria: "concepts",
-                    dificultad: "intermediate"
+                    correctAnswer: 1,
+                    explanation: "Integrity refers to the system's ability to prevent unauthorized modifications of data or software. It's fundamental in systems where information alteration can have serious consequences.",
+                    category: "concepts",
+                    difficulty: "intermediate"
                 },
                 {
-                    pregunta: "A mobile system must run on Android, iOS and Windows Phone. Which ISO 25010 characteristic is priority and why?",
-                    opciones: [
+                    question: "A mobile system must run on Android, iOS and Windows Phone. Which ISO 25010 characteristic is priority and why?",
+                    options: [
                         "Compatibility - Co-existence to work with other apps",
                         "Portability - Adaptability for multiple platforms",
                         "Usability - Learnability for different interfaces",
                         "Performance Efficiency - Resource Utilization for limited devices"
                     ],
-                    respuestaCorrecta: 1,
-                    explicacion: "Portability-Adaptability is key for multi-platform systems. It allows software adaptation to different operational environments (Android, iOS, Windows Phone) while maintaining consistent functionality.",
-                    categoria: "application", 
-                    dificultad: "intermediate"
+                    correctAnswer: 1,
+                    explanation: "Portability-Adaptability is key for multi-platform systems. It allows software adaptation to different operational environments (Android, iOS, Windows Phone) while maintaining consistent functionality.",
+                    category: "application", 
+                    difficulty: "intermediate"
                 }
             ],
             iso29148: [
                 {
-                    pregunta: "According to ISO 29148, what is the fundamental difference between 'stakeholder requirement' and 'system requirement'?",
-                    opciones: [
+                    question: "According to ISO 29148, what is the fundamental difference between 'stakeholder requirement' and 'system requirement'?",
+                    options: [
                         "Stakeholder requirements are technical, system requirements are functional",
                         "Stakeholder requirements express user needs, system requirements specify what the system must do",
                         "There's no difference, they are synonymous terms",
                         "Stakeholder requirements are optional, system requirements are mandatory"
                     ],
-                    respuestaCorrecta: 1,
-                    explicacion: "ISO 29148 clearly distinguishes: Stakeholder requirements express needs, desires and expectations of interested parties. System requirements specify functions, capabilities and constraints the system must fulfill to satisfy stakeholder requirements.",
-                    categoria: "concepts",
-                    dificultad: "intermediate"
+                    correctAnswer: 1,
+                    explanation: "ISO 29148 clearly distinguishes: Stakeholder requirements express needs, desires and expectations of interested parties. System requirements specify functions, capabilities and constraints the system must fulfill to satisfy stakeholder requirements.",
+                    category: "concepts",
+                    difficulty: "intermediate"
                 },
                 {
-                    pregunta: "In a banking system project, which would be a correct example of 'constraint' according to ISO 29148?",
-                    opciones: [
+                    question: "In a banking system project, which would be a correct example of 'constraint' according to ISO 29148?",
+                    options: [
                         "The user must be able to transfer money between accounts",
                         "The system must comply with PCI-DSS regulations",
                         "The system must be easy to use",
                         "The system must process transactions quickly"
                     ],
-                    respuestaCorrecta: 1,
-                    explicacion: "A constraint according to ISO 29148 is a limitation or condition the system must comply with. PCI-DSS compliance is a mandatory regulatory constraint, not a system function but an external limitation that must be respected.",
-                    categoria: "application",
-                    dificultad: "intermediate"
+                    correctAnswer: 1,
+                    explanation: "A constraint according to ISO 29148 is a limitation or condition the system must comply with. PCI-DSS compliance is a mandatory regulatory constraint, not a system function but an external limitation that must be respected.",
+                    category: "application",
+                    difficulty: "intermediate"
                 },
                 {
-                    pregunta: "Which of these elements is NOT part of the 'Requirements Analysis' process according to ISO 29148?",
-                    opciones: [
+                    question: "Which of these elements is NOT part of the 'Requirements Analysis' process according to ISO 29148?",
+                    options: [
                         "Define system architecture",
                         "Analyze requirements completeness", 
                         "Evaluate requirements feasibility",
                         "Resolve conflicts between requirements"
                     ],
-                    respuestaCorrecta: 0,
-                    explicacion: "Defining system architecture belongs to design activities, not requirements analysis. ISO 29148 establishes that Requirements Analysis includes: analyzing completeness, consistency, feasibility, verifiability and resolving conflicts.",
-                    categoria: "concepts",
-                    dificultad: "advanced"
+                    correctAnswer: 0,
+                    explanation: "Defining system architecture belongs to design activities, not requirements analysis. ISO 29148 establishes that Requirements Analysis includes: analyzing completeness, consistency, feasibility, verifiability and resolving conflicts.",
+                    category: "concepts",
+                    difficulty: "advanced"
                 },
                 {
-                    pregunta: "For an IoT agricultural monitoring system, what type of requirement would be 'The system must send alerts when soil humidity drops below 30%'?",
-                    opciones: [
+                    question: "For an IoT agricultural monitoring system, what type of requirement would be 'The system must send alerts when soil humidity drops below 30%'?",
+                    options: [
                         "Functional requirement - Function",
                         "Performance requirement - Timing",
                         "Interface requirement - User interface",
                         "Design constraint - Implementation"
                     ],
-                    respuestaCorrecta: 0,
-                    explicacion: "It's a Functional requirement type Function because it describes a specific capability the system must provide: sending alerts based on sensor conditions. It defines WHAT the system must do, not HOW or HOW FAST.",
-                    categoria: "application",
-                    dificultad: "intermediate"
+                    correctAnswer: 0,
+                    explanation: "It's a Functional requirement type Function because it describes a specific capability the system must provide: sending alerts based on sensor conditions. It defines WHAT the system must do, not HOW or HOW FAST.",
+                    category: "application",
+                    difficulty: "intermediate"
                 }
             ],
             iso9241: [
                 {
-                    pregunta: "According to ISO 9241-11, what is the correct definition of Usability?",
-                    opciones: [
+                    question: "According to ISO 9241-11, what is the correct definition of Usability?",
+                    options: [
                         "The ease with which a user can learn to use a system",
                         "The extent to which a product can be used by specified users to achieve specified goals with effectiveness, efficiency and satisfaction in a specified context of use",
                         "A system's ability to prevent user errors",
                         "The speed with which a user can complete tasks in the system"
                     ],
-                    respuestaCorrecta: 1,
-                    explicacion: "ISO 9241-11 defines usability as the extent to which a product can be used by specified users to achieve specified goals with effectiveness, efficiency and satisfaction in a specified context of use. This definition includes users, goals, context and three key components.",
-                    categoria: "concepts",
-                    dificultad: "easy"
+                    correctAnswer: 1,
+                    explanation: "ISO 9241-11 defines usability as the extent to which a product can be used by specified users to achieve specified goals with effectiveness, efficiency and satisfaction in a specified context of use. This definition includes users, goals, context and three key components.",
+                    category: "concepts",
+                    difficulty: "easy"
                 },
                 {
-                    pregunta: "In designing a medical emergency application, which ISO 9241-110 principle would be MOST critical?",
-                    opciones: [
+                    question: "In designing a medical emergency application, which ISO 9241-110 principle would be MOST critical?",
+                    options: [
                         "Suitability for individualization",
                         "Error tolerance",
                         "Conformity with user expectations",
                         "Self-descriptiveness"
                     ],
-                    respuestaCorrecta: 1,
-                    explicacion: "Error tolerance is critical in emergency medical applications where errors can have fatal consequences. The system must prevent errors, detect them when they occur and allow easy and quick correction, especially under pressure and stress.",
-                    categoria: "application",
-                    dificultad: "advanced"
+                    correctAnswer: 1,
+                    explanation: "Error tolerance is critical in emergency medical applications where errors can have fatal consequences. The system must prevent errors, detect them when they occur and allow easy and quick correction, especially under pressure and stress.",
+                    category: "application",
+                    difficulty: "advanced"
                 },
                 {
-                    pregunta: "Which of these metrics is NOT directly related to 'efficiency' according to ISO 9241-11?",
-                    opciones: [
+                    question: "Which of these metrics is NOT directly related to 'efficiency' according to ISO 9241-11?",
+                    options: [
                         "Time to complete a task",
                         "Number of clicks/touches required",
                         "User satisfaction level",
                         "Human and technological resources employed"
                     ],
-                    respuestaCorrecta: 2,
-                    explicacion: "User satisfaction is a separate component of usability in ISO 9241-11. Efficiency refers to resources employed in relation to accuracy and completeness of achieved goals (time, clicks, physical/mental effort).",
-                    categoria: "concepts",
-                    dificultad: "intermediate"
+                    correctAnswer: 2,
+                    explanation: "User satisfaction is a separate component of usability in ISO 9241-11. Efficiency refers to resources employed in relation to accuracy and completeness of achieved goals (time, clicks, physical/mental effort).",
+                    category: "concepts",
+                    difficulty: "intermediate"
                 }
             ]
         };
