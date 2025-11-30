@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISO 29148 Requirements Players</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand-identity">
+            <img src="./assets/img/ufv-logo.png" alt="UFV Madrid logo" class="brand-logo" />
+            <div>
+                <div class="brand-pill">ISO 29148</div>
+                <h1>Requirements Players</h1>
+                <p class="subtitle">In-class companion for ISO/IEC/IEEE 29148 requirement labs.</p>
+            </div>
+        </div>
+        <div class="control-panel" aria-label="Scenario controls">
+            <label for="content-source">Content source</label>
+            <select id="content-source" name="content-source">
+                <option value="json" selected>Static JSON (offline)</option>
+                <option value="ollama">Dynamic (Ollama gpt-oss)</option>
+            </select>
+            <label for="static-scenario" id="static-scenario-label">Available scenario</label>
+            <select id="static-scenario" name="static-scenario"></select>
+            <label for="theme-input">Theme</label>
+            <input id="theme-input" name="theme" type="text" value="Shape ISO 29148 requirement packs" />
+            <button id="load-scenario" class="primary">Load scenario</button>
+        </div>
+    </header>
+
+    <main id="app" class="app-shell" aria-live="polite">
+        <section class="placeholder">
+            <h2>Ready when you are</h2>
+            <p>Pick the content source and load the scenario to begin the requirement studio experience.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <img src="./assets/img/ufv-logo-ft.png" alt="UFV Madrid logo" class="brand-logo brand-logo--mini" />
+        <strong>SQS WP35 · ISO 29148 Edition</strong>
+        <p>Designed for guided facilitation. Students view English content while instructors can coach bilingually.</p>
+    </footer>
+
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>

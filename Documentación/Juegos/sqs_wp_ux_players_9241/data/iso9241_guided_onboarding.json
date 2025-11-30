@@ -1,0 +1,487 @@
+{
+  "id": "iso-9241-guided-onboarding",
+  "title": "ISO 9241 Guided Onboarding Sprint",
+  "theme": "Design an onboarding journey aligned with ISO 9241-110 and ISO 9241-171",
+  "overview": "This scenario follows a product team tasked with rebuilding the onboarding wizard of a SaaS collaboration suite. Students iterate from principle spotting to accessibility validation, always referencing ISO 9241 clauses as they make decisions.",
+  "labs": [
+    {
+      "id": "lab-a",
+      "title": "Lab A · Orientation Mapping",
+      "summary": "Diagnose onboarding friction and prioritize decisions using ISO 9241-110 principles.",
+      "challengeIds": ["onboarding-challenge-1", "onboarding-challenge-2"]
+    },
+    {
+      "id": "lab-b",
+      "title": "Lab B · Flow Crafting",
+      "summary": "Storyboard progressive disclosure moments and validate wording with ISO 9241-112 guidance.",
+      "challengeIds": ["onboarding-challenge-3"]
+    },
+    {
+      "id": "lab-c",
+      "title": "Lab C · Inclusive Validation",
+      "summary": "Stress-test the flow for accessibility and remote coaching, citing ISO 9241-171 and ISO 9241-210.",
+      "challengeIds": ["onboarding-challenge-4", "onboarding-challenge-5"]
+    }
+  ],
+  "resources": [
+    "ISO 9241-110:2020 dialogue principles",
+    "ISO 9241-112:2017 information presentation",
+    "ISO 9241-171:2008 guidance on software accessibility",
+    "ISO 9241-210:2019 human-centred design"
+  ],
+  "scoring": {
+    "perCorrect": 20,
+    "max": 100
+  },
+  "completionMessage": "Capture lessons learned about inclusive onboarding and plan a usability benchmark for the next release.",
+  "challenges": [
+    {
+      "id": "onboarding-challenge-1",
+      "title": "Map Initial Friction",
+      "labId": "lab-a",
+      "narrative": "User success managers report that 60% of new teams abandon the wizard after step two. You must identify which ISO 9241-110 principles are violated and collect quick evidence.",
+      "objectives": [
+        "Classify onboarding pain points against ISO 9241-110 dialogue principles.",
+        "Differentiate between cosmetic issues and genuine usability blockers.",
+        "Create a shared language for the rest of the sprint."
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Review the onboarding step transcripts before watching any demo so you already know where testers hesitated.",
+          "helper": "Skim timestamps for long pauses (00:45, 02:05, 03:40) and jot what distracted people.",
+          "resources": [
+            "./docs/templates/onboarding-recording-transcripts.md"
+          ]
+        },
+        {
+          "type": "prompt",
+          "instruction": "Consult ISO 9241-110 clause 5.3 (conformity with user expectations) and highlight wording you can reuse when naming blockers.",
+          "helper": "Write one sentence in your own words explaining the clause so you can defend it later.",
+          "resources": [
+            "./docs/templates/iso9241_clause5_notes.md"
+          ]
+        },
+        {
+          "type": "action",
+          "instruction": "Populate the friction log template with at least five issues from steps 1–3, citing clause numbers and evidence.",
+          "example": "Step 2 permissions — clause 5.3 — wizard forces advanced ACL setup before basics (timestamp 02:12).",
+          "checklist": [
+            "Describe what the user tried to do",
+            "Quote the UI wording or behavior",
+            "Map to ISO clause + short rationale",
+            "Tag severity using H/M/L"
+          ],
+          "resources": [
+            "./docs/templates/onboarding-friction-log-template.md"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Ask peers or the instructor which terms marketing uses in onboarding emails so the wizard stays consistent.",
+          "helper": "Capture verbatim phrases (e.g., 'workspace roles', 'team coach') and compare them to what screenshots show.",
+          "resources": [
+            "./docs/templates/onboarding-terminology-checklist.md"
+          ]
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Write three must-fix findings referencing clause 5.3 or 5.2, including evidence, risk, and desired outcome.",
+          "example": "Finding: Welcome screen hides 'Skip tour' behind light text (00:32). Violates self-descriptiveness; novices assume the tour is mandatory. Ship: elevate button state.",
+          "checklist": [
+            "Name the screen + component",
+            "State the violated clause",
+            "Describe the risk in business/user language",
+            "Propose the improvement in one sentence"
+          ],
+          "resources": [
+            "./docs/templates/onboarding-friction-log-template.md"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "onboarding-q1",
+          "type": "single-select",
+          "question": "A tooltip uses jargon unknown to first-time users. Which principle is broken?",
+          "choices": [
+            "Self-descriptiveness",
+            "Error tolerance",
+            "Suitability for individualization",
+            "Controllability"
+          ],
+          "answer": 0,
+          "rationale": "Jargon forces learners to guess meaning, hurting self-descriptiveness."
+        },
+        {
+          "id": "onboarding-q2",
+          "type": "single-select",
+          "question": "The wizard forces users to configure advanced integrations before basic tasks. Which clause justifies rearranging steps?",
+          "choices": [
+            "Adaptability",
+            "Suitability for the task",
+            "Error tolerance",
+            "Conformity with user expectations"
+          ],
+          "answer": 1,
+          "rationale": "Tasks should mirror user goals; forcing advanced actions first violates suitability for the task."
+        }
+      ],
+      "nextStepCue": "Once friction is mapped, prioritize improvements that will influence step sequencing."
+    },
+    {
+      "id": "onboarding-challenge-2",
+      "title": "Prioritize Guidance Elements",
+      "labId": "lab-a",
+      "narrative": "Marketing wants to highlight premium add-ons in the wizard, but you must defend user-centred decisions using ISO terminology.",
+      "objectives": [
+        "Build a decision matrix balancing business asks and ISO 9241 compliance.",
+        "Practice negotiating trade-offs with evidence.",
+        "Select which prompts and UI helpers deserve engineering time."
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "List all proposed guidance elements: coach marks, inline video, checklist, upsell module.",
+          "helper": "Write one sentence describing the business ask for each element so you can weigh trade-offs objectively."
+        },
+        {
+          "type": "prompt",
+          "instruction": "Consult ISO 9241-110 clause 5.6 on error tolerance and note when confirmation dialogs are justified.",
+          "resources": [
+            "./docs/templates/iso9241_clause5_notes.md"
+          ],
+          "helper": "Underline any clause wording that mentions high-cost mistakes; you'll reuse it when defending your score."
+        },
+        {
+          "type": "action",
+          "instruction": "Complete the guidance decision matrix, scoring impact and ISO risk for each helper.",
+          "checklist": [
+            "Define the user problem",
+            "Assign impact score (1 low – 5 high)",
+            "Assign risk score tied to a clause",
+            "Add mitigation if risk ≥ 3"
+          ],
+          "resources": [
+            "./docs/templates/guidance-decision-matrix.md"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Scan two competitor onboarding flows and capture how they expose guidance without stealing control.",
+          "helper": "Grab a screenshot or sketch plus one sentence describing why it works.",
+          "resources": [
+            "./docs/templates/onboarding-competitor-scan.md"
+          ]
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Recommend two guidance elements for engineering, quoting clause numbers and describing how you keep controllability intact.",
+          "example": "Ship collapsible checklist (Clause 5.4) — gives users self-paced guardrails while letting them hide help when confident.",
+          "checklist": [
+            "State decision and purpose",
+            "Tie to ISO clause",
+            "Describe business impact",
+            "Call out mitigation for any residual risk"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "onboarding-q3",
+          "type": "single-select",
+          "question": "Which helper best satisfies controllability?",
+          "choices": [
+            "Auto-advancing slides every ten seconds",
+            "Offering a collapsible checklist the user can reopen",
+            "Forcing a video before continuing",
+            "Adding compulsory chatbots"
+          ],
+          "answer": 1,
+          "rationale": "A collapsible checklist keeps assistance available without taking control away."
+        },
+        {
+          "id": "onboarding-q4",
+          "type": "single-select",
+          "question": "Where is error tolerance most impactful?",
+          "choices": [
+            "Before account creation",
+            "During color theme selection",
+            "When assigning workspace permissions",
+            "After the tour finishes"
+          ],
+          "answer": 2,
+          "rationale": "Permission mistakes have high cost; confirmations here align with clause 5.6."
+        }
+      ],
+      "nextStepCue": "With guidance decisions made, move into Lab B to storyboard the improved flow." 
+    },
+    {
+      "id": "onboarding-challenge-3",
+      "title": "Storyboard Progressive Disclosure",
+      "labId": "lab-b",
+      "narrative": "You will storyboard a 7-step onboarding journey that gradually reveals advanced options while keeping novices confident.",
+      "objectives": [
+        "Structure the wizard with progressive disclosure per ISO 9241-112.",
+        "Tie each step to a user goal and a clear feedback mechanism.",
+        "Keep language inclusive and testable."
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Open the storyboard template and label each column (intent, UI, copy, feedback) before sketching frames.",
+          "resources": [
+            "./docs/templates/storyboard-template.md"
+          ],
+          "helper": "Reserve frames 5–7 for advanced settings so you can show progressive disclosure explicitly."
+        },
+        {
+          "type": "prompt",
+          "instruction": "Consult ISO 9241-112 clause 9 for wording rules and paraphrase each clause in your own words.",
+          "resources": [
+            "./docs/templates/iso9241_112_clause9_notes.md"
+          ],
+          "helper": "Write the paraphrased sentence at the top of your storyboard as a design guardrail."
+        },
+        {
+          "type": "action",
+          "instruction": "Map each storyboard frame to an ISO principle (e.g., suitability for learning, self-descriptiveness) and document the trigger/feedback pair.",
+          "checklist": [
+            "Frame title = verb + object",
+            "Add trigger arrow to next frame",
+            "Note ISO principle in last column",
+            "Mark frames that include feedback cues"
+          ],
+          "resources": [
+            "./docs/templates/storyboard-template.md"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Ask the instructor how support teams monitor onboarding drop-offs so you can add telemetry triggers to your storyboard.",
+          "helper": "Capture which step causes most escalations and bake an alert or helper into that frame."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Highlight two frames introducing advanced settings and explain the guardrails (copy, preview, confirmation) protecting novices.",
+          "example": "Frame 6 opens automation rules under a disclosure arrow with inline preview + undo link, satisfying controllability.",
+          "checklist": [
+            "State frame number",
+            "Describe the advanced option",
+            "Explain the guardrail and ISO clause",
+            "List metrics or signals you would monitor"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "onboarding-q5",
+          "type": "single-select",
+          "question": "When introducing advanced options, which tactic best preserves suitability for learning?",
+          "choices": [
+            "Showing all inputs at once",
+            "Hiding advanced options behind a clearly labelled disclosure",
+            "Using mystery icons",
+            "Mixing advanced and basic options randomly"
+          ],
+          "answer": 1,
+          "rationale": "Progressive disclosure allows motivated users to expand details without overwhelming others."
+        },
+        {
+          "id": "onboarding-q6",
+          "type": "single-select",
+          "question": "Which feedback channel fits ISO 9241-112 recommendations for immediate confirmation?",
+          "choices": [
+            "Daily summary email",
+            "Inline toast confirming the action",
+            "Monthly newsletter",
+            "Tooltips on hover"
+          ],
+          "answer": 1,
+          "rationale": "Inline toasts near the action deliver timely context-sensitive feedback."
+        }
+      ],
+      "nextStepCue": "Share the storyboard and move to Lab C to test inclusivity and remote coaching." 
+    },
+    {
+      "id": "onboarding-challenge-4",
+      "title": "Accessibility Checklist Run",
+      "labId": "lab-c",
+      "narrative": "Accessibility champions need proof that the wizard supports keyboard-only navigation and assistive tech. You will run a fast ISO 9241-171 review.",
+      "objectives": [
+        "Create a lightweight checklist referencing ISO 9241-171 sections 7.1–7.6.",
+        "Simulate a screen reader walkthrough to capture gaps.",
+        "Recommend remediation tasks for engineering and content teams."
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Review the prototype notes to understand how focus order, tooltips, and banners currently behave before testing.",
+          "resources": [
+            "./docs/templates/onboarding-wizard-prototype-notes.md"
+          ],
+          "helper": "Write down any DOM order surprises so you can reproduce them for engineers."
+        },
+        {
+          "type": "prompt",
+          "instruction": "Consult ISO 9241-171 sections 7.2–7.6 to recall requirements for focus indication, redundant cues, and error descriptions.",
+          "resources": [
+            "./docs/templates/iso9241_171_accessibility_checklist.md"
+          ],
+          "helper": "Underline wording about redundant cues; you will cite it verbatim in your findings."
+        },
+        {
+          "type": "action",
+          "instruction": "Run through the checklist, logging pass/fail plus evidence (GIF, screenshot, quote) for each checkpoint.",
+          "checklist": [
+            "Navigate once via keyboard only",
+            "Repeat with screen reader enabled",
+            "Capture evidence per checkpoint",
+            "Flag severity and owner"
+          ],
+          "resources": [
+            "./docs/templates/iso9241_171_accessibility_checklist.md"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Ask the instructor whether corporate branding can adapt to meet contrast requirements and note constraints (brand colors, legal limits).",
+          "helper": "If branding is fixed, document alternative mitigations (outline thickness, patterns)."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Summarize the top three accessibility risks, each pairing evidence, ISO clause, and remediation owner.",
+          "example": "Risk: Success banner uses color only (Clause 7.4). Evidence: screenshot + hex values. Fix: add icon + aria-live alert (Content owner).",
+          "checklist": [
+            "State issue + location",
+            "Reference clause",
+            "Add evidence link",
+            "Assign owner + due date"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "onboarding-q7",
+          "type": "single-select",
+          "question": "Which issue violates ISO 9241-171 guidance on focus indication?",
+          "choices": [
+            "Visible outline on buttons",
+            "Keyboard trap in modal",
+            "Secondary text using sentence case",
+            "Progress bar animation"
+          ],
+          "answer": 1,
+          "rationale": "Keyboard traps prevent focus from moving predictably, breaching accessibility guidance."
+        },
+        {
+          "id": "onboarding-q8",
+          "type": "single-select",
+          "question": "What redundant cue helps color-blind users understand success states?",
+          "choices": [
+            "Only changing hue",
+            "Using text labels plus icons",
+            "Adding more gradients",
+            "Removing icons altogether"
+          ],
+          "answer": 1,
+          "rationale": "Text or icon reinforcement keeps feedback perceivable beyond color alone."
+        }
+      ],
+      "nextStepCue": "With accessibility risks logged, move to the final challenge to define remote coaching support." 
+    },
+    {
+      "id": "onboarding-challenge-5",
+      "title": "Remote Coaching Brief",
+      "labId": "lab-c",
+      "narrative": "Support teams will coach customers remotely. Design a validation plan that verifies guidance works over screen-share sessions using ISO 9241-210 and ISO 9241-11 metrics.",
+      "objectives": [
+        "Specify context-of-use assumptions for remote calls.",
+        "Choose metrics for effectiveness, efficiency, and satisfaction.",
+        "Draft mitigation strategies for coaching-specific risks."
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Plan for 30-minute remote coaching sessions covering two personas (ops lead, project manager) using screen-share and shared notes.",
+          "helper": "Note time zones and preferred collaboration tools so you can schedule realistically.",
+          "resources": [
+            "./docs/templates/remote-coaching-brief-template.md"
+          ]
+        },
+        {
+          "type": "prompt",
+          "instruction": "Consult ISO 9241-11 clause 5 to capture the exact definitions of effectiveness, efficiency, and satisfaction before picking metrics.",
+          "resources": [
+            "./docs/templates/iso9241_11_clause5_notes.md"
+          ],
+          "helper": "Translate each dimension into a question you can actually ask during the call."
+        },
+        {
+          "type": "action",
+          "instruction": "Outline the study flow (pre-brief, live walkthrough, post-session survey) and assign owners, prompts, and measurement points.",
+          "checklist": [
+            "Add talk track for each stage",
+            "Note when to capture metrics",
+            "Define when the coach steps back",
+            "List tools/scripts needed"
+          ],
+          "resources": [
+            "./docs/templates/remote-coaching-brief-template.md"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Ask the instructor (legal proxy) about data privacy constraints for recordings, consent, and storage.",
+          "helper": "Record answers verbatim so you can paste them into the risk section.",
+          "resources": [
+            "./docs/templates/privacy-requirements-qa.md"
+          ]
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Complete the remote coaching brief with participants, context assumptions, ISO-aligned metrics, success criteria, and follow-up actions.",
+          "example": "Effectiveness metric: % of steps completed without prompts (target ≥ 80%). Efficiency: time to configure workspace (target ≤ 6 min).",
+          "checklist": [
+            "Fill participant table",
+            "List metrics + thresholds",
+            "Document risks + mitigations",
+            "Define go/no-go rule"
+          ],
+          "resources": [
+            "./docs/templates/remote-coaching-brief-template.md"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "onboarding-q9",
+          "type": "single-select",
+          "question": "Which metric captures effectiveness for remote coaching?",
+          "choices": [
+            "Percentage of tasks completed without coach intervention",
+            "Number of marketing emails sent",
+            "Weekly login frequency",
+            "Total size of attachments"
+          ],
+          "answer": 0,
+          "rationale": "Effectiveness measures task completion quality, so autonomy during coaching is key." 
+        },
+        {
+          "id": "onboarding-q10",
+          "type": "single-select",
+          "question": "Which risk mitigation aligns with ISO 9241-210's evaluation activity?",
+          "choices": [
+            "Skipping post-session surveys",
+            "Documenting findings and iterating the prototype",
+            "Allowing coaches to improvise without notes",
+            "Collecting only anecdotal evidence"
+          ],
+          "answer": 1,
+          "rationale": "Capturing findings and iterating ensures evaluation informs design solutions."
+        }
+      ],
+      "nextStepCue": "Reveal the class score and collect feedback on the remote coaching plan." 
+    }
+  ]
+}
