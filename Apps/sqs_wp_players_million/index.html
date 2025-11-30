@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quien quiere ser ISOmillonario</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="ladder-right mode-fallback">
+<header>
+    <div class="header-top">
+        <div class="lang-switch">
+            <button class="lang-btn" data-lang="ES">ES</button>
+            <button class="lang-btn" data-lang="EN">EN</button>
+        </div>
+        <div class="mode-pill" id="mode-pill" aria-live="polite">
+            <span class="mode-icon" aria-hidden="true">🛡️</span>
+            <span class="mode-text">Modo reserva</span>
+        </div>
+    </div>
+    <h1 id="game-title">Quien quiere ser ISOmillonario</h1>
+    <p id="game-tagline">Retos sobre ISO 9241 · 29148 · 25010</p>
+</header>
+<main>
+    <section class="section-card controls">
+        <div class="controls-group">
+            <button id="start-ai">Empezar con IA</button>
+            <button id="start-fallback">Preguntas de reserva</button>
+        </div>
+    </section>
+
+    <div class="game-layout">
+        <div class="primary-column">
+            <section class="section-card status-panel">
+                <p id="level-info">Nivel 0 · Premio $0</p>
+            </section>
+
+            <section class="section-card game-panel">
+                <div id="context" class="prompt-box"></div>
+                <div id="question" class="prompt-box"></div>
+                <div id="options"></div>
+                <div class="action-row">
+                    <button id="confirm-answer" disabled>Responder</button>
+                    <button id="next-question" class="hidden">Siguiente pregunta</button>
+                </div>
+            </section>
+
+            <section class="section-card lifelines">
+                <div class="controls-group">
+                    <button id="hint"><span class="btn-icon" aria-hidden="true">💡</span><span class="btn-label">Pista</span></button>
+                    <button id="friend"><span class="btn-icon" aria-hidden="true">📞</span><span class="btn-label">Llamada</span></button>
+                    <button id="fifty"><span class="btn-icon" aria-hidden="true">➗</span><span class="btn-label">50/50</span></button>
+                </div>
+                <div id="lifeline-output" class="prompt-box"></div>
+            </section>
+
+            <section class="section-card message-panel" id="message-panel">
+                <div id="message-content"></div>
+                <button id="restart-game" class="hidden">Empezar de nuevo</button>
+            </section>
+        </div>
+
+        <aside class="section-card money-ladder" aria-label="Ranking de premios">
+            <div class="ladder-actions" role="group" aria-label="Controles de ubicación del ranking">
+                <button id="ladder-right" class="ladder-toggle" aria-label="Mostrar ranking a la derecha">
+                    <span class="ladder-icon" aria-hidden="true">↗️</span>
+                </button>
+                <button id="ladder-bottom" class="ladder-toggle" aria-label="Mostrar ranking debajo">
+                    <span class="ladder-icon" aria-hidden="true">↘️</span>
+                </button>
+            </div>
+            <div class="ladder-header" aria-hidden="true">
+                <span id="ladder-label-level">Nivel</span>
+                <span id="ladder-label-prize">Premio</span>
+            </div>
+            <ul id="money-ladder"></ul>
+        </aside>
+    </div>
+</main>
+
+<div id="loading-overlay" class="loading-overlay hidden" role="alert" aria-live="assertive">
+    <div class="loader">
+        <span class="loader-icon" aria-hidden="true">🔄</span>
+        <p id="loading-text">Generando juego...</p>
+    </div>
+</div>
+
+<script type="module" src="./config.js"></script>
+<script type="module" src="./questions_fallback.js"></script>
+<script type="module" src="./game.js"></script>
+</body>
+</html>

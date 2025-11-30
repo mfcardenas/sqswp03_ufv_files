@@ -1,0 +1,371 @@
+{
+  "id": "iso-29148-supplier-alignment",
+  "title": "ISO 29148 Supplier Alignment Sprint",
+  "theme": "Unify requirements for a multinational avionics supplier network",
+  "overview": "Three aerospace contracts are being consolidated into a single supplier agreement. Each vendor keeps its own tooling, but the airworthiness authority expects a unified requirement set that satisfies ISO/IEC/IEEE 29148 guidance on stakeholder needs, specification content, and acceptance evidence.\n\nThis sprint pushes students to translate procurement statements into well-formed requirements, maintain traceability across suppliers, and demonstrate validation readiness before the joint design review.",
+  "labs": [
+    {
+      "id": "lab-a",
+      "title": "Acquisition Discovery Sprint",
+      "summary": "Clarify stakeholder intent, contractual boundaries, and operational context (clauses 5-6).",
+      "challengeIds": ["challenge-1", "challenge-2"]
+    },
+    {
+      "id": "lab-b",
+      "title": "Specification Governance Workshop",
+      "summary": "Structure requirement statements, assign identifiers, and prepare traceability controls (clauses 7-9).",
+      "challengeIds": ["challenge-3", "challenge-4"]
+    },
+    {
+      "id": "lab-c",
+      "title": "Contract Validation Loop",
+      "summary": "Plan verification and validation evidence the contracting officer will expect (clauses 10-11).",
+      "challengeIds": ["challenge-5"]
+    }
+  ],
+  "resources": [
+    "ISO/IEC/IEEE 29148:2018 clause 6 stakeholder needs",
+    "Annex F – Checklist for requirement statements",
+    "NATO AQAP references for supplier traceability",
+    "UFV instructor memo: always cite contractual source for every constraint"
+  ],
+  "scoring": {
+    "perCorrect": 20,
+    "max": 100
+  },
+  "completionMessage": "Present the consolidated requirement pack to the contracting officer and record pending supplier clarifications.",
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Supplier Landscape Brief",
+      "labId": "lab-a",
+      "narrative": "Each avionics supplier brings a different certification history. ISO 29148 clause 6.4 forces the team to capture context and stakeholder goals before locking anything into the specification.",
+      "objectives": [
+        "Map environment, user, and equipment factors for each supplier",
+        "Identify contractual drivers behind stakeholder needs",
+        "Document conflicts that will require negotiation"
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Read the supplier onboarding transcript. Highlight statements about tooling, regulatory ownership, and turnaround expectations.",
+          "resources": [
+            "./docs/templates/context-of-use-worksheet.md",
+            "./docs/templates/stakeholder-alignment-brief.md"
+          ],
+          "helper": "Use one column per supplier so overlaps stand out."
+        },
+        {
+          "type": "action",
+          "instruction": "Complete the acquisition context brief with persona, certification, delegated authority, and unacceptable loss for at least three roles (contracting officer, prime integrator, avionics QA).",
+          "resources": ["./docs/templates/requirements-elicitation-brief.md"],
+          "example": "Prime integrator – needs supplier data in ASD S1000D structure within 24 hours of change."
+        },
+        {
+          "type": "research",
+          "instruction": "Interview the instructor acting as Export Control Counsel to uncover hidden constraints (e.g., data residency, handling levels).",
+          "helper": "Write exact regulation names so every derived requirement can cite them."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Produce a Supplier Landscape Brief summarizing context-of-use, top risks, and the clauses you will reference in negotiations.",
+          "resources": ["./docs/templates/requirement-review-log.md"],
+          "helper": "Tie each risk to the ISO 29148 activity it influences (elicitation, analysis, specification)."
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c1-q1",
+          "type": "single-select",
+          "question": "Why does ISO 29148 demand recording the source stakeholder for every need?",
+          "choices": [
+            "To justify budget increases",
+            "To maintain traceability between stakeholder intent and resulting requirements",
+            "To finalize UI mockups",
+            "To skip validation"
+          ],
+          "answer": 1,
+          "rationale": "Without a documented source you cannot prove the requirement is necessary when auditors ask."
+        },
+        {
+          "id": "c1-q2",
+          "type": "single-select",
+          "question": "Which artifact best captures user, environment, and equipment information before specification drafting?",
+          "choices": [
+            "Test procedure",
+            "Context-of-use description",
+            "Risk log",
+            "Earned value chart"
+          ],
+          "answer": 1,
+          "rationale": "Clause 6.4 highlights the context-of-use description as the anchor for downstream requirements."
+        }
+      ],
+      "nextStepCue": "Share the brief with your table and agree on which conflicts must be escalated before the next lab."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Requirement Vetting Board",
+      "labId": "lab-a",
+      "narrative": "Statements arrive from supplier kickoff workshops. Annex F and Annex D of ISO 29148 define the qualities the board must check before accepting them into the contract baseline.",
+      "objectives": [
+        "Separate needs from design details",
+        "Rewrite statements into atomic requirements",
+        "Score requirement quality attributes"
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Sort the supplier comments into Need, Constraint, Design Suggestion. Highlight any statement missing a measurable trigger.",
+          "resources": ["./docs/templates/requirement-attributes-checklist.md"],
+          "helper": "If a note mentions 'friendly interface', capture the underlying quality metric you need."
+        },
+        {
+          "type": "action",
+          "instruction": "Rewrite five needs into ISO 29148 requirement format (context, subject, modal verb, measurable outcome).",
+          "resources": ["./docs/templates/iso29148_quality_checklist.md"],
+          "helper": "Include the supplier ID (SUP-A, SUP-B, etc.) so traceability remains obvious."
+        },
+        {
+          "type": "prompt",
+          "instruction": "Score each rewritten requirement against the Necessary/Unambiguous/Feasible/Verifiable criteria.",
+          "checklist": ["Necessary", "Unambiguous", "Feasible", "Verifiable"],
+          "resources": ["./docs/templates/requirement-review-log.md"]
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Publish the vetted requirement list with scores, open issues, and the supplier contact able to clarify each.",
+          "helper": "Flag TBD attributes so the contracting officer can chase answers."
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c2-q1",
+          "type": "single-select",
+          "question": "An acceptable ISO 29148 requirement must be…",
+          "choices": [
+            "Solution-specific and multi-topic",
+            "Necessary, unambiguous, complete, and verifiable",
+            "Written as marketing copy",
+            "Left without an identifier"
+          ],
+          "answer": 1,
+          "rationale": "Annex D lists these attributes as mandatory quality characteristics."
+        },
+        {
+          "id": "c2-q2",
+          "type": "single-select",
+          "question": "What is the best next step when a statement mixes two actions?",
+          "choices": [
+            "Leave it as-is",
+            "Split it into separate requirements so each is singular",
+            "Turn it into a test case",
+            "Delete it"
+          ],
+          "answer": 1,
+          "rationale": "Singular requirements improve clarity and allow precise verification."
+        }
+      ],
+      "nextStepCue": "Move the approved statements into the specification outline to keep momentum."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Specification Outline Alignment",
+      "labId": "lab-b",
+      "narrative": "The acquisition office wants to see how requirements map to ISO 29148 clause 9 sections and supplier responsibilities.",
+      "objectives": [
+        "Assign each requirement to a specification section",
+        "Reference contractual clauses for derived requirements",
+        "Draft narrative bridges explaining why sections exist"
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Review the specification skeleton (scope, referenced documents, functional, performance, interface, verification).",
+          "resources": ["./docs/templates/specification-story-map.md"],
+          "helper": "Note which sections each supplier already maintains."
+        },
+        {
+          "type": "action",
+          "instruction": "Create a story map linking each validated requirement to specification sections and supplier IDs.",
+          "resources": ["./docs/templates/traceability-matrix-template.md"],
+          "helper": "Use SUP-<section>-<number> so auditors know where the requirement lives."
+        },
+        {
+          "type": "research",
+          "instruction": "Ask the instructor role-playing the Certification Auditor which references must appear verbatim (e.g., SAE ARP4754A, RTCA DO-178C).",
+          "helper": "Capture clause numbers for later traceability."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Draft introductory paragraphs for two critical sections, citing ISO 29148 clause numbers and supplier responsibilities.",
+          "resources": ["./docs/templates/requirements-elicitation-brief.md"],
+          "helper": "Close each paragraph with a measurable commitment rather than design statements."
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c3-q1",
+          "type": "single-select",
+          "question": "Where should interface requirements sit per ISO 29148?",
+          "choices": [
+            "In the glossary",
+            "Within a dedicated interface section so downstream teams can plan integrations",
+            "Inside risk logs only",
+            "Nowhere; they belong to design"
+          ],
+          "answer": 1,
+          "rationale": "Clause 9 describes interface requirements as their own content element."
+        },
+        {
+          "id": "c3-q2",
+          "type": "single-select",
+          "question": "Derived requirements created from regulatory constraints must…",
+          "choices": [
+            "Skip identifiers",
+            "Cite the originating regulation for traceability",
+            "Be expressed as UI sketches",
+            "Wait until testing"
+          ],
+          "answer": 1,
+          "rationale": "ISO 29148 expects each requirement to point back to its source (stakeholder, regulation, standard)."
+        }
+      ],
+      "nextStepCue": "Review the outline with the contracting officer before numbering requirements."
+    },
+    {
+      "id": "challenge-4",
+      "title": "Traceability & Change Drill",
+      "labId": "lab-b",
+      "narrative": "Supplier changes are inevitable. Clause 7.2.5 mandates bidirectional traceability and impact analysis before approving modifications.",
+      "objectives": [
+        "Assign identifiers to each requirement",
+        "Connect requirements to verification evidence",
+        "Assess change impact on suppliers and interfaces"
+      ],
+      "tasks": [
+        {
+          "type": "action",
+          "instruction": "Fill the traceability matrix with stakeholder IDs, supplier IDs, requirement IDs, and planned verification methods.",
+          "resources": ["./docs/templates/traceability-matrix-template.md"],
+          "helper": "Adopt the ID convention SUP-REQ-### for requirements and SUP-VER-### for verification steps."
+        },
+        {
+          "type": "prompt",
+          "instruction": "Choose one requirement and draft three verification approaches (analysis, test, inspection) with pass/fail criteria.",
+          "resources": ["./docs/templates/validation-protocol-template.md"],
+          "example": "Inspection – verify supplier delivers DO-178C artifacts before flight clearance."
+        },
+        {
+          "type": "action",
+          "instruction": "Simulate a change request: 'Supplier B wants to defer fail-operational capability to phase 2.' Document interface, validation, and contractual impacts.",
+          "resources": ["./docs/templates/change-impact-canvas.md"],
+          "helper": "Indicate whether the change touches safety assessments or airworthiness evidence."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Brief the instructor on the traceability snapshot and change analysis, highlighting which artifacts must be re-baselined.",
+          "helper": "Mention who owns the decision (contracting officer vs. supplier PM)."
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c4-q1",
+          "type": "single-select",
+          "question": "Bidirectional traceability means…",
+          "choices": [
+            "Only tests reference requirements",
+            "Requirements connect to both their sources and their verification evidence",
+            "Change requests replace identifiers",
+            "Stakeholders no longer need to sign off"
+          ],
+          "answer": 1,
+          "rationale": "Clause 7.2.5 stresses linking requirements back to their origins and forward to verification artifacts."
+        },
+        {
+          "id": "c4-q2",
+          "type": "single-select",
+          "question": "When processing a change request you should first…",
+          "choices": [
+            "Check which requirement IDs are affected and what verification updates they need",
+            "Approve it immediately",
+            "Move it to backlog",
+            "Redesign the UI"
+          ],
+          "answer": 0,
+          "rationale": "Impact analysis starts by identifying the affected requirements and their dependent artifacts."
+        }
+      ],
+      "nextStepCue": "Lock IDs before presenting validation coverage."
+    },
+    {
+      "id": "challenge-5",
+      "title": "Joint Validation Pack",
+      "labId": "lab-c",
+      "narrative": "Auditors expect a clear validation plan mapping requirements to acceptance criteria, owners, and evidence.",
+      "objectives": [
+        "Create measurable acceptance criteria",
+        "Plan validation activities per requirement category",
+        "Craft the executive summary for the design review"
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Review the verification approaches captured earlier and decide which require customer witnessing.",
+          "helper": "Disclose where supplier labs can provide evidence vs. where the customer must participate."
+        },
+        {
+          "type": "action",
+          "instruction": "Draft acceptance criteria (metric, benchmark, evidence owner, validation method) for three priority requirements.",
+          "resources": ["./docs/templates/acceptance-criteria-template.md"],
+          "checklist": [
+            "Metric",
+            "Benchmark",
+            "Evidence owner",
+            "Validation method"
+          ]
+        },
+        {
+          "type": "prompt",
+          "instruction": "Write validation protocol notes describing how the contracting officer will accept or reject evidence.",
+          "resources": ["./docs/templates/validation-protocol-template.md"],
+          "helper": "Reference ISO 29148 clause 10 to justify each activity."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Compose the executive message summarizing readiness, residual risks, and the next design review milestone.",
+          "helper": "Mention which supplier owes additional data so accountability stays visible."
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c5-q1",
+          "type": "single-select",
+          "question": "A valid acceptance criterion must…",
+          "choices": [
+            "Describe implementation details",
+            "Contain a measurable threshold tied to a requirement",
+            "Mention team morale",
+            "Use adjectives like 'robust' without context"
+          ],
+          "answer": 1,
+          "rationale": "ISO 29148 emphasizes measurability to confirm requirement satisfaction."
+        },
+        {
+          "id": "c5-q2",
+          "type": "single-select",
+          "question": "Validation focuses on…",
+          "choices": [
+            "Proving stakeholders' needs are met",
+            "Checking coding standards",
+            "Only unit tests",
+            "Marketing approval"
+          ],
+          "answer": 0,
+          "rationale": "Validation ensures the delivered capability satisfies stakeholder intent, not just technical specs."
+        }
+      ],
+      "nextStepCue": "Send the validation pack to the contracting officer for review and capture any feedback in the traceability log."
+    }
+  ]
+}

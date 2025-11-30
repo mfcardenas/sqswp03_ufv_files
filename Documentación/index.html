@@ -177,6 +177,46 @@
         <div class="content-section">
             <h2>🎮 Juegos Educativos Interactivos</h2>
             <details>
+                <summary>ISOmillonario - Concurso bilingüe con IA</summary>
+                <div>
+                    <h3>Quien quiere ser ISOmillonario - Quiz guiado por IA y reserva</h3>
+                    <p><strong><a href="Juegos/sqs_wp_players_million/index.html" target="_blank">🎮 Abrir edición bilingüe</a></strong></p>
+                    <p>Una experiencia al estilo “¿Quién quiere ser millonario?” enfocada en ISO 9241, ISO/IEC 29148 e ISO/IEC 25010. El juego mezcla generación dinámica vía LLM con una batería curada de preguntas de respaldo, ofrece ayudas clásicas y permite mover el ranking para adaptarse a cualquier sesión en aula.</p>
+
+                    <h4>Características Clave</h4>
+                    <ul>
+                        <li><strong>Motor híbrido:</strong> Selecciona entre contenido generado por IA o preguntas de reserva listas para auditoría.</li>
+                        <li><strong>Ayudas integradas:</strong> Pista contextual, llamada al experto y 50/50 con mensajes explicativos.</li>
+                        <li><strong>Ranking flexible:</strong> Panel de premios con botones para fijarlo a la derecha o bajo el tablero.</li>
+                        <li><strong>Bilingüe instantáneo:</strong> Todos los textos, botones y premios cambian entre ES/EN sin recargar.</li>
+                    </ul>
+
+                    <h4>Aprendizaje y Estándares ISO</h4>
+                    <ul>
+                        <li><strong>ISO 9241:</strong> Preguntas sobre ergonomía, interacción y métricas de usabilidad.</li>
+                        <li><strong>ISO/IEC/IEEE 29148:</strong> Retos sobre requisitos, stakeholders y trazabilidad.</li>
+                        <li><strong>ISO/IEC 25010:</strong> Escenarios sobre características de calidad y medidas de producto.</li>
+                        <li><strong>Contextos realistas:</strong> Cada pregunta incluye escenarios de ingeniería de software contemporánea.</li>
+                    </ul>
+
+                    <h4>Experiencia de Juego</h4>
+                    <ul>
+                        <li><strong>15 niveles:</strong> Escala de premios con retroalimentación visual y confeti al ganar.</li>
+                        <li><strong>Selección guiada:</strong> Confirmación explícita antes de bloquear respuestas.</li>
+                        <li><strong>Indicadores accesibles:</strong> Modo de juego, mensajes y botones con atributos ARIA.</li>
+                        <li><strong>Reinicio inmediato:</strong> Botón dedicado y mensajes finales personalizados por idioma.</li>
+                    </ul>
+
+                    <h4>Estado y Tecnología</h4>
+                    <ul>
+                        <li>SPA ligera en HTML, CSS y JavaScript modular.</li>
+                        <li>Integración directa con Ollama (gpt-oss) y control de tiempo de espera.</li>
+                        <li>Fallback automático a preguntas locales y persistencia básica de estado.</li>
+                        <li>Probada en noviembre de 2025 con compatibilidad completa para escritorio y tablet.</li>
+                    </ul>
+                </div>
+            </details>
+            <details>
                 <summary>ISO Laboratory - Simulador de Decisiones Técnicas</summary>
                 <div>
                     <h3>Laboratorio ISO - Juego Educativo Interactivo</h3>
@@ -282,6 +322,109 @@
                         </ul>
 
                         <p><strong>Valor Pedagógico:</strong> Esta metodología asegura que los estudiantes no solo aprendan los estándares ISO, sino que desarrollen <strong>pensamiento crítico</strong> y <strong>habilidades de toma de decisiones técnicas fundamentadas</strong>. El debate post-ejercicio permite consolidar el aprendizaje y corregir conceptos erróneos de manera colaborativa.</p>
+                    </div>
+                </div>
+            </details>
+            <details>
+                <summary>ISO 29148 Requirements Players - Taller de Ingeniería de Requisitos</summary>
+                <div>
+                    <h3>ISO 29148 Requirements Players - Facilitador de Laboratorios</h3>
+                    <p><strong><a href="Juegos/sqs_wp_players_29148/index.html" target="_blank">🎮 Abrir Edición ISO 29148</a></strong></p>
+                    <p>SPA enfocada en aula que permite dirigir workshops de ISO/IEC/IEEE 29148 combinando escenarios estáticos y generación dinámica mediante Ollama. Cada reto mantiene la estructura oficial de la norma y expone guías descargables directamente desde el visor integrado.</p>
+
+                    <h4>Experiencia Guiada</h4>
+                    <ul>
+                        <li><strong>Dos escenarios listos:</strong> Requirements Rally y Supplier Alignment con narrativa completa, KPIs y quizzes.</li>
+                        <li><strong>Modo dinámico:</strong> Solicita a <em>gpt-oss</em> (Ollama local) tres laboratorios nuevos manteniendo el mismo esquema JSON.</li>
+                        <li><strong>Control de contenido:</strong> Selector para decidir la fuente, el tema y el laboratorio antes de iniciar la sesión.</li>
+                        <li><strong>Visor de recursos:</strong> Abre plantillas Markdown (matrices, briefs, protocolos) sin salir del juego.</li>
+                        <li><strong>Seguimiento de resultados:</strong> Calcula hasta 100 puntos con mensajes de cierre para el debrief académico.</li>
+                    </ul>
+
+                    <h4>Laboratorios y Estándares Cubiertos</h4>
+                    <ul>
+                        <li><strong>Elicitación:</strong> Retos de descubrimiento y priorización con focos en stakeholders y contratos.</li>
+                        <li><strong>Especificación:</strong> Actividades para refinar historias, criterios de aceptación y trazabilidad.</li>
+                        <li><strong>Validación:</strong> Comprobaciones cruzadas de consistencia, riesgos y métricas de aceptación.</li>
+                        <li><strong>ISO 29148 completo:</strong> Referencias explícitas a apartados de requisitos, anexos y artefactos de soporte.</li>
+                    </ul>
+
+                    <h4>Recursos y Tecnología</h4>
+                    <ul>
+                        <li><strong>Markdown integrado:</strong> Plantillas descargables (briefs, matrices RACI, protocolos de validación) servidas desde <code>docs/templates</code>.</li>
+                        <li><strong>SPA ligera:</strong> HTML/CSS/JS puro con módulos para datos, estado, UI y utilidades DOM.</li>
+                        <li><strong>Fallback garantizado:</strong> Si Ollama no responde, el simulador vuelve al escenario estático elegido.</li>
+                        <li><strong>Facilitación bilingüe:</strong> La interfaz está en inglés, pero los contenidos están listos para coaching en español.</li>
+                    </ul>
+
+                    <h4>Estado del Proyecto</h4>
+                    <p><strong>✅ Completamente funcional</strong> - Verificado el 15 de noviembre de 2025. Incluye assets de marca UFV y paridad total con el motor del juego ISO 9241.</p>
+
+                    <h4>⚠️ Metodología de Uso Académico</h4>
+                    <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin: 10px 0;">
+                        <p><strong>🎯 Taller Guiado por Docente - Uso Obligatorio en Aula</strong></p>
+                        <p>El simulador está diseñado para la <strong>facilitación síncrona</strong> del profesorado. El docente selecciona el laboratorio, presenta los objetivos y acompaña cada decisión técnica antes de registrar resultados.</p>
+
+                        <p><strong>Metodología de Implementación:</strong></p>
+                        <ul>
+                            <li><strong>Kick-off estructurado:</strong> Revisión conjunta del laboratorio (lab-a, lab-b, lab-c) y definición de criterios.</li>
+                            <li><strong>Trabajo guiado:</strong> El profesor usa el visor de recursos para explicar plantillas y checkpoints.</li>
+                            <li><strong>Discusión crítica:</strong> Cada respuesta del quiz o decisión de tareas se contrasta con la norma ISO 29148.</li>
+                            <li><strong>Debrief con métricas:</strong> El cierre se apoya en la puntuación y en la recomendación automática de mejoras.</li>
+                        </ul>
+
+                        <p><strong>Valor Pedagógico:</strong> Garantiza que el estudiantado entienda la trazabilidad de requisitos, la validación colaborativa y la toma de decisiones fundamentada en estándares internacionales.</p>
+                    </div>
+                </div>
+            </details>
+            <details>
+                <summary>ISO 9241 Usability Quest - Laboratorio de Experiencia de Usuario</summary>
+                <div>
+                    <h3>ISO 9241 Usability Quest - Laboratorio ISO 9241</h3>
+                    <p><strong><a href="Juegos/sqs_wp_ux_players_9241/index.html" target="_blank">🎮 Jugar Versión Español</a> | <a href="Juegos/sqs_wp_ux_players_9241/index.html" target="_blank">🎮 Play English Version</a></strong></p>
+                    <p>Una experiencia guiada que permite practicar los principios de la familia ISO 9241 (partes 110, 112, 210 y 11) mediante laboratorios de observación, auditoría e iteración sobre interfaces reales. El sistema combina guías estáticas y generación dinámica (Ollama gpt-oss) para ofrecer actividades siempre alineadas con los estándares de usabilidad.</p>
+
+                    <h4>Experiencia de Juego</h4>
+                    <ul>
+                        <li><strong>3 Laboratorios Secuenciales:</strong> Discovery Workshop, Interaction Audit y Validation Sprint con objetivos ISO 9241 específicos.</li>
+                        <li><strong>Retos Guiados:</strong> Observación, priorización, storyboards y validación con listas de chequeo y plantillas descargables.</li>
+                        <li><strong>Panel de Resultados:</strong> Muestra puntuaciones hasta 100 puntos y mensajes de cierre para debrief académico.</li>
+                        <li><strong>Recursos Integrados:</strong> Cada reto enlaza a apuntes, matrices e instrucciones para trabajar en equipo.</li>
+                    </ul>
+
+                    <h4>Laboratorios y Estándares Cubiertos</h4>
+                    <ul>
+                        <li><strong>ISO 9241-110/112:</strong> Principios de diálogo y presentación de información aplicados a tableros analíticos.</li>
+                        <li><strong>ISO 9241-210:</strong> Actividades de diseño centrado en el usuario aplicadas a prototipos interactivos.</li>
+                        <li><strong>ISO 9241-11:</strong> Definición de métricas de eficacia, eficiencia y satisfacción con criterios medibles.</li>
+                        <li><strong>ISO 9241-143:</strong> Temporización del feedback y manejo de notificaciones en microinteracciones.</li>
+                    </ul>
+
+                    <h4>Integración Técnica</h4>
+                    <ul>
+                        <li><strong>Fuentes de Contenido:</strong> JSON estático para sesiones deterministas o modo dinámico con gpt-oss.</li>
+                        <li><strong>Compatibilidad:</strong> SPA ligera en HTML/CSS/JS lista para servidores estáticos.</li>
+                        <li><strong>Gestión de Estado:</strong> Módulos dedicados para puntuación, sesión y renderizado de laboratorios.</li>
+                        <li><strong>Soporte Bilingüe:</strong> UI en inglés con guías y notas metodológicas bilingües para docentes.</li>
+                    </ul>
+
+                    <h4>Estado del Proyecto</h4>
+                    <p><strong>✅ Completamente funcional</strong> - Verificado el 15 de noviembre de 2025. Incluye plantillas Markdown actualizadas y compatibilidad con escenarios generados por IA.</p>
+
+                    <h4>⚠️ Metodología de Uso Académico</h4>
+                    <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin: 10px 0;">
+                        <p><strong>🎯 Taller Guiado por Docente - Uso Obligatorio en Aula</strong></p>
+                        <p>Este simulador está diseñado como una <strong>herramienta pedagógica colaborativa</strong> que requiere la <strong>supervisión activa y continua del docente</strong>. No está pensado para ser utilizado de forma autónoma por los estudiantes.</p>
+
+                        <p><strong>Metodología de Implementación:</strong></p>
+                        <ul>
+                            <li><strong>Facilitación Docente:</strong> El profesor guía la lectura de cada reto, aportando contexto ISO 9241 y ejemplos reales.</li>
+                            <li><strong>Análisis Conjunto:</strong> Las decisiones se discuten en grupo antes de registrar observaciones o priorizar fixes.</li>
+                            <li><strong>Reflexión Crítica:</strong> El docente conecta cada hallazgo con las cláusulas de la norma y su impacto en usuarios.</li>
+                            <li><strong>Debate Constructivo:</strong> Los desacuerdos se documentan como hipótesis para experimentos o validaciones futuras.</li>
+                        </ul>
+
+                        <p><strong>Valor Pedagógico:</strong> Esta metodología asegura que los estudiantes internalicen ISO 9241 mientras desarrollan <strong>pensamiento crítico</strong> y <strong>criterios de evaluación de usabilidad basados en evidencia</strong>. El debate post-ejercicio consolida aprendizajes y detecta brechas de conocimiento.</p>
                     </div>
                 </div>
             </details>

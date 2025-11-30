@@ -1,0 +1,384 @@
+{
+  "id": "iso-29148-requirements-rally",
+  "title": "ISO 29148 Requirements Rally",
+  "theme": "Coordinate requirements for a multi-city mobility control platform",
+  "overview": "You are supporting three city councils that merged their transit control rooms. The new platform must consolidate telemetry, crew rosters, and disruption workflows without breaking existing contracts. This rally guides the cohort through ISO/IEC/IEEE 29148 activities so every requirement remains justified, testable, and traceable.\n\nStudents will collect context-of-use evidence, structure stakeholder needs, write specification fragments, and close with validation assets that connect directly to ISO 29148 clauses.",
+  "labs": [
+    {
+      "id": "lab-a",
+      "title": "Stakeholder Discovery Studio",
+      "summary": "Elicit context-of-use data, constraints, and stakeholder priorities (ISO 29148 clauses 5-6).",
+      "challengeIds": ["challenge-1", "challenge-2"]
+    },
+    {
+      "id": "lab-b",
+      "title": "Specification Architecture Workshop",
+      "summary": "Transform needs into structured requirement statements and trace them to solution elements (clauses 7-9).",
+      "challengeIds": ["challenge-3", "challenge-4"]
+    },
+    {
+      "id": "lab-c",
+      "title": "Validation & Traceability Sprint",
+      "summary": "Link acceptance criteria, verification methods, and change control (clauses 10-11).",
+      "challengeIds": ["challenge-5"]
+    }
+  ],
+  "resources": [
+    "ISO/IEC/IEEE 29148:2018 clauses 5 through 11",
+    "Annex D – Requirement Quality Characteristics",
+    "Annex G – Content of requirements specification",
+    "UFV facilitation note: always tie acceptance criteria back to stakeholder intent"
+  ],
+  "scoring": {
+    "perCorrect": 20,
+    "max": 100
+  },
+  "completionMessage": "Share the completed traceability deck with the city councils and log pending clarifications before sprint planning.",
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Stakeholder Immersion Brief",
+      "labId": "lab-a",
+      "narrative": "The three municipalities run different dispatch tools. Before you phrase any requirement, ISO 29148 insists on capturing context-of-use, operational constraints, and stakeholder intent.",
+      "objectives": [
+        "Capture environment, user, and equipment factors per clause 6.4",
+        "Document stakeholder goals with source attribution",
+        "Surface conflicting constraints that must be negotiated later"
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Review the joint operations transcript and highlight every mention of user types, locations, and performance thresholds.",
+          "helper": "Color-code environment, user, and equipment statements so you can reference them quickly.",
+          "resources": [
+            "./docs/templates/context-of-use-worksheet.md",
+            {
+              "label": "ISO 29148 clause 6.4 summary",
+              "url": "https://www.iana.org/assignments/media-types/application/pdf",
+              "note": "Use any authorized PDF excerpt you already have access to."
+            }
+          ]
+        },
+        {
+          "type": "action",
+          "instruction": "Populate the stakeholder alignment brief. Include persona, motivation, authority level, and must-not-fail scenario for at least four roles.",
+          "example": "Transit Commander – needs a consolidated disruption queue to reassign crews within 8 minutes.",
+          "resources": ["./docs/templates/stakeholder-alignment-brief.md"],
+          "checklistTitle": "Stakeholder capture flow",
+          "checklist": [
+            "Record stakeholder name and organization",
+            "List the mission outcome they guard",
+            "Document communication preference",
+            "Tag conflicts or overlaps"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Interview the instructor role-playing the Maintenance Lead to understand seasonal constraints and safety certifications.",
+          "helper": "Ask for concrete numbers (e.g., crew count, outage tolerance) so future requirements can inherit them verbatim."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Draft a one-page immersion brief summarizing the context-of-use and the top three stakeholder risks. Attach evidence references.",
+          "resources": ["./docs/templates/requirements-elicitation-brief.md"],
+          "helper": "Use ISO 29148 Table 9 to justify why each risk matters to the specification scope."
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c1-q1",
+          "type": "single-select",
+          "question": "Which ISO 29148 artifact records environment, user, and equipment characteristics before drafting requirements?",
+          "choices": [
+            "Requirements verification matrix",
+            "Context of use description",
+            "Acceptance test procedure",
+            "Risk register"
+          ],
+          "answer": 1,
+          "rationale": "Clause 6.4 mandates documenting the context of use to keep requirements grounded in reality."
+        },
+        {
+          "id": "c1-q2",
+          "type": "single-select",
+          "question": "Why must each stakeholder goal cite a source per ISO 29148?",
+          "choices": [
+            "To speed up procurement",
+            "To make cost estimation easier",
+            "To preserve traceability back to the stakeholder",
+            "To reduce facilitation workload"
+          ],
+          "answer": 2,
+          "rationale": "Traceability begins at the source; without attribution you cannot justify the requirement downstream."
+        }
+      ],
+      "nextStepCue": "Share the immersion brief with the cohort and highlight any conflicting stakeholder expectations before moving on."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Requirement Quality Board",
+      "labId": "lab-a",
+      "narrative": "Raw notes flood the team. ISO 29148 Annex D prescribes quality characteristics that every individual requirement must satisfy before entering the baseline.",
+      "objectives": [
+        "Classify statements as needs, constraints, or design ideas",
+        "Rewrite ambiguous notes into ISO 29148-compliant requirement text",
+        "Score each requirement against quality attributes"
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Sort yesterday's sticky notes into Must Describe Need, Must Describe Constraint, or Design Suggestion.",
+          "helper": "If a note prescribes UI elements, park it in Design Suggestion until the specification team confirms.",
+          "resources": ["./docs/templates/requirement-attributes-checklist.md"]
+        },
+        {
+          "type": "action",
+          "instruction": "Rewrite at least six needs into atomic requirement statements using the ISO 29148 structure (condition, subject, action, constraint).",
+          "example": "When disruption severity equals red, the system shall lock the crew roster until a commander approves changes.",
+          "resources": ["./docs/templates/iso29148_quality_checklist.md"],
+          "helper": "Read each sentence aloud; if you need to say 'and', split it."
+        },
+        {
+          "type": "prompt",
+          "instruction": "For each rewritten requirement, rate it against the quality checklist (necessary, unambiguous, complete, singular, feasible, verifiable).",
+          "checklist": ["Necessary", "Unambiguous", "Complete", "Singular", "Feasible", "Verifiable"],
+          "resources": ["./docs/templates/requirement-review-log.md"]
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Prepare a backlog excerpt with the top five requirements, their quality scores, and open questions.",
+          "helper": "Flag any statement that still contains TBD data so the instructor can guide follow-up elicitation."
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c2-q1",
+          "type": "single-select",
+          "question": "Which trait proves a requirement is singular per ISO 29148 Annex D?",
+          "choices": [
+            "It references more than one stakeholder",
+            "It covers exactly one capability",
+            "It is written in passive voice",
+            "It includes design guidance"
+          ],
+          "answer": 1,
+          "rationale": "Singular requirements describe a single capability or quality so verification remains straightforward."
+        },
+        {
+          "id": "c2-q2",
+          "type": "single-select",
+          "question": "A note reads 'Provide real-time dashboards with nice maps.' What is the best first action?",
+          "choices": [
+            "Mark it as verified",
+            "Classify it as a design suggestion and elicit the underlying need",
+            "Convert it into a test case",
+            "Ignore it"
+          ],
+          "answer": 1,
+          "rationale": "You must separate the expressed design from the underlying requirement before rewriting it."
+        }
+      ],
+      "nextStepCue": "Once the board agrees on the top requirements, move into specification structuring."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Specification Story Map",
+      "labId": "lab-b",
+      "narrative": "The councils expect to see how stakeholder needs flow into specification sections required by ISO 29148 clause 9.",
+      "objectives": [
+        "Map requirements to specification sections",
+        "Identify derived requirements triggered by constraints",
+        "Draft narrative hooks for each section"
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Review the specification outline mandated by the PMO (introduction, referenced documents, interface requirements, performance, verification).",
+          "resources": ["./docs/templates/specification-story-map.md"]
+        },
+        {
+          "type": "action",
+          "instruction": "Create a story map that places each validated requirement into its target section and notes traceability back to stakeholders.",
+          "helper": "Use swimlanes for stakeholder groups so conflicts surface visually." ,
+          "resources": [
+            "./docs/templates/traceability-matrix-template.md"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Consult the instructor acting as Legal Counsel to capture regulatory clauses that must appear in the specification.",
+          "example": "Data retention policies for cross-city incident logs"
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Write opening paragraphs for two priority sections, referencing ISO 29148 clause numbers and stakeholder sources.",
+          "resources": ["./docs/templates/requirements-elicitation-brief.md"],
+          "helper": "Show how each paragraph transitions into measurable requirements; avoid promising design."
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c3-q1",
+          "type": "single-select",
+          "question": "Where should interface dependencies be documented per ISO 29148 clause 9?",
+          "choices": [
+            "Within the context of use section",
+            "Inside the interface requirements section",
+            "Only in project charters",
+            "In the annex with terms and acronyms"
+          ],
+          "answer": 1,
+          "rationale": "Clause 9 requires dedicated interface requirement content so downstream teams can plan integrations."
+        },
+        {
+          "id": "c3-q2",
+          "type": "single-select",
+          "question": "When deriving requirements from legal constraints you should first…",
+          "choices": [
+            "Assess the constraint category and cite its origin",
+            "Convert it directly into test steps",
+            "Drop it unless a user asked",
+            "Turn it into UI mockups"
+          ],
+          "answer": 0,
+          "rationale": "Traceability demands linking each derived requirement to its source, such as a regulation or policy."
+        }
+      ],
+      "nextStepCue": "Confirm the story map with the PMO before locking traceability IDs."
+    },
+    {
+      "id": "challenge-4",
+      "title": "Traceability Grid & Change Impact",
+      "labId": "lab-b",
+      "narrative": "The councils worry about scope creep. ISO 29148 clause 7.2.5 emphasizes maintaining bidirectional traceability and assessing change impact.",
+      "objectives": [
+        "Assign unique identifiers to each requirement",
+        "Link requirements to verification methods",
+        "Simulate a change request and evaluate impact"
+      ],
+      "tasks": [
+        {
+          "type": "action",
+          "instruction": "Populate the traceability matrix with stakeholder IDs, requirement IDs, and verification references.",
+          "resources": ["./docs/templates/traceability-matrix-template.md"],
+          "helper": "Follow the ID convention CITY-<lab>-<number> to keep context obvious."
+        },
+        {
+          "type": "prompt",
+          "instruction": "Select one requirement and draft three verification methods (analysis, test, inspection) with pass/fail criteria.",
+          "resources": ["./docs/templates/validation-protocol-template.md"],
+          "example": "Analysis – confirm algorithm handles 5k concurrent events with < 3s response"
+        },
+        {
+          "type": "action",
+          "instruction": "Process a hypothetical change request: 'Increase crew reassignment window from 8 to 12 minutes.' Capture impact across interfaces, verification, and stakeholders.",
+          "resources": ["./docs/templates/change-impact-canvas.md"],
+          "helper": "Note whether new constraints violate previously agreed KPIs."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Present the traceability snapshot and change impact summary to the instructor.",
+          "helper": "Emphasize which artifacts must be updated when the change is approved."
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c4-q1",
+          "type": "single-select",
+          "question": "Which statement best describes bidirectional traceability?",
+          "choices": [
+            "Requirements link only to design elements",
+            "Every requirement can be traced to its source and to its verification evidence",
+            "Change requests replace traceability",
+            "Traceability is optional once baselined"
+          ],
+          "answer": 1,
+          "rationale": "ISO 29148 insists on bidirectional links between sources, requirements, and verification artifacts."
+        },
+        {
+          "id": "c4-q2",
+          "type": "single-select",
+          "question": "When evaluating a change request, which factor comes first?",
+          "choices": [
+            "Favorite feature of the architect",
+            "Impact on requirement identifiers and verification plans",
+            "Availability of UI mockups",
+            "Whether developers like it"
+          ],
+          "answer": 1,
+          "rationale": "Impact analysis starts with the affected requirements and their verification commitments."
+        }
+      ],
+      "nextStepCue": "Lock the traceability IDs before entering validation planning."
+    },
+    {
+      "id": "challenge-5",
+      "title": "Validation & Acceptance Canvas",
+      "labId": "lab-c",
+      "narrative": "Councils expect a concrete validation plan demonstrating each requirement's acceptance evidence per clause 10.",
+      "objectives": [
+        "Translate requirements into acceptance criteria",
+        "Select validation techniques per requirement category",
+        "Define completion messaging for the client review"
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Study the verification references captured earlier and map them to ISO 29148 validation activities.",
+          "helper": "Note where stakeholder witnessing is required to close the loop."
+        },
+        {
+          "type": "action",
+          "instruction": "Draft acceptance criteria for three requirements, listing metric, benchmark, evidence owner, and validation method.",
+          "resources": ["./docs/templates/acceptance-criteria-template.md"],
+          "checklist": [
+            "State the measurable metric",
+            "Set threshold/benchmark",
+            "Identify evidence source",
+            "Tie to requirement ID"
+          ]
+        },
+        {
+          "type": "prompt",
+          "instruction": "Write validation session notes describing how the instructor (as client) will sign off each criterion.",
+          "resources": ["./docs/templates/validation-protocol-template.md"],
+          "helper": "Use active verbs (witnesses, inspects, tests) so responsibilities are clear."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Produce a closing message for the councils summarizing readiness, remaining risks, and next review date.",
+          "helper": "Reference ISO 29148 clause 10.2 to justify why each validation activity completes the requirement life cycle."
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c5-q1",
+          "type": "single-select",
+          "question": "Which element must every acceptance criterion include per ISO 29148?",
+          "choices": [
+            "Implementation cost",
+            "Metric with measurable threshold",
+            "Preferred technology stack",
+            "Team member name only"
+          ],
+          "answer": 1,
+          "rationale": "Validation depends on measurable criteria that confirm whether the requirement is satisfied."
+        },
+        {
+          "id": "c5-q2",
+          "type": "single-select",
+          "question": "Validation differs from verification because it…",
+          "choices": [
+            "Ignores stakeholders",
+            "Confirms the solution meets stakeholder intent and operational need",
+            "Happens before requirements are written",
+            "Replaces testing"
+          ],
+          "answer": 1,
+          "rationale": "Validation demonstrates that implemented capabilities satisfy stakeholder intent, not just technical specs."
+        }
+      ],
+      "nextStepCue": "Archive the acceptance pack and schedule the multi-city sign-off meeting."
+    }
+  ]
+}

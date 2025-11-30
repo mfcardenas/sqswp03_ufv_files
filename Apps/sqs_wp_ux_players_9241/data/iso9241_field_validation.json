@@ -1,0 +1,486 @@
+{
+  "id": "iso-9241-field-validation",
+  "title": "ISO 9241 Field Validation Expedition",
+  "theme": "Run a full ISO 9241-210 cycle for a public services app",
+  "overview": "Students act as an embedded UX strike team helping a city services department modernize its incident-reporting portal. The labs walk through context research, requirement synthesis, interaction definition, and field validation grounded in ISO 9241-210 and ISO 9241-11.",
+  "labs": [
+    {
+      "id": "lab-a",
+      "title": "Lab A · Context Recon",
+      "summary": "Observe field conditions and convert them into ISO 9241-210 context-of-use artefacts.",
+      "challengeIds": ["field-challenge-1", "field-challenge-2"]
+    },
+    {
+      "id": "lab-b",
+      "title": "Lab B · Requirement Forge",
+      "summary": "Synthesize requirements and blueprint an interaction aligned with ISO 9241-112 information presentation guidance.",
+      "challengeIds": ["field-challenge-3"]
+    },
+    {
+      "id": "lab-c",
+      "title": "Lab C · Field Validation",
+      "summary": "Plan and evaluate field trials using ISO 9241-11 metrics and ISO 9241-210 evaluation activities.",
+      "challengeIds": ["field-challenge-4", "field-challenge-5"]
+    }
+  ],
+  "resources": [
+    "ISO 9241-210:2019 human-centred design",
+    "ISO 9241-11:2018 effectiveness, efficiency, satisfaction",
+    "ISO 9241-112:2017 presentation of information",
+    "City of Helsinki service design playbook (reference)"
+  ],
+  "scoring": {
+    "perCorrect": 20,
+    "max": 100
+  },
+  "completionMessage": "Consolidate field notes, update the service backlog, and prepare a stakeholder playback for city leadership.",
+  "challenges": [
+    {
+      "id": "field-challenge-1",
+      "title": "Shadow the Field Crew",
+      "labId": "lab-a",
+      "narrative": "Two inspectors file pothole reports from tablets while on the street. Your job is to capture their environment, goals, and constraints to seed the design cycle.",
+      "objectives": [
+        "Document context-of-use elements per ISO 9241-210 (users, tasks, equipment, environment).",
+        "Identify mismatches between the current tool and real-world needs.",
+        "Summarize findings for quick team alignment."
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Review the field inspection transcript summarizing how inspectors juggle gloves, notes, and the tablet.",
+          "helper": "Circle every time they lose signal or dexterity; those moments become requirements later.",
+          "resources": [
+            "./docs/templates/field-inspection-transcript.md"
+          ]
+        },
+        {
+          "type": "prompt",
+          "instruction": "Consult ISO 9241-210 clause 5.4 and jot the four context-of-use elements you'll need evidence for (users, tasks, equipment, environment).",
+          "resources": [
+            "./docs/templates/iso9241_210_clause5_notes.md"
+          ],
+          "helper": "Write your own definition for each element — it will keep interviews focused."
+        },
+        {
+          "type": "action",
+          "instruction": "Fill out the context-of-use canvas with at least two bullets per row, referencing timestamps from the transcript.",
+          "checklist": [
+            "Capture primary + secondary users",
+            "Document equipment + environmental constraints",
+            "Note quotes verbatim",
+            "Highlight contradictions to validate later"
+          ],
+          "resources": [
+            "./docs/templates/context-of-use-canvas.md"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Ask the instructor (acting as inspector) clarifying questions about goals, policies, and workarounds before assumptions harden.",
+          "helper": "Use the last row of the canvas to log any new risks or surprises."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Produce a one-page context brief with at least three quotes, summarizing who, what, where, and constraints.",
+          "example": "Quote: 'Sun glare means I duck under trees to read maps.' — ties to environment + display contrast.",
+          "checklist": [
+            "Add summary + date",
+            "List key quotes",
+            "State risks/opportunities",
+            "Document next research step"
+          ],
+          "resources": [
+            "./docs/templates/context-brief-template.md"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "field-q1",
+          "type": "single-select",
+          "question": "Which detail belongs in the context-of-use description?",
+          "choices": [
+            "Preferred marketing slogan",
+            "Lighting conditions and gloves affecting touch input",
+            "Fiscal year budget",
+            "CEO's vision statement"
+          ],
+          "answer": 1,
+          "rationale": "Environmental factors like lighting and gloves influence usability and must be captured."
+        },
+        {
+          "id": "field-q2",
+          "type": "single-select",
+          "question": "Why document equipment constraints early?",
+          "choices": [
+            "To select a color palette",
+            "To influence backend API design",
+            "To avoid assumptions that violate ISO 9241-210 context requirements",
+            "To calculate marketing ROI"
+          ],
+          "answer": 2,
+          "rationale": "Equipment constraints shape usability requirements and must be explicit per ISO 9241-210."
+        }
+      ],
+      "nextStepCue": "With context captured, proceed to analyse incidents and extract user requirements."
+    },
+    {
+      "id": "field-challenge-2",
+      "title": "Translate Field Notes into Requirements",
+      "labId": "lab-a",
+      "narrative": "You will transform observations into prioritized user requirements, balancing inspector needs and civic transparency goals.",
+      "objectives": [
+        "Write requirement statements that tie back to observed context.",
+        "Reference ISO 9241-210 clauses when justifying priority.",
+        "Prepare a backlog slice for design."],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Sort your context notes into three piles: pain points, opportunities, constraints.",
+          "helper": "Use sticky IDs that match the context canvas so traceability stays intact."
+        },
+        {
+          "type": "prompt",
+          "instruction": "Consult ISO 9241-210 clause 5.5 and capture the wording about traceable requirements.",
+          "resources": [
+            "./docs/templates/iso9241_210_clause5_notes.md"
+          ],
+          "helper": "Translate the clause into a checklist: user, need, reason."
+        },
+        {
+          "type": "action",
+          "instruction": "Write five requirement statements using the requirement sheet so each line ties to an observation and clause.",
+          "checklist": [
+            "Identify user + role",
+            "State the need as an action",
+            "Explain the reason referencing context",
+            "Link to ISO clause"
+          ],
+          "resources": [
+            "./docs/templates/user-requirements-sheet.md"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Review open data policy prompts to ensure transparency and retention rules are considered before prioritizing.",
+          "helper": "Note any policy constraint next to the related requirement so legal review is faster.",
+          "resources": [
+            "./docs/templates/open-data-policy-prompts.md"
+          ]
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Prioritize requirements using the MoSCoW board, citing the ISO clause for each Must and Should.",
+          "example": "Must: 'Inspectors capture GPS with gloves (Clause 5.5)'.",
+          "checklist": [
+            "Place each requirement ID in a column",
+            "Add clause reference for Must items",
+            "State consequence of delaying",
+            "List open questions"
+          ],
+          "resources": [
+            "./docs/templates/moscow-prioritization-board.md"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "field-q3",
+          "type": "single-select",
+          "question": "Which requirement best reflects ISO 9241-210 guidance?",
+          "choices": [
+            "The interface should look modern",
+            "Inspectors must capture GPS coordinates with one tap while wearing gloves",
+            "Marketing should choose icon colors",
+            "Executives need more dashboards"
+          ],
+          "answer": 1,
+          "rationale": "It links user, task, and context directly, aligning with ISO guidance."
+        },
+        {
+          "id": "field-q4",
+          "type": "single-select",
+          "question": "Why cite ISO clauses when prioritizing requirements?",
+          "choices": [
+            "To satisfy legal disclaimers",
+            "To anchor discussions in human-centred design obligations",
+            "To increase marketing budget",
+            "To shorten development time automatically"
+          ],
+          "answer": 1,
+          "rationale": "Referencing ISO 9241-210 clarifies why a requirement matters for user wellbeing and compliance."
+        }
+      ],
+      "nextStepCue": "Requirements locked? Jump into Lab B to design the incident reporting interaction." 
+    },
+    {
+      "id": "field-challenge-3",
+      "title": "Design the Incident Flow",
+      "labId": "lab-b",
+      "narrative": "Using requirements from Lab A, outline a responsive flow that inspectors can complete in under two minutes, even under rain.",
+      "objectives": [
+        "Structure the interaction using ISO 9241-112 information presentation principles.",
+        "Specify sensory feedback that works outdoors.",
+        "Ensure the flow can degrade gracefully for offline use."
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Review the incident wireframe reference and mark areas where inspectors struggled during recon.",
+          "resources": [
+            "./docs/templates/incident-wireframe-reference.md"
+          ],
+          "helper": "Note which screens need glove-friendly targets or offline cues."
+        },
+        {
+          "type": "prompt",
+          "instruction": "Consult ISO 9241-112 clause 8 on consistency and jot naming rules before editing labels.",
+          "resources": [
+            "./docs/templates/iso9241_112_clause8_consistency.md"
+          ],
+          "helper": "List any terminology decisions you must align with the onboarding scenario so language stays unified."
+        },
+        {
+          "type": "action",
+          "instruction": "Complete the interaction flow matrix, mapping each step to inputs, outputs, feedback cues, and offline fallbacks.",
+          "checklist": [
+            "Include at least four steps",
+            "State offline behavior",
+            "Reference ISO clause for key adjustments",
+            "Highlight sensory feedback choices"
+          ],
+          "resources": [
+            "./docs/templates/interaction-flow-matrix.md"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Ask the instructor how inspectors currently recover from lost signals and document the workaround sequence.",
+          "helper": "Add the workaround as a dedicated offline branch in your matrix."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Create a flow diagram (stickies or slides) plus a paragraph explaining how the design reduces cognitive load per ISO 9241-112.",
+          "example": "Location step surfaces GPS + manual entry side-by-side, chunking decisions and adding offline banner for conformity.",
+          "checklist": [
+            "Link to the matrix",
+            "Mention at least one feedback cue",
+            "Reference clause/ principle",
+            "State expected time-on-task"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "field-q5",
+          "type": "single-select",
+          "question": "Which layout improves readability under glare?",
+          "choices": [
+            "Dense tables with 8pt font",
+            "Large touch targets with high-contrast labels",
+            "Animated gradients",
+            "Scrolling marquees"
+          ],
+          "answer": 1,
+          "rationale": "Large, high-contrast elements align with ISO 9241-112 for constrained environments."
+        },
+        {
+          "id": "field-q6",
+          "type": "single-select",
+          "question": "What feedback best signals offline capture?",
+          "choices": [
+            "A subtle color change only",
+            "Explicit banner stating data is queued with timestamp",
+            "Waiting silently",
+            "Sending an email"
+          ],
+          "answer": 1,
+          "rationale": "Clear messaging keeps inspectors aware of system state, supporting conformity with expectations."
+        }
+      ],
+      "nextStepCue": "Flow designed? Head into Lab C to plan and execute field validation." 
+    },
+    {
+      "id": "field-challenge-4",
+      "title": "Plan Field Trials",
+      "labId": "lab-c",
+      "narrative": "Before shipping, the city wants proof the tool works across districts. Design a field validation plan referencing ISO 9241-11 metrics.",
+      "objectives": [
+        "Define effectiveness, efficiency, and satisfaction metrics relevant to inspectors and coordinators.",
+        "Select participant profiles and logistical considerations.",
+        "Outline data collection and analysis methods."],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Plan to recruit six inspectors across three districts with unique network constraints; note who represents each environment.",
+          "helper": "Use initials (P1–P6) with district tags so you can map them into the test matrix quickly."
+        },
+        {
+          "type": "prompt",
+          "instruction": "Consult ISO 9241-11 clause 6 to define effectiveness, efficiency, and satisfaction metrics plus thresholds.",
+          "resources": [
+            "./docs/templates/iso9241_11_clause6_metrics.md"
+          ],
+          "helper": "Write at least one metric idea per dimension before opening the matrix template."
+        },
+        {
+          "type": "action",
+          "instruction": "Fill out the field test matrix covering participants, scenarios, metrics, and success thresholds.",
+          "checklist": [
+            "Assign scenario per participant",
+            "List metric + target",
+            "Call out collection method",
+            "Note risks or blockers"
+          ],
+          "resources": [
+            "./docs/templates/field-test-matrix-template.md"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Ask the instructor/legal proxy about geo-data constraints, retention periods, and consent language.",
+          "helper": "Document requirements in the compliance checklist and link to the logistics brief risk section.",
+          "resources": [
+            "./docs/templates/geo-data-compliance-checklist.md"
+          ]
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Write a logistics brief summarizing schedule, roles, equipment, and risk mitigations tied to ISO metrics.",
+          "example": "Day 1 (North district): focus on low-light conditions; backup hotspot assigned to coordinator.",
+          "checklist": [
+            "Complete schedule table",
+            "Assign roles + owners",
+            "List equipment + backups",
+            "Document mitigation for top three risks"
+          ],
+          "resources": [
+            "./docs/templates/field-logistics-brief-template.md"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "field-q7",
+          "type": "single-select",
+          "question": "Which metric represents efficiency?",
+          "choices": [
+            "Average number of taps per report",
+            "Inspector morale score",
+            "City satisfaction index",
+            "Count of potholes citywide"
+          ],
+          "answer": 0,
+          "rationale": "Efficiency is about resources used; taps per report reflects interaction effort."
+        },
+        {
+          "id": "field-q8",
+          "type": "single-select",
+          "question": "Why include coordinators in the study?",
+          "choices": [
+            "They control marketing spend",
+            "They approve bug fixes",
+            "They rely on inspector data and affect context-of-use",
+            "They design city logos"
+          ],
+          "answer": 2,
+          "rationale": "Coordinators are secondary users whose needs influence effectiveness and satisfaction."
+        }
+      ],
+      "nextStepCue": "Plan approved? Execute the trial and evaluate outcomes in the final challenge." 
+    },
+    {
+      "id": "field-challenge-5",
+      "title": "Evaluate and Report",
+      "labId": "lab-c",
+      "narrative": "Field trials generated data and inspector anecdotes. You must analyze results and recommend go/no-go actions.",
+      "objectives": [
+        "Interpret metrics against ISO 9241-11 thresholds.",
+        "Map findings to ISO 9241-210 evaluation activity outputs.",
+        "Craft an executive-friendly narrative."],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Review the field validation data pack with completion times, error counts, SUS, and quotes before synthesizing.",
+          "helper": "Highlight any metric breaching the thresholds you set in Challenge 4.",
+          "resources": [
+            "./docs/templates/field-validation-data-pack.md"
+          ]
+        },
+        {
+          "type": "prompt",
+          "instruction": "Consult ISO 9241-210 clause 5.7 and list what evaluation outputs you must provide (findings, recommendations, iteration needs).",
+          "resources": [
+            "./docs/templates/iso9241_210_clause5_notes.md"
+          ],
+          "helper": "Write the evaluation loop (results → decision → iteration) at the top of your notes."
+        },
+        {
+          "type": "action",
+          "instruction": "Populate the evaluation findings board with insight, ISO reference, impact, and decision/owner.",
+          "checklist": [
+            "One insight per metric or quote",
+            "Include ISO clause",
+            "State impact (H/M/L)",
+            "Assign decision + owner"
+          ],
+          "resources": [
+            "./docs/templates/evaluation-findings-board.md"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Ask the instructor about city hall political considerations (timelines, union feedback, press).",
+          "helper": "Log constraints in the risk section so leadership sees awareness of external factors.",
+          "resources": [
+            "./docs/templates/city-hall-political-considerations.md"
+          ]
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Prepare a three-section executive report summarizing metrics, recommendation, and next steps.",
+          "example": "Headline: Only 2/6 inspectors hit efficiency target; Go decision deferred pending offline sync fixes.",
+          "checklist": [
+            "Headline metric snapshot",
+            "Key insights + ISO tie",
+            "Go/No-Go + risks",
+            "Next steps + owners"
+          ],
+          "resources": [
+            "./docs/templates/executive-report-outline.md"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "field-q9",
+          "type": "single-select",
+          "question": "A 20% error rate exceeds your threshold. What should you do per ISO 9241-210?",
+          "choices": [
+            "Ship anyway",
+            "Document findings and iterate the design solution",
+            "Ignore quantitative data",
+            "Switch to paper forms permanently"
+          ],
+          "answer": 1,
+          "rationale": "The evaluation activity feeds back into design for iteration before rollout." 
+        },
+        {
+          "id": "field-q10",
+          "type": "single-select",
+          "question": "Which statement best communicates satisfaction results?",
+          "choices": [
+            "Inspectors liked it",
+            "Average SUS = 78 (target 80), main complaints: glare and latency",
+            "People had mixed feelings",
+            "It felt modern"
+          ],
+          "answer": 1,
+          "rationale": "It cites quantitative data plus qualitative drivers, aligning with ISO 9241-11 reporting style."
+        }
+      ],
+      "nextStepCue": "Share the findings with stakeholders and archive artefacts for the next cohort." 
+    }
+  ]
+}
