@@ -217,6 +217,54 @@
                 </div>
             </details>
             <details>
+                <summary>ISO Standards Live Quiz - Juego multijugador sincronizado</summary>
+                <div>
+                    <h3>ISO Standards Live Quiz - Control docente con host/player dedicados</h3>
+                    <p><strong><a href="" target="_blank">🎮 Abrir juego externo</a></strong></p>
+                    <p>Plataforma multijugador inspirada en dinámicas tipo Kahoot que conecta un panel de docente protegido con una vista simplificada para estudiantes. El host configura la sesión, selecciona el origen de las preguntas (LLM u opciones curadas) y lanza cada ronda en directo mientras los jugadores responden desde su móvil.</p>
+
+                    <h4>Roles y flujo guiado</h4>
+                    <ul>
+                        <li><strong>Panel del docente:</strong> Autenticación con contraseña, generación de código único y panel para iniciar/cerrar preguntas, cronometrar rondas y ver ranking en vivo.</li>
+                        <li><strong>Vista del estudiante:</strong> Interfaz mínima con código de sesión, estado del turno, temporizador visual y confirmación explícita antes de enviar respuestas.</li>
+                        <li><strong>Sincronización de idioma:</strong> La preferencia del host se almacena en el navegador y se replica automáticamente en todos los jugadores conectados.</li>
+                        <li><strong>Contraseña docente predeterminada:</strong> <code>teachISO!</code> (modificable en <code>config.js</code>).</li>
+                    </ul>
+
+                    <h4>Configuración avanzada por sesión</h4>
+                    <ul>
+                        <li><strong>Contexto ISO personalizado:</strong> El docente define título, narrativa y estándares foco (ISO 9241, ISO/IEC/IEEE 29148, ISO/IEC 25010:2023).</li>
+                        <li><strong>Catálogo o IA:</strong> Selector para usar bancos curados o solicitar nuevas preguntas vía Ollama (<em>gpt-oss</em>) con fallback automático.</li>
+                        <li><strong>Temporizador y dificultad:</strong> Control sobre número de preguntas, duración por ronda y modo bilingüe o monolingüe.</li>
+                    </ul>
+
+                    <h4>Experiencia del estudiantado</h4>
+                    <ul>
+                        <li><strong>Feedback inmediato:</strong> Estados "esperando", "pregunta en progreso" y resultados parciales tras cada cierre.</li>
+                        <li><strong>Seguridad en el aula:</strong> La vista de jugador elimina rutas de navegación y sólo acepta interacciones cuando la ronda está abierta.</li>
+                        <li><strong>Compatibilidad total:</strong> Diseño responsive probado en móvil y escritorio con soporte completo para accesibilidad básica.</li>
+                    </ul>
+
+                    <h4>Tecnología y garantías</h4>
+                    <ul>
+                        <li>Stack Node.js + Express + Socket.IO con separación completa de roles y limpieza automática de sesiones.</li>
+                        <li>Persistencia ligera en <code>localStorage</code> para recordar idioma y preferencias del host.</li>
+                        <li>Catálogo predefinido de preguntas ISO y rutinas de fallback cuando la IA no responde.</li>
+                        <li>Probado en noviembre de 2025 para sesiones híbridas y presenciales.</li>
+                    </ul>
+
+                    <h4>Metodología sugerida</h4>
+                    <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin: 10px 0;">
+                        <p><strong>🎯 Uso con facilitación docente obligatoria</strong></p>
+                        <ul>
+                            <li>El docente prepara el contexto y valida la fuente de preguntas antes de compartir el código.</li>
+                            <li>Cada ronda incluye discusión rápida sobre el estándar ISO involucrado y revisión de métricas.</li>
+                            <li>Se recomienda cerrar la sesión con el ranking y planes de mejora vinculados al proyecto real.</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+            <details>
                 <summary>ISO Laboratory - Simulador de Decisiones Técnicas</summary>
                 <div>
                     <h3>Laboratorio ISO - Juego Educativo Interactivo</h3>

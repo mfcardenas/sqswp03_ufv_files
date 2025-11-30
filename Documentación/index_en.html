@@ -217,6 +217,54 @@
                 </div>
             </details>
             <details>
+                <summary>ISO Standards Live Quiz – Multiplayer session control</summary>
+                <div>
+                    <h3>ISO Standards Live Quiz – Secure host/player experience</h3>
+                    <p><strong><a href="" target="_blank">🎮 Launch external experience</a></strong></p>
+                    <p>A classroom-ready platform inspired by live quiz shows that links a password-protected teacher console with a distraction-free player view. Instructors configure the session, pick between LLM-generated or curated ISO question packs, and trigger every round while students answer from their phones.</p>
+
+                    <h4>Roles and guided flow</h4>
+                    <ul>
+                        <li><strong>Teacher console:</strong> Password gate, unique session code, and controls to start/close rounds, run the timer, and monitor rankings in real time.</li>
+                        <li><strong>Student view:</strong> Minimal UI with session code, live status, visual timer, and explicit confirmation before locking responses.</li>
+                        <li><strong>Language sync:</strong> The host preference is stored in-browser and automatically mirrored across every connected player.</li>
+                        <li><strong>Default host password:</strong> <code>teachISO!</code> (can be configured inside <code>config.js</code>).</li>
+                    </ul>
+
+                    <h4>Session-level configuration</h4>
+                    <ul>
+                        <li><strong>Custom ISO context:</strong> Teachers set the title, storyline, and focus standards (ISO 9241, ISO/IEC/IEEE 29148, ISO/IEC 25010:2023).</li>
+                        <li><strong>Catalog or LLM:</strong> Toggle between vetted banks or fresh prompts generated through Ollama (<em>gpt-oss</em>) with automatic fallback.</li>
+                        <li><strong>Timing and difficulty:</strong> Control the number of questions, per-round timers, and whether the run is monolingual or bilingual.</li>
+                    </ul>
+
+                    <h4>Student-side experience</h4>
+                    <ul>
+                        <li><strong>Immediate feedback:</strong> States for waiting, live question, and partial results after every closure.</li>
+                        <li><strong>Classroom safety:</strong> The player UI strips navigation links and only accepts input while the round is open.</li>
+                        <li><strong>Full-device support:</strong> Responsive layout validated on phones and desktops with baseline accessibility baked in.</li>
+                    </ul>
+
+                    <h4>Technology and guarantees</h4>
+                    <ul>
+                        <li>Node.js + Express + Socket.IO stack with strict role separation and automatic session cleanup.</li>
+                        <li>Lightweight <code>localStorage</code> persistence to remember host language and preference toggles.</li>
+                        <li>ISO-focused question catalog plus fallback routines whenever the LLM endpoint is unavailable.</li>
+                        <li>QA completed in November 2025 for hybrid and in-person cohorts.</li>
+                    </ul>
+
+                    <h4>Recommended methodology</h4>
+                    <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin: 10px 0;">
+                        <p><strong>🎯 Always run with teacher facilitation</strong></p>
+                        <ul>
+                            <li>Teachers prepare the scenario and validate the question source before sharing the session code.</li>
+                            <li>Each round includes a quick debrief on the ISO clause involved plus metric review.</li>
+                            <li>Close with the live ranking and actionable improvements tied to the real project.</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+            <details>
                 <summary>ISO Laboratory - Technical Decisions Simulator</summary>
                 <div>
                     <h3>ISO Laboratory - Interactive Educational Game</h3>

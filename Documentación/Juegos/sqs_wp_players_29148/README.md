@@ -1,18 +1,30 @@
-# ISO 29148 Requirements Players
+# ISO 29148 Requirements Players – README
 
-Single-page classroom app to help instructors run ISO/IEC/IEEE 29148 workshops. Students load curated scenarios or ask a local Ollama instance (gpt-oss) to generate fresh requirement labs while keeping the exact schema required by the UI.
+ISO 29148 Requirements Players is a facilitator-first SPA that turns requirements engineering labs into live classroom sessions. This folder mirrors the build deployed in `Documentación/Juegos/sqs_wp_players_29148`.
 
-## Getting started
+## What’s Included
 
-1. Serve `sqs_wp_players_29148` with any static server (`python -m http.server`, VS Code Live Preview, etc.).
-2. Open `index.html` in your browser.
-3. Pick **Static JSON** for deterministic scenarios or **Dynamic (Ollama gpt-oss)** for AI-generated content.
-4. For static mode, choose one of the available scenarios (Requirements Rally or Supplier Alignment) and press **Load Scenario**.
-5. Review the intro screen with the cohort, then walk through each challenge, recording quiz answers and opening resources directly from the modal viewer.
+- **Two curated labs:** Requirements Rally and Supplier Alignment, fully scripted with KPIs, stakeholder roles, quizzes, and wrap-up copy.
+- **Dynamic generation:** Optional Ollama (`gpt-oss`) integration that produces three fresh labs (`lab-a`, `lab-b`, `lab-c`) on demand using a strict schema.
+- **Embedded resources:** Markdown templates (briefs, matrices, validation logs) that open inline so students never leave the SPA.
+- **Scoring + feedback:** Automated 0–100 score plus localized recommendations for the final debrief.
 
-## Project structure
+## Quick Start
+
+1. Serve this directory with a static server (`python -m http.server 8000`, VS Code Live Preview, etc.).
+2. Open `index.html` from the served URL (avoid `file://` to keep fetch/Markdown working).
+3. Choose a content source:
+	- **Static JSON:** Deterministic labs from `data/`. Pick your scenario and click **Load Scenario**.
+	- **Dynamic (Ollama gpt-oss):** Ensure Ollama runs locally and exposes the `gpt-oss` model, then request new labs.
+4. Review the intro slide with the cohort, then work through each challenge by capturing student answers in the UI.
+5. Use the scorecard and completion message to drive the retrospective.
+
+> **Tip:** Keep DevTools open during rehearsal—helper logs reveal how payloads are parsed and validated.
+
+## File Map
 
 ```
+sqs_wp_players_29148/
 ├── index.html
 ├── assets/
 │   └── css/main.css
@@ -20,8 +32,12 @@ Single-page classroom app to help instructors run ISO/IEC/IEEE 29148 workshops. 
 │   ├── iso29148_requirements_rally.json
 │   └── iso29148_supplier_alignment.json
 ├── docs/
-│   ├── templates/*.md
-│   └── update-json-prompt.md
+│   ├── update-json-prompt.md
+│   └── templates/
+│       ├── acceptance-criteria-template.md
+│       ├── change-impact-canvas.md
+│       ├── context-of-use-worksheet.md
+│       ├── …
 ├── src/
 │   ├── data/
 │   │   ├── content-provider.js
@@ -38,17 +54,48 @@ Single-page classroom app to help instructors run ISO/IEC/IEEE 29148 workshops. 
 └── README.md
 ```
 
-## Dynamic content (Ollama)
+## Dynamic Content Requirements
 
-If you select **Dynamic (Ollama gpt-oss)** the app calls `http://localhost:11434/api/generate` with a strict prompt that enforces:
+| Setting | Value |
+| --- | --- |
+| Endpoint | `http://localhost:11434/api/generate` |
+| Model | `gpt-oss` (change in `content-provider.js` if needed) |
+| Timeout | 15 s (`OLLAMA_TIMEOUT_MS`) |
 
-- Three labs (`lab-a`, `lab-b`, `lab-c`) covering elicitation, specification, and validation
-- Five challenges with objectives, 4–6 tasks, and at least two quizzes
-- Tasks that always include helper material (examples, checklists, or resources)
-- Scoring payload (`{"perCorrect":20,"max":100}`) plus a completion message
+The runtime enforces:
 
-Failures to reach Ollama fall back to the static scenario so the class can continue.
+- Three labs with IDs `lab-a`, `lab-b`, `lab-c` covering elicitation, specification, and validation.
+- Five challenges per lab, each holding objectives, 4–6 tasks, ≥2 quizzes, and helper resources (examples, checklists, Markdown).
+- Scoring payload such as `{ "perCorrect": 20, "max": 100 }` plus a completion summary string.
+- Graceful fallback to the last selected static lab if the LLM call fails.
 
-## Browser support
+## Customization
 
-Tested with the latest Chrome and Edge. Because the app uses `fetch` for local JSON and Markdown, run it through `http://` instead of `file://` to avoid CORS/file permission issues.
+| Goal | Where |
+| --- | --- |
+| Update static scenarios | Edit the JSON files in `data/` (ensure you keep IDs, titles, challenges arrays, and helper references intact). |
+| Refresh prompts | Follow `docs/update-json-prompt.md` to regenerate datasets via AI, or tweak the `OLLAMA_PROMPT` constant inside `content-provider.js`. |
+| Add more resources | Drop Markdown files into `docs/templates/` and reference them from JSON via `"helperMd": "docs/templates/..."`. |
+| Adjust scoring | Modify the weights inside `src/state/scoring.js` (per quiz, completion bonus, etc.). |
+| Rebrand visuals | Override CSS variables in `assets/css/main.css` (primary, accent, background, typography). |
+
+## Classroom Flow
+
+1. **Kick-off:** Explain the chosen lab’s context, actors, and ISO clauses in focus.
+2. **Challenge loop:** For each challenge, students analyze objectives, discuss options, and vote on the best answer while you record it in the UI.
+3. **Resource dives:** Open the referenced Markdown template (traceability matrix, validation protocol, etc.) for hands-on guidance.
+4. **Score review:** After the last challenge, discuss the score, automated feedback, and suggested improvements.
+5. **Wrap-up:** Capture the learning outcomes in your LMS or shared notes and plan follow-up work if needed.
+
+## Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Blank screen after load | Confirm you are serving via HTTP; fetch calls fail when loaded with `file://`. |
+| Markdown modal shows 404 | Validate the `helperMd` path in the JSON file matches a real template. |
+| Dynamic labs never finish | Check the Ollama terminal for prompt errors; run `ollama run gpt-oss` manually to verify availability. |
+| Score remains 0 | Ensure each quiz has an answer recorded; unanswered quizzes provide 0 weight. |
+
+## License
+
+This bundle inherits the license from the root repository (`sqswp035_iso_ufv_new`). Content © ISO WP Lab (UFV).*** End Patch
