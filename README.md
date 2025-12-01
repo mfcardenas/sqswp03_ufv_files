@@ -1,4 +1,4 @@
-# Material Didáctico – Workspace Overview
+# Workspace Overview
 
 This workspace consolidates every deliverable used in the ISO-driven Software Engineering curriculum: production-ready web apps, public documentation bundles, GPT guides, hands-on labs, classroom practices, and workshop packets. Use this README as the map to understand what lives where before deploying or editing anything.
 
