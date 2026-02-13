@@ -1,0 +1,10 @@
+docker run -d \
+  --name postgres_db \
+  -e POSTGRES_USER=admin \
+  -e POSTGRES_PASSWORD=admin123 \
+  -e POSTGRES_DB=mi_basedatos \
+  -p 5432:5432 \
+  -v postgres_data:/var/lib/postgresql/data \
+  postgres:16
+
+  docker run -d --name postgres_db -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin123 -e POSTGRES_DB=mi_basedatos -p 5432:5432 -v postgres_data:/var/lib/postgresql/data postgres:16
