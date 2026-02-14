@@ -1,0 +1,515 @@
+{
+  "id": "iso-9241-usability-quest",
+  "title": "ISO 9241 Usability Quest",
+  "theme": "Explore the ISO 9241 usability principles",
+  "overview": "In this workshop, you will audit a B2B analytics platform that suffers from low adoption and user error. You will move through the full ISO 9241 lifecycle: from diagnosing interaction issues (Part 110/112) to redesigning the flow (Part 143) and planning a rigorous validation strategy (Part 11/210).",
+  "labs": [
+    {
+      "id": "lab-a",
+      "title": "Lab A · Discovery & Analysis",
+      "summary": "Conduct a heuristic evaluation using ISO 9241-110 principles. You will identify specific usability violations, map them to standard clauses (self-descriptiveness, controllability), and prioritize remediation efforts based on severity and impact.",
+      "challengeIds": [
+        "challenge-1",
+        "challenge-2"
+      ]
+    },
+    {
+      "id": "lab-b",
+      "title": "Lab B · Interaction Redesign",
+      "summary": "Apply ISO 9241-112 and ISO 9241-143 guidelines to fix the broken workflow. You will storyboard a new interaction model that ensures consistent information presentation, immediate feedback, and error tolerance.",
+      "challengeIds": [
+        "challenge-3"
+      ]
+    },
+    {
+      "id": "lab-c",
+      "title": "Lab C · Validation & Metrics",
+      "summary": "Define a human-centred validation plan per ISO 9241-210. You will establish acceptance criteria, select key performance indicators (KPIs) based on ISO 9241-11 dimensions (effectiveness, efficiency, satisfaction), and structure a field test.",
+      "challengeIds": [
+        "challenge-4",
+        "challenge-5"
+      ]
+    }
+  ],
+  "resources": [
+    "ISO 9241-110:2020 clauses 5.2 to 5.7",
+    "ISO 9241-112:2017 information presentation principles",
+    "ISO 9241-210:2019 human-centred design activities",
+    "ISO 9241-11:2018 effectiveness, efficiency, and satisfaction metrics"
+  ],
+  "scoring": {
+    "perCorrect": 20,
+    "max": 100
+  },
+  "completionMessage": "Debrief the team, highlight the strongest artefacts, and schedule the follow-up validation session.",
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Baseline Observation",
+      "labId": "lab-a",
+      "narrative": "The analytics dashboard for distributed teams has ballooned with widgets, snackbars, and legacy charts. Newcomers report fatigue and consistently miss the KPIs they need during onboarding week.",
+      "objectives": [
+        "Apply ISO 9241-110 principles (self-descriptiveness, controllability, conformity with user expectations) when inspecting screens.",
+        "Collect evidence of problematic patterns that the class can discuss with the instructor.",
+        "Differentiate between subjective opinions and observations grounded in the standard."
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Review the dashboard recording transcripts (overview cards, alerts drawer, comparison canvas) and capture gut reactions in one sentence per section.",
+          "helper": "First pass = raw impressions; second pass = note every time the transcript mentions hesitation or rework.",
+          "resources": [
+            "./docs/templates/dashboard-recording-transcripts.md",
+            "Reminder: onboarding cohorts in APAC and LATAM complained about fatigue after day 3."
+          ]
+        },
+        {
+          "type": "action",
+          "instruction": "Print or open the dashboard screenshot and annotate every confusing region. Next to each sticky, cite the ISO 9241-110 clause being violated and describe the consequence in plain language.",
+          "example": "Alerts drawer — clause 5.3 (conformity). Critical alerts hide behind a neutral bell, so analysts expect non-urgent updates.",
+          "helper": "Aim for at least eight annotations so you capture both obvious blockers and subtle friction.",
+          "checklistTitle": "Annotation flow",
+          "checklist": [
+            "Circle the UI element and label it A, B, C…",
+            "Write the violated principle under the label",
+            "Add one sentence describing user confusion",
+            "Mark severity (H/M/L) so classmates can debate later"
+          ],
+          "resources": [
+            "./docs/templates/observation-log-template.md"
+          ]
+        },
+        {
+          "type": "prompt",
+          "instruction": "Open ISO 9241-110 clause 5.2 (self-descriptiveness) and highlight the sentences about feedback cues before finalizing your notes.",
+          "resources": [
+            "./docs/templates/iso9241_clause5_notes.md",
+            {
+              "label": "Plain-language summary",
+              "url": "https://lawsofux.com/principles/familiarity/",
+              "note": "Use as inspiration for conformity language."
+            }
+          ],
+          "helper": "If you cannot access the PDF, ask any teammate who already downloaded the excerpt to screenshare."
+        },
+        {
+          "type": "research",
+          "instruction": "Interview the instructor role-playing the product owner to list three daily tasks and two weekly tasks the dashboard must support.",
+          "example": "Daily: monitor live alerts for Asia. Weekly: prep executive snapshot.",
+          "helper": "Listen for verbs the PO uses (monitor, escalate, compare) and reuse them in your findings to stay contextual."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Write five observation statements that include screen area, violated principle, observed impact, and severity.",
+          "example": "Trend comparison panel — self-descriptiveness — analysts misread grey trend as inactive, delaying reactions (Severity: High).",
+          "checklist": [
+            "Sentence 1: name the component",
+            "Sentence 2: cite the ISO clause and quote the keyword you relied on",
+            "Sentence 3: explain the business or human impact",
+            "Sentence 4: tag severity so prioritization is easier"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c1-q1",
+          "type": "single-select",
+          "question": "The overview cards use identical labels and icons for different metrics. Which ISO 9241-110 principle is most clearly violated?",
+          "choices": [
+            "Self-descriptiveness",
+            "Suitability for learning",
+            "Error tolerance",
+            "Suitability for individualization"
+          ],
+          "answer": 0,
+          "rationale": "Repeated icons and labels reduce the ability to understand the function without additional explanation."
+        },
+        {
+          "id": "c1-q2",
+          "type": "single-select",
+          "question": "Students notice that critical alerts appear behind a collapsed drawer. Which principle justifies escalating this issue first?",
+          "choices": [
+            "Conformity with user expectations",
+            "Suitability for the task",
+            "Controllability",
+            "Suitability for learning"
+          ],
+          "answer": 1,
+          "rationale": "Critical alerts are task-relevant; hiding them undermines suitability for the primary task."
+        }
+      ],
+      "nextStepCue": "Once the debrief wraps up, continue to Challenge 2 so the cohort can prioritize fixes."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Prioritize the Fixes",
+      "labId": "lab-a",
+      "narrative": "Stakeholders can only fund two tangible improvements in the next sprint, so you must argue for the most impactful corrections using ISO language.",
+      "objectives": [
+        "Translate observations into remediation ideas that cite ISO 9241-110 or ISO 9241-112 clauses.",
+        "Practice impact-versus-effort reasoning while referencing evidence gathered earlier.",
+        "Draft a compliance statement the instructor can role-play as the Product Owner."
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Spend ten minutes revisiting the observation wall. Group stickies by principle or symptom so themes emerge before prioritizing.",
+          "example": "Cluster A: self-descriptiveness issues in cards. Cluster B: suitability for task issues in alert drawer.",
+          "helper": "If you are remote, recreate clusters in Miro or FigJam and take a screenshot for reference."
+        },
+        {
+          "type": "action",
+          "instruction": "Populate a 2x2 matrix (impact vs. effort). Inside each quadrant, list remediation ideas and cite the ISO clause backing the change.",
+          "checklist": [
+            "Draw the axes: Impact (low→high) vs Effort (low→high)",
+            "Place each idea where it belongs",
+            "Write the clause (e.g., 5.3) and a 5-word rationale",
+            "Circle the two ideas you would actually ship"
+          ],
+          "resources": [
+            {
+              "label": "Matrix template",
+              "url": "https://miro.com/templates/impact-effort-matrix/",
+              "note": "Duplicate or sketch the layout."
+            },
+            "./docs/templates/impact-effort-matrix-template.md"
+          ]
+        },
+        {
+          "type": "prompt",
+          "instruction": "Search for dashboard or data-visualization pattern libraries (Atlassian, Nielsen Norman, Salesforce Lightning) and capture one example that supports each winning idea.",
+          "helper": "Screenshot + one sentence is enough; focus on how the pattern reinforces your ISO argument.",
+          "resources": [
+            {
+              "label": "NN/g dashboard best practices",
+              "url": "https://www.nngroup.com/articles/dashboard-design/"
+            }
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Read ISO 9241-112 clause 6 (organization of information). Highlight phrases that justify how you will reorder KPIs or alerts.",
+          "helper": "Pay attention to guidance on grouping by task frequency; you will quote it in your compliance note.",
+          "resources": [
+            "./docs/templates/iso9241_112_clause6_notes.md"
+          ]
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Write a 120-word compliance statement addressed to the Product Owner explaining which two improvements ship next sprint and why they satisfy ISO 9241-110/112.",
+          "example": "Decision 1: Pin critical KPIs (clause 5.3) so analysts control focus. Decision 2: Restructure alert drawer per ISO 9241-112 grouping guidance…",
+          "checklist": [
+            "Sentence 1: situation recap",
+            "Sentences 2-3: improvement #1 + clause",
+            "Sentences 4-5: improvement #2 + clause",
+            "Sentence 6: expected impact + invite for review"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c2-q1",
+          "type": "single-select",
+          "question": "Which remediation best aligns with ISO 9241-110 controllability?",
+          "choices": [
+            "Automatically cycling through widgets every 5 seconds",
+            "Allowing users to pin two KPIs and collapse the rest",
+            "Adding color-coded gradients to every tile",
+            "Removing confirmation dialogs to speed up review"
+          ],
+          "answer": 1,
+          "rationale": "Pinned KPIs hand control back to the analyst without forcing unwanted automation."
+        },
+        {
+          "id": "c2-q2",
+          "type": "single-select",
+          "question": "When defending the alert redesign, which ISO 9241-112 concept strengthens your case?",
+          "choices": [
+            "Equivalence of modalities",
+            "Organization of information",
+            "Neutral tone",
+            "Aesthetic coherence"
+          ],
+          "answer": 1,
+          "rationale": "Grouping alerts by severity and proximity improves information organization and comprehension."
+        }
+      ],
+      "nextStepCue": "After the prioritization board feels solid, head into Lab B to keep momentum."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Interaction Storyboard",
+      "labId": "lab-b",
+      "narrative": "The most critical task is assembling a weekly report in under five minutes. The flow currently includes redundant confirm dialogs and delayed feedback, so you will storyboard a better experience.",
+      "objectives": [
+        "Sequence the workflow into 6–8 frames with clear triggers, system responses, and sensory cues.",
+        "Apply ISO 9241-112 guidance on information presentation to reduce cognitive load.",
+        "Align feedback timing and modality with ISO 9241-143 recommendations."
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Study the instructor's annotated flow. Pay special attention to the sticky notes placed at data selection, confirmation, and export—they indicate where people currently stall.",
+          "helper": "Write the timestamp of each friction point so you can reference it quickly when pitching the new storyboard."
+        },
+        {
+          "type": "prompt",
+          "instruction": "Read ISO 9241-112 clause 7 (emphasizing important information). Underline phrases about ordering, proximity, and highlighting before you sketch frame 1.",
+          "resources": [
+            "./docs/templates/iso9241_112_clause7_highlights.md",
+            {
+              "label": "Article: Progressive disclosure",
+              "url": "https://www.nngroup.com/articles/progressive-disclosure/"
+            }
+          ],
+          "helper": "Translate at least one clause sentence into your own words and write it at the top of your storyboard for quick reference."
+        },
+        {
+          "type": "action",
+          "instruction": "Create 6–8 storyboard frames. For each frame, capture: user intent, UI surface, input method, system response, and immediate feedback cue.",
+          "example": "Frame 3 — Intent: choose dataset. Surface: modal. Input: multi-select list. System response: preview chips update. Feedback: inline confirmation banner.",
+          "checklist": [
+            "Frame title = verb + object (e.g., Select dataset)",
+            "Add arrows showing what triggers the next frame",
+            "Color-code frames where the system gives feedback",
+            "Note any ISO principle you deliberately applied"
+          ],
+          "resources": [
+            "./docs/templates/storyboard-template.md"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Ask subject-matter experts (played by the instructor) how they double-check exported PDFs today. Capture verbatim quotes about frustrations or hacks.",
+          "helper": "Prompt them with scenarios: 'When was the last time you caught an error too late?' so you collect actionable stories."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Highlight two storyboard moments where proactive feedback prevents errors (inline validation, progress indicator, preview, etc.). Explain why each aligns with ISO 9241-143 timing guidance.",
+          "example": "Moment 1: inline validation warns about missing filters before export, referencing ISO 9241-143 clause on immediate feedback.",
+          "checklist": [
+            "State the frame number",
+            "Describe the feedback modality",
+            "Link to the ISO clause",
+            "Describe the risk it mitigates"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c3-q1",
+          "type": "single-select",
+          "question": "Where should an inline confirmation appear to respect ISO 9241-143 feedback timing?",
+          "choices": [
+            "After the entire report exports",
+            "Immediately after the user selects the dataset",
+            "Only if the user requests help",
+            "In a weekly summary email"
+          ],
+          "answer": 1,
+          "rationale": "Immediate feedback after selection ensures the user knows the system captured the correct dataset."
+        },
+        {
+          "id": "c3-q2",
+          "type": "single-select",
+          "question": "Which adjustment lowers cognitive load according to ISO 9241-112?",
+          "choices": [
+            "Adding animations between frames",
+            "Grouping related filters and naming them with verbs",
+            "Duplicating instructions on every screen",
+            "Switching the interface language mid-flow"
+          ],
+          "answer": 1,
+          "rationale": "Grouping and action-oriented labels improve the organization dimension of information presentation."
+        }
+      ],
+      "nextStepCue": "When your storyboard pitch is done, transition to validation thinking in Lab C."
+    },
+    {
+      "id": "challenge-4",
+      "title": "Guideline Compliance Test",
+      "labId": "lab-c",
+      "narrative": "A clickable prototype now demonstrates the notification settings micro-interaction. Your job is to verify it against ISO 9241-210 activities, ensuring the design remains human-centred.",
+      "objectives": [
+        "Map each interaction to the ISO 9241-210 activity it satisfies (understand context, specify requirements, produce design solutions, evaluate designs).",
+        "Define measurable acceptance criteria the class can use during critiques.",
+        "Connect metrics back to ISO 9241-11 dimensions of effectiveness, efficiency, and satisfaction."
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "Review the notification prototype walkthrough notes twice. On the second pass, flag every toggle change or preview update with a timestamp.",
+          "helper": "Capture timestamps (mm:ss) for each interaction; you will reference them when judging if evaluation steps exist.",
+          "resources": [
+            "./docs/templates/notification-prototype-walkthrough.md"
+          ]
+        },
+        {
+          "type": "action",
+          "instruction": "Complete the ISO 9241-210 activity checklist: mark Evidence Present, Missing, or Needs Follow-up for each activity (understand context, specify requirements, produce solutions, evaluate designs).",
+          "checklist": [
+            "Row 1: Understand context — what artefact proves it?",
+            "Row 2: Specify requirements — do we see measurable criteria?",
+            "Row 3: Produce solutions — list prototypes or design decisions",
+            "Row 4: Evaluate designs — note tests, KPIs, or peer reviews"
+          ],
+          "resources": [
+            "./docs/templates/iso210-activity-checklist.md",
+            {
+              "label": "ISO 9241-210 overview",
+              "url": "https://www.interaction-design.org/literature/topics/human-centered-design"
+            }
+          ]
+        },
+        {
+          "type": "prompt",
+          "instruction": "Consult ISO 9241-11 clause 4 and note exact wording for effectiveness, efficiency, and satisfaction. Translate them into friendly definitions you can hand to stakeholders.",
+          "helper": "Write three bullet points like 'Efficiency = time + resources' and keep them visible as you draft KPIs.",
+          "resources": [
+            "./docs/templates/iso9241_11_clause4_summary.md"
+          ]
+        },
+        {
+          "type": "research",
+          "instruction": "Ask the instructor (acting as PM) about constraints: maximum time allowed to configure notifications, acceptable error rate, and tooling limits.",
+          "example": "PM says setup must stay under 90 seconds with zero critical errors.",
+          "helper": "Capture constraints verbatim so you can turn them directly into acceptance criteria."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Draft three acceptance criteria. Each must include metric, benchmark, measurement method, and linked ISO dimension (effectiveness, efficiency, satisfaction).",
+          "example": "Efficiency — 'Average setup time ≤ 90s measured via moderated test'.",
+          "checklist": [
+            "Criterion title",
+            "ISO dimension + clause reference",
+            "Metric + how you capture it",
+            "Benchmark and rationale"
+          ],
+          "resources": [
+            "./docs/templates/acceptance-criteria-canvas.md"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c4-q1",
+          "type": "single-select",
+          "question": "Evaluating whether the toggle states communicate status belongs to which ISO 9241-210 activity?",
+          "choices": [
+            "Understand and specify context of use",
+            "Specify user requirements",
+            "Produce design solutions",
+            "Evaluate designs against requirements"
+          ],
+          "answer": 3,
+          "rationale": "You are checking a solution versus requirements, so it is the evaluation activity."
+        },
+        {
+          "id": "c4-q2",
+          "type": "single-select",
+          "question": "Which KPI best reflects efficiency for this micro-interaction?",
+          "choices": [
+            "Percentage of users who prefer dark mode",
+            "Average time to configure notifications without errors",
+            "Number of sessions per week",
+            "Overall market share"
+          ],
+          "answer": 1,
+          "rationale": "Efficiency relates to resource expenditure, so time to configure without errors is appropriate."
+        }
+      ],
+      "nextStepCue": "Once KPIs are peer-reviewed, unlock the final field validation brief."
+    },
+    {
+      "id": "challenge-5",
+      "title": "Field Validation Brief",
+      "labId": "lab-c",
+      "narrative": "Leadership needs a lean remote validation plan before releasing the new dashboard experience. Resources are scarce, but evidence must tie back to ISO 9241-11.",
+      "objectives": [
+        "Design a validation protocol that balances effectiveness, efficiency, and satisfaction measures.",
+        "State assumptions, participant profiles, and logistical constraints in a concise brief.",
+        "Prepare talking points the instructor can use while role-playing executive stakeholders."
+      ],
+      "tasks": [
+        {
+          "type": "context",
+          "content": "You can recruit four remote analysts (two power users, two newcomers). Each session is 60 minutes on MS Teams with screen-share and recording enabled if consented.",
+          "helper": "List the analysts' time zones to confirm you can schedule within one week."
+        },
+        {
+          "type": "prompt",
+          "instruction": "Read ISO 9241-11 clause 5 and note what constitutes effectiveness, efficiency, and satisfaction. Use those definitions to decide which metrics truly matter.",
+          "resources": [
+            {
+              "label": "UX metrics crib sheet",
+              "url": "https://www.nngroup.com/articles/which-ux-metrics/",
+              "note": "Map each suggested metric to ISO dimensions."
+            },
+            "./docs/templates/validation-brief-template.md"
+          ],
+          "helper": "Translate each dimension into a question you will ask participants (e.g., 'How confident did you feel finishing the alert setup?')."
+        },
+        {
+          "type": "action",
+          "instruction": "Outline the study flow: warm-up rapport, scenario briefing, task execution with think-aloud, metric capture, reflective debrief, wrap-up. Assign an approximate time budget to every segment.",
+          "checklist": [
+            "Warm-up (5 min): context + consent",
+            "Scenario walkthrough (5 min): align expectations",
+            "Task block (35 min): 3 sub tasks + probes",
+            "Metrics pass (10 min): SUS + tailored Likert",
+            "Wrap-up (5 min): recap + next steps"
+          ],
+          "helper": "Color-code the parts where you collect quantitative vs qualitative data so you never skip a measurement."
+        },
+        {
+          "type": "research",
+          "instruction": "Ask the instructor/legal proxy about privacy requirements: storage duration for recordings, anonymization expectations, and whether NDAs are needed.",
+          "example": "Legal requirement: delete raw recordings after 30 days and mask client names in notes.",
+          "helper": "Document any mandatory disclosures—you will use them in participant invitations."
+        },
+        {
+          "type": "deliverable",
+          "instruction": "Write a one-page validation brief listing: participants, context-of-use assumptions, tasks, metrics, risk mitigations, and go/no-go criteria tied to ISO 9241-11 thresholds.",
+          "example": "Go/no-go: ship only if 3/4 participants finish under 4 minutes AND SUS ≥ 80.",
+          "checklist": [
+            "Header with purpose and date",
+            "Table with participant archetypes",
+            "Task list aligned to ISO dimensions",
+            "Metrics + target values",
+            "Risks + mitigations",
+            "Decision rule"
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "c5-q1",
+          "type": "single-select",
+          "question": "Which metric most directly covers satisfaction per ISO 9241-11?",
+          "choices": [
+            "System Usability Scale (SUS) score",
+            "Time to first click",
+            "Number of API calls",
+            "Count of exported PDFs"
+          ],
+          "answer": 0,
+          "rationale": "SUS captures perceived satisfaction and is an established post-task measure."
+        },
+        {
+          "id": "c5-q2",
+          "type": "single-select",
+          "question": "What is the minimum detail you must capture when describing participants?",
+          "choices": [
+            "Favorite dashboard color",
+            "Role, expertise with analytics tools, and location",
+            "Their preferred laptop brand",
+            "Whether they enjoy remote work"
+          ],
+          "answer": 1,
+          "rationale": "ISO 9241-11 stresses understanding the user group, which includes role, experience, and environment."
+        }
+      ],
+      "nextStepCue": "Reveal the collective score and facilitate a retrospective using the brief."
+    }
+  ]
+}

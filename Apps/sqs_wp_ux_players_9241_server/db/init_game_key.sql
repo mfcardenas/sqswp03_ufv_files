@@ -1,0 +1,3 @@
+-- Add ISO_9241_QUEST GameKey to the existing enum
+ALTER TYPE "GameKey"
+ADD VALUE IF NOT EXISTS 'ISO_9241_QUEST';

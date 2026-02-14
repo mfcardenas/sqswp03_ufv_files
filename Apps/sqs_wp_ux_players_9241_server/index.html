@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISO 9241 Usability Quest</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="brand-identity">
+            <img src="./assets/img/ufv-logo.png" alt="UFV Madrid logo" class="brand-logo" />
+            <div>
+                <h1>ISO 9241 Usability Quest</h1>
+                <p class="subtitle">Studio-driven learning flow for ISO 9241 usability principles.</p>
+            </div>
+        </div>
+        <div class="control-panel" aria-label="Scenario controls">
+            <label for="content-source">Content source</label>
+            <select id="content-source" name="content-source">
+                <option value="json" selected>Static JSON (offline)</option>
+                <option value="ollama">Dynamic (Ollama gpt-oss)</option>
+            </select>
+            <label for="static-scenario" id="static-scenario-label">Available scenario</label>
+            <select id="static-scenario" name="static-scenario"></select>
+            <label for="theme-input">Theme</label>
+            <input id="theme-input" name="theme" type="text" value="Explore ISO 9241 usability principles" />
+            <button id="load-scenario" class="primary">Load Scenario</button>
+        </div>
+    </header>
+
+    <main id="app" class="app-shell" aria-live="polite">
+        <section class="placeholder">
+            <h2>Ready when you are</h2>
+            <p>Pick the content source and load the scenario to begin the classroom experience.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <img src="./assets/img/ufv-logo-ft.png" alt="UFV Madrid logo" class="brand-logo brand-logo--mini" />
+        <strong>SQS WP35 - Project UFV</strong>
+        <p>Designed for in-class facilitation. Student-facing content appears in English; coordination remains
+            instructor-driven.</p>
+    </footer>
+
+    <script src="./persistence.js"></script>
+    <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
